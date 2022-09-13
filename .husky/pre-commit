@@ -1,0 +1,25 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn lint-staged
+yarn type:check
+
+AUTHORS=(
+  'uri:uri.vu@vmodev.com'
+  'rory:rory.tran.vu@vmodev.com'
+)
+
+AUTHOR_CONFIG="$GIT_AUTHOR_NAME:$GIT_AUTHOR_EMAIL"
+
+if [[ ! " ${AUTHORS[*]} " =~ " ${AUTHOR_CONFIG} " ]]; then
+  echo ⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫
+  echo "Your name should be the same as your username."
+  echo "Example: keiai_mobile <keiai_mobile@gmail.com>"
+  echo
+  echo "Fix your username by using:"
+  echo "git config user.name keiai_mobile"
+  echo "git config user.email keiai_mobile@gmail.com"
+  echo "Then try commiting again"
+  echo ⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫⛔️🚫
+  exit 1
+fi
