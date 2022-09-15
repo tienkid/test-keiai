@@ -26,7 +26,7 @@ const SelectItemComponent = ({
 
   // render
   return (
-    <Button onPress={_onPress} activeOpacity={0.85}>
+    <Button.Default onPress={_onPress} activeOpacity={0.85}>
       <View style={[[styles.container]]}>
         {customItem ? (
           customItem(item, index)
@@ -37,7 +37,7 @@ const SelectItemComponent = ({
           />
         )}
       </View>
-    </Button>
+    </Button.Default>
   );
 };
 

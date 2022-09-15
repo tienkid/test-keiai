@@ -5,9 +5,10 @@ import { FontDefault } from '@theme/typography';
 export const textPresets = StyleSheet.create({
   linkTitle: {
     fontFamily: FontDefault.primary,
-    fontSize: sizeScale(24),
-    lineHeight: 32,
+    fontSize: sizeScale(20),
+    lineHeight: 24,
     color: '#000000',
+    fontWeight: '400',
   },
   linkSubtitle: {
     fontFamily: FontDefault.primary,

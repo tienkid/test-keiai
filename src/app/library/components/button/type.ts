@@ -54,6 +54,18 @@ export interface ButtonProps extends TouchableOpacityProps {
   textColorTheme?: keyof Colors;
 
   /**
+   * Using color for text
+   * @default undefined
+   */
+  borderColor?: string;
+
+  /**
+   * Using color for text
+   * @default undefined
+   */
+  borderColorTheme?: keyof Colors;
+
+  /**
    * Using color for button background color
    * @default undefined
    */
