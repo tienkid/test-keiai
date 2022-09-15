@@ -18,6 +18,8 @@ export const ColorDefault = {
   base5: '#4C4C4C',
   base6: '#4C4C4C44',
   content_gray: 'rgba(66, 66, 66, 0.7)',
+  statusError: '#F03333',
+  statusSuccess: '#CCCCCC',
 };
 export const ColorDark = {
   primary: '#F03333',
@@ -39,4 +41,6 @@ export const ColorDark = {
   base4: '#C4C4C4',
   base5: '#4C4C4C',
   base6: '#4C4C4C44',
+  statusError: '#F03333',
+  statusSuccess: '#CCCCCC',
 };

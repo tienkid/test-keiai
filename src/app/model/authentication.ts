@@ -1,6 +1,6 @@
 export type FormLoginType = {
   email: string;
-  password: string;
+  phoneNumber: string;
 };
 
 export interface AuthenticationState {

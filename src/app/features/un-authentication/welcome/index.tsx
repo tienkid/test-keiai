@@ -10,6 +10,8 @@ import {
   Text,
   WrapperBackground,
 } from '@components';
+import { navigate } from '@navigation/navigation-service';
+import { APP_SCREEN } from '@navigation/screen-types';
 
 import { useWelcomeStyle } from './style';
 
@@ -23,6 +25,10 @@ export const WelcomeScreen = () => {
     const pattern = /\[([^:]+):([^\]]+)\]/i;
     const match = matchingString.match(pattern);
     return `${match[1]}`;
+  };
+
+  const handleToLogin = () => {
+    navigate(APP_SCREEN.LOGIN);
   };
 
   // render
@@ -77,7 +83,7 @@ export const WelcomeScreen = () => {
           {t('welcome:use_KEIAI_Plus')}
         </ParsedText>
         <Spacer height={30} />
-        <Button.Outline t18n="welcome:my_KEIAI_Plus" />
+        <Button.Outline t18n="welcome:my_KEIAI_Plus" onPress={handleToLogin} />
         <Spacer height={6} />
         <Text center t18n="welcome:myKEIAI_member" />
       </Block>

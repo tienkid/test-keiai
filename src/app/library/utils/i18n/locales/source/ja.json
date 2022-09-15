@@ -45,6 +45,15 @@
     "myKEIAI_member": "myKEIAI会員登録ページはブラウザで開きます",
     "troubling": "[ログインでお困りの方は:1][こちら:2]"
   },
+  "login": {
+    "title": "ログイン",
+    "email": "メールアドレス",
+    "emailPlaceholder": "メールアドレスを入力",
+    "phoneNumber": "携帯電話番号（ハイフン抜き）",
+    "phoneNumberPlaceholder": "電話番号をハイフン抜きで入力",
+    "without_hyphens": "※ハイフン抜きで入力してください",
+    "register": "会員登録がまだの方はこちら"
+  },
   "dialog": {
     "error": "Error",
     "cancel": "Cancel",

@@ -3,8 +3,8 @@ import { Alert } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
-import { dispatch } from '@common';
-import { Block, Screen } from '@components';
+import { dispatch, sizeScale } from '@common';
+import { Screen, WrapperBackground } from '@components';
 import { FormLoginType } from '@model/authentication';
 import { appActions } from '@redux-slice';
 
@@ -21,15 +21,15 @@ const LoginComponent = () => {
 
   // render
   return (
-    <Block block paddingTop={0} paddingHorizontal={15}>
+    <WrapperBackground titleT18n="login:title">
       <Screen
         bottomInsetColor="transparent"
         scroll
-        style={{ paddingVertical: 0, paddingHorizontal: 10 }}
+        style={{ paddingHorizontal: sizeScale(20) }}
         backgroundColor={'transparent'}>
         <FormLogin onSubmit={onSubmit} />
       </Screen>
-    </Block>
+    </WrapperBackground>
   );
 };
 export const Login = memo(LoginComponent, isEqual);

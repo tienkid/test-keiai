@@ -1,13 +1,11 @@
 import React from 'react';
-import { Button } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
 
+import { Block, Button, FormInput, Spacer, Text } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormLoginType } from '@model/authentication';
 import { loginValidation } from '@validate/login';
-
-import { Input } from './input';
 
 import { FormLoginProps } from '../type';
 
@@ -22,13 +20,44 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
   const onSubmitKey = () => {
     formMethod.handleSubmit(onSubmit)();
   };
+
   // render
   return (
     <FormProvider {...formMethod}>
-      <Input<FormLoginType> name={'email'} label={'Email'} />
-      <Input<FormLoginType> name={'password'} label={'Password'} />
-
-      <Button title={'Submit'} onPress={onSubmitKey} />
+      <FormInput<FormLoginType>
+        name={'email'}
+        labelT18n={'login:email'}
+        placeholderT18n={'login:emailPlaceholder'}
+      />
+      <Spacer height={40} />
+      <FormInput<FormLoginType>
+        name={'phoneNumber'}
+        labelT18n={'login:phoneNumber'}
+        placeholderT18n={'login:phoneNumberPlaceholder'}
+      />
+      <Spacer height={10} />
+      <Block paddingLeft={16}>
+        <Text
+          t18n="login:without_hyphens"
+          preset="linkMedium"
+          colorTheme="primary"
+        />
+      </Block>
+      <Spacer height={60} />
+      <Button.Primary
+        t18n="login:title"
+        onPress={onSubmitKey}
+        disabled={!formMethod.formState.isValid}
+      />
+      <Spacer height={40} />
+      <Button.Default>
+        <Text
+          center
+          t18n="login:register"
+          preset="linkMedium"
+          colorTheme="border"
+        />
+      </Button.Default>
     </FormProvider>
   );
 };

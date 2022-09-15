@@ -20,7 +20,7 @@ export const WrapperBackground = ({
   children,
   titleT18n,
   paddingTop,
-  titlePreset = 'linkTitle',
+  titlePreset = 'linkSubtitle',
 }: WrapperBackgroundTypes) => {
   // state
   const navigation = useNavigation();

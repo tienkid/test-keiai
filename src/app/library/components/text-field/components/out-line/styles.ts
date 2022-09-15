@@ -1,38 +1,65 @@
+import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 15,
-    borderWidth: StyleSheet.hairlineWidth * 2,
-    borderRadius: 5,
-    borderColor: 'gray',
-    justifyContent: 'center',
-  },
-  input: {
-    color: '#000',
-    padding: 0,
-    borderBottomColor: 'transparent',
-  },
-  text: {
-    alignSelf: 'flex-start',
-    zIndex: 4,
-    left: 5,
-  },
-  wrapLabel: {
-    position: 'absolute',
-    alignSelf: 'flex-end',
-  },
-  content: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-  },
-  wrapPlaceHolder: {
-    position: 'absolute',
-    alignSelf: 'flex-end',
-    paddingLeft: 5,
-  },
-  flex: {
-    flex: 1,
-    paddingHorizontal: 5,
-  },
-});
+import { sizeScale } from '@common';
+import { useTheme } from '@theme';
+
+export const useTextOutlineStyle = () => {
+  // state
+  const theme = useTheme();
+
+  // result
+  return useMemo(
+    () =>
+      StyleSheet.create({
+        container: {
+          borderWidth: 1,
+          borderRadius: 30,
+          borderColor: theme.colors.border,
+          justifyContent: 'center',
+        },
+        input: {
+          color: theme.colors.text,
+          borderBottomColor: 'transparent',
+          paddingVertical: sizeScale(17),
+          paddingHorizontal: sizeScale(18),
+          flex: 1,
+        },
+        text: {
+          alignSelf: 'flex-start',
+          zIndex: 4,
+          left: 5,
+        },
+        wrapLabel: {
+          paddingLeft: sizeScale(16),
+        },
+        content: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          flex: 1,
+        },
+        wrapPlaceHolder: {
+          position: 'absolute',
+          alignSelf: 'center',
+          paddingHorizontal: sizeScale(18),
+        },
+        flex: {
+          flex: 1,
+          height: '100%',
+        },
+        required: {
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: sizeScale(14),
+          backgroundColor: theme.colors.statusError,
+          paddingHorizontal: sizeScale(10),
+          paddingVertical: sizeScale(2),
+        },
+        labelContainer: {
+          flexDirection: 'row',
+          alignItems: 'center',
+        },
+      }),
+    [theme.colors.border, theme.colors.statusError, theme.colors.text],
+  );
+};

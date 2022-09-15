@@ -6,6 +6,8 @@ import { UseFormTrigger } from 'react-hook-form';
 
 import { I18nKeys } from '@utils/i18n/locales';
 
+import { TextProps } from '../text/type';
+
 export interface InputBaseProps extends TextInputProps {
   /**
    * Disable input or not
@@ -14,10 +16,22 @@ export interface InputBaseProps extends TextInputProps {
   disabled?: boolean;
 
   /**
-   * Input invalid or not
+   * Success input or not
    * @default false
    */
-  error?: boolean;
+  isSuccess?: boolean;
+
+  /**
+   * Input invalid or not
+   * @default undefined
+   */
+  error?: string;
+
+  /**
+   * Want to show error message
+   * @default true
+   */
+  isShowMsgError?: boolean;
 
   /**
    * Label title of input
@@ -26,9 +40,22 @@ export interface InputBaseProps extends TextInputProps {
   label?: string;
 
   /**
+   * Required label title of input
+   * @default undefined
+   */
+
+  requiredLabel?: string;
+
+  /**
+   * Required label title of input using i18n
+   * @default undefined
+   */
+  requiredLabelT18n?: TextProps['t18n'];
+
+  /**
    * Label text using i18n
    */
-  labelTx?: string;
+  labelT18n?: TextProps['t18n'];
 
   /**
    * Call trigger react hook form
@@ -97,6 +124,12 @@ export interface InputBaseProps extends TextInputProps {
    * @default rgb(214,45,32)
    */
   errorBorderColor?: string;
+
+  /**
+   * Border color when input success
+   * @default #4FCE67
+   */
+  successBorderColor?: string;
 
   /**
    * Label color when input not valid
