@@ -5,6 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '@components/button';
 import { Icon } from '@components/icon';
 import { Text } from '@components/text';
+import { goBack } from '@navigation/navigation-service';
 import { useNavigation } from '@react-navigation/native';
 
 import { WrapperBackgroundTypes } from './type';
@@ -34,7 +35,7 @@ export const WrapperBackground = ({
       <FocusedStatusBarStyle barStyle={barStyle || 'light-content'} />
       {navigation.canGoBack() && (
         <Block paddingLeft={24}>
-          <Button.Default>
+          <Button.Default onPress={goBack}>
             <Icon icon="arrow_left" colorTheme="base_1" />
           </Button.Default>
         </Block>

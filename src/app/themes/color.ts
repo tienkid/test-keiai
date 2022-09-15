@@ -11,6 +11,8 @@ export const ColorDefault = {
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
   base_1: '#666666',
+  base_2: '#707070',
+  base_3: '#F2F2F2',
 };
 export const ColorDark = {
   primary: '#F03333',
@@ -25,4 +27,6 @@ export const ColorDark = {
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
   base_1: '#666666',
+  base_2: '#707070',
+  base_3: '#F2F2F2',
 };
