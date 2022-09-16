@@ -28,6 +28,8 @@
     "@hookform/resolvers": "^2.9.7",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/netinfo": "^9.3.0",
+    "@react-navigation/bottom-tabs": "^6.3.3",
+    "@react-navigation/drawer": "^6.4.4",
     "@react-navigation/native": "^6.0.12",
     "@react-navigation/stack": "^6.2.3",
     "@reduxjs/toolkit": "^1.8.3",

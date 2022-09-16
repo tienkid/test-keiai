@@ -11,6 +11,7 @@ export const icons = {
   arrow_down: require('./source/arrow_down.png'),
   check: require('./source/check.png'),
   arrow_left: require('./source/arrow-left.png'),
+  go: require('./source/arrow.png'),
 };
 
 export type IconTypes = keyof typeof icons;

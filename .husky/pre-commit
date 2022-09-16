@@ -6,7 +6,7 @@ yarn type:check
 
 AUTHORS=(
   'uri:uri.vu@vmodev.com'
-  'rory:rory.tran.vu@vmodev.com'
+  'rory:rory.tran@vmodev.com'
 )
 
 AUTHOR_CONFIG="$GIT_AUTHOR_NAME:$GIT_AUTHOR_EMAIL"
