@@ -63,6 +63,9 @@
     "text_point": "マイポイント",
     "text_list_recommend": "おすすめサービス"
   },
+  "profile": {
+    "inquiries": "問い合わせ窓口"
+  },
   "main": {
     "chatTab": {
       "tvChat": "Chat",

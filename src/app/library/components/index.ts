@@ -33,3 +33,4 @@ export * from './comment-loading';
 export * from './portal';
 export * from './parsed-text';
 export * from './wrapper-background';
+export * from './header';
