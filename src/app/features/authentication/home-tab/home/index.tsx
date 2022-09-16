@@ -3,12 +3,11 @@ import { RefreshControl } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
-import { Block, LocalImage, StackView } from '@components';
+import { Block, Header, LocalImage, StackView } from '@components';
 import { FocusedStatusBarStyle } from '@components/focused-status-bar';
 
 import { ButtonInfo } from './components/button-app-info';
 import { ButtonPoint } from './components/button-point';
-import { Header } from './components/header';
 import { ListRecommend } from './components/list-recommend';
 import { SliderContent } from './components/slider-content';
 

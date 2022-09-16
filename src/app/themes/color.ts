@@ -1,7 +1,7 @@
 export const ColorDefault = {
   primary: '#F03333',
   white: '#ffffff',
-  background: 'rgb(242, 242, 242)',
+  background: '#F2F2F7',
   card: 'rgb(255, 255, 255)',
   text: '#000000',
   text_1: '#4C4C4C',
@@ -21,7 +21,7 @@ export const ColorDefault = {
 export const ColorDark = {
   primary: '#F03333',
   white: '#ffffff',
-  background: 'rgb(242, 242, 242)',
+  background: '#F2F2F7',
   card: 'rgb(255, 255, 255)',
   text: '#000000',
   text_1: '#4C4C4C',
