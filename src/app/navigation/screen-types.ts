@@ -40,6 +40,7 @@ export type UnAuthorizeParamsList = {
 };
 export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
+  [CONTENT_STACK.CONTENT]: undefined;
 };
 export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;

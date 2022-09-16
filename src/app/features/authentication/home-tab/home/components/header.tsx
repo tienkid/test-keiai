@@ -20,7 +20,7 @@ export const Header = () => {
     <Block
       direction={'row'}
       middle
-      height={'13%'}
+      height={90}
       paddingTop={insets.top}
       colorTheme={'primary'}
       paddingHorizontal={15}
