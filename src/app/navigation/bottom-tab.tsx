@@ -83,23 +83,25 @@ export const BottomTabScreen = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.white,
+        tabBarInactiveTintColor: '#CCCCCC',
         tabBarStyle: {
           backgroundColor: colors.primary,
+          paddingTop: 5,
         },
       }}>
       <BottomTab.Screen
         options={{
-          title: t('bottomTab:home'),
+          title: t('bottom_tab:home'),
           tabBarIcon: props => (
             <Icon name={'home'} color={props.color} size={30} />
           ),
         }}
-        name={'BOTTOM_TAB.TAB_HOME'}
+        name={BOTTOM_TAB.TAB_HOME}
         component={HomeStackScreen}
       />
       <BottomTab.Screen
         options={{
-          title: t('bottomTab:profile'),
+          title: t('bottom_tab:content'),
           tabBarIcon: props => (
             <Icon name={'article'} color={props.color} size={30} />
           ),
@@ -109,7 +111,7 @@ export const BottomTabScreen = () => {
       />
       <BottomTab.Screen
         options={{
-          title: t('bottomTab:profile'),
+          title: t('bottom_tab:point'),
           tabBarIcon: props => (
             <Icon name={'stars'} color={props.color} size={30} />
           ),
@@ -119,7 +121,7 @@ export const BottomTabScreen = () => {
       />
       <BottomTab.Screen
         options={{
-          title: t('bottomTab:profile'),
+          title: t('bottom_tab:setting'),
           tabBarIcon: props => (
             <Icon name={'build'} color={props.color} size={30} />
           ),
