@@ -52,6 +52,11 @@
     "loading": "Loading",
     "select": "Select"
   },
+  "home":{
+    "text_info":"KEIAIプラスリリース",
+    "text_point":"マイポイント",
+    "text_list_recommend":"おすすめサービス"
+    },
   "main": {
     "chatTab": {
       "tvChat": "Chat",
@@ -61,5 +66,6 @@
       "tvProfile": "Profile",
       "tvTabLabel": "Profile"
     }
+    
   }
 }

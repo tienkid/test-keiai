@@ -59,6 +59,24 @@ export const textPresets = StyleSheet.create({
     fontSize: sizeScale(9),
     color: '#000000',
   },
+  textNormal: {
+    fontFamily: FontDefault.secondary,
+    fontSize: sizeScale(16),
+    lineHeight: 20,
+    color: '#FFFFFF',
+  },
+  textBold16: {
+    fontFamily: FontDefault.secondary,
+    fontSize: sizeScale(16),
+    // lineHeight: 20,
+    color: '#FFFFFF',
+  },
+  textBold14: {
+    fontFamily: FontDefault.secondary,
+    fontSize: sizeScale(14),
+    lineHeight: 20,
+    color: '#FFFFFF',
+  },
   default: {},
 });
 
