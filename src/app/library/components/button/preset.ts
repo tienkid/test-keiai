@@ -6,19 +6,23 @@ import { FontDefault } from '@theme/typography';
 
 export const stylesView = StyleSheet.create({
   primary: {
-    borderRadius: 4,
-    paddingVertical: 5,
+    borderRadius: sizeScale(30),
+    paddingVertical: sizeScale(18),
     backgroundColor: ColorDefault.primary,
     alignItems: 'center',
   },
 
   outline: {
-    borderRadius: 4,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
+    borderRadius: sizeScale(30),
+    paddingVertical: sizeScale(18),
+    backgroundColor: ColorDefault.primary,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: ColorDefault.primary,
   },
   default: {},
 });
+
 export const stylesText = StyleSheet.create({
   primary: {
     fontSize: sizeScale(16),

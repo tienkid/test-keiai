@@ -32,6 +32,19 @@
     "errorNetwork": "Connection errors! Please check the connection again.",
     "errorGetPermission": "Error during application permission check"
   },
+  "common": {
+    "or": "または"
+  },
+  "welcome": {
+    "registered_members": "会員登録済みの方",
+    "sms_authenticate": "SMS認証をしてアプリ利用を開始",
+    "login": "[すでに認証済みの方は:1][ログイン:2]",
+    "not_has_account": "まだ会員登録をされていない方",
+    "use_KEIAI_Plus": "[KEIAIプラスのご利用には\n:1][myKEIAI会員:3][以下のボタンから会員登録を行ってください。:2]",
+    "my_KEIAI_Plus": "myKEIAI新規会員登録",
+    "myKEIAI_member": "myKEIAI会員登録ページはブラウザで開きます",
+    "troubling": "[ログインでお困りの方は:1][こちら:2]"
+  },
   "dialog": {
     "error": "Error",
     "cancel": "Cancel",

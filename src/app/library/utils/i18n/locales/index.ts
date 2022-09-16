@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import en from './source/en.json';
+import ja from './source/ja.json';
 
-export const resources = { en };
+export const resources = { ja };
 
 type IsNested<T> = T extends string ? false : true;
 
@@ -18,4 +18,4 @@ type Path<T> = T extends Readonly<infer V>
       }[TupleKeys<T>]
     : PathImpl<string, V>
   : never;
-export type I18nKeys = Path<typeof en>;
+export type I18nKeys = Path<typeof ja>;

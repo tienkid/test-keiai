@@ -3,12 +3,14 @@ export enum APP_SCREEN {
   SPLASH = 'SPLASH',
   LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
+  WELCOME = 'WELCOME',
 
   AUTHORIZE = 'AUTHORIZE',
   HOME = 'HOME',
 }
 
 export type UnAuthorizeParamsList = {
+  [APP_SCREEN.WELCOME]: undefined;
   [APP_SCREEN.LOGIN]: undefined;
   [APP_SCREEN.REGISTER]: undefined;
   [APP_SCREEN.SPLASH]: undefined;

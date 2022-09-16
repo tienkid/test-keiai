@@ -12,12 +12,12 @@ const RegisterComponent = () => {
       <Wallpaper />
       <Screen>
         <Block block justifyContent={'center'} middle>
-          <Button
+          <Button.Default
             onPress={() => {
               goBack();
             }}>
             <Text color={'red'}>Back</Text>
-          </Button>
+          </Button.Default>
         </Block>
       </Screen>
     </Block>

@@ -99,23 +99,23 @@ export const ActionSheet = forwardRef((props: ActionSheetProps, ref) => {
             ))}
           {option.map((item: OptionData, index: number) => {
             return (
-              <Button onPress={onPress(item, index)} key={item.text}>
+              <Button.Default onPress={onPress(item, index)} key={item.text}>
                 <View style={[styles.wrapTextOption]}>
                   <Text style={[textOptionStyle]} children={item.text} />
                 </View>
-              </Button>
+              </Button.Default>
             );
           })}
         </View>
         <View style={[styles.wrapCancel, wrapCancelStyle]}>
-          <Button onPress={onCancel}>
+          <Button.Default onPress={onCancel}>
             <View style={[styles.wrapTextCancel]}>
               <Text
                 style={[styles.textCancel, textCancelStyleOverwrite]}
                 children={textCancel}
               />
             </View>
-          </Button>
+          </Button.Default>
         </View>
       </View>
     </Modal>
