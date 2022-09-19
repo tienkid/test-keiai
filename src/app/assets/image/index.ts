@@ -8,6 +8,7 @@ export const images = {
   iesapo: require('./source/iesapo_1.png'),
   internet: require('./source/internet_1.png'),
   support: require('./source/support.png'),
+  term_policy: require('./source/term_policy.png'),
 };
 
 export type ImageTypes = keyof typeof images;

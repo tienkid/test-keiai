@@ -66,6 +66,11 @@
   "profile": {
     "inquiries": "問い合わせ窓口"
   },
+  "point": {
+    "ki_club_member": "ケイアイクラブ会員",
+    "point_balance": "ポイント残高",
+    "point": "{{point}} P "
+  },
   "main": {
     "chatTab": {
       "tvChat": "Chat",
