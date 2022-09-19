@@ -63,6 +63,9 @@
     "text_point": "マイポイント",
     "text_list_recommend": "おすすめサービス"
   },
+  "content": {
+    "tab_header": "記事"
+  },
   "profile": {
     "inquiries": "問い合わせ窓口"
   },

@@ -22,6 +22,7 @@ export enum HOME_STACK {
 
 export enum CONTENT_STACK {
   CONTENT = 'CONTENT',
+  CONTENT_DETAIL = 'CONTENT_DETAIL',
 }
 
 export enum POINT_STACK {
@@ -41,6 +42,7 @@ export type UnAuthorizeParamsList = {
 export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
   [CONTENT_STACK.CONTENT]: undefined;
+  [CONTENT_STACK.CONTENT_DETAIL]: undefined;
 };
 export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;

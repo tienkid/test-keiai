@@ -3,6 +3,7 @@ import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Block, Button, LocalImage } from '@components';
+import { FocusedStatusBarStyle } from '@components/focused-status-bar';
 import { goBack } from '@navigation/navigation-service';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@theme';
@@ -28,6 +29,7 @@ export const Header = () => {
       colorTheme={'primary'}
       paddingHorizontal={15}
       alignItems="center">
+      <FocusedStatusBarStyle barStyle={'light-content'} />
       <Block flex={1} justifyContent={'center'} alignItems={'center'}>
         {navigation.canGoBack() && (
           <Button.Default

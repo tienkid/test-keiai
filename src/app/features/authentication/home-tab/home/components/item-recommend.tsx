@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Block, Divider, LocalImage, Text } from '@components';
+import { Block, Button, Divider, LocalImage, Text } from '@components';
 export type ItemRecommendProps = {
   item: { id: number; text: string; sign: string };
 };
@@ -8,14 +8,14 @@ export const ItemRecommend = ({ item }: ItemRecommendProps) => {
   // state
   // render
   return (
-    <Block>
+    <Button.Default>
       <Block
         direction={'row'}
         marginTop={15}
         marginBottom={15}
         paddingHorizontal={10}>
         <Block width={120} height={80}>
-          <LocalImage source={'banner'} />
+          <LocalImage source={'item_recommend'} />
         </Block>
         <Block flex={1} paddingLeft={10}>
           <Text preset="textBold14" colorTheme="base5" numberOfLines={3}>
@@ -27,6 +27,6 @@ export const ItemRecommend = ({ item }: ItemRecommendProps) => {
         </Block>
       </Block>
       <Divider height={2} colorTheme="arrow" />
-    </Block>
+    </Button.Default>
   );
 };

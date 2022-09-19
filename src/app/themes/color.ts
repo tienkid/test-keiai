@@ -15,6 +15,7 @@ export const ColorDefault = {
   base_3: '#F2F2F2',
   arrow: '#C4C4C4',
   base5: '#4C4C4C',
+  base6: '#4C4C4C44',
   base4: '#C4C4C4',
   content_gray: 'rgba(66, 66, 66, 0.7)',
 };
