@@ -1,14 +1,18 @@
 import React, { memo } from 'react';
-import { Text, View } from 'react-native';
 
 import isEqual from 'react-fast-compare';
+
+import { Block, Header } from '@components';
+
+import { BodyContent } from './components/body-content';
 
 const ContentComponent = () => {
   // render
   return (
-    <View>
-      <Text>Content</Text>
-    </View>
+    <Block block colorTheme="background">
+      <Header />
+      <BodyContent />
+    </Block>
   );
 };
 

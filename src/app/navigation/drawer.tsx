@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ContentTab } from '@features/authentication/content-tab';
+import { ContentTab } from '@features/authentication/content-tab/content-screen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { BottomTabScreen } from './bottom-tab';

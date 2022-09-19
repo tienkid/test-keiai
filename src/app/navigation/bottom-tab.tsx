@@ -2,7 +2,8 @@ import React from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { ContentTab } from '@features/authentication/content-tab';
+import { ContentDetail } from '@features/authentication/content-tab/content-detail';
+import { ContentTab } from '@features/authentication/content-tab/content-screen';
 import { HomeTab } from '@features/authentication/home-tab/home';
 import { PointTab } from '@features/authentication/point-tab';
 import { SettingTab } from '@features/authentication/setting-tab';
@@ -52,6 +53,10 @@ export const ContentStackScreen = () => {
         name={CONTENT_STACK.CONTENT}
         component={ContentTab}
       />
+      <ContentStack.Screen
+        name={CONTENT_STACK.CONTENT_DETAIL}
+        component={ContentDetail}
+      />
     </ContentStack.Navigator>
   );
 };
@@ -74,7 +79,6 @@ export const BottomTabScreen = () => {
   // state
   const { colors } = useTheme();
   const [t] = useTranslation();
-
   // func
 
   // render

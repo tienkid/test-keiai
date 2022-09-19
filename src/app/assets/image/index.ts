@@ -9,6 +9,8 @@ export const images = {
   internet: require('./source/internet_1.png'),
   support: require('./source/support.png'),
   term_policy: require('./source/term_policy.png'),
+  item_content: require('./source/itemContent.png'),
+  item_recommend: require('./source/itemRecomment.png'),
 };
 
 export type ImageTypes = keyof typeof images;
