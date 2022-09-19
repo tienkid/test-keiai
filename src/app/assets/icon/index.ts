@@ -12,6 +12,7 @@ export const icons = {
   check: require('./source/check.png'),
   arrow_left: require('./source/arrow-left.png'),
   go: require('./source/arrow.png'),
+  auto_renew: require('./source/autorenew.png'),
 };
 
 export type IconTypes = keyof typeof icons;

@@ -1,14 +1,33 @@
 import React, { memo } from 'react';
-import { Text, View } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
+import { Block, Header, LocalImage, Spacer, StackView } from '@components';
+
+import { PointCard } from './components/point-card';
+
 const PointComponent = () => {
+  // state
+
   // render
   return (
-    <View>
-      <Text>Point</Text>
-    </View>
+    <Block block colorTheme="background">
+      <Header />
+      <StackView>
+        <Block block paddingHorizontal={10}>
+          <Spacer height={16} />
+          <PointCard />
+        </Block>
+        <Block
+          alignSelf={'center'}
+          paddingHorizontal={15}
+          width={325}
+          paddingTop={15}
+          height={415}>
+          <LocalImage source="term_policy" resizeMode="center" />
+        </Block>
+      </StackView>
+    </Block>
   );
 };
 
