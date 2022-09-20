@@ -1,7 +1,7 @@
-import { HOME_STACK, RootStackParamList } from '@navigation/screen-types';
+import { AuthorizeParamsList, HOME_STACK } from '@navigation/screen-types';
 import { StackScreenProps } from '@react-navigation/stack';
 
 export type NotifyDetailProps = StackScreenProps<
-  RootStackParamList,
+  AuthorizeParamsList,
   HOME_STACK.NOTIFY_DETAIL
 >;

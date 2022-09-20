@@ -49,11 +49,11 @@ export type AuthorizeParamsList = {
   [CONTENT_STACK.CONTENT_DETAIL]: undefined;
   [BOTTOM_TAB.TAB_HOME]: undefined;
   [HOME_STACK.NOTIFY]: undefined;
+  [HOME_STACK.NOTIFY_DETAIL]: { item: ItemNotifyType };
 };
 export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;
   [APP_SCREEN.AUTHORIZE]: undefined;
   [HOME_STACK.NOTIFY]: undefined;
-  [HOME_STACK.NOTIFY_DETAIL]: { item: ItemNotifyType };
 } & UnAuthorizeParamsList &
   AuthorizeParamsList;

@@ -1,13 +1,13 @@
-import React, { memo } from 'react';
-
-import isEqual from 'react-fast-compare';
+import React from 'react';
 
 import { Block, Header, Spacer, Text } from '@components';
+import { useRoute } from '@react-navigation/native';
 
 import { NotifyDetailProps } from './type';
 
-const NotificationDetail = ({ route: { params } }: NotifyDetailProps) => {
-  const { item } = params;
+export const NotifyDetail = () => {
+  const route = useRoute<NotifyDetailProps['route']>();
+  const { item } = route.params;
   console.log(item);
   // render
   return (
@@ -26,5 +26,3 @@ const NotificationDetail = ({ route: { params } }: NotifyDetailProps) => {
     </Block>
   );
 };
-
-export const NotifyDetail = memo(NotificationDetail, isEqual);
