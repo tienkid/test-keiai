@@ -5,6 +5,8 @@ import { Block, Button, Divider, Text } from '@components';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@theme';
 
+import { navigate } from './navigation-service';
+import { HOME_STACK } from './screen-types';
 import { ListRenderDrawer } from './type';
 
 const CustomDrawer = () => {
@@ -46,8 +48,15 @@ const CustomDrawer = () => {
   ];
   const handleRouteDrawer = (id: number) => {
     console.log(id);
+    switch (id) {
+      case 3:
+        navigate(HOME_STACK.NOTIFY);
+        break;
+      default:
+        break;
+    }
     navigation.dispatch(DrawerActions.closeDrawer());
-    // navigate('Home');
+    // navigate(HOME_STACK.NOTIFY);
   };
   const handleHideDrawer = () => {
     navigation.dispatch(DrawerActions.closeDrawer());
