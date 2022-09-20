@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { ContentDetail } from '@features/authentication/content-tab/content-detail';
 import { ContentTab } from '@features/authentication/content-tab/content-screen';
 import { HomeTab } from '@features/authentication/home-tab/home';
+import { NotificationScreen } from '@features/authentication/home-tab/notification';
+import { NotifyDetail } from '@features/authentication/home-tab/notification-detail';
 import { PointTab } from '@features/authentication/point-tab';
 import { SettingTab } from '@features/authentication/setting-tab';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -28,6 +30,14 @@ export const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name={HOME_STACK.HOME} component={HomeTab} />
+      <HomeStack.Screen
+        name={HOME_STACK.NOTIFY}
+        component={NotificationScreen}
+      />
+      <HomeStack.Screen
+        name={HOME_STACK.NOTIFY_DETAIL}
+        component={NotifyDetail}
+      />
     </HomeStack.Navigator>
   );
 };

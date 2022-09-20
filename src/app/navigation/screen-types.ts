@@ -1,10 +1,12 @@
+import { ItemNotifyType } from '@features/authentication/home-tab/notification/type';
+
 export enum APP_SCREEN {
   UN_AUTHORIZE = 'UN_AUTHORIZE',
   SPLASH = 'SPLASH',
   LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
   WELCOME = 'WELCOME',
-
+  HOME_STACK = 'HOME_STACK',
   AUTHORIZE = 'AUTHORIZE',
   HOME = 'HOME',
 }
@@ -18,6 +20,8 @@ export enum BOTTOM_TAB {
 
 export enum HOME_STACK {
   HOME = 'HOME',
+  NOTIFY = 'NOTIFY',
+  NOTIFY_DETAIL = 'NOTIFY_DETAIl',
 }
 
 export enum CONTENT_STACK {
@@ -43,9 +47,13 @@ export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
   [CONTENT_STACK.CONTENT]: undefined;
   [CONTENT_STACK.CONTENT_DETAIL]: undefined;
+  [BOTTOM_TAB.TAB_HOME]: undefined;
+  [HOME_STACK.NOTIFY]: undefined;
+  [HOME_STACK.NOTIFY_DETAIL]: { item: ItemNotifyType };
 };
 export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;
   [APP_SCREEN.AUTHORIZE]: undefined;
+  [HOME_STACK.NOTIFY]: undefined;
 } & UnAuthorizeParamsList &
   AuthorizeParamsList;
