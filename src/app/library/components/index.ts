@@ -34,3 +34,5 @@ export * from './portal';
 export * from './parsed-text';
 export * from './wrapper-background';
 export * from './header';
+export * from './form-input';
+export * from './trouble';

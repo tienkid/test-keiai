@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@theme';
 
-export const useLoginStyle = () => {
+export const useTroubleStyle = () => {
   // state
   const theme = useTheme();
 
@@ -11,13 +11,10 @@ export const useLoginStyle = () => {
   return useMemo(
     () =>
       StyleSheet.create({
-        text: {
-          color: theme.colors.text,
-        },
         linkText: {
           color: theme.colors.text_2,
         },
       }),
-    [theme.colors.text, theme.colors.text_2],
+    [theme.colors.text_2],
   );
 };

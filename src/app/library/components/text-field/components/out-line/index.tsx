@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef, useEffect, useMemo, useState } from 'react';
 import {
-  LayoutChangeEvent,
   NativeSyntheticEvent,
   TextInput,
   TextInputChangeEventData,
@@ -14,23 +13,30 @@ import Animated, {
   useDerivedValue,
 } from 'react-native-reanimated';
 
-import { useInterpolate, useSharedTransition } from '@animated';
 import { onCheckType } from '@common';
+import { Spacer } from '@components/spacer';
+import { textPresets } from '@components/text/preset';
+import { useTheme } from '@theme';
 
-import { styles } from './styles';
+import { ErrorOutline } from './error-outline';
+import { LabelOutline } from './label-outline';
+import { useTextOutlineStyle } from './styles';
 import { InputOutlineProps } from './type';
 
 import { Text } from '../../../text';
 
-const UN_ACTIVE_COLOR = 'rgb(159,152,146)';
-const ACTIVE_COLOR = 'rgb(0,87,231)';
-const ERROR_COLOR = 'rgb(214,45,32)';
-
 export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
+  // state
+  const [t] = useTranslation();
+  const theme = useTheme();
+  const [localDefaultValue, setLocalDefaultValue] = useState('');
+  const [value, setValue] = useState('');
+  const styles = useTextOutlineStyle();
+
   // props
   const {
     label,
-    labelTx,
+    labelT18n,
     rxRemove,
     placeholder,
     nameTrigger,
@@ -44,79 +50,46 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
     onChangeText,
     error = undefined,
     disabled = false,
+    isSuccess = false,
+    isShowMsgError = true,
+    requiredLabel,
+    requiredLabelT18n,
     inputStyle: inputStyleOverwrite = {},
     containerStyle: containerStyleOverwrite = {},
-    errorLabelColor = ERROR_COLOR,
-    placeholderColor = UN_ACTIVE_COLOR,
-    errorBorderColor = ERROR_COLOR,
-    disabledLabelColor = UN_ACTIVE_COLOR,
-    activeTintBorderColor = ACTIVE_COLOR,
-    activeTintLabelColor = ACTIVE_COLOR,
-    unActiveTintBorderColor = UN_ACTIVE_COLOR,
-    unActiveTintLabelColor = UN_ACTIVE_COLOR,
-    disabledBorderColor = UN_ACTIVE_COLOR,
+    placeholderColor = theme.colors.border,
+    errorBorderColor = theme.colors.statusError,
+    successBorderColor = theme.colors.statusSuccess,
+    disabledBorderColor = theme.colors.border,
     ...rest
   } = props;
 
-  // state
-  const [t] = useTranslation();
-  const [heightContainerInput, setHeightContainerInput] = useState(0);
-  const [localDefaultValue, setLocalDefaultValue] = useState('');
-  const [focused, setFocused] = useState(false);
-  const [value, setValue] = useState('');
-
   // reanimated
-  const progress = useSharedTransition(focused || value.length > 0, {
-    duration: 150,
-  });
-
-  const bottom = useInterpolate(progress, [0, 1], [0, heightContainerInput]);
-
-  const fontLabel = useInterpolate(progress, [0, 1], [14, 11]);
-
-  const labelColor = useDerivedValue(() => {
-    switch (true) {
-      case disabled:
-        return disabledLabelColor;
-      case error:
-        return errorLabelColor;
-      case focused:
-        return activeTintLabelColor;
-      default:
-        return unActiveTintLabelColor;
-    }
-  });
-
   const borderColor = useDerivedValue(() => {
     switch (true) {
       case disabled:
         return disabledBorderColor;
-      case error:
+      case !isShowMsgError && error:
         return errorBorderColor;
-      case focused:
-        return activeTintBorderColor;
+      case !!error:
+        return errorBorderColor;
+      case isSuccess:
+        return successBorderColor;
       default:
-        return unActiveTintBorderColor;
+        return disabledBorderColor;
     }
   });
 
   // function
-  const onLayoutContainerInput = (e: LayoutChangeEvent) => {
-    setHeightContainerInput(e.nativeEvent.layout.height);
-  };
-
   const _onFocus = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
     if (onCheckType(onFocus, 'function')) {
       onFocus(e);
     }
-    setFocused(true);
   };
 
   const _onBlur = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
     if (onCheckType(onBlur, 'function')) {
       onBlur(e);
     }
-    setFocused(false);
   };
 
   const _onChangeText = (text: string) => {
@@ -145,25 +118,10 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
   }, [defaultValue]);
 
   // string
-  const labelText = useMemo(
-    () => (labelTx && t(labelTx)) || label || undefined,
-    [labelTx, label, t],
-  );
-
   const placeHolder = useMemo(
     () => (placeholderT18n && t(placeholderT18n)) || placeholder || '',
     [placeholder, placeholderT18n, t],
   );
-
-  // reanimated style
-  const wrapLabelStyle = useAnimatedStyle(() => ({
-    bottom: bottom.value,
-  }));
-
-  const labelStyle = useAnimatedStyle(() => ({
-    fontSize: fontLabel.value,
-    color: labelColor.value,
-  }));
 
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     borderColor: borderColor.value,
@@ -171,49 +129,56 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
 
   // render
   return (
-    <Animated.View
-      style={[
-        styles.container,
-        containerStyleOverwrite,
-        containerAnimatedStyle,
-      ]}>
-      <View style={[styles.content]}>
-        {(placeholderT18n || placeholder) && value.length === 0 && (
-          <View style={[styles.wrapPlaceHolder]} pointerEvents={'none'}>
-            <Text
-              t18n={placeholderT18n}
-              text={placeHolder}
-              color={placeholderColor}
+    <React.Fragment>
+      <LabelOutline
+        disabled={disabled}
+        label={label}
+        labelT18n={labelT18n}
+        requiredLabel={requiredLabel}
+        requiredLabelT18n={requiredLabelT18n}
+      />
+      <Spacer height={8} />
+      <Animated.View
+        style={[
+          styles.container,
+          containerStyleOverwrite,
+          containerAnimatedStyle,
+        ]}>
+        <View style={[styles.content]}>
+          {(placeholderT18n || placeholder) && value.length === 0 && (
+            <View style={[styles.wrapPlaceHolder]} pointerEvents={'none'}>
+              <Text
+                t18n={placeholderT18n}
+                text={placeHolder}
+                color={placeholderColor}
+                preset={'linkMedium'}
+              />
+            </View>
+          )}
+
+          <View style={[styles.flex]}>
+            <TextInput
+              defaultValue={localDefaultValue}
+              autoCorrect={false}
+              editable={!disabled}
+              clearButtonMode={'never'}
+              style={[
+                styles.input,
+                textPresets.linkMedium,
+                inputStyleOverwrite,
+              ]}
+              ref={ref}
+              onSubmitEditing={onSubmit}
+              {...rest}
+              onChangeText={_onChangeText}
+              onFocus={_onFocus}
+              onBlur={_onBlur}
             />
           </View>
-        )}
-        {labelText && (
-          <Animated.View
-            pointerEvents={'none'}
-            style={[styles.wrapLabel, wrapLabelStyle]}>
-            <Animated.Text style={[styles.text, labelStyle]}>
-              {labelText ?? ''}
-            </Animated.Text>
-          </Animated.View>
-        )}
-        <View style={[styles.flex]} onLayout={onLayoutContainerInput}>
-          <TextInput
-            defaultValue={localDefaultValue}
-            autoCorrect={false}
-            editable={!disabled}
-            clearButtonMode={'never'}
-            selectionColor={activeTintBorderColor}
-            style={[styles.input, inputStyleOverwrite]}
-            ref={ref}
-            onSubmitEditing={onSubmit}
-            {...rest}
-            onChangeText={_onChangeText}
-            onFocus={_onFocus}
-            onBlur={_onBlur}
-          />
+          {rightChildren}
         </View>
-        {rightChildren}
-      </View>
-    </Animated.View>
+      </Animated.View>
+      <ErrorOutline error={isShowMsgError ? error : ''} />
+    </React.Fragment>
   );
 });

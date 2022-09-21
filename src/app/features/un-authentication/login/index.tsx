@@ -1,35 +1,32 @@
 import React, { memo } from 'react';
-import { Alert } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
-import { dispatch } from '@common';
-import { Block, Screen } from '@components';
-import { FormLoginType } from '@model/authentication';
-import { appActions } from '@redux-slice';
+import { WrapperBackground } from '@components';
+import {
+  handleHideModalLoading,
+  handleShowModalLoading,
+  ModalLoading,
+} from '@components/modal-loading';
 
 import { FormLogin } from './components/form-login';
 
 const LoginComponent = () => {
-  // state
-
   // function
-  const onSubmit = (data: FormLoginType) => {
-    dispatch(appActions.setAppTheme('dark'));
-    Alert.alert(JSON.stringify(data));
+  const onSubmit = () => {
+    handleShowModalLoading();
+    setTimeout(() => {
+      handleHideModalLoading();
+    }, 5000);
   };
 
   // render
   return (
-    <Block block paddingTop={0} paddingHorizontal={15}>
-      <Screen
-        bottomInsetColor="transparent"
-        scroll
-        style={{ paddingVertical: 0, paddingHorizontal: 10 }}
-        backgroundColor={'transparent'}>
-        <FormLogin onSubmit={onSubmit} />
-      </Screen>
-    </Block>
+    <WrapperBackground titleT18n="login:title">
+      <FormLogin onSubmit={onSubmit} />
+
+      <ModalLoading />
+    </WrapperBackground>
   );
 };
 export const Login = memo(LoginComponent, isEqual);

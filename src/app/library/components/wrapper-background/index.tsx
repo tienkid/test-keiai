@@ -4,9 +4,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@components/button';
 import { Icon } from '@components/icon';
+import { Screen } from '@components/screen';
 import { Text } from '@components/text';
 import { goBack } from '@navigation/navigation-service';
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from '@theme';
 
 import { WrapperBackgroundTypes } from './type';
 
@@ -20,33 +22,40 @@ export const WrapperBackground = ({
   children,
   titleT18n,
   paddingTop,
-  titlePreset = 'linkTitle',
+  titlePreset = 'linkSubtitle',
 }: WrapperBackgroundTypes) => {
   // state
+  const theme = useTheme();
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
   // render
   return (
-    <Block
-      block
-      colorTheme="white"
-      paddingTop={paddingTop !== undefined ? paddingTop : insets.top + 20}>
-      <FocusedStatusBarStyle barStyle={barStyle || 'light-content'} />
-      {navigation.canGoBack() && (
-        <Block paddingLeft={24}>
-          <Button.Default onPress={goBack}>
-            <Icon icon="arrow_left" colorTheme="base_1" />
-          </Button.Default>
+    <Block block colorTheme="white">
+      <Screen
+        scroll
+        style={{
+          paddingTop: paddingTop !== undefined ? paddingTop : insets.top + 20,
+          backgroundColor: theme.colors.white,
+        }}
+        hiddenStatusBar
+        bottomInsetColor={theme.colors.white}>
+        <FocusedStatusBarStyle barStyle={barStyle || 'light-content'} />
+        {navigation.canGoBack() && (
+          <Block paddingLeft={24}>
+            <Button.Default onPress={goBack}>
+              <Icon icon="arrow_left" colorTheme="base_1" />
+            </Button.Default>
+          </Block>
+        )}
+        <Block alignSelf={'center'} width={190} height={80}>
+          <LocalImage source="logo" />
         </Block>
-      )}
-      <Block alignSelf={'center'} width={190} height={80}>
-        <LocalImage source="logo" />
-      </Block>
-      <Block marginTop={25} marginBottom={25} alignSelf={'center'}>
-        <Text text={title} t18n={titleT18n} preset={titlePreset} />
-      </Block>
-      {children}
+        <Block marginTop={25} marginBottom={25} alignSelf={'center'}>
+          <Text text={title} t18n={titleT18n} preset={titlePreset} />
+        </Block>
+        {children}
+      </Screen>
     </Block>
   );
 };

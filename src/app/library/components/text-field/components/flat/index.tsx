@@ -30,7 +30,7 @@ export const InputFlat = forwardRef<any, InputFlatProps>((props, ref) => {
   // props
   const {
     label,
-    labelTx,
+    labelT18n,
     rxRemove,
     nameTrigger,
     placeholder,
@@ -82,7 +82,7 @@ export const InputFlat = forwardRef<any, InputFlatProps>((props, ref) => {
     switch (true) {
       case disabled:
         return disabledLabelColor;
-      case error:
+      case !!error:
         return errorLabelColor;
       case focused:
         return activeTintLabelColor;
@@ -95,7 +95,7 @@ export const InputFlat = forwardRef<any, InputFlatProps>((props, ref) => {
     switch (true) {
       case disabled:
         return disabledBorderColor;
-      case error:
+      case !!error:
         return errorBorderColor;
       case focused:
         return activeTintBorderColor;
@@ -150,8 +150,8 @@ export const InputFlat = forwardRef<any, InputFlatProps>((props, ref) => {
 
   // string
   const labelText = useMemo(
-    () => (labelTx && t(labelTx)) || label || undefined,
-    [labelTx, label, t],
+    () => (labelT18n && t(labelT18n)) || label || undefined,
+    [labelT18n, label, t],
   );
 
   const placeHolder = useMemo(

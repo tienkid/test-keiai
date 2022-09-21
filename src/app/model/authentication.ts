@@ -1,5 +1,5 @@
 export type FormLoginType = {
-  email: string;
+  phoneNumber: string;
   password: string;
 };
 

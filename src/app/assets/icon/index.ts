@@ -13,6 +13,7 @@ export const icons = {
   arrow_left: require('./source/arrow-left.png'),
   go: require('./source/arrow.png'),
   auto_renew: require('./source/autorenew.png'),
+  ic_loading_dot: require('./source/ic_loading_dot.png'),
 };
 
 export type IconTypes = keyof typeof icons;
