@@ -8,6 +8,7 @@ import {
   ParsedText,
   Spacer,
   Text,
+  Trouble,
   WrapperBackground,
 } from '@components';
 import { navigate } from '@navigation/navigation-service';
@@ -87,30 +88,7 @@ export const WelcomeScreen = () => {
         <Spacer height={6} />
         <Text center t18n="welcome:myKEIAI_member" />
       </Block>
-      <Block
-        marginTop={33}
-        colorTheme="base_3"
-        width={'100%'}
-        height={55}
-        alignItems="center"
-        justifyContent={'center'}>
-        <ParsedText
-          preset="textSmall"
-          parse={[
-            {
-              pattern: /\[([^:]+):1\]/i,
-              renderText: renderTerm,
-            },
-            {
-              pattern: /\[([^:]+):2\]/i,
-              onPress: () => null,
-              renderText: renderTerm,
-              style: styles.linkText,
-            },
-          ]}>
-          {t('welcome:troubling')}
-        </ParsedText>
-      </Block>
+      <Trouble />
     </WrapperBackground>
   );
 };
