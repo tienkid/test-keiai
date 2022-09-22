@@ -62,7 +62,12 @@ export const textPresets = StyleSheet.create({
   textNormal: {
     fontFamily: FontDefault.primary,
     fontSize: sizeScale(16),
-    lineHeight: 20,
+    color: '#FFFFFF',
+    fontWeight: '400',
+  },
+  textNormal12: {
+    fontFamily: FontDefault.primary,
+    fontSize: sizeScale(12),
     color: '#FFFFFF',
   },
   textBold16: {
