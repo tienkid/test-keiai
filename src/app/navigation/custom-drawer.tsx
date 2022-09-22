@@ -1,62 +1,35 @@
 import React, { useCallback } from 'react';
-import { FlatList, TouchableWithoutFeedback } from 'react-native';
+import { FlatList, Linking, TouchableWithoutFeedback } from 'react-native';
 
 import { Block, Button, Divider, Text } from '@components';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@theme';
 
+import { dataMenu } from './data';
 import { navigate } from './navigation-service';
 import { HOME_STACK } from './screen-types';
-import { ListRenderDrawer } from './type';
+import { ItemDrawer, ListRenderDrawer } from './type';
 
 const CustomDrawer = () => {
   const navigation = useNavigation();
   const { colors } = useTheme();
-  const dataMenu = [
-    {
-      id: 1,
-      content: '利用規約',
-    },
-    {
-      id: 2,
-      content: 'プライバシーポリシー',
-    },
-    {
-      id: 3,
-      content: 'お知らせ',
-    },
-    {
-      id: 4,
-      content: 'よくあるご質問',
-    },
-    {
-      id: 5,
-      content: '登録情報の確認・更新',
-    },
-    {
-      id: 6,
-      content: 'お問い合わせ',
-    },
-    {
-      id: 7,
-      content: '利用停止はこちらへ',
-    },
-    {
-      id: 8,
-      content: 'ログアウト',
-    },
-  ];
-  const handleRouteDrawer = (id: number) => {
-    console.log(id);
-    switch (id) {
+
+  const handleRouteDrawer = (item: ItemDrawer) => {
+    switch (item.id) {
       case 3:
         navigate(HOME_STACK.NOTIFY);
         break;
+      case 7:
+        console.log('waiting...');
+        break;
+      case 8:
+        console.log('logout');
+        break;
       default:
+        Linking.openURL(item.url);
         break;
     }
     navigation.dispatch(DrawerActions.closeDrawer());
-    // navigate(HOME_STACK.NOTIFY);
   };
   const handleHideDrawer = () => {
     navigation.dispatch(DrawerActions.closeDrawer());
@@ -66,7 +39,7 @@ const CustomDrawer = () => {
     return (
       <Button.Default
         style={{ alignItems: 'flex-end', paddingVertical: 7 }}
-        onPress={() => handleRouteDrawer(item.id)}>
+        onPress={() => handleRouteDrawer(item)}>
         <Text
           preset="textBold16"
           colorTheme="base5"

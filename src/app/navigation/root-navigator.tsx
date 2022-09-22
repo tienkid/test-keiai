@@ -6,13 +6,15 @@ import React, { useEffect } from 'react';
 import BootSplash from 'react-native-bootsplash';
 
 import { Login } from '@features/un-authentication/login';
-import { WelcomeScreen } from '@features/un-authentication/welcome';
+import { OTPScreen } from '@features/un-authentication/otp-screen';
+import { Register } from '@features/un-authentication/register';
+// import { WelcomeScreen } from '@features/un-authentication/welcome';
 import { useSelector } from '@hooks';
 import { AppModule } from '@native-module';
 import { APP_SCREEN, RootStackParamList } from '@navigation/screen-types';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { BottomTabScreen } from './bottom-tab';
+import { DrawerNavigator } from './drawer';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -38,7 +40,7 @@ export const RootNavigation = () => {
   // render
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
-      {token === undefined ? (
+      {!token === undefined ? (
         <RootStack.Group
           screenOptions={{
             animationTypeForReplace: 'pop',
@@ -48,11 +50,16 @@ export const RootNavigation = () => {
             name={APP_SCREEN.AUTHORIZE}
             component={DrawerNavigator}
           /> */}
-          <RootStack.Screen
+          {/* <RootStack.Screen
             name={APP_SCREEN.WELCOME}
             component={WelcomeScreen}
-          />
+          /> */}
           <RootStack.Screen name={APP_SCREEN.LOGIN} component={Login} />
+          <RootStack.Screen name={APP_SCREEN.REGISTER} component={Register} />
+          <RootStack.Screen
+            name={APP_SCREEN.OTP_SCREEN}
+            component={OTPScreen}
+          />
         </RootStack.Group>
       ) : (
         <RootStack.Group
@@ -61,7 +68,7 @@ export const RootNavigation = () => {
           }}>
           <RootStack.Screen
             name={APP_SCREEN.AUTHORIZE}
-            component={BottomTabScreen}
+            component={DrawerNavigator}
           />
         </RootStack.Group>
       )}

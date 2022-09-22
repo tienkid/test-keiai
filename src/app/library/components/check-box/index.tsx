@@ -5,8 +5,10 @@ import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import { useMix, useSharedTransition } from '@animated';
 import { execFunc } from '@common';
+import { Icon } from '@components/icon';
+import { useTheme } from '@theme';
 
-import { styles } from './styles';
+import { useCheckBoxStyle } from './styles';
 import { CheckboxProps } from './type';
 
 import { Text } from '../text';
@@ -20,9 +22,12 @@ export const CheckBox = ({
   outlineStyle: outlineStyleOverwrite,
   onToggle,
   disable = false,
+  sizeIcon = 14.44,
   initialValue = false,
 }: CheckboxProps) => {
   // state
+  const theme = useTheme();
+  const styles = useCheckBoxStyle();
   const [localValue, setLocalValue] = useState<boolean>(initialValue);
   const progress = useSharedTransition(value ?? localValue);
   const scale = useMix(progress, 0, 1);
@@ -53,7 +58,9 @@ export const CheckBox = ({
       style={[styles.root, style]}>
       <>
         <View style={[styles.outline, outlineStyleOverwrite]}>
-          <Animated.View style={[styles.fill, fillStyle, styleAnimated]} />
+          <Animated.View style={[styles.fill, fillStyle, styleAnimated]}>
+            <Icon icon="check" color={theme.colors.white_bg} size={sizeIcon} />
+          </Animated.View>
         </View>
         <Text text={text} t18n={t18n} style={styles.label} />
       </>

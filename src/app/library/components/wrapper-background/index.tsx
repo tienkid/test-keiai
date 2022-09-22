@@ -3,12 +3,12 @@ import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@components/button';
-import { Icon } from '@components/icon';
 import { Screen } from '@components/screen';
 import { Text } from '@components/text';
 import { goBack } from '@navigation/navigation-service';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@theme';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { WrapperBackgroundTypes } from './type';
 
@@ -44,7 +44,11 @@ export const WrapperBackground = ({
         {navigation.canGoBack() && (
           <Block paddingLeft={24}>
             <Button.Default onPress={goBack}>
-              <Icon icon="arrow_left" colorTheme="base_1" />
+              <Icon
+                name="keyboard-backspace"
+                size={30}
+                color={theme.colors.base_1}
+              />
             </Button.Default>
           </Block>
         )}

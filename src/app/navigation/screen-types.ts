@@ -9,6 +9,7 @@ export enum APP_SCREEN {
   HOME_STACK = 'HOME_STACK',
   AUTHORIZE = 'AUTHORIZE',
   HOME = 'HOME',
+  OTP_SCREEN = 'OTP_SCREEN',
 }
 
 export enum BOTTOM_TAB {
@@ -42,6 +43,7 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.LOGIN]: undefined;
   [APP_SCREEN.REGISTER]: undefined;
   [APP_SCREEN.SPLASH]: undefined;
+  [APP_SCREEN.OTP_SCREEN]: undefined;
 };
 export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;

@@ -37,7 +37,8 @@
   },
   "msg": {
     "MSG_001": "携帯電話は必須",
-    "MSG_002": "パスワードが必要です"
+    "MSG_002": "パスワードが必要です",
+    "MSG_003": "※SMSで認証コードが送信されます\n※ハイフン抜きで入力してください"
   },
   "welcome": {
     "registered_members": "会員登録済みの方",
@@ -79,11 +80,21 @@
     "text_point": "マイポイント",
     "text_list_recommend": "おすすめサービス"
   },
-  "notify":{
-    "header":"お知らせ"
+  "notify": {
+    "header": "お知らせ"
   },
   "content": {
     "tab_header": "記事"
+  },
+  "register": {
+    "title": "KEIAIオーナーズクラブ会員登録",
+    "term": "プライバシーポリシー",
+    "policy": "利用規約",
+    "copy_right": "Copyright © ケイアイスター不動産 All Rights Reserved.",
+    "sms_send": "SMSで届いた認証コードを入力してください。",
+    "checkbox_policy": "プライバシーポリシーとご利用規約に同意のうえ\n送信ボタンを押してください。",
+    "button_otp": "会員登録する",
+    "button_resend": "認証コードを再発行する"
   },
   "profile": {
     "inquiries": "問い合わせ窓口"

@@ -46,6 +46,12 @@ export interface CheckboxProps {
   text?: string;
 
   /**
+   * Size to display
+   * @default 14.44
+   */
+  sizeIcon?: number;
+
+  /**
    * Key to using i18n
    * @default undefined
    */
