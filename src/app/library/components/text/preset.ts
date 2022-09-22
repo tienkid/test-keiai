@@ -36,7 +36,7 @@ export const textPresets = StyleSheet.create({
   },
   linkXXSmall: {
     fontFamily: FontDefault.primary,
-    fontSize: sizeScale(9),
+    fontSize: sizeScale(12),
     color: '#000000',
   },
   textMedium: {

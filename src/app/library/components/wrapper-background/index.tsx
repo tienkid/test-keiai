@@ -39,6 +39,7 @@ export const WrapperBackground = ({
           backgroundColor: theme.colors.white,
         }}
         hiddenStatusBar
+        unsafe={true}
         bottomInsetColor={theme.colors.white}>
         <FocusedStatusBarStyle barStyle={barStyle || 'light-content'} />
         {navigation.canGoBack() && (

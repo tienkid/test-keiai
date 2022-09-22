@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { Block, Button, FormInput, Spacer, Text, Trouble } from '@components';
+import { Block, Button, FormInput, Spacer, Text } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormLoginType } from '@model/authentication';
 import { navigate } from '@navigation/navigation-service';
@@ -76,7 +76,6 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
           disabled={!formMethod.formState.isValid}
         />
       </Block>
-      <Trouble />
     </FormProvider>
   );
 };

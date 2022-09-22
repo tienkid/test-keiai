@@ -21,7 +21,6 @@ export const Trouble = () => {
   // render
   return (
     <Block
-      marginTop={33}
       colorTheme="base_3"
       width={'100%'}
       height={55}

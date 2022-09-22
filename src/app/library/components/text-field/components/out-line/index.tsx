@@ -55,6 +55,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
     requiredLabel,
     requiredLabelT18n,
     inputStyle: inputStyleOverwrite = {},
+    wrapLabelStyle: wrapLabelStyleOverwrite = {},
     containerStyle: containerStyleOverwrite = {},
     placeholderColor = theme.colors.border,
     errorBorderColor = theme.colors.statusError,
@@ -136,6 +137,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
         labelT18n={labelT18n}
         requiredLabel={requiredLabel}
         requiredLabelT18n={requiredLabelT18n}
+        wrapLabelStyle={wrapLabelStyleOverwrite}
       />
       <Spacer height={8} />
       <Animated.View

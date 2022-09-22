@@ -3,7 +3,7 @@ import React from 'react';
 import { Block, Button, Spacer, Text } from '@components';
 import { navigate } from '@navigation/navigation-service';
 import { HOME_STACK } from '@navigation/screen-types';
-import { useTheme } from '@react-navigation/native';
+import { useTheme } from '@theme';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { ItemNotifyProps } from '../type';

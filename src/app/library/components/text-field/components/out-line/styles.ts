@@ -50,10 +50,10 @@ export const useTextOutlineStyle = () => {
         required: {
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: sizeScale(14),
+          borderRadius: sizeScale(4),
           backgroundColor: theme.colors.statusError,
-          paddingHorizontal: sizeScale(10),
-          paddingVertical: sizeScale(2),
+          paddingHorizontal: sizeScale(8),
+          paddingVertical: sizeScale(4),
         },
         labelContainer: {
           flexDirection: 'row',

@@ -101,3 +101,8 @@ export const KANA_FULL_HALF_MAP = {
   '９': '9',
   '０': '0',
 } as Record<string, string>;
+
+export enum MODAL_SELECTED_COUNTRY_TYPE {
+  'COUNTRY' = 'COUNTRY',
+  'CITY' = 'CITY',
+}
