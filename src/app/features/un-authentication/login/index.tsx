@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { WrapperBackground } from '@components';
+import { Block, Trouble, WrapperBackground } from '@components';
 import {
   handleHideModalLoading,
   handleShowModalLoading,
@@ -22,11 +22,14 @@ const LoginComponent = () => {
 
   // render
   return (
-    <WrapperBackground titleT18n="login:title">
-      <FormLogin onSubmit={onSubmit} />
+    <Block block colorTheme="white">
+      <WrapperBackground titleT18n="login:title">
+        <FormLogin onSubmit={onSubmit} />
 
-      <ModalLoading />
-    </WrapperBackground>
+        <ModalLoading />
+      </WrapperBackground>
+      <Trouble />
+    </Block>
   );
 };
 export const Login = memo(LoginComponent, isEqual);

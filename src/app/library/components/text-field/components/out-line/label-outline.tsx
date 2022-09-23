@@ -14,6 +14,7 @@ export const LabelOutline = ({
   labelT18n,
   requiredLabel,
   requiredLabelT18n,
+  wrapLabelStyle = {},
 }: LabelOutlineProps) => {
   // state
   const [t] = useTranslation();
@@ -30,7 +31,11 @@ export const LabelOutline = ({
   return labelText ? (
     <View
       pointerEvents={'none'}
-      style={[styles.wrapLabel, !!isRequired && styles.labelContainer]}>
+      style={[
+        styles.wrapLabel,
+        !!isRequired && styles.labelContainer,
+        wrapLabelStyle,
+      ]}>
       <Text
         text={labelText}
         preset={'linkMedium'}
@@ -45,8 +50,9 @@ export const LabelOutline = ({
             <Text
               text={requiredLabel}
               t18n={requiredLabelT18n}
-              preset="linkMedium"
-              colorTheme="text_1"
+              preset="linkXXSmall"
+              colorTheme="white"
+              fontWeight={'700'}
             />
           </View>
         </>

@@ -5,6 +5,8 @@ import React, { useEffect } from 'react';
 
 import BootSplash from 'react-native-bootsplash';
 
+import { InformationProfile } from '@features/un-authentication/information';
+import { ModalSelectedCountry } from '@features/un-authentication/information/modal-selected-country';
 import { Login } from '@features/un-authentication/login';
 import { OTPScreen } from '@features/un-authentication/otp-screen';
 import { Register } from '@features/un-authentication/register';
@@ -40,7 +42,7 @@ export const RootNavigation = () => {
   // render
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
-      {!token === undefined ? (
+      {token === undefined ? (
         <RootStack.Group
           screenOptions={{
             animationTypeForReplace: 'pop',
@@ -60,6 +62,17 @@ export const RootNavigation = () => {
             name={APP_SCREEN.OTP_SCREEN}
             component={OTPScreen}
           />
+          <RootStack.Screen
+            name={APP_SCREEN.INFORMATION_PROFILE}
+            component={InformationProfile}
+          />
+          <RootStack.Group
+            screenOptions={{ presentation: 'modal', gestureEnabled: true }}>
+            <RootStack.Screen
+              name={APP_SCREEN.MODAL_SELECTED_COUNTY}
+              component={ModalSelectedCountry}
+            />
+          </RootStack.Group>
         </RootStack.Group>
       ) : (
         <RootStack.Group

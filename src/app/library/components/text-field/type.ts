@@ -33,6 +33,8 @@ export interface InputBaseProps extends TextInputProps {
    */
   isShowMsgError?: boolean;
 
+  wrapLabelStyle?: ViewStyle;
+
   /**
    * Label title of input
    * @default undefined

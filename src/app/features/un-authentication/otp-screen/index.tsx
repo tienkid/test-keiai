@@ -5,6 +5,8 @@ import isEqual from 'react-fast-compare';
 import { Block, WrapperBackground } from '@components';
 import { CopyRight } from '@components/copy-right';
 import { ModalLoading } from '@components/modal-loading';
+import { navigate } from '@navigation/navigation-service';
+import { APP_SCREEN } from '@navigation/screen-types';
 
 import { FormOTP } from './components/form-otp';
 
@@ -12,7 +14,7 @@ const OTPComponent = () => {
   // render
   // const { height, width } = useWindowDimensions();
   const handleSubmit = () => {
-    console.log('ss');
+    navigate(APP_SCREEN.INFORMATION_PROFILE);
   };
   return (
     <Block block>

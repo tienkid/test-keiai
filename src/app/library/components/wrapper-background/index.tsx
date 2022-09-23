@@ -39,6 +39,7 @@ export const WrapperBackground = ({
           backgroundColor: theme.colors.white,
         }}
         hiddenStatusBar
+        unsafe={true}
         bottomInsetColor={theme.colors.white}>
         <FocusedStatusBarStyle barStyle={barStyle || 'light-content'} />
         {navigation.canGoBack() && (
@@ -47,7 +48,7 @@ export const WrapperBackground = ({
               <Icon
                 name="keyboard-backspace"
                 size={30}
-                color={theme.colors.base_1}
+                color={theme.colors.base1}
               />
             </Button.Default>
           </Block>

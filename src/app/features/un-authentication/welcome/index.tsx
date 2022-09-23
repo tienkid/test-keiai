@@ -59,7 +59,7 @@ export const WelcomeScreen = () => {
           </ParsedText>
         </Block>
         <Spacer height={39} />
-        <Block height={1} colorTheme={'base_1'} />
+        <Block height={1} colorTheme={'base1'} />
         <Spacer height={39} />
         <Text center t18n="welcome:not_has_account" preset="linkSubtitle" />
         <Spacer height={32} />

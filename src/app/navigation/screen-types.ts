@@ -1,15 +1,19 @@
 import { ItemNotifyType } from '@features/authentication/home-tab/notification/type';
 
+import { MODAL_SELECTED_COUNTRY_TYPE } from '../common/constant';
+
 export enum APP_SCREEN {
   UN_AUTHORIZE = 'UN_AUTHORIZE',
   SPLASH = 'SPLASH',
   LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
   WELCOME = 'WELCOME',
+  INFORMATION_PROFILE = 'INFORMATION_PROFILE',
   HOME_STACK = 'HOME_STACK',
   AUTHORIZE = 'AUTHORIZE',
   HOME = 'HOME',
   OTP_SCREEN = 'OTP_SCREEN',
+  MODAL_SELECTED_COUNTY = 'MODAL_SELECTED_COUNTY',
 }
 
 export enum BOTTOM_TAB {
@@ -40,6 +44,8 @@ export enum SETTING_STACK {
 
 export type UnAuthorizeParamsList = {
   [APP_SCREEN.WELCOME]: undefined;
+  [APP_SCREEN.INFORMATION_PROFILE]: undefined;
+  [APP_SCREEN.MODAL_SELECTED_COUNTY]: { type: MODAL_SELECTED_COUNTRY_TYPE };
   [APP_SCREEN.LOGIN]: undefined;
   [APP_SCREEN.REGISTER]: undefined;
   [APP_SCREEN.SPLASH]: undefined;
