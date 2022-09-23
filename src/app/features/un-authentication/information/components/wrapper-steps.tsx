@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Block, Screen, Text } from '@components';
@@ -13,17 +14,30 @@ export const WrapperSteps = ({
   title,
   children,
   currentStep = 1,
+  HeaderTitleComponent = null,
 }: WrapperStepsProps) => {
   // state
   const theme = useTheme();
   const insets = useSafeAreaInsets();
+  const scrollRef = useRef<Animated.ScrollView | undefined | null>(undefined);
+
+  // effect
+  useEffect(() => {
+    setTimeout(() => {
+      scrollRef.current?.scrollTo({ y: 0, x: 0, animated: true });
+    }, 500);
+  }, [currentStep]);
+
   // render
   return (
     <Block block colorTheme="white">
-      <Screen scroll hiddenStatusBar unsafe style={{ paddingTop: insets.top }}>
-        <Block>
-          <Text center t18n={title} preset={'linkLarge'} colorTheme="text" />
-        </Block>
+      <Block paddingTop={insets.top}>
+        {title && (
+          <Block>
+            <Text center t18n={title} preset={'linkLarge'} colorTheme="text" />
+          </Block>
+        )}
+        {HeaderTitleComponent}
         <Block
           direction={'row'}
           justifyContent="space-between"
@@ -72,6 +86,12 @@ export const WrapperSteps = ({
               </React.Fragment>
             ))}
         </Block>
+      </Block>
+      <Screen
+        onGetRef={ref => (scrollRef.current = ref)}
+        scroll
+        hiddenStatusBar
+        unsafe>
         {children}
       </Screen>
     </Block>

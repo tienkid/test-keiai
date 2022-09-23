@@ -184,6 +184,7 @@ function ScreenWithScrolling(
     children,
     onScroll,
     edges,
+    onGetRef,
     hiddenStatusBar = false,
     statusColor = undefined,
     bottomInsetColor = colors.background,
@@ -216,6 +217,7 @@ function ScreenWithScrolling(
           style={[styles.inner, backgroundColor ? { backgroundColor } : {}]}
           contentContainerStyle={[style]}
           children={children}
+          ref={ref => onGetRef?.(ref)}
         />
       </Wrapper>
     </>

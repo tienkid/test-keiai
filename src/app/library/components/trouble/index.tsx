@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Block, ParsedText } from '@components';
+import { renderItemWithPattern } from '@components/parsed-text/utils';
 
 import { useTroubleStyle } from './style';
 
@@ -10,13 +11,6 @@ export const Trouble = () => {
   // state
   const [t] = useTranslation();
   const styles = useTroubleStyle();
-
-  // func
-  const renderTerm = (matchingString: any) => {
-    const pattern = /\[([^:]+):([^\]]+)\]/i;
-    const match = matchingString.match(pattern);
-    return `${match[1]}`;
-  };
 
   // render
   return (
@@ -31,12 +25,12 @@ export const Trouble = () => {
         parse={[
           {
             pattern: /\[([^:]+):1\]/i,
-            renderText: renderTerm,
+            renderText: renderItemWithPattern,
           },
           {
             pattern: /\[([^:]+):2\]/i,
             onPress: () => null,
-            renderText: renderTerm,
+            renderText: renderItemWithPattern,
             style: styles.linkText,
           },
         ]}>
