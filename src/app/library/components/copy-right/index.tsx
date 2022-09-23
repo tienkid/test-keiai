@@ -5,11 +5,19 @@ import { Block } from '@components/block';
 
 import { RowTerm } from './row-term';
 
-export const CopyRight = () => {
+export const CopyRight = ({
+  isJustCopyRight = false,
+}: {
+  isJustCopyRight?: boolean;
+}) => {
   return (
     <Block alignItems={'center'} paddingVertical={30} colorTheme={'background'}>
-      <RowTerm />
-      <Spacer height={30} />
+      {!isJustCopyRight && (
+        <React.Fragment>
+          <RowTerm />
+          <Spacer height={30} />
+        </React.Fragment>
+      )}
       <Text
         t18n={'register:copy_right'}
         preset="textNormal12"

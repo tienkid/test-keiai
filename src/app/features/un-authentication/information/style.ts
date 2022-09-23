@@ -18,6 +18,6 @@ export const styles = StyleSheet.create({
     transform: [{ rotate: '180deg' }],
   },
   linkText: {
-    color: ColorDefault.text_2,
+    color: ColorDefault.secondary,
   },
 });

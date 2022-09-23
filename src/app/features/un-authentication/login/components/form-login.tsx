@@ -54,7 +54,7 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
           disabled={!formMethod.formState.isValid}
         />
         <Spacer height={33} />
-        <Block width={'100%'} height={1} colorTheme="base_2" />
+        <Block width={'100%'} height={1} colorTheme="base2" />
         <Spacer height={24} />
         <Text
           center

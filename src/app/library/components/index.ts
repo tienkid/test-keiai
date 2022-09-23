@@ -36,3 +36,5 @@ export * from './wrapper-background';
 export * from './header';
 export * from './form-input';
 export * from './trouble';
+export * from './row-item';
+export * from './copy-right';

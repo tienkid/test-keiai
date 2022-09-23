@@ -26,3 +26,8 @@ export interface TwoHalfInputProps {
   rightChildren_1?: React.ReactNode;
   rightChildren_2?: React.ReactNode;
 }
+
+export interface ListPreviewProps {
+  onBackStep: () => void;
+  onSubmit: () => void;
+}

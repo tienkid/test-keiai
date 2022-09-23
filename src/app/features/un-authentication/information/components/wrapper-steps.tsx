@@ -34,7 +34,7 @@ export const WrapperSteps = ({
             .map((_, index) => (
               <React.Fragment key={`${index}-key`}>
                 <Block
-                  colorTheme={currentStep >= index + 1 ? 'primary' : 'border'}
+                  colorTheme={currentStep === index + 1 ? 'primary' : 'border'}
                   height={20}
                   width={index !== 2 ? 95 : 110}
                   marginLeft={3}
@@ -56,7 +56,7 @@ export const WrapperSteps = ({
                       color="transparent"
                       borderLeftWidth={20}
                       borderLeftColor={
-                        currentStep >= index + 1
+                        currentStep === index + 1
                           ? theme.colors.primary
                           : theme.colors.border
                       }

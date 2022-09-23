@@ -48,7 +48,7 @@ export const WrapperBackground = ({
               <Icon
                 name="keyboard-backspace"
                 size={30}
-                color={theme.colors.base_1}
+                color={theme.colors.base1}
               />
             </Button.Default>
           </Block>

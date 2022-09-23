@@ -143,7 +143,7 @@ export const FormInformationProfile = ({
               <Icon
                 name="keyboard-arrow-down"
                 size={sizeScale(26)}
-                color={theme.colors.base_2}
+                color={theme.colors.base2}
               />
             </Button.Default>
           }
@@ -153,7 +153,7 @@ export const FormInformationProfile = ({
               <Icon
                 name="keyboard-arrow-down"
                 size={sizeScale(26)}
-                color={theme.colors.base_2}
+                color={theme.colors.base2}
               />
             </Button.Default>
           }
@@ -183,7 +183,7 @@ export const FormInformationProfile = ({
             wrapLabelStyle={{ paddingLeft: 0 }}
           />
           <Block marginTop={14} paddingLeft={5}>
-            <Text text="09666666666" preset="linkMedium" colorTheme="base_1" />
+            <Text text="09666666666" preset="linkMedium" colorTheme="base1" />
           </Block>
         </Block>
         <Spacer height={16} />

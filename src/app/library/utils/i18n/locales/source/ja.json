@@ -138,7 +138,9 @@
     "btn_step_2": "登録する",
     "back_home": "アプリトップ画面へ戻る",
     "back": "入力した内容を修正する",
-    "registration": "登録完了"
+    "registration": "登録完了",
+    "check_content": "内容をご確認し、[ページ下部にある「送信する」:1]ボタンを押してください。",
+    "your_name_1": "お名前(フリガナ) "
   },
   "main": {
     "chatTab": {
