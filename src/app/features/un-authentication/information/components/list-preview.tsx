@@ -1,4 +1,5 @@
 import React from 'react';
+import { LayoutChangeEvent, View } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 
@@ -11,32 +12,37 @@ import {
   Spacer,
   Text,
 } from '@components';
+import { renderItemWithPattern } from '@components/parsed-text/utils';
 
+import { StepValue } from '../contain';
 import { styles } from '../style';
 import { ListPreviewProps } from '../type';
 
-export const ListPreview = ({ onBackStep, onSubmit }: ListPreviewProps) => {
+export const ListPreview = ({
+  onSubmit,
+  onBackStep,
+  onGetHeight,
+}: ListPreviewProps) => {
   // state
   const [t] = useTranslation();
 
   // func
-  const renderTerm = (matchingString: any) => {
-    const pattern = /\[([^:]+):([^\]]+)\]/i;
-    const match = matchingString.match(pattern);
-    return `${match[1]}`;
+  const handleGetLayout = (e: LayoutChangeEvent) => {
+    e.nativeEvent.layout.height &&
+      onGetHeight(e.nativeEvent.layout.height, StepValue.two);
   };
 
   // render
   return (
-    <React.Fragment>
-      <Block block paddingHorizontal={20}>
+    <View onLayout={handleGetLayout}>
+      <Block paddingHorizontal={20}>
         <Block alignSelf={'center'} marginBottom={38} marginTop={51}>
           <ParsedText
             preset="textXXSmall"
             parse={[
               {
                 pattern: /\[([^:]+):1\]/i,
-                renderText: renderTerm,
+                renderText: renderItemWithPattern,
                 style: styles.linkText,
               },
             ]}>
@@ -80,6 +86,6 @@ export const ListPreview = ({ onBackStep, onSubmit }: ListPreviewProps) => {
         <Spacer height={53} />
       </Block>
       <CopyRight isJustCopyRight />
-    </React.Fragment>
+    </View>
   );
 };

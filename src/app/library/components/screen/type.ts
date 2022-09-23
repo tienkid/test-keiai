@@ -6,6 +6,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import Animated from 'react-native-reanimated';
 import { Edge } from 'react-native-safe-area-context';
 
 import { CustomOmit } from '@common';
@@ -80,6 +81,8 @@ export type ScreenProps = {
    * @default undefined
    */
   excludeEdges?: 'all' | Edge[];
+
+  onGetRef?: (ref?: Animated.ScrollView | null) => void;
 
   /**
    * Animated onScroll

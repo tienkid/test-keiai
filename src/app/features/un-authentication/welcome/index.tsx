@@ -11,6 +11,7 @@ import {
   Trouble,
   WrapperBackground,
 } from '@components';
+import { renderItemWithPattern } from '@components/parsed-text/utils';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 
@@ -22,11 +23,6 @@ export const WelcomeScreen = () => {
   const styles = useWelcomeStyle();
 
   // func
-  const renderTerm = (matchingString: any) => {
-    const pattern = /\[([^:]+):([^\]]+)\]/i;
-    const match = matchingString.match(pattern);
-    return `${match[1]}`;
-  };
 
   const handleToLogin = () => {
     navigate(APP_SCREEN.LOGIN);
@@ -46,12 +42,12 @@ export const WelcomeScreen = () => {
             parse={[
               {
                 pattern: /\[([^:]+):1\]/i,
-                renderText: renderTerm,
+                renderText: renderItemWithPattern,
               },
               {
                 pattern: /\[([^:]+):2\]/i,
                 onPress: () => null,
-                renderText: renderTerm,
+                renderText: renderItemWithPattern,
                 style: styles.linkText,
               },
             ]}>
@@ -69,15 +65,15 @@ export const WelcomeScreen = () => {
           parse={[
             {
               pattern: /\[([^:]+):1\]/i,
-              renderText: renderTerm,
+              renderText: renderItemWithPattern,
             },
             {
               pattern: /\[([^:]+):2\]/i,
-              renderText: renderTerm,
+              renderText: renderItemWithPattern,
             },
             {
               pattern: /\[([^:]+):3\]/i,
-              renderText: renderTerm,
+              renderText: renderItemWithPattern,
               style: styles.highlineText,
             },
           ]}>

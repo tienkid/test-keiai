@@ -6,13 +6,15 @@ import { FormInformationProfileType } from '@model/information';
 import { I18nKeys } from '@utils/i18n/locales';
 
 export interface WrapperStepsProps {
-  title: I18nKeys;
+  title?: I18nKeys | null;
   children?: React.ReactNode;
   currentStep: number;
+  HeaderTitleComponent?: React.ReactNode;
 }
 
 export interface FormInformationProfileProps {
   onSubmit: (data: FormInformationProfileType) => void;
+  onGetHeight: (height: number, step: StepType) => void;
 }
 
 export type InputHaftProps<T extends Record<string, any>> = InputProps<T>;
@@ -30,4 +32,7 @@ export interface TwoHalfInputProps {
 export interface ListPreviewProps {
   onBackStep: () => void;
   onSubmit: () => void;
+  onGetHeight: (height: number, step: StepType) => void;
 }
+
+export type StepType = '1' | '2';

@@ -79,3 +79,12 @@ function getMatchedPart(
     _matched: true,
   };
 }
+
+// pattern /\[([^:]+):([^\]]+)\]/i
+export const renderItemWithPattern = (
+  matchingString: any,
+  pattern = /\[([^:]+):([^\]]+)\]/i,
+) => {
+  const match = matchingString.match(pattern);
+  return `${match[1]}`;
+};

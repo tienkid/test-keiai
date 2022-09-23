@@ -15,6 +15,7 @@ export const icons = {
   auto_renew: require('./source/autorenew.png'),
   ic_loading_dot: require('./source/ic_loading_dot.png'),
   open_new: require('./source/open_new.png'),
+  icon_text: require('./source/icon_text.png'),
 };
 
 export type IconTypes = keyof typeof icons;
