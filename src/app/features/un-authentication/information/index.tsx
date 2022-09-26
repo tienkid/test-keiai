@@ -59,7 +59,7 @@ export const InformationProfile = () => {
       }
       handleHideModalLoading();
       if (currentStep === STEP_REGISTER_PROFILE - 1) {
-        navigate(APP_SCREEN.LOGIN);
+        navigate(APP_SCREEN.OTP_SCREEN);
       }
     }, 2000);
   }, [currentStep, translateValue]);

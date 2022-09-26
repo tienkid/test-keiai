@@ -56,7 +56,9 @@ export type AuthorizeParamsList = {
   [CONTENT_STACK.CONTENT]: undefined;
   [CONTENT_STACK.CONTENT_DETAIL]: undefined;
   [BOTTOM_TAB.TAB_HOME]: undefined;
+  [BOTTOM_TAB.TAB_POINT]: undefined;
   [HOME_STACK.NOTIFY]: undefined;
+  [POINT_STACK.POINT]: undefined;
   [HOME_STACK.NOTIFY_DETAIL]: { item: ItemNotifyType };
 };
 export type RootStackParamList = {

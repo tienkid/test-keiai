@@ -16,7 +16,7 @@ import {
   Trouble,
 } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
-import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
+// import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormLoginType } from '@model/authentication';
 import { FormInformationProfileType } from '@model/information';
@@ -172,7 +172,19 @@ export const FormInformationProfile = ({
           }}
           inputStyle={{ paddingVertical: sizeScale(12) }}
         />
-        <Block marginTop={21}>
+        <Spacer height={16} />
+        <FormInput<FormLoginType>
+          name={'phoneNumber'}
+          labelT18n={'information_profile:phone_number'}
+          placeholderT18n={'information_profile:phone_home_placeholder'}
+          containerStyle={{
+            borderRadius: 8,
+          }}
+          inputStyle={{ paddingVertical: sizeScale(12) }}
+          wrapLabelStyle={{ paddingLeft: 0 }}
+        />
+        <Spacer height={16} />
+        {/* <Block marginTop={21}>
           <LabelOutline
             labelT18n="information_profile:phone_number"
             wrapLabelStyle={{ paddingLeft: 0 }}
@@ -181,7 +193,7 @@ export const FormInformationProfile = ({
             <Text text="09666666666" preset="linkMedium" colorTheme="base1" />
           </Block>
         </Block>
-        <Spacer height={16} />
+        <Spacer height={16} /> */}
         <FormInput<FormLoginType>
           name={'phoneNumber'}
           labelT18n={'information_profile:phone_home'}

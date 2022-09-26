@@ -29,7 +29,7 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
   };
 
   const handleGoToRegister = () => {
-    navigate(APP_SCREEN.REGISTER);
+    navigate(APP_SCREEN.INFORMATION_PROFILE);
   };
   // render
   return (
