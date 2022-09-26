@@ -14,7 +14,6 @@ export interface WrapperStepsProps {
 
 export interface FormInformationProfileProps {
   onSubmit: (data: FormInformationProfileType) => void;
-  onGetHeight: (height: number, step: StepType) => void;
 }
 
 export type InputHaftProps<T extends Record<string, any>> = InputProps<T>;
@@ -30,6 +29,7 @@ export interface TwoHalfInputProps {
 }
 
 export interface ListPreviewProps {
+  currentHeight: number | null;
   onBackStep: () => void;
   onSubmit: () => void;
   onGetHeight: (height: number, step: StepType) => void;

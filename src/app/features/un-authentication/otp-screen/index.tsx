@@ -4,7 +4,6 @@ import isEqual from 'react-fast-compare';
 
 import { Block, WrapperBackground } from '@components';
 import { CopyRight } from '@components/copy-right';
-import { ModalLoading } from '@components/modal-loading';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 
@@ -20,7 +19,6 @@ const OTPComponent = () => {
     <Block block>
       <WrapperBackground titleT18n="register:title">
         <FormOTP onSubmit={handleSubmit} />
-        <ModalLoading />
       </WrapperBackground>
       <CopyRight />
     </Block>
