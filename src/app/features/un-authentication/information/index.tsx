@@ -15,10 +15,7 @@ import Animated, {
 
 import { useInterpolate } from '@animated';
 import { Block, Icon } from '@components';
-import {
-  handleShowModalLoading,
-  ModalLoading,
-} from '@components/modal-loading';
+import { handleShowModalLoading } from '@components/modal-loading';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 
@@ -35,7 +32,7 @@ export const InformationProfile = () => {
   const { width: WIDTH_SCREEN } = useWindowDimensions();
   const [currentStep, setCurrentStep] = useState(1);
   const translateValue = useSharedValue(0);
-  const [height, setHeight] = useState<string | number>('100%');
+  const [height, setHeight] = useState<{ 1: number; 2: number } | null>(null);
   const heightMemory = useRef<{ 1: number; 2: number }>({
     1: 0,
     2: 0,
@@ -74,23 +71,17 @@ export const InformationProfile = () => {
 
   // effect
   useEffect(() => {
-    const heightOfStep = heightMemory.current?.[currentStep as 1 | 2];
-    if (heightOfStep && heightOfStep > 0) {
-      setHeight(heightOfStep);
+    if (!height) {
+      setHeight(heightMemory.current);
     }
-  }, [currentStep, setHeight]);
+  }, [height, setHeight]);
 
   // data render
   const listSteps = useMemo(
     () => [
       {
         step: StepValue.one,
-        component: (
-          <FormInformationProfile
-            onSubmit={handleSubmit}
-            onGetHeight={handleGetHeight}
-          />
-        ),
+        component: <FormInformationProfile onSubmit={handleSubmit} />,
       },
       {
         step: StepValue.two,
@@ -99,6 +90,7 @@ export const InformationProfile = () => {
             onBackStep={handleBackStep}
             onSubmit={handleSubmit}
             onGetHeight={handleGetHeight}
+            currentHeight={heightMemory.current?.[StepValue.two]}
           />
         ),
       },
@@ -133,7 +125,7 @@ export const InformationProfile = () => {
             flexDirection: 'row',
             width: WIDTH_SCREEN * listSteps.length,
           },
-          { height },
+          { height: height?.[currentStep as 1 | 2] || '100%' },
           reStyle,
         ]}>
         {listSteps.map(item => (
@@ -144,7 +136,6 @@ export const InformationProfile = () => {
           </React.Fragment>
         ))}
       </Animated.View>
-      <ModalLoading />
     </WrapperSteps>
   );
 };

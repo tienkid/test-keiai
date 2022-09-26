@@ -10,6 +10,7 @@ import {
   SnackBar,
 } from '@components';
 import { ImageTransition } from '@components/light-box/image-transition';
+import { ModalLoading } from '@components/modal-loading';
 import { useSelector } from '@hooks';
 import { AppModule } from '@native-module';
 import { navigationRef } from '@navigation/navigation-service';
@@ -59,6 +60,7 @@ export const AppContainer = () => {
             <ProgressDialog />
             <SnackBar />
             <ImageTransition />
+            <ModalLoading />
           </>
         )}
         <RXStore />
