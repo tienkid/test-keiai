@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { Block, Button, LocalImage, Text } from '@components';
+import { navigate } from '@navigation/navigation-service';
+import { CONTENT_STACK } from '@navigation/screen-types';
 
 export const ItemContent = () => {
   // state
   const handleGoToContent = () => {
-    console.log('aaaa');
+    navigate(CONTENT_STACK.CONTENT_DETAIL);
   };
   // render
   return (

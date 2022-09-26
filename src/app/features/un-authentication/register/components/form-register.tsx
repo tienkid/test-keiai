@@ -5,8 +5,6 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Block, Button, FormInput, Spacer, Text } from '@components';
 import { rxNotNumber } from '@config/regex';
 import { yupResolver } from '@hookform/resolvers/yup';
-// import { navigate } from '@navigation/navigation-service';
-// import { APP_SCREEN } from '@navigation/screen-types';
 import { registerValidation } from '@validate/register';
 
 import { FormRegisterProps, FormRegisterType } from '../type';
@@ -43,7 +41,7 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         </Block>
         <Spacer height={80} />
         <Button.Primary
-          t18n="login:title"
+          t18n="register:button_phone"
           onPress={onSubmitKey}
           disabled={!formMethod.formState.isValid}
         />

@@ -11,11 +11,11 @@ export const CopyRight = ({
   isJustCopyRight?: boolean;
 }) => {
   return (
-    <Block alignItems={'center'} paddingVertical={30} colorTheme={'background'}>
+    <Block alignItems={'center'} paddingVertical={20} colorTheme={'background'}>
       {!isJustCopyRight && (
         <React.Fragment>
           <RowTerm />
-          <Spacer height={30} />
+          <Spacer height={20} />
         </React.Fragment>
       )}
       <Text

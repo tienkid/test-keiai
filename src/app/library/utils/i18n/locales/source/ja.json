@@ -95,7 +95,8 @@
     "sms_send": "SMSで届いた認証コードを入力してください。",
     "checkbox_policy": "プライバシーポリシーとご利用規約に同意のうえ\n送信ボタンを押してください。",
     "button_otp": "会員登録する",
-    "button_resend": "認証コードを再発行する"
+    "button_resend": "認証コードを再発行する",
+    "button_phone": "次へ"
   },
   "profile": {
     "inquiries": "問い合わせ窓口"
