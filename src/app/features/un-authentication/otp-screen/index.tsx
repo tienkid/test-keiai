@@ -4,7 +4,6 @@ import isEqual from 'react-fast-compare';
 
 import { dispatch } from '@common';
 import { Block, WrapperBackground } from '@components';
-import { CopyRight } from '@components/copy-right';
 import {
   handleHideModalLoading,
   handleShowModalLoading,
@@ -30,7 +29,6 @@ const OTPComponent = () => {
       <WrapperBackground titleT18n="register:title">
         <FormOTP onSubmit={handleSubmit} />
       </WrapperBackground>
-      <CopyRight />
     </Block>
   );
 };

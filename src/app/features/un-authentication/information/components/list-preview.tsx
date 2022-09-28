@@ -36,7 +36,7 @@ export const ListPreview = ({
   return (
     <View onLayout={handleGetLayout}>
       <Block paddingHorizontal={20}>
-        <Block alignSelf={'center'} marginBottom={38} marginTop={51}>
+        <Block alignSelf={'center'} marginBottom={38} marginTop={40}>
           <ParsedText
             preset="textXXSmall"
             parse={[

@@ -19,8 +19,8 @@ export const ButtonOutline = (props: ButtonProps) => {
     style: styleOverride = {},
     textStyle: textStyleOverride = {},
     preset = 'outline',
-    textColorTheme = 'primary',
-    borderColorTheme = 'primary',
+    textColorTheme = 'base5',
+    borderColorTheme = 'statusSuccess',
     buttonColorTheme = 'white',
     ...rest
   } = props;
