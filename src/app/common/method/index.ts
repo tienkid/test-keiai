@@ -3,6 +3,7 @@ import { Alert, Platform } from 'react-native';
 
 import { ERROR_NETWORK_CODE } from '@config/api';
 import { ResponseBase } from '@config/type';
+import analytics from '@react-native-firebase/analytics';
 import { appActions } from '@redux-slice';
 import { remove } from '@storage';
 import { translate } from '@utils/i18n/translate';
@@ -274,5 +275,17 @@ export const handleErrorApi = (status: number) => {
           status: false,
         });
       }
+  }
+};
+
+export const logActionEvent = async (
+  eventName: string,
+  params: { [key: string]: any },
+) => {
+  try {
+    await analytics().logEvent(eventName, params || {});
+    console.log({ eventName, params });
+  } catch (error) {
+    console.log({ error });
   }
 };

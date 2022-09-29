@@ -1,4 +1,4 @@
-package com.keiai_mobile;
+package com.keiai.mobile.dev;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

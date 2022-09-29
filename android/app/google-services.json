@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "787314748817",
+    "project_id": "keiai-129eb",
+    "storage_bucket": "keiai-129eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787314748817:android:729141409fe1061f1a3e30",
+        "android_client_info": {
+          "package_name": "com.keiai.mobile.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787314748817-7rgk17od93qdb77j23jkr0q2l2jud0t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXBeVo_gGH7jXBpPTKPBrP23bgPweEtrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787314748817-7rgk17od93qdb77j23jkr0q2l2jud0t0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "787314748817-8qaugmbfukp60i2qhl6k6qhec5j9htuv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.keiai.mobile.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
 project.ext.envConfigFiles = [
         devdebug   : 'env/.dev',
         devrelease : 'env/.dev',
@@ -153,7 +154,7 @@ android {
         }
     }
     defaultConfig {
-        resValue "string", "build_config_package", "com.keiai_mobile"
+        resValue "string", "build_config_package", "com.keiai.mobile.dev"
         applicationId project.env.get("BUNDLE_IDENTIFIER")
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
