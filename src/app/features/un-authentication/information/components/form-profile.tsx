@@ -182,6 +182,7 @@ export const FormInformationProfile = ({
           }}
           inputStyle={{ paddingVertical: sizeScale(12) }}
           wrapLabelStyle={{ paddingLeft: 0 }}
+          requiredLabelT18n={'common:indispensable'}
         />
         <Spacer height={16} />
         {/* <Block marginTop={21}>
@@ -194,7 +195,7 @@ export const FormInformationProfile = ({
           </Block>
         </Block>
         <Spacer height={16} /> */}
-        <FormInput<FormLoginType>
+        {/* <FormInput<FormLoginType>
           name={'phoneNumber'}
           labelT18n={'information_profile:phone_home'}
           placeholderT18n={'information_profile:phone_home_placeholder'}
@@ -204,7 +205,7 @@ export const FormInformationProfile = ({
           inputStyle={{ paddingVertical: sizeScale(12) }}
           wrapLabelStyle={{ paddingLeft: 0 }}
         />
-        <Spacer height={16} />
+        <Spacer height={16} /> */}
         <FormInput<FormLoginType>
           name={'phoneNumber'}
           labelT18n={'information_profile:email'}
@@ -243,7 +244,6 @@ export const FormInformationProfile = ({
           t18n="information_profile:btn_step"
           onPress={onSubmitKey}
           disabled={!formMethod.formState.isValid}
-          style={{ borderRadius: 8 }}
         />
         <Spacer height={25} />
         <Button.Default onPress={handleToLogin}>

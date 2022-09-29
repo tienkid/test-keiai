@@ -14,7 +14,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useInterpolate } from '@animated';
-import { Block, Icon } from '@components';
+import { Block } from '@components';
 import { handleShowModalLoading } from '@components/modal-loading';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
@@ -59,7 +59,7 @@ export const InformationProfile = () => {
       }
       handleHideModalLoading();
       if (currentStep === STEP_REGISTER_PROFILE - 1) {
-        navigate(APP_SCREEN.OTP_SCREEN);
+        navigate(APP_SCREEN.REGISTER);
       }
     }, 2000);
   }, [currentStep, translateValue]);
@@ -101,24 +101,8 @@ export const InformationProfile = () => {
   // render
   return (
     <WrapperSteps
-      title={
-        currentStep === Number(StepValue.one)
-          ? 'information_profile:step_1_title'
-          : null
-      }
-      currentStep={currentStep}
-      HeaderTitleComponent={
-        currentStep !== Number(StepValue.one) && (
-          <Block
-            justifyContent={'center'}
-            width={105}
-            height={26}
-            alignSelf={'center'}
-            overflow={'hidden'}>
-            <Icon icon="icon_text" size={105} />
-          </Block>
-        )
-      }>
+      title={'information_profile:step_1_title'}
+      currentStep={currentStep}>
       <Animated.View
         style={[
           {

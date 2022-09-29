@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ContentDetail } from '@features/authentication/content-tab/content-detail';
 import { ContentTab } from '@features/authentication/content-tab/content-screen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -26,6 +27,10 @@ export const DrawerNavigator = () => {
       drawerContent={() => <CustomDrawer />}>
       <Drawer.Screen name="Home" component={BottomTabScreen} />
       <Drawer.Screen name={CONTENT_STACK.CONTENT} component={ContentTab} />
+      <Drawer.Screen
+        name={CONTENT_STACK.CONTENT_DETAIL}
+        component={ContentDetail}
+      />
     </Drawer.Navigator>
   );
 };

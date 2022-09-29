@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { Block, Button, FormInput, Spacer, Text } from '@components';
+import {
+  Block,
+  Button,
+  CopyRight,
+  Divider,
+  FormInput,
+  Spacer,
+  Text,
+} from '@components';
 import { CheckBox } from '@components/check-box';
 import { rxNotNumber } from '@config/regex';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { navigate } from '@navigation/navigation-service';
+import { APP_SCREEN } from '@navigation/screen-types';
 import { registerOTPValidation } from '@validate/register';
 
 import { FormRegisterOTPProps, FormRegisterOTPType } from '../type';
@@ -27,10 +37,24 @@ export const FormOTP = ({ onSubmit }: FormRegisterOTPProps) => {
     formMethod.handleSubmit(onSubmit)();
   };
 
+  const handleResendOTP = () => {
+    console.log('resend');
+  };
+
+  const handleToEdit = () => {
+    navigate(APP_SCREEN.INFORMATION_PROFILE);
+  };
   // render
   return (
     <FormProvider {...formMethod}>
       <Block paddingHorizontal={20}>
+        <Block alignItems={'center'} paddingBottom={25}>
+          <Text
+            preset="linkMedium"
+            colorTheme="base9"
+            t18n="register:header_text"
+          />
+        </Block>
         <FormInput<FormRegisterOTPType>
           name={'code'}
           labelT18n={'login:phoneNumber'}
@@ -41,7 +65,7 @@ export const FormOTP = ({ onSubmit }: FormRegisterOTPProps) => {
         <Block paddingVertical={5} alignItems="center">
           <Text
             t18n="register:sms_send"
-            preset="textBold16"
+            preset="textMedium"
             colorTheme="error"
           />
         </Block>
@@ -70,13 +94,36 @@ export const FormOTP = ({ onSubmit }: FormRegisterOTPProps) => {
           onPress={onSubmitKey}
           disabled={checkBox && formMethod.formState.isValid ? false : true}
         />
-        <Spacer height={15} />
-        <Button.Primary
+        <Spacer height={30} />
+        <Divider />
+        <Block alignItems={'center'} paddingVertical={25}>
+          <Text
+            preset="linkMedium"
+            colorTheme="base9"
+            t18n="register:footer_text"
+          />
+          <Spacer height={10} />
+          <Text
+            preset="linkMedium"
+            colorTheme="base9"
+            t18n="register:footer_des"
+            fontWeight={'200'}
+          />
+        </Block>
+        <Button.Outline
           t18n="register:button_resend"
-          onPress={onSubmitKey}
+          onPress={handleResendOTP}
           disabled={!formMethod.formState.isValid}
         />
+        <Spacer height={25} />
+        <Button.Outline
+          t18n="register:button_resend"
+          onPress={handleToEdit}
+          disabled={!formMethod.formState.isValid}
+        />
+        <Spacer height={40} />
       </Block>
+      <CopyRight />
     </FormProvider>
   );
 };

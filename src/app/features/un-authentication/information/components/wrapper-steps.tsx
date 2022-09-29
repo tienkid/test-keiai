@@ -4,10 +4,7 @@ import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Block, Screen, Text } from '@components';
-import { useTheme } from '@theme';
-import { I18nKeys } from '@utils/i18n/locales';
 
-import { STEP_REGISTER_PROFILE } from '../contain';
 import { WrapperStepsProps } from '../type';
 
 export const WrapperSteps = ({
@@ -17,7 +14,6 @@ export const WrapperSteps = ({
   HeaderTitleComponent = null,
 }: WrapperStepsProps) => {
   // state
-  const theme = useTheme();
   const insets = useSafeAreaInsets();
   const scrollRef = useRef<Animated.ScrollView | undefined | null>(undefined);
 
@@ -38,7 +34,7 @@ export const WrapperSteps = ({
           </Block>
         )}
         {HeaderTitleComponent}
-        <Block
+        {/* <Block
           direction={'row'}
           justifyContent="space-between"
           marginTop={26}
@@ -85,7 +81,7 @@ export const WrapperSteps = ({
                 </Block>
               </React.Fragment>
             ))}
-        </Block>
+        </Block> */}
       </Block>
       <Screen
         onGetRef={ref => (scrollRef.current = ref)}
