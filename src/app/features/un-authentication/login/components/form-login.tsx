@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { FormProvider, useForm } from 'react-hook-form';
+import {} from '@react-native-firebase/analytics';
 
+import { logActionEvent } from '@common';
 import { Block, Button, FormInput, Spacer, Text } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormLoginType } from '@model/authentication';
@@ -26,6 +28,7 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
   // function
   const onSubmitKey = () => {
     formMethod.handleSubmit(onSubmit)();
+    logActionEvent('login', { data: formMethod.getValues() });
   };
 
   const handleGoToRegister = () => {

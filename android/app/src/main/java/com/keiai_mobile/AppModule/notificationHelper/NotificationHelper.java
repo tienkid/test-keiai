@@ -1,4 +1,4 @@
-package com.keiai_mobile.AppModule.notificationHelper;
+package com.keiai.mobile.dev.AppModule.notificationHelper;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

@@ -1,4 +1,4 @@
-package com.keiai_mobile.newarchitecture.components;
+package com.keiai.mobile.dev.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

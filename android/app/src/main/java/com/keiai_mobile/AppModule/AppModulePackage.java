@@ -1,4 +1,4 @@
-package com.keiai_mobile.AppModule;
+package com.keiai.mobile.dev.AppModule;
 
 import androidx.annotation.NonNull;
 

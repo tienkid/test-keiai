@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.keiai_mobile">
+  package="com.keiai.mobile.dev">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

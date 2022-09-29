@@ -1,4 +1,4 @@
-package com.keiai_mobile.AppModule.deviceInfo;
+package com.keiai.mobile.dev.AppModule.deviceInfo;
 
 import static android.provider.Settings.Secure.getString;
 

@@ -1,4 +1,4 @@
-package com.keiai_mobile.AppModule;
+package com.keiai.mobile.dev.AppModule;
 
 
 import android.app.NotificationChannel;
@@ -15,10 +15,10 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.module.annotations.ReactModule;
-import com.keiai_mobile.AppModule.deviceInfo.DeviceInfo;
-import com.keiai_mobile.AppModule.fileHelper.FileManager;
-import com.keiai_mobile.AppModule.imageHelper.ImageResizer;
-import com.keiai_mobile.AppModule.notificationHelper.NotificationHelper;
+import com.keiai.mobile.dev.AppModule.deviceInfo.DeviceInfo;
+import com.keiai.mobile.dev.AppModule.fileHelper.FileManager;
+import com.keiai.mobile.dev.AppModule.imageHelper.ImageResizer;
+import com.keiai.mobile.dev.AppModule.notificationHelper.NotificationHelper;
 
 import java.io.IOException;
 

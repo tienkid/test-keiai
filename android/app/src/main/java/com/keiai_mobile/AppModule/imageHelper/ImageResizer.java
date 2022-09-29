@@ -1,4 +1,4 @@
-package com.keiai_mobile.AppModule.imageHelper;
+package com.keiai.mobile.dev.AppModule.imageHelper;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
