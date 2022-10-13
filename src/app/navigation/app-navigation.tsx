@@ -30,6 +30,7 @@ export const AppContainer = () => {
     dispatch(appActions.startLoadApp());
     (async () => {
       await analytics().logAppOpen();
+      await analytics().setAnalyticsCollectionEnabled(true);
     })();
   }, []);
 

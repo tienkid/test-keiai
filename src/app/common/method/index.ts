@@ -280,7 +280,7 @@ export const handleErrorApi = (status: number) => {
 
 export const logActionEvent = async (
   eventName: string,
-  params: { [key: string]: any },
+  params?: { [key: string]: any },
 ) => {
   try {
     await analytics().logEvent(eventName, params || {});
