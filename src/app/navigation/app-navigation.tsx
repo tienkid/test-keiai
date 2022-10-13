@@ -20,6 +20,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { appActions } from '@redux-slice';
 import { MyAppTheme } from '@theme';
 
+import {
+  useBackgroundNotification,
+  useBackgroundOpenedNotification,
+  useInAppNotification,
+} from '../common/firebase/notification';
+
 export const AppContainer = () => {
   // state
   const { loadingApp, showDialog, theme } = useSelector(x => x.app);
@@ -53,6 +59,16 @@ export const AppContainer = () => {
       });
     }
   }, [theme]);
+
+  useBackgroundNotification(notify => {
+    console.log({ notify });
+  });
+  useBackgroundOpenedNotification(notify => {
+    console.log({ notify });
+  });
+  useInAppNotification(notify => {
+    console.log({ notify });
+  });
 
   // render
   return (
