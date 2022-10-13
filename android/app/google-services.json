@@ -1,40 +1,76 @@
 {
   "project_info": {
-    "project_number": "787314748817",
-    "project_id": "keiai-129eb",
-    "storage_bucket": "keiai-129eb.appspot.com"
+    "project_number": "640393876336",
+    "project_id": "app-keiaiplus",
+    "storage_bucket": "app-keiaiplus.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:787314748817:android:729141409fe1061f1a3e30",
+        "mobilesdk_app_id": "1:640393876336:android:7a8df8b7a40dadcfb475b5",
         "android_client_info": {
-          "package_name": "com.keiai.mobile.dev"
+          "package_name": "com.keiai.mobile.production"
         }
       },
       "oauth_client": [
         {
-          "client_id": "787314748817-7rgk17od93qdb77j23jkr0q2l2jud0t0.apps.googleusercontent.com",
+          "client_id": "640393876336-brkprmijg0fvm4t2torp9no60nkjv70j.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCXBeVo_gGH7jXBpPTKPBrP23bgPweEtrM"
+          "current_key": "AIzaSyCbTcey_OSoFKn0mxRaenUV7DTYAYfxcxU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "787314748817-7rgk17od93qdb77j23jkr0q2l2jud0t0.apps.googleusercontent.com",
+              "client_id": "640393876336-brkprmijg0fvm4t2torp9no60nkjv70j.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "787314748817-8qaugmbfukp60i2qhl6k6qhec5j9htuv.apps.googleusercontent.com",
+              "client_id": "640393876336-r1emlnhclmobkeab9i6o1qq1srtbu9p7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.keiai.mobile.dev"
+                "bundle_id": "com.keiai.mobile.production"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640393876336:android:bc741bb1cfc1f81fb475b5",
+        "android_client_info": {
+          "package_name": "com.keiai_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640393876336-brkprmijg0fvm4t2torp9no60nkjv70j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbTcey_OSoFKn0mxRaenUV7DTYAYfxcxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640393876336-brkprmijg0fvm4t2torp9no60nkjv70j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "640393876336-r1emlnhclmobkeab9i6o1qq1srtbu9p7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.keiai.mobile.production"
               }
             }
           ]
