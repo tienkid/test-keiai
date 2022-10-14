@@ -284,7 +284,7 @@ export const logActionEvent = async (
 ) => {
   try {
     await analytics().logEvent(eventName, params || {});
-    console.log({ eventName, params });
+    console.log({ eventName, params }, 'GA');
   } catch (error) {
     console.log({ error });
   }

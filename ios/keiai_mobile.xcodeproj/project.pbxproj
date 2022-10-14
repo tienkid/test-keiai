@@ -665,7 +665,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keiai.mobile.production;
 				PRODUCT_NAME = keiai_mobile;
 				PROVISIONING_PROFILE_SPECIFIER = keiai_mobile_appstore;
 				SWIFT_OBJC_BRIDGING_HEADER = "keiai_mobile-Bridging-Header.h";
@@ -695,7 +695,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keiai.mobile.production;
 				PRODUCT_NAME = keiai_mobile;
 				PROVISIONING_PROFILE_SPECIFIER = keiai_plus_mobile_appstore;
 				SWIFT_OBJC_BRIDGING_HEADER = "keiai_mobile-Bridging-Header.h";

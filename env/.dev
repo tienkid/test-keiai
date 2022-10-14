@@ -1,6 +1,7 @@
 APP_ENV=Dev
-API_URL=https:/
 APP_DISPLAY_NAME=Keiai Plus-Dev
+API_URL=https://stg-plus.keiai.pro/
+APP_DISPLAY_NAME=keiai_mobile-Dev
 APP_PLACEHOLDER_NAME=keiai_mobile
 VERSION_CODE=1
 VERSION_NAME=0.0.1
