@@ -4,22 +4,21 @@ import isEqual from 'react-fast-compare';
 
 import { dispatch } from '@common';
 import { Block, Trouble, WrapperBackground } from '@components';
-import {
-  handleHideModalLoading,
-  handleShowModalLoading,
-} from '@components/modal-loading';
-import { appActions } from '@redux-slice';
+import { FormLoginType } from '@model/authentication';
+import { loginActions } from '@redux-slice';
 
 import { FormLogin } from './components/form-login';
 
 const LoginComponent = () => {
   // function
-  const onSubmit = () => {
-    handleShowModalLoading();
-    setTimeout(() => {
-      handleHideModalLoading();
-      dispatch(appActions.setToken('token'));
-    }, 2000);
+  const onSubmit = (data: FormLoginType) => {
+    dispatch(loginActions.login(data));
+    // handleShowModalLoading();
+    // setTimeout(() => {
+    //   handleHideModalLoading();
+    //   dispatch(appActions.setToken('token'));
+    // }, 2000);
+    //mqpz-fxqm-wuhv-sauj
   };
 
   // render

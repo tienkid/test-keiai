@@ -1,7 +1,8 @@
-const API_VERSION = '/api/v1/';
+const API_VERSION = 'v1/';
 
 const ApiEndPoint = {
-  LOGIN: '',
+  LOGIN: 'auth/login',
+  GET_CONTENT: 'post/pagination',
   REFRESH_TOKEN: '',
 } as const;
 

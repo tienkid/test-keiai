@@ -21,6 +21,8 @@ export interface ParamsNetwork {
 export enum SLICE_NAME {
   APP = 'APP_',
   AUTHENTICATION = 'AUTHENTICATION_',
+  LOGIN = 'LOGIN_',
+  GET_CONTENT = 'GET_CONTENT_',
 }
 
 export type ValidateMessageObject = {
