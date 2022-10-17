@@ -21,6 +21,7 @@ import { appActions } from '@redux-slice';
 import { MyAppTheme } from '@theme';
 
 import {
+  requestNotificationPermission,
   useBackgroundNotification,
   useBackgroundOpenedNotification,
   useInAppNotification,
@@ -35,6 +36,7 @@ export const AppContainer = () => {
   useEffect(() => {
     dispatch(appActions.startLoadApp());
     (async () => {
+      await requestNotificationPermission();
       await analytics().logAppOpen();
       await analytics().setAnalyticsCollectionEnabled(true);
     })();
