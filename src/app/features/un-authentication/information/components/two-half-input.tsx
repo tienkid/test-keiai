@@ -3,12 +3,15 @@ import { useWindowDimensions } from 'react-native';
 
 import { sizeScale } from '@common';
 import { Block, FormInput } from '@components';
+import { FormInformationProfileType } from '@model/information';
 
 import { TwoHalfInputProps } from '../type';
 
 export const TwoHalfInput = ({
   disabled = false,
   labelT18n,
+  name_1,
+  name_2,
   rightChildren_1,
   rightChildren_2,
   requiredLabelT18n,
@@ -32,10 +35,9 @@ export const TwoHalfInput = ({
           block
           maxWidth={`${actualPercentWidth}%`}
           alignSelf={'flex-start'}>
-          <FormInput
-            name="blood_pressure_min"
+          <FormInput<FormInformationProfileType>
+            name={name_1}
             labelT18n={labelT18n}
-            keyboardType="numeric"
             placeholderT18n={placeholder_1_T18n}
             isShowMsgError={false}
             rightChildren={rightChildren_1}
@@ -50,11 +52,11 @@ export const TwoHalfInput = ({
         <Block
           block
           alignSelf={'flex-start'}
-          maxWidth={`${actualPercentWidth}%`}>
-          <FormInput
-            name="blood_pressure_max"
+          maxWidth={`${actualPercentWidth}%`}
+          marginTop={3}>
+          <FormInput<FormInformationProfileType>
+            name={name_2}
             label=" "
-            keyboardType="numeric"
             placeholderT18n={placeholder_2_T18n}
             rightChildren={rightChildren_2}
             isShowMsgError={false}
@@ -65,7 +67,6 @@ export const TwoHalfInput = ({
           />
         </Block>
       </Block>
-      {/* <Text text={msgError} preset="body3" colorTheme={'statusError'} /> */}
     </Block>
   );
 };

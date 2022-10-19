@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -18,12 +18,11 @@ import {
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 // import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormLoginType } from '@model/authentication';
 import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { useTheme } from '@theme';
-import { loginValidation } from '@validate/login';
+import { informationValidation } from '@validate/information';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { InputHaft } from './input-half';
@@ -41,8 +40,9 @@ export const FormInformationProfile = ({
   const theme = useTheme();
   const formMethod = useForm<FormInformationProfileType>({
     mode: 'all',
-    resolver: yupResolver(loginValidation),
+    resolver: yupResolver(informationValidation),
   });
+  const [isCheck, setIsCheck] = useState(false);
 
   // function
   const onSubmitKey = () => {
@@ -57,15 +57,21 @@ export const FormInformationProfile = ({
     navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, { type });
   };
 
+  const handleCheck = () => {
+    setIsCheck(is => !is);
+  };
+
+  console.log({ isCheck, tt: formMethod.formState.isValid });
+
   // render
   return (
     <FormProvider {...formMethod}>
       <Block
-        paddingHorizontal={10}
         marginTop={31}
-        paddingBottom={insets.bottom}>
-        <FormInput<FormLoginType>
-          name={'phoneNumber'}
+        paddingBottom={insets.bottom}
+        paddingHorizontal={20}>
+        <FormInput<FormInformationProfileType>
+          name={'contact'}
           labelT18n={'information_profile:contact'}
           placeholderT18n={'information_profile:contact_placeholder'}
           requiredLabelT18n={'common:indispensable'}
@@ -76,7 +82,7 @@ export const FormInformationProfile = ({
           wrapLabelStyle={{ paddingLeft: 0 }}
         />
         <Spacer height={16} />
-        <FormInput<FormLoginType>
+        <FormInput<FormInformationProfileType>
           name={'password'}
           placeholderT18n={'information_profile:password_placeholder'}
           labelT18n={'information_profile:password'}
@@ -86,10 +92,11 @@ export const FormInformationProfile = ({
           }}
           inputStyle={{ paddingVertical: sizeScale(12) }}
           wrapLabelStyle={{ paddingLeft: 0 }}
+          secureTextEntry
         />
         <Spacer height={16} />
-        <FormInput<FormLoginType>
-          name={'password'}
+        <FormInput<FormInformationProfileType>
+          name={'confirm_password'}
           labelT18n={'information_profile:confirm_password'}
           requiredLabelT18n={'common:indispensable'}
           containerStyle={{
@@ -97,9 +104,12 @@ export const FormInformationProfile = ({
           }}
           inputStyle={{ paddingVertical: sizeScale(12) }}
           wrapLabelStyle={{ paddingLeft: 0 }}
+          secureTextEntry
         />
         <Spacer height={16} />
         <TwoHalfInput
+          name_1="first_name"
+          name_2="last_name"
           labelT18n="information_profile:your_name"
           placeholder_1_T18n="information_profile:your_name_placeholder_1"
           placeholder_2_T18n="information_profile:your_name_placeholder_2"
@@ -107,6 +117,8 @@ export const FormInformationProfile = ({
         />
         <Spacer height={16} />
         <TwoHalfInput
+          name_1="furigana_first_name"
+          name_2="furigana_last_name"
           labelT18n="information_profile:furigana"
           placeholder_1_T18n="information_profile:furigana_placeholder_1"
           placeholder_2_T18n="information_profile:furigana_placeholder_2"
@@ -116,16 +128,19 @@ export const FormInformationProfile = ({
         <InputHaft
           labelT18n="information_profile:zip_code"
           placeholderT18n="information_profile:zip_code_placeholder"
-          name={''}
+          name={'zip_code'}
           containerStyle={{
             borderRadius: 8,
           }}
+          keyboardType="numeric"
           inputStyle={{ paddingVertical: sizeScale(12) }}
           requiredLabelT18n="common:indispensable"
           wrapLabelStyle={{ paddingLeft: 0 }}
         />
         <Spacer height={16} />
         <TwoHalfInput
+          name_1="country"
+          name_2="city"
           labelT18n="information_profile:address"
           placeholder_1_T18n="information_profile:country"
           placeholder_2_T18n="information_profile:city"
@@ -154,8 +169,8 @@ export const FormInformationProfile = ({
           }
           disabled
         />
-        <FormInput<FormLoginType>
-          name={'phoneNumber'}
+        <FormInput<FormInformationProfileType>
+          name={'name_address'}
           placeholderT18n={'information_profile:name_address'}
           requiredLabelT18n={'common:indispensable'}
           containerStyle={{
@@ -163,8 +178,8 @@ export const FormInformationProfile = ({
           }}
           inputStyle={{ paddingVertical: sizeScale(12) }}
         />
-        <FormInput<FormLoginType>
-          name={'phoneNumber'}
+        <FormInput<FormInformationProfileType>
+          name={'building_name'}
           placeholderT18n={'information_profile:building_name'}
           requiredLabelT18n={'common:indispensable'}
           containerStyle={{
@@ -173,41 +188,21 @@ export const FormInformationProfile = ({
           inputStyle={{ paddingVertical: sizeScale(12) }}
         />
         <Spacer height={16} />
-        <FormInput<FormLoginType>
+        <FormInput<FormInformationProfileType>
           name={'phoneNumber'}
           labelT18n={'information_profile:phone_number'}
           placeholderT18n={'information_profile:phone_home_placeholder'}
           containerStyle={{
             borderRadius: 8,
           }}
+          keyboardType="numeric"
           inputStyle={{ paddingVertical: sizeScale(12) }}
           wrapLabelStyle={{ paddingLeft: 0 }}
           requiredLabelT18n={'common:indispensable'}
         />
         <Spacer height={16} />
-        {/* <Block marginTop={21}>
-          <LabelOutline
-            labelT18n="information_profile:phone_number"
-            wrapLabelStyle={{ paddingLeft: 0 }}
-          />
-          <Block marginTop={14} paddingLeft={5}>
-            <Text text="09666666666" preset="linkMedium" colorTheme="base1" />
-          </Block>
-        </Block>
-        <Spacer height={16} /> */}
-        {/* <FormInput<FormLoginType>
-          name={'phoneNumber'}
-          labelT18n={'information_profile:phone_home'}
-          placeholderT18n={'information_profile:phone_home_placeholder'}
-          containerStyle={{
-            borderRadius: 8,
-          }}
-          inputStyle={{ paddingVertical: sizeScale(12) }}
-          wrapLabelStyle={{ paddingLeft: 0 }}
-        />
-        <Spacer height={16} /> */}
-        <FormInput<FormLoginType>
-          name={'phoneNumber'}
+        <FormInput<FormInformationProfileType>
+          name={'email'}
           labelT18n={'information_profile:email'}
           placeholderT18n={'information_profile:email_placeholder'}
           containerStyle={{
@@ -219,7 +214,7 @@ export const FormInformationProfile = ({
         />
         <Spacer height={36} />
         <Block direction={'row'} paddingLeft={8} alignItems="center">
-          <CheckBox />
+          <CheckBox value={isCheck} onToggle={handleCheck} />
           <ParsedText
             preset="textXXSmall"
             parse={[
@@ -243,7 +238,7 @@ export const FormInformationProfile = ({
         <Button.Primary
           t18n="information_profile:btn_step"
           onPress={onSubmitKey}
-          disabled={!formMethod.formState.isValid}
+          disabled={!(formMethod.formState.isValid && isCheck)}
         />
         <Spacer height={25} />
         <Button.Default onPress={handleToLogin}>

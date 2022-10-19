@@ -19,11 +19,13 @@ export interface FormInformationProfileProps {
 export type InputHaftProps<T extends Record<string, any>> = InputProps<T>;
 
 export interface TwoHalfInputProps {
-  disabled?: boolean;
   labelT18n: TextProps['t18n'];
+  name_1: any;
+  name_2: any;
   placeholder_1_T18n: TextProps['t18n'];
   placeholder_2_T18n: TextProps['t18n'];
   requiredLabelT18n?: TextProps['t18n'];
+  disabled?: boolean;
   rightChildren_1?: React.ReactNode;
   rightChildren_2?: React.ReactNode;
 }

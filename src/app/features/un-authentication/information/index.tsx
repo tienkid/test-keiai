@@ -114,9 +114,7 @@ export const InformationProfile = () => {
         ]}>
         {listSteps.map(item => (
           <React.Fragment key={`${item.step}-key-step`}>
-            <Block width={WIDTH_SCREEN - 35} alignSelf={'baseline'}>
-              {item.component}
-            </Block>
+            <Block block>{item.component}</Block>
           </React.Fragment>
         ))}
       </Animated.View>
