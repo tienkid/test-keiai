@@ -167,7 +167,6 @@ export const FormInformationProfile = ({
               />
             </Button.Default>
           }
-          disabled
         />
         <FormInput<FormInformationProfileType>
           name={'name_address'}
