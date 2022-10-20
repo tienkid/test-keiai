@@ -55,7 +55,7 @@
     "title": "ログイン",
     "password": "パスワード",
     "passwordPlaceholder": "パスワードを入力",
-    "phoneNumber": "認証コードを入力",
+    "phoneNumber": "電話番号",
     "phoneNumberPlaceholder": "",
     "without_hyphens": "※ハイフン抜きで入力してください",
     "register_member": "会員登録",

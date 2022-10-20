@@ -73,11 +73,7 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
           colorTheme="text"
         />
         <Spacer height={15} />
-        <Button.Primary
-          t18n="login:new_member"
-          onPress={handleGoToRegister}
-          disabled={!formMethod.formState.isValid}
-        />
+        <Button.Primary t18n="login:new_member" onPress={handleGoToRegister} />
       </Block>
     </FormProvider>
   );
