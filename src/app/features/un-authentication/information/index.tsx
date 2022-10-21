@@ -16,6 +16,7 @@ import Animated, {
 import { useInterpolate } from '@animated';
 import { Block } from '@components';
 import { handleShowModalLoading } from '@components/modal-loading';
+import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 
@@ -33,6 +34,8 @@ export const InformationProfile = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const translateValue = useSharedValue(0);
   const [height, setHeight] = useState<{ 1: number; 2: number } | null>(null);
+  const [informationPreview, setInformationPreview] =
+    useState<FormInformationProfileType>();
   const heightMemory = useRef<{ 1: number; 2: number }>({
     1: 0,
     2: 0,
@@ -47,22 +50,26 @@ export const InformationProfile = () => {
   const handleGetHeight = (height: number, step: StepType) => {
     heightMemory.current[step] = height + (step === StepValue.one ? 10 : 0);
   };
-  const handleSubmit = useCallback(() => {
-    if (currentStep < STEP_REGISTER_PROFILE) {
-      setCurrentStep(currentStep + 1);
-    }
-    handleShowModalLoading({ title: 'information_profile:registration' });
-    setTimeout(() => {
-      if (currentStep !== STEP_REGISTER_PROFILE) {
+  const handleSubmit = useCallback(
+    (data?: FormInformationProfileType) => {
+      if (currentStep < STEP_REGISTER_PROFILE) {
+        setInformationPreview(data);
         setCurrentStep(currentStep + 1);
-        translateValue.value = withTiming(1);
       }
-      handleHideModalLoading();
-      if (currentStep === STEP_REGISTER_PROFILE) {
-        navigate(APP_SCREEN.REGISTER);
-      }
-    }, 2000);
-  }, [currentStep, translateValue]);
+      handleShowModalLoading({ title: 'information_profile:registration' });
+      setTimeout(() => {
+        if (currentStep !== STEP_REGISTER_PROFILE) {
+          setCurrentStep(currentStep + 1);
+          translateValue.value = withTiming(1);
+        }
+        handleHideModalLoading();
+        if (currentStep === STEP_REGISTER_PROFILE) {
+          navigate(APP_SCREEN.REGISTER);
+        }
+      }, 2000);
+    },
+    [currentStep, translateValue],
+  );
 
   const handleBackStep = useCallback(() => {
     translateValue.value = withTiming(0);
@@ -87,6 +94,9 @@ export const InformationProfile = () => {
         step: StepValue.two,
         component: (
           <ListPreview
+            informationPreview={
+              informationPreview as FormInformationProfileType
+            }
             onBackStep={handleBackStep}
             onSubmit={handleSubmit}
             onGetHeight={handleGetHeight}
@@ -95,7 +105,7 @@ export const InformationProfile = () => {
         ),
       },
     ],
-    [handleBackStep, handleSubmit],
+    [handleBackStep, handleSubmit, informationPreview],
   );
 
   console.log({ currentStep });

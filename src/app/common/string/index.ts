@@ -2,7 +2,6 @@
 /* eslint-disable no-useless-escape */
 import { processColor } from 'react-native';
 
-
 import { ValidateMessageObject } from '@config/type';
 
 import { KANA_FULL_HALF_MAP } from '../constant';
@@ -101,7 +100,6 @@ type TextUrl = {
   isLink: boolean;
   source: string;
 };
-
 
 export const randomUniqueId = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {

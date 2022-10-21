@@ -19,6 +19,7 @@ import { styles } from '../style';
 import { ListPreviewProps } from '../type';
 
 export const ListPreview = ({
+  informationPreview,
   onSubmit,
   onBackStep,
   onGetHeight,
@@ -31,7 +32,9 @@ export const ListPreview = ({
     e.nativeEvent.layout.height &&
       onGetHeight(e.nativeEvent.layout.height, StepValue.two);
   };
-
+  const onSubmitPreview = () => {
+    onSubmit();
+  };
   // render
   return (
     <View onLayout={handleGetLayout}>
@@ -51,28 +54,39 @@ export const ListPreview = ({
         </Block>
         <RowItem
           title="information_profile:contact"
-          value="KIS-000000000-000"
+          value={informationPreview?.contact}
         />
         <RowItem title="information_profile:password" value="********" />
-        <RowItem title="information_profile:your_name" value="山田 太郎" />
+        <RowItem
+          title="information_profile:your_name"
+          value={`${informationPreview?.first_name} ${informationPreview?.last_name}`}
+        />
         <RowItem
           title="information_profile:your_name_1"
-          value="ヤマダ タロウ"
+          value={`${informationPreview?.furigana_first_name} ${informationPreview?.furigana_last_name}`}
         />
-        <RowItem title="information_profile:zip_code" value="100-0005" />
+        <RowItem
+          title="information_profile:zip_code"
+          value={informationPreview?.zip_code}
+        />
         <RowItem
           title="information_profile:address"
-          value="東京都千代田区丸の内1-8-1丸の内トラストタワーＮ館17階"
+          value={`${informationPreview?.country}${informationPreview?.city}`}
         />
-        <RowItem title="information_profile:phone_number" value="07077777777" />
-        <RowItem title="information_profile:phone_home" value="0312345678" />
-        <RowItem title="information_profile:email" value="example@mail.com" />
+        <RowItem
+          title="information_profile:phone_number"
+          value={informationPreview?.phoneNumber}
+        />
+        <RowItem
+          title="information_profile:email"
+          value={informationPreview?.email}
+        />
         <Spacer height={34} />
         <Button.Primary
           t18n="information_profile:btn_step_2"
           style={{ borderRadius: 8 }}
           textColorTheme={'white'}
-          onPress={onSubmit}
+          onPress={onSubmitPreview}
         />
         <Spacer height={34} />
         <Button.Default onPress={onBackStep}>
