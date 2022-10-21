@@ -1,4 +1,4 @@
-export const STEP_REGISTER_PROFILE = 3;
+export const STEP_REGISTER_PROFILE = 2;
 
 export enum StepValue {
   'one' = '1',

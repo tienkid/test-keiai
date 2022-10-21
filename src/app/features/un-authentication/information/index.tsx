@@ -48,17 +48,17 @@ export const InformationProfile = () => {
     heightMemory.current[step] = height + (step === StepValue.one ? 10 : 0);
   };
   const handleSubmit = useCallback(() => {
-    if (currentStep === STEP_REGISTER_PROFILE - 1) {
+    if (currentStep < STEP_REGISTER_PROFILE) {
       setCurrentStep(currentStep + 1);
     }
     handleShowModalLoading({ title: 'information_profile:registration' });
     setTimeout(() => {
-      if (currentStep !== STEP_REGISTER_PROFILE - 1) {
+      if (currentStep !== STEP_REGISTER_PROFILE) {
         setCurrentStep(currentStep + 1);
         translateValue.value = withTiming(1);
       }
       handleHideModalLoading();
-      if (currentStep === STEP_REGISTER_PROFILE - 1) {
+      if (currentStep === STEP_REGISTER_PROFILE) {
         navigate(APP_SCREEN.REGISTER);
       }
     }, 2000);
@@ -97,6 +97,8 @@ export const InformationProfile = () => {
     ],
     [handleBackStep, handleSubmit],
   );
+
+  console.log({ currentStep });
 
   // render
   return (
