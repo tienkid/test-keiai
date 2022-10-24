@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,7 +10,6 @@ import { WrapperStepsProps } from '../type';
 export const WrapperSteps = ({
   title,
   children,
-  currentStep = 1,
   HeaderTitleComponent = null,
 }: WrapperStepsProps) => {
   // state
@@ -18,11 +17,11 @@ export const WrapperSteps = ({
   const scrollRef = useRef<Animated.ScrollView | undefined | null>(undefined);
 
   // effect
-  useEffect(() => {
-    setTimeout(() => {
-      scrollRef.current?.scrollTo({ y: 0, x: 0, animated: true });
-    }, 500);
-  }, [currentStep]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     scrollRef.current?.scrollTo({ y: 0, x: 0, animated: true });
+  //   }, 500);
+  // }, [currentStep]);
 
   // render
   return (

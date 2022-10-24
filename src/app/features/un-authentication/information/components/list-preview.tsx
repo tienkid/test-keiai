@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutChangeEvent, View } from 'react-native';
+import { View } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 
@@ -14,7 +14,6 @@ import {
 } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 
-import { StepValue } from '../contain';
 import { styles } from '../style';
 import { ListPreviewProps } from '../type';
 
@@ -22,22 +21,18 @@ export const ListPreview = ({
   informationPreview,
   onSubmit,
   onBackStep,
-  onGetHeight,
 }: ListPreviewProps) => {
   // state
   const [t] = useTranslation();
 
   // func
-  const handleGetLayout = (e: LayoutChangeEvent) => {
-    e.nativeEvent.layout.height &&
-      onGetHeight(e.nativeEvent.layout.height, StepValue.two);
-  };
+
   const onSubmitPreview = () => {
     onSubmit();
   };
   // render
   return (
-    <View onLayout={handleGetLayout}>
+    <View>
       <Block paddingHorizontal={20}>
         <Block alignSelf={'center'} marginBottom={38} marginTop={40}>
           <ParsedText
