@@ -12,7 +12,10 @@ import { AppModule } from '@native-module';
 import { AppContainer } from '@navigation/app-navigation';
 import { store } from '@store/store';
 import I18n from '@utils/i18n/i18n';
+import Amplify from 'aws-amplify';
+import { currentConfig } from 'aws-amplity';
 
+Amplify.configure(currentConfig);
 declare module 'react' {
   // eslint-disable-next-line @typescript-eslint/ban-types
   function forwardRef<T, P = {}>(

@@ -4,18 +4,32 @@ import isEqual from 'react-fast-compare';
 
 import { dispatch } from '@common';
 import { Block, Trouble, WrapperBackground } from '@components';
+import {
+  handleHideModalLoading,
+  handleShowModalLoading,
+} from '@components/modal-loading';
 import { FormLoginType } from '@model/authentication';
-import { loginActions } from '@redux-slice';
+import { appActions } from '@redux-slice';
+import { Auth } from 'aws-amplify';
 
 import { FormLogin } from './components/form-login';
 
 const LoginComponent = () => {
   // function
-  const onSubmit = (data: FormLoginType) => {
-    dispatch(loginActions.login(data));
+  const onSubmit = async (data: FormLoginType) => {
+    // dispatch(loginActions.login(data));
+    handleShowModalLoading();
+
+    try {
+      const res = await Auth.signIn(data.phoneNumber, data.password);
+      dispatch(appActions.setToken(res.signInUserSession.accessToken.jwtToken));
+    } catch (error) {
+      console.log(error);
+    }
+
     // handleShowModalLoading();
     // setTimeout(() => {
-    //   handleHideModalLoading();
+    handleHideModalLoading();
     //   dispatch(appActions.setToken('token'));
     // }, 2000);
     //mqpz-fxqm-wuhv-sauj

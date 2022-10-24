@@ -21,6 +21,5 @@ takeLatestListeners(true)({
       // TODO
       listenerApi.dispatch(appActions.setToken(response.data?.accessToken));
     }
-    console.log(response, 'response');
   },
 });
