@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 
 import BootSplash from 'react-native-bootsplash';
 
+import { InformationProfileStep2 } from '@features/un-authentication/infomation-step2';
 import { InformationProfile } from '@features/un-authentication/information';
 import { ModalSelectedCountry } from '@features/un-authentication/information/modal-selected-country';
 import { Login } from '@features/un-authentication/login';
@@ -65,6 +66,10 @@ export const RootNavigation = () => {
           <RootStack.Screen
             name={APP_SCREEN.INFORMATION_PROFILE}
             component={InformationProfile}
+          />
+          <RootStack.Screen
+            name={APP_SCREEN.INFORMATION_PROFILE_STEP2}
+            component={InformationProfileStep2}
           />
           <RootStack.Group
             screenOptions={{ presentation: 'modal', gestureEnabled: true }}>

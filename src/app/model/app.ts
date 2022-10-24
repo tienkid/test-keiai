@@ -12,4 +12,5 @@ export interface AppState {
   showDialog: boolean;
 
   theme: ThemeType;
+  registerData: any;
 }

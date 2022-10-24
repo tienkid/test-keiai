@@ -10,6 +10,9 @@ import { navigate } from './navigation-service';
 import { HOME_STACK } from './screen-types';
 import { ItemDrawer, ListRenderDrawer } from './type';
 
+import { dispatch } from '../common/redux';
+import { appActions } from '../redux/action-slice/app';
+
 const CustomDrawer = () => {
   const navigation = useNavigation();
   const { colors } = useTheme();
@@ -23,7 +26,7 @@ const CustomDrawer = () => {
         console.log('waiting...');
         break;
       case 8:
-        console.log('logout');
+        dispatch(appActions.logout());
         break;
       default:
         Linking.openURL(item.url);
