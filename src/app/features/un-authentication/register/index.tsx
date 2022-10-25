@@ -2,19 +2,35 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
+import { dispatch, numberToCountryCode } from '@common';
 import { Block, WrapperBackground } from '@components';
 import { CopyRight } from '@components/copy-right';
+import { useSelector } from '@hooks';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
+import { registerActions } from '@redux-slice';
 
 import { FormRegister } from './components/form-register';
 
 const RegisterComponent = () => {
-  // render
-  // const { height, width } = useWindowDimensions();
+  //state
+  const register = useSelector(x => x.app.registerData);
+  //function
   const handleSubmit = () => {
+    dispatch(
+      registerActions.register(
+        {
+          email: register?.email ?? '',
+          phone_number: numberToCountryCode(register?.phoneNumber ?? ''),
+        },
+        onSubmitSucceeded,
+      ),
+    );
+  };
+  const onSubmitSucceeded = () => {
     navigate(APP_SCREEN.OTP_SCREEN);
   };
+  // render
   return (
     <Block block>
       <WrapperBackground titleT18n="register:title">

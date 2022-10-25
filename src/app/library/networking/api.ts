@@ -3,6 +3,12 @@ const API_VERSION = 'v1/';
 const ApiEndPoint = {
   LOGIN: 'auth/login',
   GET_CONTENT: 'post/pagination',
+
+  //users
+  VALIDATE: 'users/validate-mobile-register',
+  REGISTER: 'users/mobile-register',
+  CONFIRM: 'users/mobile-confirm',
+
   REFRESH_TOKEN: '',
 } as const;
 

@@ -23,6 +23,7 @@ export enum SLICE_NAME {
   AUTHENTICATION = 'AUTHENTICATION_',
   LOGIN = 'LOGIN_',
   GET_CONTENT = 'GET_CONTENT_',
+  REGISTER = 'REGISTER_',
 }
 
 export type ValidateMessageObject = {

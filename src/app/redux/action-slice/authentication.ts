@@ -25,5 +25,6 @@ const login = createAction(
     },
   }),
 );
+
 export const authenticationActions = { ...authenticationSlice.actions, login };
 export const authenticationReducer = authenticationSlice.reducer;

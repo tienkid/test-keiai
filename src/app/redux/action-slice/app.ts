@@ -10,7 +10,7 @@ const initialAppState: AppState = {
   internetState: true,
   profile: {},
   token: undefined,
-  registerData: {},
+  registerData: undefined,
   /**
    * default true to load app
    */
