@@ -9,6 +9,7 @@ import { Block, WrapperBackground } from '@components';
 import { useSelector } from '@hooks';
 import { ValidateRequest } from '@model/register';
 import { appActions, registerActions } from '@redux-slice';
+import { Auth } from 'aws-amplify';
 
 import { FormOTP } from './components/form-otp';
 import { FormRegisterOTPType } from './type';
@@ -35,6 +36,17 @@ const OTPComponent = () => {
   }, [dataProfile]);
 
   //function
+  const onSubmitSucceeded = useCallback(async () => {
+    const res = await Auth.signIn(
+      numberToCountryCode(dataProfile?.phoneNumber ?? ''),
+      dataProfile?.password,
+    );
+    if (res) {
+      console.log(11111, res);
+      dispatch(appActions.setToken(res.signInUserSession.accessToken.jwtToken));
+    }
+  }, [dataProfile?.password, dataProfile?.phoneNumber]);
+
   const handleSubmit = useCallback(
     (data: FormRegisterOTPType) => {
       dispatch(
@@ -44,12 +56,8 @@ const OTPComponent = () => {
         ),
       );
     },
-    [mapsDataRequest],
+    [mapsDataRequest, onSubmitSucceeded],
   );
-
-  const onSubmitSucceeded = () => {
-    dispatch(appActions.setToken('token'));
-  };
 
   // render
   return (

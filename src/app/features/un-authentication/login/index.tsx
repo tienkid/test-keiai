@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { dispatch } from '@common';
+import { dispatch, numberToCountryCode } from '@common';
 import { Block, Trouble, WrapperBackground } from '@components';
 import {
   handleHideModalLoading,
@@ -21,7 +21,10 @@ const LoginComponent = () => {
     handleShowModalLoading();
 
     try {
-      const res = await Auth.signIn(data.phoneNumber, data.password);
+      const res = await Auth.signIn(
+        numberToCountryCode(data.phoneNumber),
+        data.password,
+      );
       dispatch(appActions.setToken(res.signInUserSession.accessToken.jwtToken));
     } catch (error) {
       console.log(error);
