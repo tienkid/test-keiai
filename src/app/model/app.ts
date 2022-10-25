@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ThemeType } from '@theme';
+
+import { FormInformationProfileType } from './information';
 export interface AppState {
   internetState: boolean;
 
@@ -12,5 +14,6 @@ export interface AppState {
   showDialog: boolean;
 
   theme: ThemeType;
-  registerData: any;
+
+  registerData: FormInformationProfileType | undefined;
 }

@@ -5,13 +5,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Block, Button, Spacer, Text } from '@components';
 import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useSelector } from '@hooks';
 import { registerValidation } from '@validate/register';
 
 import { FormRegisterProps, FormRegisterType } from '../type';
 
 export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
   // state
-
+  const register = useSelector(x => x.app.registerData);
   const formMethod = useForm<FormRegisterType>({
     mode: 'all',
     resolver: yupResolver(registerValidation),
@@ -48,7 +49,11 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
             wrapLabelStyle={{ paddingLeft: 0 }}
           />
           <Block marginTop={14} paddingLeft={5}>
-            <Text text="09666666666" preset="linkMedium" colorTheme="base7" />
+            <Text
+              text={register?.phoneNumber}
+              preset="linkMedium"
+              colorTheme="base7"
+            />
           </Block>
         </Block>
         {/* <FormInput<FormRegisterType>

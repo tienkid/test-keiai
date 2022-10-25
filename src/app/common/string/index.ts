@@ -165,3 +165,10 @@ export const stringifyObjectValidateYup = ({
     optionsTx,
   });
 };
+
+export const numberToCountryCode = (phone: string) => {
+  const temp = phone[0] === '0' ? phone.replace('0', '') : phone;
+  const split = temp.split('-');
+  const joined = split.join('');
+  return '+81' + joined;
+};
