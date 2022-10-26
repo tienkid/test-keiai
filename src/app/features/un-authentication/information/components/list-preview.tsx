@@ -66,7 +66,7 @@ export const ListPreview = ({
         />
         <RowItem
           title="information_profile:address"
-          value={`${informationPreview?.country}${informationPreview?.city}`}
+          value={`${informationPreview?.country}${informationPreview?.city}${informationPreview?.name_address}${informationPreview?.building_name}`}
         />
         <RowItem
           title="information_profile:phone_number"

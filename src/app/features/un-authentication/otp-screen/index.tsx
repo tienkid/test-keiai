@@ -42,7 +42,6 @@ const OTPComponent = () => {
       dataProfile?.password,
     );
     if (res) {
-      console.log(11111, res);
       dispatch(appActions.setToken(res.signInUserSession.accessToken.jwtToken));
     }
   }, [dataProfile?.password, dataProfile?.phoneNumber]);

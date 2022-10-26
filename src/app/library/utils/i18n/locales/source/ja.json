@@ -39,7 +39,10 @@
   "msg": {
     "MSG_001": "携帯電話は必須",
     "MSG_002": "パスワードが必要です",
-    "MSG_003": "※SMSで認証コードが送信されます\n※ハイフン抜きで入力してください"
+    "MSG_003": "※SMSで認証コードが送信されます\n※ハイフン抜きで入力してください",
+    "MSG_004": "{{field}}を入力してください。",
+    "MSG_005": "正しい値を入力してください。",
+    "MSG_006": "パスワードが一致しません。"
   },
   "welcome": {
     "registered_members": "会員登録済みの方",
@@ -109,6 +112,17 @@
     "ki_club_member": "ケイアイクラブ会員",
     "point_balance": "ポイント残高",
     "point": "{{point}} P "
+  },
+  "field": {
+    "contact": "契約物件番号",
+    "password": "パスワード",
+    "confirm_password": "パスワード確認",
+    "your_name": "お名前",
+    "furigana": "ふりがな",
+    "zip_code": "郵便番号",
+    "address": "住所",
+    "phone_number": "電話番号（携帯）",
+    "email": "メールアドレス"
   },
   "information_profile": {
     "step_1_title": "KEIAIオーナーズクラブ会員登録",
