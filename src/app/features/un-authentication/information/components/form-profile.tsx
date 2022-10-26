@@ -17,6 +17,7 @@ import {
 } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 // import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
+import { PHONE_NUMBER_LENGTH } from '@config/field-length';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
@@ -197,6 +198,7 @@ export const FormInformationProfile = ({
           keyboardType="numeric"
           inputStyle={{ paddingVertical: sizeScale(12) }}
           wrapLabelStyle={{ paddingLeft: 0 }}
+          maxLength={PHONE_NUMBER_LENGTH}
           requiredLabelT18n={'common:indispensable'}
         />
         <Spacer height={16} />
