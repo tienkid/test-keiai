@@ -17,6 +17,7 @@ const initialAppState: AppState = {
   loadingApp: false,
   showDialog: false,
   theme: 'default',
+  point: 0,
 };
 const appSlice = createSlice({
   name: SLICE_NAME.APP,
@@ -37,6 +38,11 @@ const appSlice = createSlice({
     },
     setAppProfile: (state, { payload }: PayloadAction<unknown>) => {
       state.profile = payload;
+    },
+    setPoint: (state, { payload }: PayloadAction<number>) => {
+      console.log('setpoint ', payload);
+
+      state.point = payload;
     },
     setAppTheme: (state, { payload }: PayloadAction<ThemeType>) => {
       state.theme = payload;

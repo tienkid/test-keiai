@@ -16,4 +16,6 @@ export interface AppState {
   theme: ThemeType;
 
   registerData: FormInformationProfileType | undefined;
+
+  point: number;
 }

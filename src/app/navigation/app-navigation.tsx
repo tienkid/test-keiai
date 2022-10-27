@@ -4,6 +4,7 @@ import { StatusBar } from 'react-native';
 import { dispatch, RXStore } from '@common';
 import {
   hideLoading,
+  ModalError,
   PortalHost,
   ProgressDialog,
   showLoading,
@@ -106,6 +107,7 @@ export const AppContainer = () => {
             <SnackBar />
             <ImageTransition />
             <ModalLoading />
+            <ModalError />
           </>
         )}
         <RXStore />

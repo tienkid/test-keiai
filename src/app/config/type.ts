@@ -8,7 +8,7 @@ export type ResponseBase<T = any, TStatus = boolean> = {
     }
   : {
       status: false;
-
+      msgCode?: string;
       msg?: string | null;
     });
 export interface ParamsNetwork {
@@ -24,6 +24,7 @@ export enum SLICE_NAME {
   LOGIN = 'LOGIN_',
   GET_CONTENT = 'GET_CONTENT_',
   REGISTER = 'REGISTER_',
+  POINT = 'POINT_',
 }
 
 export type ValidateMessageObject = {

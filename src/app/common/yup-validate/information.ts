@@ -5,9 +5,10 @@ import {
 } from '@config/field-length';
 import { rxEmail, rxPhoneNumber } from '@config/regex';
 import { FormInformationProfileType } from '@model/information';
+import { ValidateRequest } from '@model/register';
 import * as yup from 'yup';
 
-import { stringifyObjectValidateYup } from '../string';
+import { numberToCountryCode, stringifyObjectValidateYup } from '../string';
 
 export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
   yup.object().shape({
@@ -170,3 +171,23 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
         }),
       ),
   });
+export const mapsDataRequest = (
+  dataProfile: FormInformationProfileType | undefined,
+) => {
+  return {
+    phone_number: numberToCountryCode(dataProfile?.phoneNumber ?? ''),
+    email: dataProfile?.email,
+    attributes: {
+      property_management_number: dataProfile?.contact,
+      family_name: dataProfile?.first_name,
+      given_name: dataProfile?.last_name,
+      phonetic_family_name: dataProfile?.furigana_first_name,
+      phonetic_given_name: dataProfile?.furigana_last_name,
+      address: dataProfile?.name_address,
+      building: dataProfile?.building_name,
+      postal: dataProfile?.zip_code,
+      prefecture: dataProfile?.city,
+    },
+    password: dataProfile?.password,
+  } as ValidateRequest;
+};

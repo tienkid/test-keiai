@@ -63,6 +63,7 @@ export const FormInformationProfile = ({
   };
 
   console.log({ isCheck, tt: formMethod.formState.isValid });
+  //effect
 
   // render
   return (

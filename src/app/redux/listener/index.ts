@@ -5,3 +5,4 @@ export * from './app';
 export * from './login';
 export * from './content';
 export * from './register';
+export * from './point';

@@ -16,9 +16,6 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
   const formMethod = useForm<FormRegisterType>({
     mode: 'all',
     resolver: yupResolver(registerValidation),
-    defaultValues: {
-      phoneNumber: __DEV__ ? '096688888' : '',
-    },
   });
 
   // function
@@ -70,7 +67,7 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         <Button.Primary
           t18n="register:button_phone"
           onPress={onSubmitKey}
-          disabled={!formMethod.formState.isValid}
+          // disabled={!formMethod.formState.isValid}
         />
       </Block>
     </FormProvider>

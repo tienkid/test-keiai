@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { handleErrorApi, logout } from '@common';
 import {
-  CODE_SUCCESS,
+  // CODE_SUCCESS,
   CODE_TIME_OUT,
   ERROR_NETWORK_CODE,
   RESULT_CODE_PUSH_OUT,
@@ -24,18 +25,25 @@ export const onPushLogout = async () => {
 };
 
 export const handleResponseAxios = <T = Record<string, unknown>>(
-  res: AxiosResponse<T>,
+  res: AxiosResponse<any>,
 ): ResponseBase<T> => {
   console.log(res.data, 'res.data');
-
   if (res.data) {
-    return { code: CODE_SUCCESS, status: true, data: res.data };
+    return {
+      code: res.status,
+      status: res.data.result === 'failure' ? false : true,
+      data: res?.data?.data ?? undefined,
+      msg: res.data.error,
+      msgCode: res.data.code,
+    };
   }
   return responseDefault as ResponseBase<T>;
 };
 export const handleErrorAxios = <T = Record<string, unknown>>(
   error: AxiosError,
 ): ResponseBase<T> => {
+  console.log(2222, error.response);
+
   if (error.code === STATUS_TIME_OUT) {
     // timeout
     return handleErrorApi(CODE_TIME_OUT) as unknown as ResponseBase<T>;
@@ -44,6 +52,10 @@ export const handleErrorAxios = <T = Record<string, unknown>>(
     if (error.response.status === RESULT_CODE_PUSH_OUT) {
       return handleErrorApi(RESULT_CODE_PUSH_OUT) as unknown as ResponseBase<T>;
     } else {
+      if (error.response.data) {
+        console.log('DATA', error.response.data);
+        return handleResponseAxios(error.response);
+      }
       return handleErrorApi(
         error.response.status,
       ) as unknown as ResponseBase<T>;

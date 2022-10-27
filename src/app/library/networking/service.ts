@@ -72,7 +72,7 @@ function Request<T = Record<string, unknown>>(
     AxiosInstance.request(StyleSheet.flatten([defaultConfig, config]))
       .then((res: AxiosResponse<T>) => {
         const result = handleResponseAxios(res);
-        rs(result);
+        rs(result as ResponseBase);
       })
       .catch((error: AxiosError<T>) => {
         const result = handleErrorAxios(error);

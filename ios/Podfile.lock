@@ -172,18 +172,18 @@ PODS:
   - hermes-engine (0.70.0)
   - IQKeyboardManagerSwift (6.5.10)
   - libevent (2.1.12)
-  - libwebp (1.2.3):
-    - libwebp/demux (= 1.2.3)
-    - libwebp/mux (= 1.2.3)
-    - libwebp/webp (= 1.2.3)
-  - libwebp/demux (1.2.3):
+  - libwebp (1.2.1):
+    - libwebp/demux (= 1.2.1)
+    - libwebp/mux (= 1.2.1)
+    - libwebp/webp (= 1.2.1)
+  - libwebp/demux (1.2.1):
     - libwebp/webp
-  - libwebp/mux (1.2.3):
+  - libwebp/mux (1.2.1):
     - libwebp/demux
-  - libwebp/webp (1.2.3)
-  - MMKV (1.2.14):
-    - MMKVCore (~> 1.2.14)
-  - MMKVCore (1.2.14)
+  - libwebp/webp (1.2.1)
+  - MMKV (1.2.13):
+    - MMKVCore (~> 1.2.13)
+  - MMKVCore (1.2.13)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -829,9 +829,9 @@ SPEC CHECKSUMS:
   hermes-engine: 8e84f1284180801c1a1b241f443ba64f931ff561
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  libwebp: 60305b2e989864154bd9be3d772730f08fc6a59c
-  MMKV: 9c4663aa7ca255d478ff10f2f5cb7d17c1651ccd
-  MMKVCore: 89f5c8a66bba2dcd551779dea4d412eeec8ff5bb
+  libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  MMKV: aac95d817a100479445633f2b3ed8961b4ac5043
+  MMKVCore: 3388952ded307e41b3ed8a05892736a236ed1b8e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
