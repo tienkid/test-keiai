@@ -38,3 +38,4 @@ export * from './form-input';
 export * from './trouble';
 export * from './row-item';
 export * from './copy-right';
+export * from './modal-error';

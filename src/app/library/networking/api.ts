@@ -8,6 +8,7 @@ const ApiEndPoint = {
   VALIDATE: 'users/validate-mobile-register',
   REGISTER: 'users/mobile-register',
   CONFIRM: 'users/mobile-confirm',
+  GET_POINT: 'users/points',
 
   REFRESH_TOKEN: '',
 } as const;

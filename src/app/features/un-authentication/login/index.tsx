@@ -25,6 +25,7 @@ const LoginComponent = () => {
         numberToCountryCode(data.phoneNumber),
         data.password,
       );
+      dispatch(appActions.setAppProfile({ username: res.username }));
       dispatch(appActions.setToken(res.signInUserSession.accessToken.jwtToken));
     } catch (error) {
       console.log(error);

@@ -15,6 +15,7 @@ import { FormRegister } from './components/form-register';
 const RegisterComponent = () => {
   //state
   const register = useSelector(x => x.app.registerData);
+
   //function
   const handleSubmit = () => {
     dispatch(

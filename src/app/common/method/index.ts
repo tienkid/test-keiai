@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Alert, Platform } from 'react-native';
 
+import { handleShowModalError } from '@components';
 import { ERROR_NETWORK_CODE } from '@config/api';
 import { ResponseBase } from '@config/type';
 import analytics from '@react-native-firebase/analytics';
 import { appActions } from '@redux-slice';
 import { remove } from '@storage';
+import { I18nKeys } from '@utils/i18n/locales';
 import { translate } from '@utils/i18n/translate';
 
 import { STORAGE_KEY_TOKEN } from '../constant';
@@ -65,11 +67,25 @@ export const handleErrorResponse = (
 ): response is ResponseBase<any, true> => {
   if (!response.status) {
     // TODO: handle error
+    handleShowModalError({
+      content: handleErrorContent(response.msgCode ?? '400'),
+      title: 'dialog:error',
+    });
     return false;
   }
   return true;
 };
 
+const handleErrorContent = (msgCode: string): I18nKeys => {
+  switch (msgCode) {
+    case 'email_in_used':
+      return 'msg:email_in_used';
+    case 'phone_in_used':
+      return 'msg:phone_in_used';
+    default:
+      return 'error:errorOnHandle';
+  }
+};
 export const execFunc = <Fn extends (...args: any[]) => any>(
   func?: Fn,
   ...args: Parameters<Fn>

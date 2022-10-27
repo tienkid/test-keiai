@@ -5,7 +5,8 @@ import { dispatch } from '@common';
 import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
-import { appActions } from '@redux-slice';
+import { appActions, registerActions } from '@redux-slice';
+import { mapsDataRequest } from '@validate/information';
 
 import { FormInformationProfile } from './components/form-profile';
 import { WrapperSteps } from './components/wrapper-steps';
@@ -14,11 +15,15 @@ export const InformationProfile = () => {
   // state
 
   // func
-
   const handleSubmit = useCallback((data?: FormInformationProfileType) => {
+    const dataMaps = mapsDataRequest(data);
+    dispatch(registerActions.validate(dataMaps, submitSucceeded));
     dispatch(appActions.setRegisterData(data));
-    navigate(APP_SCREEN.INFORMATION_PROFILE_STEP2);
   }, []);
+
+  const submitSucceeded = () => {
+    navigate(APP_SCREEN.INFORMATION_PROFILE_STEP2);
+  };
 
   // effect
 

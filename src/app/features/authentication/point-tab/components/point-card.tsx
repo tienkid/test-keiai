@@ -3,9 +3,12 @@ import React from 'react';
 import Animated, { Easing, timing } from 'react-native-reanimated';
 
 import { Block, Button, Icon, Spacer, Text } from '@components';
+import { useSelector } from '@hooks';
 
 export const PointCard = () => {
   // state
+  const point = useSelector(x => x.app.point);
+
   const spinValue = new Animated.Value(0);
 
   const spin = spinValue.interpolate({
@@ -53,7 +56,7 @@ export const PointCard = () => {
         <Text
           t18n="point:point"
           t18nOptions={{
-            point: 1000,
+            point,
           }}
           preset={'textBold40'}
         />
