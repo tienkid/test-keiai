@@ -1,15 +1,20 @@
-import { STORAGE_KEY_TOKEN } from '@common';
+import {
+  STORAGE_KEY_PROFILE,
+  STORAGE_KEY_REFRESH_TOKEN,
+  STORAGE_KEY_TOKEN,
+} from '@common';
 import { SLICE_NAME } from '@config/type';
 import { AppState } from '@model/app';
 import { FormInformationProfileType } from '@model/information';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ThemeType } from '@theme';
-import { remove, saveString } from '@utils/storage';
+import { remove, save, saveString } from '@utils/storage';
 
 const initialAppState: AppState = {
   internetState: true,
-  profile: {},
+  profile: {} as AppState['profile'],
   token: undefined,
+  refreshToken: undefined,
   registerData: undefined,
   /**
    * default true to load app
@@ -26,9 +31,15 @@ const appSlice = createSlice({
     setInternetState: (state, { payload }: PayloadAction<boolean>) => {
       state.internetState = payload;
     },
-    setToken: (state, { payload }: PayloadAction<string>) => {
-      state.token = payload;
-      saveString(STORAGE_KEY_TOKEN, payload);
+    setToken: (
+      state,
+      { payload }: PayloadAction<{ token: string; refreshToken: string }>,
+    ) => {
+      // console.log({ payload });
+      state.token = payload.token;
+      state.refreshToken = payload.refreshToken;
+      saveString(STORAGE_KEY_TOKEN, payload.token);
+      saveString(STORAGE_KEY_REFRESH_TOKEN, payload.refreshToken);
     },
     setRegisterData: (
       state,
@@ -38,10 +49,9 @@ const appSlice = createSlice({
     },
     setAppProfile: (state, { payload }: PayloadAction<unknown>) => {
       state.profile = payload;
+      save(STORAGE_KEY_PROFILE, payload);
     },
     setPoint: (state, { payload }: PayloadAction<number>) => {
-      console.log('setpoint ', payload);
-
       state.point = payload;
     },
     setAppTheme: (state, { payload }: PayloadAction<ThemeType>) => {

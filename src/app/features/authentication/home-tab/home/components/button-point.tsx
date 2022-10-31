@@ -13,7 +13,6 @@ export const ButtonPoint = () => {
   const handleGoToPointScreen = () => {
     navigate(BOTTOM_TAB.TAB_POINT);
   };
-  console.log('button poin ', point);
 
   // render
   return (
