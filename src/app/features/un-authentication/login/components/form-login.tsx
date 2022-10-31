@@ -20,8 +20,8 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
     mode: 'all',
     resolver: yupResolver(loginValidation),
     defaultValues: {
-      phoneNumber: __DEV__ ? '0965371033' : '',
-      password: __DEV__ ? '12341234' : '',
+      phoneNumber: __DEV__ ? 'wagashi000327@gmail.com' : '',
+      password: __DEV__ ? 'password123' : '',
     },
   });
 

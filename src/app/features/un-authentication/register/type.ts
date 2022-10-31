@@ -1,5 +1,5 @@
 export interface FormRegisterProps {
-  onSubmit: (data: FormRegisterType) => void;
+  onSubmit: () => void;
 }
 
 export type FormRegisterType = {

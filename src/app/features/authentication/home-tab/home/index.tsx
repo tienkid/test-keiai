@@ -15,7 +15,6 @@ import { SliderContent } from './components/slider-content';
 
 const HomeComponent = () => {
   //func
-
   //effect
   useEffect(() => {
     dispatch(pointAction.getPoint());

@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { dispatch, numberToCountryCode } from '@common';
+import { dispatch } from '@common';
 import { Block, Trouble, WrapperBackground } from '@components';
 import {
   handleHideModalLoading,
@@ -15,28 +15,47 @@ import { Auth } from 'aws-amplify';
 import { FormLogin } from './components/form-login';
 
 const LoginComponent = () => {
+  // const checkVerify = loadString(CHECK_VERIFY);
+
   // function
   const onSubmit = async (data: FormLoginType) => {
-    // dispatch(loginActions.login(data));
+    // if (checkVerify) {
+    //   handleShowModalLoading();
+
+    //   try {
+    //     const res = await Auth.signIn(data.phoneNumber, data.password);
+    //     dispatch(
+    //       appActions.setToken({
+    //         token: res.signInUserSession.accessToken.jwtToken,
+    //         refreshToken: res.signInUserSession.refreshToken.token,
+    //       }),
+    //     );
+    //     dispatch(appActions.setAppProfile(res.attributes));
+    //     console.log(res.attributes);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    //   handleHideModalLoading();
+    // } else {
+    //   navigate(APP_SCREEN.REGISTER);
+    // }
+
     handleShowModalLoading();
 
     try {
-      const res = await Auth.signIn(
-        numberToCountryCode(data.phoneNumber),
-        data.password,
+      const res = await Auth.signIn(data.phoneNumber, data.password);
+      dispatch(
+        appActions.setToken({
+          token: res.signInUserSession.accessToken.jwtToken,
+          refreshToken: res.signInUserSession.refreshToken.token,
+        }),
       );
-      dispatch(appActions.setAppProfile({ username: res.username }));
-      dispatch(appActions.setToken(res.signInUserSession.accessToken.jwtToken));
+      dispatch(appActions.setAppProfile(res.attributes));
+      // console.log(res.attributes);
     } catch (error) {
       console.log(error);
     }
-
-    // handleShowModalLoading();
-    // setTimeout(() => {
     handleHideModalLoading();
-    //   dispatch(appActions.setToken('token'));
-    // }, 2000);
-    //mqpz-fxqm-wuhv-sauj
   };
 
   // render

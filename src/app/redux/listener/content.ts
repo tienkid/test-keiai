@@ -16,7 +16,6 @@ takeLatestListeners()({
     if (!response) {
       return;
     }
-    console.log(response, 'response');
 
     // if (handleErrorResponse(response)) {
     //   execFunc(onSucceeded, response.data.data, response.data.meta.total);

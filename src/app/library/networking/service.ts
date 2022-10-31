@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { StyleSheet } from 'react-native';
 
-import { dispatch, getState } from '@common';
+import { CHECK_VERIFY, dispatch, getState } from '@common';
 import { RESULT_CODE_PUSH_OUT, TIME_OUT } from '@config/api';
 import { ENVConfig } from '@config/env';
 import { ParamsNetwork, ResponseBase } from '@config/type';
 import { AppState } from '@model/app';
 import { appActions } from '@redux-slice';
+import { saveString } from '@utils/storage';
+import { Auth } from 'aws-amplify';
 import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-import { ApiConstants } from './api';
 import {
   handleErrorAxios,
   handleParameter,
@@ -17,7 +19,7 @@ import {
 } from './helper';
 
 const tokenKeyHeader = 'authorization';
-let refreshTokenRequest: Promise<string | null> | null = null;
+let refreshTokenRequest: Promise<string | null | any> | null = null;
 const AxiosInstance = Axios.create({});
 
 AxiosInstance.interceptors.response.use(
@@ -33,14 +35,19 @@ AxiosInstance.interceptors.response.use(
       originalRequest._retry = true;
       refreshTokenRequest = refreshTokenRequest
         ? refreshTokenRequest
-        : refreshToken(originalRequest);
+        : refreshToken();
       const newToken = await refreshTokenRequest;
       refreshTokenRequest = null;
       if (newToken === null) {
         return Promise.reject(error);
       }
-      dispatch(appActions.setToken(newToken));
-      originalRequest.headers[tokenKeyHeader] = newToken;
+      dispatch(
+        appActions.setToken({
+          token: newToken.accessToken.jwtToken,
+          refreshToken: newToken.refreshToken.token,
+        }),
+      );
+      originalRequest.headers[tokenKeyHeader] = newToken.accessToken.jwtToken;
       return AxiosInstance(originalRequest);
     }
     return Promise.reject(error);
@@ -48,11 +55,33 @@ AxiosInstance.interceptors.response.use(
 );
 
 // refresh token
-async function refreshToken(originalRequest: Record<string, unknown>) {
-  return AxiosInstance.get(ApiConstants.REFRESH_TOKEN, originalRequest)
-    .then((res: AxiosResponse) => res.data)
-    .catch(() => null);
+async function refreshToken() {
+  return Auth.currentSession()
+    .then(() => {
+      // console.log('Refresh token ss');
+      return null;
+    })
+    .catch(err => {
+      console.log('Refresh token error', { err });
+      saveString(CHECK_VERIFY, 'true');
+      return null;
+    });
 }
+// async function refreshToken(originalRequest: any) {
+//   return AxiosInstance(ApiConstants.REFRESH_TOKEN, {
+//     ...originalRequest,
+//     method: 'post',
+//     data: { refresh_token: getState('app').refreshToken },
+//   })
+//     .then((res: AxiosResponse<{ data: RefreshTokenResponse }>) => {
+//       console.log('refresh token ok', res.data);
+//       return res.data.data;
+//     })
+//     .catch(err => {
+//       console.log('Refresh token error', { err });
+//       return null;
+//     });
+// }
 
 // base
 function Request<T = Record<string, unknown>>(

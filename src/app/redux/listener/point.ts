@@ -16,7 +16,6 @@ takeLatestListeners()({
     if (!response) {
       return;
     }
-    console.log(response, 'response');
 
     if (handleErrorResponse(response)) {
       _listenerApi.dispatch(appActions.setPoint(response.data));

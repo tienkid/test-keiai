@@ -8,6 +8,7 @@ export interface AppState {
   profile: any;
 
   token: string | undefined;
+  refreshToken: string | undefined;
 
   loadingApp: boolean;
 

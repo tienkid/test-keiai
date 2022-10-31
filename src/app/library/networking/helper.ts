@@ -27,7 +27,6 @@ export const onPushLogout = async () => {
 export const handleResponseAxios = <T = Record<string, unknown>>(
   res: AxiosResponse<any>,
 ): ResponseBase<T> => {
-  console.log(res.data, 'res.data');
   if (res.data) {
     return {
       code: res.status,
