@@ -1,4 +1,5 @@
 import { ItemNotifyType } from '@features/authentication/home-tab/notification/type';
+import { Item } from '@model/content';
 
 import { MODAL_SELECTED_COUNTRY_TYPE } from '../common/constant';
 
@@ -56,7 +57,7 @@ export type UnAuthorizeParamsList = {
 export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
   [CONTENT_STACK.CONTENT]: undefined;
-  [CONTENT_STACK.CONTENT_DETAIL]: undefined;
+  [CONTENT_STACK.CONTENT_DETAIL]: { item: Item };
   [BOTTOM_TAB.TAB_HOME]: undefined;
   [BOTTOM_TAB.TAB_POINT]: undefined;
   [HOME_STACK.NOTIFY]: undefined;

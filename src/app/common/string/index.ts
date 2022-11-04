@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-useless-escape */
 import { processColor } from 'react-native';
 
 import { ValidateMessageObject } from '@config/type';
@@ -96,10 +95,6 @@ export const onHandleTagToArrayText = (
   });
   return arrText;
 };
-type TextUrl = {
-  isLink: boolean;
-  source: string;
-};
 
 export const randomUniqueId = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -171,4 +166,15 @@ export const numberToCountryCode = (phone: string) => {
   const split = temp.split('-');
   const joined = split.join('');
   return '+81' + joined;
+};
+
+export const genarateTags = (tags?: Array<string>) => {
+  let tagsString = '';
+  if (!tags) {
+    return tagsString;
+  }
+  tags.map(e => {
+    return (tagsString += `#${e} `);
+  });
+  return tagsString;
 };

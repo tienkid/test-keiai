@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { Block, Button, LocalImage, Text } from '@components';
+import { Block, Button, Image, LocalImage, Text } from '@components';
+import { Item } from '@model/content';
 import { navigate } from '@navigation/navigation-service';
 import { CONTENT_STACK } from '@navigation/screen-types';
 
-export const ItemContent = () => {
+export const ItemContent = ({ item }: { item: Item }) => {
   // state
   const handleGoToContent = () => {
-    navigate(CONTENT_STACK.CONTENT_DETAIL);
+    navigate(CONTENT_STACK.CONTENT_DETAIL, { item });
   };
   // render
   return (
@@ -18,13 +19,17 @@ export const ItemContent = () => {
         marginLeft={20}
         borderBottomRightRadius={5}
         borderBottomLeftRadius={5}>
-        <LocalImage
-          source={'banner'}
-          style={{
-            borderBottomLeftRadius: 5,
-            borderBottomRightRadius: 5,
-          }}
-        />
+        {item.thumb ? (
+          <Image source={item.thumb} />
+        ) : (
+          <LocalImage
+            source={'banner'}
+            style={{
+              borderBottomLeftRadius: 5,
+              borderBottomRightRadius: 5,
+            }}
+          />
+        )}
         <Block
           width={300}
           height={70}
@@ -35,7 +40,7 @@ export const ItemContent = () => {
           borderBottomLeftRadius={5}
           borderBottomRightRadius={5}
           colorTheme="content_gray">
-          <Text preset="textNormal">住み初めてからのやるべきこと</Text>
+          <Text preset="textNormal" text={item.title} />
         </Block>
       </Block>
     </Button.Default>

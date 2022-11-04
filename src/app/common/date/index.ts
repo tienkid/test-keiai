@@ -143,3 +143,13 @@ export const dayBetweenRange = ({
   const mEndDate = moment(endDate, format);
   return mEndDate.diff(mStartDate, 'days') + 1;
 };
+
+export const formatDate = ({
+  date,
+  format = 'YYYY/MM/DD',
+}: {
+  date?: string;
+  format?: string;
+}) => {
+  return moment(date ?? undefined).format(format);
+};

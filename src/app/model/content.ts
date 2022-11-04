@@ -1,3 +1,5 @@
+import { Meta } from './app';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type ParamsContent = {
   page: number;
@@ -8,14 +10,32 @@ export type ParamsContent = {
 };
 
 export interface ContentResponse {
-  items: any[];
-  meta: Meta;
+  items: Item[];
+  meta?: Meta;
 }
 
-export interface Meta {
-  totalItems: number;
-  itemCount: number;
-  itemsPerPage: string;
-  totalPages: number;
-  currentPage: string;
+export interface Item {
+  id: string;
+  slug: string;
+  title: string;
+  content: string;
+  view: number;
+  settingTitleUrl: string;
+  settingUrl: string;
+  addContact: boolean;
+  addTell: boolean;
+  phoneNumber: string;
+  serviceCardFromTitle: string;
+  serviceCardContentId: string;
+  postType: string;
+  status: string;
+  publicUrl: string;
+  startTime?: string;
+  endTime?: string;
+  createdBy?: any;
+  thumb?: any;
+  createdAt: string;
+  updatedAt: string;
+  tags: string[];
+  files: any[];
 }

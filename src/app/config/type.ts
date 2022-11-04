@@ -3,7 +3,6 @@ export type ResponseBase<T = any, TStatus = boolean> = {
 } & (TStatus extends true
   ? {
       data: T;
-
       status: true;
     }
   : {
@@ -25,6 +24,7 @@ export enum SLICE_NAME {
   GET_CONTENT = 'GET_CONTENT_',
   REGISTER = 'REGISTER_',
   POINT = 'POINT_',
+  BANNER = 'BANNER_',
 }
 
 export type ValidateMessageObject = {

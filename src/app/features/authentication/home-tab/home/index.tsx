@@ -6,7 +6,14 @@ import isEqual from 'react-fast-compare';
 import { dispatch } from '@common';
 import { Block, Header, LocalImage, StackView } from '@components';
 import { FocusedStatusBarStyle } from '@components/focused-status-bar';
-import { pointAction } from '@redux-slice';
+import { BannerResponse } from '@model/banner';
+import { ContentResponse } from '@model/content';
+import {
+  appActions,
+  bannerAction,
+  contentAction,
+  pointAction,
+} from '@redux-slice';
 
 import { ButtonInfo } from './components/button-app-info';
 import { ButtonPoint } from './components/button-point';
@@ -15,9 +22,35 @@ import { SliderContent } from './components/slider-content';
 
 const HomeComponent = () => {
   //func
+  const getContent = () => {
+    dispatch(
+      contentAction.getContent(
+        {
+          page: 1,
+          perPage: 10,
+        },
+        onGetContentSucceeded,
+      ),
+    );
+  };
+
+  const onGetContentSucceeded = (data: ContentResponse) => {
+    dispatch(appActions.setContents(data));
+  };
+  const getBanner = () => {
+    dispatch(
+      bannerAction.getBanner({ page: 1, limit: 10 }, onGetBannerSucceeded),
+    );
+  };
+
+  const onGetBannerSucceeded = (data: BannerResponse) => {
+    console.log(data);
+  };
   //effect
   useEffect(() => {
     dispatch(pointAction.getPoint());
+    getContent();
+    getBanner();
   }, []);
 
   // render

@@ -1,16 +1,16 @@
 import { execFunc, handleErrorResponse } from '@common';
 import { takeLatestListeners } from '@listener';
-import { ContentResponse } from '@model/content';
+import { BannerResponse } from '@model/banner';
 import { ApiConstants, NetWorkService } from '@networking';
 
-import { contentAction } from '../action-slice/content';
+import { bannerAction } from '../action-slice/banner';
 
 takeLatestListeners()({
-  actionCreator: contentAction.getContent,
+  actionCreator: bannerAction.getBanner,
   effect: async (action, _listenerApi) => {
     const { params, onSucceeded } = action.payload;
-    const response = await NetWorkService.Get<ContentResponse>({
-      url: ApiConstants.GET_CONTENT,
+    const response = await NetWorkService.Get<BannerResponse>({
+      url: ApiConstants.GET_BANNER,
       params: { ...params },
     });
 
