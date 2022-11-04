@@ -5,6 +5,7 @@ import {
 } from '@common';
 import { SLICE_NAME } from '@config/type';
 import { AppState } from '@model/app';
+import { ContentResponse } from '@model/content';
 import { FormInformationProfileType } from '@model/information';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ThemeType } from '@theme';
@@ -23,6 +24,7 @@ const initialAppState: AppState = {
   showDialog: false,
   theme: 'default',
   point: 0,
+  contents: { items: [] },
 };
 const appSlice = createSlice({
   name: SLICE_NAME.APP,
@@ -53,6 +55,9 @@ const appSlice = createSlice({
     },
     setPoint: (state, { payload }: PayloadAction<number>) => {
       state.point = payload;
+    },
+    setContents: (state, { payload }: PayloadAction<ContentResponse>) => {
+      state.contents = payload;
     },
     setAppTheme: (state, { payload }: PayloadAction<ThemeType>) => {
       state.theme = payload;

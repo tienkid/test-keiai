@@ -109,3 +109,14 @@ export enum MODAL_SELECTED_COUNTRY_TYPE {
   'COUNTRY' = 'COUNTRY',
   'CITY' = 'CITY',
 }
+
+export const CONTENT_DEFAULT = `<div>
+<button onclick="clickYourButton('[PASS SOME STRING DATA HERE]')">Click</button>
+</div>
+<script type="text/javascript">
+function clickYourButton(data) {
+    setTimeout(function () {
+        window.ReactNativeWebView.postMessage(data)
+    }, 0) // *** here ***
+}
+</script>`;

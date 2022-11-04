@@ -9,7 +9,7 @@ takeLatestListeners()({
   actionCreator: pointAction.getPoint,
   effect: async (action, _listenerApi) => {
     // const { onSucceeded } = action.payload;
-    const response = await NetWorkService.Get<any>({
+    const response = await NetWorkService.Get<{ data: { points: number } }>({
       url: ApiConstants.GET_POINT,
     });
 
@@ -18,7 +18,7 @@ takeLatestListeners()({
     }
 
     if (handleErrorResponse(response)) {
-      _listenerApi.dispatch(appActions.setPoint(response.data));
+      _listenerApi.dispatch(appActions.setPoint(response.data?.data.points));
     }
   },
 });

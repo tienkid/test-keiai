@@ -31,7 +31,7 @@ export const handleResponseAxios = <T = Record<string, unknown>>(
     return {
       code: res.status,
       status: res.data.result === 'failure' ? false : true,
-      data: res?.data?.data ?? undefined,
+      data: res?.data ?? undefined,
       msg: res.data.error,
       msgCode: res.data.code,
     };

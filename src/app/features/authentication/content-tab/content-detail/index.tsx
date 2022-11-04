@@ -3,26 +3,23 @@ import React, { memo } from 'react';
 import isEqual from 'react-fast-compare';
 import { WebView } from 'react-native-webview';
 
-import { logActionEvent } from '@common';
+import { CONTENT_DEFAULT, logActionEvent } from '@common';
 import { Block, Header } from '@components';
+import { useRoute } from '@react-navigation/native';
+
+import { ContentDetailProps } from './type';
 
 const ContentDetailComponent = () => {
+  //state
+  const route = useRoute<ContentDetailProps['route']>();
+  const { item } = route.params;
   // render
   return (
     <Block block colorTheme="background">
       <Header />
       <WebView
         source={{
-          html: `<div>
-          <button onclick="clickYourButton('[PASS SOME STRING DATA HERE]')">Click</button>
-      </div>
-      <script type="text/javascript">
-          function clickYourButton(data) {
-              setTimeout(function () {
-                  window.ReactNativeWebView.postMessage(data)
-              }, 0) // *** here ***
-          }
-      </script>`,
+          html: item ? item.content : CONTENT_DEFAULT,
         }}
         onMessage={_event => {
           (async () => {
