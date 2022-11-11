@@ -39,6 +39,11 @@ export const textPresets = StyleSheet.create({
     fontSize: sizeScale(12),
     color: '#000000',
   },
+  linkXXXSmall: {
+    fontFamily: FontDefault.primary,
+    fontSize: sizeScale(10),
+    color: '#000000',
+  },
   textMedium: {
     fontFamily: FontDefault.primary,
     fontSize: sizeScale(16),
@@ -69,6 +74,12 @@ export const textPresets = StyleSheet.create({
     fontFamily: FontDefault.primary,
     fontSize: sizeScale(12),
     color: '#FFFFFF',
+  },
+  textNormal15: {
+    fontFamily: FontDefault.primary,
+    fontSize: sizeScale(15),
+    color: '#FFFFFF',
+    fontWeight: '400',
   },
   textBold16: {
     fontFamily: FontDefault.primary,

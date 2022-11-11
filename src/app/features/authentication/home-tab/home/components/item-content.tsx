@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Block, Button, Image, LocalImage, Text } from '@components';
+import { Block, Button, Image, LocalImage, Spacer, Text } from '@components';
 import { Item } from '@model/content';
 import { navigate } from '@navigation/navigation-service';
 import { CONTENT_STACK } from '@navigation/screen-types';
@@ -12,35 +12,29 @@ export const ItemContent = ({ item }: { item: Item }) => {
   };
   // render
   return (
-    <Button.Default onPress={handleGoToContent}>
-      <Block
-        width={300}
-        height={200}
-        marginLeft={20}
-        borderBottomRightRadius={5}
-        borderBottomLeftRadius={5}>
-        {item.thumb ? (
-          <Image source={item.thumb} />
-        ) : (
-          <LocalImage
-            source={'banner'}
-            style={{
-              borderBottomLeftRadius: 5,
-              borderBottomRightRadius: 5,
-            }}
+    <Button.Default onPress={handleGoToContent} style={{ flex: 1 }}>
+      <Block block direction={'row'}>
+        <Block width={100} height={67} borderRadius={8} overflow="hidden">
+          {item.thumb ? (
+            <Image source={item.thumb} />
+          ) : (
+            <LocalImage source={'banner'} />
+          )}
+        </Block>
+        <Spacer width={15} />
+        <Block block justifyContent={'space-between'}>
+          <Text
+            preset="textNormal"
+            colorTheme="base5"
+            text={item.title}
+            numberOfLines={2}
           />
-        )}
-        <Block
-          width={300}
-          height={70}
-          position={'absolute'}
-          bottom={0}
-          alignItems="center"
-          justifyContent={'center'}
-          borderBottomLeftRadius={5}
-          borderBottomRightRadius={5}
-          colorTheme="content_gray">
-          <Text preset="textNormal" text={item.title} />
+          <Text
+            preset="linkXSmall"
+            colorTheme="base4"
+            text={item.title}
+            numberOfLines={1}
+          />
         </Block>
       </Block>
     </Button.Default>

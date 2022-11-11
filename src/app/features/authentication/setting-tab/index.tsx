@@ -6,7 +6,7 @@ import { Block, Button, Header, Spacer, StackView } from '@components';
 
 import { KeiaiList } from './components/keiaiList';
 
-import { ListRecommend } from '../home-tab/home/components/list-recommend';
+import { ListService } from '../home-tab/home/components/list-service';
 
 const SettingComponent = () => {
   // render
@@ -23,7 +23,7 @@ const SettingComponent = () => {
           <Button.Outline t18n="profile:inquiries" />
         </Block>
         <Spacer height={15} />
-        <ListRecommend />
+        <ListService />
       </StackView>
     </Block>
   );

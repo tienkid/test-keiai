@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useTranslation } from 'react-i18next';
 
+import { Block, Icon, Text } from '@components';
 import { ContentDetail } from '@features/authentication/content-tab/content-detail';
 import { ContentTab } from '@features/authentication/content-tab/content-screen';
 import { HomeTab } from '@features/authentication/home-tab/home';
@@ -12,7 +13,6 @@ import { SettingTab } from '@features/authentication/setting-tab';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from '@theme';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
   BOTTOM_TAB,
@@ -96,10 +96,10 @@ export const BottomTabScreen = () => {
     <BottomTab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.white,
+        tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: '#CCCCCC',
         tabBarStyle: {
-          backgroundColor: colors.primary,
+          backgroundColor: colors.white,
           paddingTop: 5,
         },
       }}>
@@ -107,7 +107,7 @@ export const BottomTabScreen = () => {
         options={{
           title: t('bottom_tab:home'),
           tabBarIcon: props => (
-            <Icon name={'home'} color={props.color} size={30} />
+            <Icon icon={'home'} color={props.color} size={30} />
           ),
         }}
         name={BOTTOM_TAB.TAB_HOME}
@@ -117,7 +117,7 @@ export const BottomTabScreen = () => {
         options={{
           title: t('bottom_tab:content'),
           tabBarIcon: props => (
-            <Icon name={'article'} color={props.color} size={30} />
+            <Icon icon={'content'} color={props.color} size={30} />
           ),
         }}
         name={BOTTOM_TAB.TAB_CONTENT}
@@ -125,23 +125,71 @@ export const BottomTabScreen = () => {
       />
       <BottomTab.Screen
         options={{
-          title: t('bottom_tab:point'),
+          title: '',
           tabBarIcon: props => (
-            <Icon name={'stars'} color={props.color} size={30} />
+            <Block
+              width={66}
+              height={66}
+              colorTheme="white"
+              shadow
+              borderRadius={33}
+              borderColor={colors.border}
+              borderWidth={0.5}
+              justifyContent="center"
+              zIndex={3}
+              middle>
+              <Block
+                width={56}
+                height={56}
+                colorTheme={props.focused ? 'primary' : 'border'}
+                justifyContent="center"
+                middle
+                zIndex={1}
+                borderRadius={28}>
+                <Icon
+                  icon={'home_search'}
+                  color={props.color}
+                  size={30}
+                  colorTheme="white"
+                />
+                <Text
+                  t18n="bottom_tab:my_home"
+                  preset="textXXSmall"
+                  colorTheme="white"
+                />
+              </Block>
+              <Block
+                position={'absolute'}
+                colorTheme="white"
+                width={80}
+                height={56}
+                bottom={-6}
+              />
+            </Block>
           ),
         }}
-        name={BOTTOM_TAB.TAB_POINT}
-        component={PointStackScreen}
+        name={BOTTOM_TAB.TAB_MY_HOME}
+        component={ContentStackScreen}
       />
       <BottomTab.Screen
         options={{
           title: t('bottom_tab:setting'),
           tabBarIcon: props => (
-            <Icon name={'build'} color={props.color} size={30} />
+            <Icon icon={'service'} color={props.color} size={30} />
           ),
         }}
         name={BOTTOM_TAB.TAB_SETTING}
         component={SettingStackScreen}
+      />
+      <BottomTab.Screen
+        options={{
+          title: t('bottom_tab:point'),
+          tabBarIcon: props => (
+            <Icon icon={'point'} color={props.color} size={30} />
+          ),
+        }}
+        name={BOTTOM_TAB.TAB_POINT}
+        component={PointStackScreen}
       />
     </BottomTab.Navigator>
   );
