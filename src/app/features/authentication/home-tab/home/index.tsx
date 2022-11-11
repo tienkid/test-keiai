@@ -1,11 +1,11 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import { RefreshControl } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
 import { dispatch } from '@common';
-import { Block, Header, LocalImage, StackView } from '@components';
-import { FocusedStatusBarStyle } from '@components/focused-status-bar';
+import { Block, Divider, Header, Spacer, StackView } from '@components';
+import { useUnMount } from '@hooks';
 import { BannerResponse } from '@model/banner';
 import { ContentResponse } from '@model/content';
 import {
@@ -15,10 +15,11 @@ import {
   pointAction,
 } from '@redux-slice';
 
-import { ButtonInfo } from './components/button-app-info';
 import { ButtonPoint } from './components/button-point';
-import { ListRecommend } from './components/list-recommend';
-import { SliderContent } from './components/slider-content';
+import { ListBanner } from './components/list-banner';
+import { ListContent } from './components/list-content';
+import { ListService } from './components/list-service';
+import { PointContent } from './components/point-content';
 
 const HomeComponent = () => {
   //func
@@ -46,26 +47,33 @@ const HomeComponent = () => {
   const onGetBannerSucceeded = (data: BannerResponse) => {
     console.log(data);
   };
+
   //effect
-  useEffect(() => {
+  useUnMount(() => {
     dispatch(pointAction.getPoint());
     getContent();
     getBanner();
-  }, []);
+  });
 
   // render
   return (
-    <Block block>
-      <FocusedStatusBarStyle barStyle={'light-content'} />
+    <Block block colorTheme="white">
       <Header />
-      <StackView refreshControl={<RefreshControl refreshing={false} />}>
-        <Block width={'100%'} height={200}>
-          <LocalImage source={'banner'} />
-        </Block>
+      <StackView
+        refreshControl={<RefreshControl refreshing={false} />}
+        style={{ flex: 1 }}>
+        <ListBanner />
+        <Spacer height={8} />
         <ButtonPoint />
-        <SliderContent />
-        <ButtonInfo />
-        <ListRecommend />
+        <Divider height={6} colorTheme="divider" />
+        {/* service */}
+        <ListService />
+        <Divider height={6} colorTheme="divider" />
+        {/* content */}
+        <ListContent />
+        <Divider height={6} colorTheme="divider" />
+        {/* point */}
+        <PointContent />
       </StackView>
     </Block>
   );

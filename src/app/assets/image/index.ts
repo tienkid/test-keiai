@@ -11,6 +11,8 @@ export const images = {
   term_policy: require('./source/term_policy.png'),
   item_content: require('./source/itemContent.png'),
   item_recommend: require('./source/itemRecomment.png'),
+  ic_logo: require('./source/logo.png'),
+  logo_point: require('./source/logo_point.png'),
 };
 
 export type ImageTypes = keyof typeof images;

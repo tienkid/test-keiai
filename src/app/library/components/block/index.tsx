@@ -91,14 +91,13 @@ export const Block = forwardRef(
         borderColorTheme && { borderColor: theme.colors[borderColorTheme] },
         middle && { alignItems: 'center' },
         shadow && {
-          shadowColor: '#000',
+          shadowColor: '#00000090',
           shadowOffset: {
             width: 0,
             height: 2,
           },
           shadowOpacity: 0.25,
           shadowRadius: 3.84,
-
           elevation: 5,
           ...shadowConfig,
         },

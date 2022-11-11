@@ -1,13 +1,15 @@
 import React, { useCallback } from 'react';
-import { FlatList, Linking, TouchableWithoutFeedback } from 'react-native';
+import { FlatList, Linking } from 'react-native';
 
-import { Block, Button, Divider, Text } from '@components';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { Block, Button, Icon, LocalImage, Spacer, Text } from '@components';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@theme';
 
 import { dataMenu } from './data';
 import { navigate } from './navigation-service';
-import { HOME_STACK } from './screen-types';
+import { BOTTOM_TAB, HOME_STACK } from './screen-types';
 import { ItemDrawer, ListRenderDrawer } from './type';
 
 import { dispatch } from '../common/redux';
@@ -16,16 +18,20 @@ import { appActions } from '../redux/action-slice/app';
 const CustomDrawer = () => {
   const navigation = useNavigation();
   const { colors } = useTheme();
+  const { bottom, top } = useSafeAreaInsets();
 
   const handleRouteDrawer = (item: ItemDrawer) => {
     switch (item.id) {
+      case 0:
+        navigate(BOTTOM_TAB.TAB_HOME);
+        break;
       case 3:
         navigate(HOME_STACK.NOTIFY);
         break;
-      case 7:
+      case 8:
         console.log('waiting...');
         break;
-      case 8:
+      case 9:
         dispatch(appActions.logout());
         break;
       default:
@@ -34,40 +40,40 @@ const CustomDrawer = () => {
     }
     navigation.dispatch(DrawerActions.closeDrawer());
   };
-  const handleHideDrawer = () => {
-    navigation.dispatch(DrawerActions.closeDrawer());
-  };
+
   const keyExtractor = useCallback(item => item.id, []);
   const renderItem = ({ item }: ListRenderDrawer) => {
     return (
-      <Button.Default
-        style={{ alignItems: 'flex-end', paddingVertical: 7 }}
-        onPress={() => handleRouteDrawer(item)}>
-        <Text
-          preset="textBold16"
-          colorTheme="base5"
-          fontWeight={'700'}
-          text={item.content}
-        />
+      <Button.Default onPress={() => handleRouteDrawer(item)}>
+        <Block direction={'row'} middle>
+          <Icon icon={item.icon} />
+          <Spacer width={5} />
+          <Text
+            preset="linkSmall"
+            colorTheme="base5"
+            textAlign={'left'}
+            fontWeight={'400'}
+            text={item.content}
+          />
+        </Block>
+        <Spacer height={item.id === 0 || item.id === 6 ? 20 : 0} />
       </Button.Default>
     );
   };
   const itemSeparator = () => {
-    return <Divider />;
+    return <Spacer height={20} />;
   };
   // render
   return (
     <Block block>
-      <TouchableWithoutFeedback onPress={handleHideDrawer}>
-        <Block height={90} />
-      </TouchableWithoutFeedback>
       <Block
-        flex={1}
+        block
+        paddingTop={top}
+        paddingBottom={bottom * 2 + 30}
         color={colors.white}
-        paddingVertical={10}
-        paddingHorizontal={10}
-        borderRadius={5}>
-        <Block>
+        alignItems={'flex-start'}>
+        <Block paddingLeft={50}>
+          <Spacer height={70} />
           <FlatList
             data={dataMenu}
             keyExtractor={keyExtractor}
@@ -77,11 +83,16 @@ const CustomDrawer = () => {
             ItemSeparatorComponent={itemSeparator}
           />
         </Block>
-        <Block alignItems={'flex-end'} paddingTop={10}>
+        <Block paddingTop={10} alignSelf={'center'}>
+          <LocalImage
+            source="logo"
+            style={{ height: 24 }}
+            resizeMode="contain"
+          />
           <Text
-            preset="textBold16"
-            colorTheme="base4"
-            text={'バージョン：1.0.0'}
+            preset="linkXXXSmall"
+            colorTheme="border"
+            text={'バージョン 1.5.2'}
           />
         </Block>
       </Block>

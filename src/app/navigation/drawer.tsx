@@ -18,8 +18,6 @@ export const DrawerNavigator = () => {
         headerShown: false,
         drawerStyle: {
           backgroundColor: 'transparent',
-          width: 260,
-          height: 500,
         },
         drawerPosition: 'right',
         drawerStatusBarAnimation: 'slide',

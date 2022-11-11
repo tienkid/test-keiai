@@ -26,6 +26,7 @@ export const ColorDefault = {
   white_bg: 'rgb(255, 255, 255)',
   baseCheckBox: '#828282',
   secondary: '#F03333',
+  divider: '#F5F5F5',
 };
 export const ColorDark = {
   primary: '#F03333',
@@ -43,7 +44,7 @@ export const ColorDark = {
   base2: '#707070',
   base3: '#F2F2F2',
   base4: '#C4C4C4',
-  base5: '#4C4C4C',
+  base5: '#4A4A4A',
   base6: '#4C4C4C44',
   base7: '#333333',
   base8: '#0066D2',
@@ -55,4 +56,5 @@ export const ColorDark = {
   white_bg: 'rgb(255, 255, 255)',
   baseCheckBox: '#828282',
   secondary: '#F03333',
+  divider: '#F5F5F5',
 };
