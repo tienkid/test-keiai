@@ -5,7 +5,17 @@ export type LoginResponse = {
   accessToken: string;
   refreshToken: string;
 };
+export type OTPLogin = {
+  refresh_token: string;
+  result: string;
+  token: string;
+};
 
+export type DataOTP = {
+  token: string;
+  refresh_token: string;
+  data: OTPLogin;
+};
 export interface User {
   id: string;
   firstName: string;

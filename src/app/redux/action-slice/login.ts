@@ -1,4 +1,8 @@
-import { FormLoginType } from '@model/authentication';
+import {
+  FormGetCodeType,
+  FormLoginType,
+  FormSetCodeType,
+} from '@model/authentication';
 import * as Action from '@redux-action-type/login';
 import { createAction } from '@reduxjs/toolkit';
 
@@ -7,6 +11,24 @@ const login = createAction(Action.LOGIN, (body: FormLoginType) => ({
     body,
   },
 }));
+
+const getCodeLogin = createAction(
+  Action.GET_CODE_LOGIN,
+  (body: FormGetCodeType) => ({
+    payload: {
+      body,
+    },
+  }),
+);
+
+const OTPCodeLogin = createAction(
+  Action.OTP_CODE_LOGIN,
+  (body: FormSetCodeType) => ({
+    payload: {
+      body,
+    },
+  }),
+);
 
 const logout = createAction(
   Action.LOGOUT,
@@ -17,4 +39,4 @@ const logout = createAction(
   }),
 );
 
-export const loginActions = { login, logout };
+export const loginActions = { login, logout, getCodeLogin, OTPCodeLogin };
