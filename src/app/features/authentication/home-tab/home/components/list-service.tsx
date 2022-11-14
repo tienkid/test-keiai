@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { Block, Icon, ListView, Spacer, Text } from '@components';
+import { Block, Icon, Spacer, Text } from '@components';
 
 import { ItemService } from './item-service';
 
@@ -35,16 +35,9 @@ export const ListService = () => {
   ];
 
   //func
-  const renderItemService = useCallback(
-    ({ item, index }: { item: any; index: number }) => {
-      return <ItemService key={index.toString()} item={item} index={index} />;
-    },
-    [],
-  );
-  const keyExtractor = (item: any) => item.id.toString();
-  const renderSeparator = () => {
-    return <Spacer height={8} />;
-  };
+  const renderItemService = useCallback((item: any, index: number) => {
+    return <ItemService key={index.toString()} item={item} index={index} />;
+  }, []);
 
   // render
   return (
@@ -74,15 +67,9 @@ export const ListService = () => {
         t18n="home:text_services_content"
       />
       <Spacer height={15} />
-      <ListView
-        numColumns={2}
-        data={dataFake.slice(0, 4)}
-        canRefresh={false}
-        ItemSeparatorComponent={renderSeparator}
-        renderItem={renderItemService}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={keyExtractor}
-      />
+      <Block direction="row" flexWrap="wrap">
+        {dataFake.slice(0, 4).map(renderItemService)}
+      </Block>
     </Block>
   );
 };

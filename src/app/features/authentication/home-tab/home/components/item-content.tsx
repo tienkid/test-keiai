@@ -37,6 +37,7 @@ export const ItemContent = ({ item }: { item: Item }) => {
           />
         </Block>
       </Block>
+      <Spacer height={16} />
     </Button.Default>
   );
 };

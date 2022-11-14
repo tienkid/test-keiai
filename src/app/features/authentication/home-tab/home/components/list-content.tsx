@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react';
-import { ListRenderItemInfo } from 'react-native';
 
-import { Block, Icon, ListView, Spacer, Text } from '@components';
-import { Item } from '@model/content';
+import { Block, Icon, Spacer, Text } from '@components';
 
 import { ItemContent } from './item-content';
 
@@ -39,16 +37,9 @@ export const ListContent = () => {
   // const contents = useSelector(x => x.app.contents);
 
   //func
-  const renderItemContent = useCallback(
-    ({ item }: ListRenderItemInfo<Item>) => {
-      return <ItemContent item={item} key={item.id} />;
-    },
-    [],
-  );
-  const keyExtractor = (item: any) => item.id.toString();
-  const renderSeparator = () => {
-    return <Spacer height={16} />;
-  };
+  const renderItemContent = useCallback((item: any) => {
+    return <ItemContent item={item} key={item.id} />;
+  }, []);
 
   // render
   return (
@@ -74,14 +65,17 @@ export const ListContent = () => {
         t18n="home:text_posts_content"
       />
       <Spacer height={15} />
-      <ListView
+      {/* <ListView
+        overScrollMode={'never'}
+        scrollEnabled={false}
         data={dataFake.slice(0, 5)}
         canRefresh={false}
         ItemSeparatorComponent={renderSeparator}
         renderItem={renderItemContent}
         showsVerticalScrollIndicator={false}
         keyExtractor={keyExtractor}
-      />
+      /> */}
+      {dataFake.slice(0, 5).map(renderItemContent)}
     </Block>
   );
 };

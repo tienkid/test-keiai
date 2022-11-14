@@ -1,4 +1,5 @@
 import React from 'react';
+import { useWindowDimensions } from 'react-native';
 
 import { Block, Button, LocalImage, Spacer, Text } from '@components';
 
@@ -7,9 +8,11 @@ export type ItemServiceProps = {
   index: number;
 };
 export const ItemService = ({ item, index }: ItemServiceProps) => {
+  //state
+  const { width } = useWindowDimensions();
   // render
   return (
-    <Button.Default style={{ flex: 1 }}>
+    <Button.Default style={{ width: (width - 38) / 2 }}>
       <Block direction={'row'}>
         {index % 2 !== 0 && <Spacer width={4} />}
         <Block block>
@@ -24,6 +27,7 @@ export const ItemService = ({ item, index }: ItemServiceProps) => {
         </Block>
         {index % 2 === 0 && <Spacer width={4} />}
       </Block>
+      <Spacer height={8} />
     </Button.Default>
   );
 };
