@@ -40,6 +40,7 @@ export const ListBanner = () => {
     <Block>
       <Spacer height={8} />
       <SwiperFlatList
+        // scrollEnabled={false}
         autoplay
         autoplayDelay={3}
         autoplayLoop
