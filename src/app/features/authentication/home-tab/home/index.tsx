@@ -5,9 +5,10 @@ import isEqual from 'react-fast-compare';
 
 import { dispatch } from '@common';
 import { Block, Divider, Header, Spacer, StackView } from '@components';
-import { useUnMount } from '@hooks';
+import { useSelector, useUnMount } from '@hooks';
 import { BannerResponse } from '@model/banner';
 import { ContentResponse } from '@model/content';
+import { useFocusEffect } from '@react-navigation/native';
 import {
   appActions,
   bannerAction,
@@ -23,6 +24,8 @@ import { PointContent } from './components/point-content';
 
 const HomeComponent = () => {
   //func
+  const profile = useSelector(x => x.app.profile);
+  console.log(profile, 'profile Home');
   const getContent = () => {
     dispatch(
       contentAction.getContent(
@@ -36,6 +39,8 @@ const HomeComponent = () => {
   };
 
   const onGetContentSucceeded = (data: ContentResponse) => {
+    // console.log(data, 'dataaaaaa');
+
     dispatch(appActions.setContents(data));
   };
   const getBanner = () => {
@@ -49,9 +54,17 @@ const HomeComponent = () => {
   };
 
   //effect
+
+  //13t0lka3fjh6qsqbd709ig7e74
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getContent();
+    }, []),
+  );
+
   useUnMount(() => {
     dispatch(pointAction.getPoint());
-    getContent();
     getBanner();
   });
 

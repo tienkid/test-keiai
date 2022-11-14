@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { StyleSheet } from 'react-native';
 
-import { CHECK_VERIFY, dispatch, getState } from '@common';
+import { dispatch, getState } from '@common';
 import { RESULT_CODE_PUSH_OUT, TIME_OUT } from '@config/api';
 import { ENVConfig } from '@config/env';
 import { ParamsNetwork, ResponseBase } from '@config/type';
 import { AppState } from '@model/app';
 import { appActions } from '@redux-slice';
-import { saveString } from '@utils/storage';
 import { Auth } from 'aws-amplify';
 import Axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
@@ -58,12 +57,11 @@ AxiosInstance.interceptors.response.use(
 async function refreshToken() {
   return Auth.currentSession()
     .then(() => {
-      // console.log('Refresh token ss');
+      console.log('Refresh token ss');
       return null;
     })
     .catch(err => {
       console.log('Refresh token error', { err });
-      saveString(CHECK_VERIFY, 'true');
       return null;
     });
 }
@@ -100,7 +98,7 @@ function Request<T = Record<string, unknown>>(
   return new Promise<ResponseBase<T> | null>(rs => {
     AxiosInstance.request(StyleSheet.flatten([defaultConfig, config]))
       .then((res: AxiosResponse<T>) => {
-        console.log(111111, res);
+        // console.log(111111, res);
         const result = handleResponseAxios(res);
         rs(result as ResponseBase);
       })

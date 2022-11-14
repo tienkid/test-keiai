@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListRenderItemInfo, useWindowDimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
@@ -13,8 +13,8 @@ export const ListBanner = () => {
   const colors = ['tomato', 'thistle', 'skyblue', 'teal'];
 
   //func
-  const renderItem = ({ item }: ListRenderItemInfo<string>) => {
-    console.log(item);
+  //{ item }: ListRenderItemInfo<string>
+  const renderItem = () => {
     return (
       <Block
         height={200}

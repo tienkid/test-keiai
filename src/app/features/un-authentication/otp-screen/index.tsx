@@ -2,12 +2,14 @@ import React, { memo, useCallback } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { dispatch, numberToCountryCode } from '@common';
+import { CHECK_VERIFY, dispatch, numberToCountryCode } from '@common';
 import { Block, WrapperBackground } from '@components';
 // import { navigate } from '@navigation/navigation-service';
 // import { APP_SCREEN } from '@navigation/screen-types';
 import { useSelector } from '@hooks';
-import { appActions, registerActions } from '@redux-slice';
+import { FormSetCodeType } from '@model/authentication';
+import { appActions, loginActions, registerActions } from '@redux-slice';
+import { loadString } from '@utils/storage';
 import { mapsDataRequest } from '@validate/information';
 import { Auth } from 'aws-amplify';
 
@@ -16,6 +18,8 @@ import { FormRegisterOTPType } from './type';
 
 const OTPComponent = () => {
   const dataProfile = useSelector(x => x.app.registerData);
+  const checkVerify = loadString(CHECK_VERIFY);
+  const profile = useSelector(x => x.app.profile);
 
   //function
   const onSubmitSucceeded = useCallback(async () => {
@@ -30,15 +34,23 @@ const OTPComponent = () => {
 
   const handleSubmit = useCallback(
     (data: FormRegisterOTPType) => {
-      const dataMaps = mapsDataRequest(dataProfile);
-      dispatch(
-        registerActions.confirm(
-          { ...dataMaps, code: data.code },
-          onSubmitSucceeded,
-        ),
-      );
+      if (checkVerify) {
+        const dataPush: FormSetCodeType = {
+          code: data.code,
+          phone: profile.phone_number,
+        };
+        dispatch(loginActions.OTPCodeLogin(dataPush));
+      } else {
+        const dataMaps = mapsDataRequest(dataProfile);
+        dispatch(
+          registerActions.confirm(
+            { ...dataMaps, code: data.code },
+            onSubmitSucceeded,
+          ),
+        );
+      }
     },
-    [dataProfile, onSubmitSucceeded],
+    [checkVerify, dataProfile, onSubmitSucceeded, profile.phone_number],
   );
 
   // render

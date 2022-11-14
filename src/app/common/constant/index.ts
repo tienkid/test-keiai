@@ -2,7 +2,9 @@ export const STORAGE_KEY_TOKEN = 'TOKEN';
 export const STORAGE_KEY_REFRESH_TOKEN = 'STORAGE_KEY_REFRESH_TOKEN';
 export const STORAGE_KEY_APP_THEME = 'APP_THEME';
 export const CHECK_VERIFY = 'CHECK_VERIFY';
+export const NON_REFRESH = 'NON_REFRESH';
 export const STORAGE_KEY_PROFILE = 'STORAGE_KEY_PROFILE';
+export const TIME_REFRESH = 1;
 export const KANA_FULL_HALF_MAP = {
   ガ: 'ｶﾞ',
   ギ: 'ｷﾞ',

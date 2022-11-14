@@ -76,7 +76,7 @@ const appSlice = createSlice({
     },
     logout: state => {
       state.token = undefined;
-      state.profile = {};
+      // state.profile = {};
       remove(STORAGE_KEY_TOKEN);
     },
   },
