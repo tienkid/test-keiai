@@ -2,7 +2,12 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { dispatch, NON_REFRESH, TIME_REFRESH } from '@common';
+import {
+  dispatch,
+  NON_REFRESH,
+  numberToCountryCode,
+  TIME_REFRESH,
+} from '@common';
 import { Block, Trouble, WrapperBackground } from '@components';
 import {
   handleHideModalLoading,
@@ -26,8 +31,9 @@ const LoginComponent = () => {
   // function
   const onSubmit = async (data: FormLoginType) => {
     handleShowModalLoading();
+    const phoneNumber = numberToCountryCode(data.phoneNumber);
     try {
-      const res = await Auth.signIn(data.phoneNumber, data.password);
+      const res = await Auth.signIn(phoneNumber, data.password);
       if (!checkRefresh) {
         const timeExpiredRefreshToken = moment(today)
           .add(TIME_REFRESH, 'd')
