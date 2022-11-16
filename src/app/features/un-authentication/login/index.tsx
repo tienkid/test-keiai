@@ -2,7 +2,12 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { dispatch, NON_REFRESH, TIME_REFRESH } from '@common';
+import {
+  dispatch,
+  NON_REFRESH,
+  numberToCountryCode,
+  TIME_REFRESH,
+} from '@common';
 import { Block, Trouble, WrapperBackground } from '@components';
 import {
   handleHideModalLoading,
@@ -22,12 +27,15 @@ import { FormLogin } from './components/form-login';
 const LoginComponent = () => {
   const refreshToken = useSelector(x => x.app.refreshToken);
   const checkRefresh = loadString(NON_REFRESH);
+  console.log(checkRefresh, 'checkRefresh');
+
   const today = moment(new Date()).format('YYYY-MM-DD');
   // function
   const onSubmit = async (data: FormLoginType) => {
     handleShowModalLoading();
+    const phoneNumber = numberToCountryCode(data.phoneNumber);
     try {
-      const res = await Auth.signIn(data.phoneNumber, data.password);
+      const res = await Auth.signIn(phoneNumber, data.password);
       if (!checkRefresh) {
         const timeExpiredRefreshToken = moment(today)
           .add(TIME_REFRESH, 'd')
@@ -44,7 +52,9 @@ const LoginComponent = () => {
         const expired = moment(checkRefresh).format('YYYY-MM-DD');
         const diff = moment.duration(moment(expired).diff(moment(today)));
         const days = diff.days();
-        if (days === 0) {
+        console.log(days, 'days');
+
+        if (days <= 0) {
           navigate(APP_SCREEN.REGISTER);
         } else {
           dispatch(
