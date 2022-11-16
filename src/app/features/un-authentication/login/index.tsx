@@ -27,6 +27,8 @@ import { FormLogin } from './components/form-login';
 const LoginComponent = () => {
   const refreshToken = useSelector(x => x.app.refreshToken);
   const checkRefresh = loadString(NON_REFRESH);
+  console.log(checkRefresh, 'checkRefresh');
+
   const today = moment(new Date()).format('YYYY-MM-DD');
   // function
   const onSubmit = async (data: FormLoginType) => {
@@ -50,7 +52,9 @@ const LoginComponent = () => {
         const expired = moment(checkRefresh).format('YYYY-MM-DD');
         const diff = moment.duration(moment(expired).diff(moment(today)));
         const days = diff.days();
-        if (days === 0) {
+        console.log(days, 'days');
+
+        if (days <= 0) {
           navigate(APP_SCREEN.REGISTER);
         } else {
           dispatch(
