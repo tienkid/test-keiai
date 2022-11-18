@@ -14,7 +14,7 @@ export const InformationProfileStep2 = () => {
   const dataProfile = useSelector(x => x.app.registerData);
 
   const handleSubmit = useCallback(() => {
-    navigate(APP_SCREEN.REGISTER);
+    navigate(APP_SCREEN.REGISTER, {});
   }, []);
 
   const handleBackStep = () => {

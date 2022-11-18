@@ -28,19 +28,20 @@ takeLatestListeners(true)({
 
 takeLatestListeners(true)({
   actionCreator: loginActions.getCodeLogin,
-  effect: async (action, _listenerApi) => {
+  effect: async (action, listenerApi) => {
     const { body } = action.payload;
-    const response = await NetWorkService.Post<LoginResponse>({
+    const response = await NetWorkService.Post<any>({
       url: ApiConstants.GET_CODE_LOGIN,
       body,
     });
     if (!response) {
       return;
     }
-    console.log(response, 'response');
 
     if (handleErrorResponse(response)) {
       // TODO
+      console.log(response?.data.session, 'response');
+      listenerApi.dispatch(appActions.saveSession(response?.data.session));
       navigate(APP_SCREEN.OTP_SCREEN);
     }
   },

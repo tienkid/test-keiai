@@ -53,9 +53,8 @@ const LoginComponent = () => {
         const diff = moment.duration(moment(expired).diff(moment(today)));
         const days = diff.days();
         console.log(days, 'days');
-
         if (days <= 0) {
-          navigate(APP_SCREEN.REGISTER);
+          navigate(APP_SCREEN.REGISTER, { type: 'reLogin' });
         } else {
           dispatch(
             appActions.setToken({
