@@ -2,31 +2,32 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { CHECK_VERIFY, dispatch, numberToCountryCode } from '@common';
+import { dispatch, numberToCountryCode } from '@common';
 import { Block, WrapperBackground } from '@components';
 import { CopyRight } from '@components/copy-right';
 import { useSelector } from '@hooks';
 import { FormGetCodeType } from '@model/authentication';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
+import { useRoute } from '@react-navigation/native';
 import { loginActions, registerActions } from '@redux-slice';
-import { loadString } from '@utils/storage';
 
 import { FormRegister } from './components/form-register';
+import { RegisterProps } from './type';
 
 const RegisterComponent = () => {
   //state
   const register = useSelector(x => x.app.registerData);
   const profile = useSelector(x => x.app.profile);
   console.log(profile, 'profile');
-
-  const checkVerify = loadString(CHECK_VERIFY);
+  const route = useRoute<RegisterProps['route']>();
+  const { type } = route.params;
 
   //function
   const handleSubmit = () => {
-    if (checkVerify) {
+    if (type) {
       const data: FormGetCodeType = {
-        mode: 'background_refesh',
+        mode: 'background_refresh',
         phone: profile?.phone_number,
       };
       dispatch(loginActions.getCodeLogin(data));

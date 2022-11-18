@@ -51,7 +51,7 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.INFORMATION_PROFILE_STEP2]: undefined;
   [APP_SCREEN.MODAL_SELECTED_COUNTY]: { type: MODAL_SELECTED_COUNTRY_TYPE };
   [APP_SCREEN.LOGIN]: undefined;
-  [APP_SCREEN.REGISTER]: undefined;
+  [APP_SCREEN.REGISTER]: { type?: string };
   [APP_SCREEN.SPLASH]: undefined;
   [APP_SCREEN.OTP_SCREEN]: undefined;
 };

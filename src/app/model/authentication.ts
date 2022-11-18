@@ -11,6 +11,7 @@ export type FormGetCodeType = {
 export type FormSetCodeType = {
   code: string;
   phone: string;
+  session: string | undefined;
 };
 
 export interface AuthenticationState {

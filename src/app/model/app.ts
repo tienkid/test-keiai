@@ -21,6 +21,8 @@ export interface AppState {
 
   point: number;
 
+  sessionID: string | undefined;
+
   contents: ContentResponse;
 }
 

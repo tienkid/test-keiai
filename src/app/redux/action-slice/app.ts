@@ -17,6 +17,7 @@ const initialAppState: AppState = {
   token: undefined,
   refreshToken: undefined,
   registerData: undefined,
+  sessionID: undefined,
   /**
    * default true to load app
    */
@@ -78,6 +79,11 @@ const appSlice = createSlice({
       state.token = undefined;
       // state.profile = {};
       remove(STORAGE_KEY_TOKEN);
+    },
+    saveSession: (state, { payload }) => {
+      console.log(payload);
+
+      state.sessionID = payload;
     },
   },
 });

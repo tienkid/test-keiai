@@ -4,6 +4,7 @@ import { handleErrorResponse, onCheckType } from '@common';
 import { takeLatestListeners } from '@listener';
 import { ApiConstants, NetWorkService } from '@networking';
 
+import { appActions } from '../action-slice/app';
 import { registerActions } from '../action-slice/register';
 
 takeLatestListeners(true)({

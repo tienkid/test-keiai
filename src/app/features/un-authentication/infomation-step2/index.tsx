@@ -15,7 +15,7 @@ export const InformationProfileStep2 = () => {
 
   //function
   const handleSubmit = () => {
-    navigate(APP_SCREEN.REGISTER);
+    navigate(APP_SCREEN.REGISTER, {});
   };
 
   const handleBackStep = () => {
