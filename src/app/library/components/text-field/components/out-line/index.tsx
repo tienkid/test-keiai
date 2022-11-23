@@ -13,7 +13,7 @@ import Animated, {
   useDerivedValue,
 } from 'react-native-reanimated';
 
-import { onCheckType } from '@common';
+import { enhance, onCheckType } from '@common';
 import { Spacer } from '@components/spacer';
 import { textPresets } from '@components/text/preset';
 import { useTheme } from '@theme';
@@ -124,6 +124,11 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
     [placeholder, placeholderT18n, t],
   );
 
+  const wrapInput = useMemo(
+    () => enhance([styles.input, textPresets.textNormal, inputStyleOverwrite]),
+    [inputStyleOverwrite, styles.input],
+  );
+
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     borderColor: borderColor.value,
   }));
@@ -153,7 +158,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
                 t18n={placeholderT18n}
                 text={placeHolder}
                 color={placeholderColor}
-                preset={'linkMedium'}
+                preset={'textNormal'}
               />
             </View>
           )}
@@ -164,11 +169,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
               autoCorrect={false}
               editable={!disabled}
               clearButtonMode={'never'}
-              style={[
-                styles.input,
-                textPresets.linkMedium,
-                inputStyleOverwrite,
-              ]}
+              style={[wrapInput]}
               ref={ref}
               onSubmitEditing={onSubmit}
               {...rest}

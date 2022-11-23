@@ -3,15 +3,7 @@ import { View } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 
-import {
-  Block,
-  Button,
-  CopyRight,
-  ParsedText,
-  RowItem,
-  Spacer,
-  Text,
-} from '@components';
+import { Block, Button, ParsedText, RowItem, Spacer } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 
 import { styles } from '../style';
@@ -20,23 +12,23 @@ import { ListPreviewProps } from '../type';
 export const ListPreview = ({
   informationPreview,
   onSubmit,
-  onBackStep,
 }: ListPreviewProps) => {
   // state
   const [t] = useTranslation();
 
   // func
-
   const onSubmitPreview = () => {
     onSubmit();
   };
+
   // render
   return (
     <View>
-      <Block paddingHorizontal={20}>
-        <Block alignSelf={'center'} marginBottom={38} marginTop={40}>
+      <Block paddingHorizontal={15}>
+        <Block alignSelf={'center'}>
           <ParsedText
-            preset="textXXSmall"
+            preset="textXSmall"
+            colorTheme="base5"
             parse={[
               {
                 pattern: /\[([^:]+):1\]/i,
@@ -47,6 +39,7 @@ export const ListPreview = ({
             {t('information_profile:check_content')}
           </ParsedText>
         </Block>
+        <Spacer height={35} />
         <RowItem
           title="information_profile:contact"
           value={informationPreview?.contact}
@@ -60,12 +53,9 @@ export const ListPreview = ({
           title="information_profile:your_name_1"
           value={`${informationPreview?.furigana_first_name} ${informationPreview?.furigana_last_name}`}
         />
+        <RowItem title="field:zip_code" value={informationPreview?.zip_code} />
         <RowItem
-          title="information_profile:zip_code"
-          value={informationPreview?.zip_code}
-        />
-        <RowItem
-          title="information_profile:address"
+          title="information_profile:address_home"
           value={`${informationPreview?.country}${informationPreview?.city}${informationPreview?.name_address}${informationPreview?.building_name}`}
         />
         <RowItem
@@ -76,25 +66,17 @@ export const ListPreview = ({
           title="information_profile:email"
           value={informationPreview?.email}
         />
-        <Spacer height={34} />
-        <Button.Primary
-          t18n="information_profile:btn_step_2"
-          style={{ borderRadius: 8 }}
-          textColorTheme={'white'}
-          onPress={onSubmitPreview}
-        />
-        <Spacer height={34} />
-        <Button.Default onPress={onBackStep}>
-          <Text
-            t18n="information_profile:back"
-            colorTheme="base8"
-            preset="textSmall"
-            center
+        <Spacer height={50} />
+        <Block middle>
+          <Button.Primary
+            t18n="information_profile:btn_step_2"
+            textColorTheme={'white'}
+            onPress={onSubmitPreview}
           />
-        </Button.Default>
-        <Spacer height={53} />
+        </Block>
+
+        <Spacer height={60} />
       </Block>
-      <CopyRight isJustCopyRight />
     </View>
   );
 };

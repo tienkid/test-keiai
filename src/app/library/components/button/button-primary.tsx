@@ -22,6 +22,7 @@ export const ButtonPrimary = (props: ButtonProps) => {
     preset = 'primary',
     textColor = 'white',
     buttonColorTheme = 'primary',
+    width = 250,
     ...rest
   } = props;
   const theme = useTheme();
@@ -33,12 +34,13 @@ export const ButtonPrimary = (props: ButtonProps) => {
         backgroundColor: buttonColorTheme
           ? theme.colors[buttonColorTheme]
           : buttonColor,
+        width: width,
       },
       disabled && {
         backgroundColor: theme.colors.border,
       },
     ],
-    [buttonColor, buttonColorTheme, disabled, theme.colors],
+    [buttonColor, buttonColorTheme, disabled, theme.colors, width],
   );
 
   // render

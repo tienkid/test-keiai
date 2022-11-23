@@ -33,7 +33,7 @@ export interface TwoHalfInputProps {
 export interface ListPreviewProps {
   informationPreview: FormInformationProfileType;
   // currentHeight: number | null;
-  onBackStep: () => void;
+  // onBackStep: () => void;
   onSubmit: (data?: FormInformationProfileType) => void;
   // onGetHeight: (height: number, step: StepType) => void;
 }

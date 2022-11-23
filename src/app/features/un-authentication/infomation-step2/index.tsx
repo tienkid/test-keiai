@@ -1,13 +1,13 @@
 // import { handleShowModalLoading } from '@components/modal-loading';
 import React from 'react';
 
+import { WrapperBackground } from '@components';
 import { useSelector } from '@hooks';
 import { FormInformationProfileType } from '@model/information';
-import { goBack, navigate } from '@navigation/navigation-service';
+import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 
 import { ListPreview } from '../information/components/list-preview';
-import { WrapperSteps } from '../information/components/wrapper-steps';
 
 export const InformationProfileStep2 = () => {
   // state
@@ -18,18 +18,16 @@ export const InformationProfileStep2 = () => {
     navigate(APP_SCREEN.REGISTER, {});
   };
 
-  const handleBackStep = () => {
-    goBack();
-  };
-
   // render
   return (
-    <WrapperSteps title={'information_profile:step_1_title'}>
+    <WrapperBackground
+      canBack
+      headerTitleT18n="login:register_member"
+      isHiddenLogo>
       <ListPreview
         informationPreview={dataProfile as FormInformationProfileType}
-        onBackStep={handleBackStep}
         onSubmit={handleSubmit}
       />
-    </WrapperSteps>
+    </WrapperBackground>
   );
 };

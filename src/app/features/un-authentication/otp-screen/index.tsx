@@ -66,7 +66,9 @@ const OTPComponent = () => {
   // render
   return (
     <Block block>
-      <WrapperBackground titleT18n="register:title">
+      <WrapperBackground
+        titleT18n="register:header_text"
+        headerTitleT18n="login:register_member">
         <FormOTP onSubmit={handleSubmit} />
       </WrapperBackground>
     </Block>

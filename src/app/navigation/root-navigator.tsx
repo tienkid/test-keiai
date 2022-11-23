@@ -12,6 +12,7 @@ import { Login } from '@features/un-authentication/login';
 import { OTPScreen } from '@features/un-authentication/otp-screen';
 import { Register } from '@features/un-authentication/register';
 // import { WelcomeScreen } from '@features/un-authentication/welcome';
+import { WelcomeScreen } from '@features/un-authentication/welcome';
 import { useSelector } from '@hooks';
 import { AppModule } from '@native-module';
 import { APP_SCREEN, RootStackParamList } from '@navigation/screen-types';
@@ -53,10 +54,10 @@ export const RootNavigation = () => {
             name={APP_SCREEN.AUTHORIZE}
             component={DrawerNavigator}
           /> */}
-          {/* <RootStack.Screen
+          <RootStack.Screen
             name={APP_SCREEN.WELCOME}
             component={WelcomeScreen}
-          /> */}
+          />
           <RootStack.Screen name={APP_SCREEN.LOGIN} component={Login} />
           <RootStack.Screen name={APP_SCREEN.REGISTER} component={Register} />
           <RootStack.Screen

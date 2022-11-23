@@ -7,9 +7,10 @@ import { FontDefault } from '@theme/typography';
 export const stylesView = StyleSheet.create({
   primary: {
     borderRadius: sizeScale(30),
-    paddingVertical: sizeScale(18),
-    backgroundColor: ColorDefault.primary,
+    height: 40,
     alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: ColorDefault.primary,
   },
 
   outline: {
@@ -25,12 +26,13 @@ export const stylesView = StyleSheet.create({
 
 export const stylesText = StyleSheet.create({
   primary: {
-    fontSize: sizeScale(16),
+    fontSize: sizeScale(15),
+    fontWeight: '400',
     fontFamily: FontDefault.primary,
   },
-
   outline: {
-    fontSize: sizeScale(16),
+    fontSize: sizeScale(15),
+    fontWeight: '400',
     fontFamily: FontDefault.primary,
   },
   default: {},

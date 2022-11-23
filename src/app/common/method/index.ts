@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Alert, Platform } from 'react-native';
+import { Alert, Platform, StyleSheet } from 'react-native';
 
 import { handleShowModalError } from '@components';
 import { ERROR_NETWORK_CODE } from '@config/api';
@@ -35,6 +35,10 @@ export const onCheckType = (
 };
 export const checkKeyInObject = (T: Record<string, unknown>, key: string) => {
   return Object.keys(T).includes(key);
+};
+
+export const enhance = <T>(arrStyle: Array<T>) => {
+  return StyleSheet.flatten<T>(arrStyle);
 };
 
 export const propsToStyle = <T = Record<string, number | string>>(

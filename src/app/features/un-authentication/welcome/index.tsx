@@ -8,12 +8,12 @@ import {
   ParsedText,
   Spacer,
   Text,
-  Trouble,
   WrapperBackground,
 } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
+import { useTheme } from '@theme';
 
 import { useWelcomeStyle } from './style';
 
@@ -21,32 +21,50 @@ export const WelcomeScreen = () => {
   // state
   const [t] = useTranslation();
   const styles = useWelcomeStyle();
-
+  const theme = useTheme();
   // func
 
   const handleToLogin = () => {
     navigate(APP_SCREEN.LOGIN);
   };
-
+  const handleToRegister = () => {
+    navigate(APP_SCREEN.INFORMATION_PROFILE);
+  };
   // render
   return (
-    <WrapperBackground titleT18n="welcome:registered_members">
-      <Block paddingHorizontal={24}>
-        <Button.Primary t18n="welcome:sms_authenticate" />
+    <WrapperBackground>
+      <Block middle>
+        <Block
+          width={250}
+          height={250}
+          borderColor={theme.colors.border}
+          borderWidth={1}
+          borderRadius={125}
+          middle
+          justifyContent={'center'}>
+          <Text
+            center
+            lineHeight={50}
+            t18n="welcome:description"
+            preset="textNormal15"
+            colorTheme="base5"
+          />
+        </Block>
+        <Spacer height={38} />
+        <Button.Primary t18n="welcome:new_member" onPress={handleToRegister} />
+        <Spacer height={30} />
         <Block alignSelf={'center'}>
-          <Spacer height={16} />
-          <Text center t18n="common:or" />
-          <Spacer height={17} />
           <ParsedText
-            preset="textSmall"
+            preset="linkXXSmall"
             parse={[
               {
                 pattern: /\[([^:]+):1\]/i,
                 renderText: renderItemWithPattern,
+                style: styles.linkText,
               },
               {
                 pattern: /\[([^:]+):2\]/i,
-                onPress: () => null,
+                onPress: () => handleToLogin(),
                 renderText: renderItemWithPattern,
                 style: styles.linkText,
               },
@@ -54,37 +72,7 @@ export const WelcomeScreen = () => {
             {t('welcome:login')}
           </ParsedText>
         </Block>
-        <Spacer height={39} />
-        <Block height={1} colorTheme={'base1'} />
-        <Spacer height={39} />
-        <Text center t18n="welcome:not_has_account" preset="linkSubtitle" />
-        <Spacer height={32} />
-        <ParsedText
-          center
-          preset="linkSmall"
-          parse={[
-            {
-              pattern: /\[([^:]+):1\]/i,
-              renderText: renderItemWithPattern,
-            },
-            {
-              pattern: /\[([^:]+):2\]/i,
-              renderText: renderItemWithPattern,
-            },
-            {
-              pattern: /\[([^:]+):3\]/i,
-              renderText: renderItemWithPattern,
-              style: styles.highlineText,
-            },
-          ]}>
-          {t('welcome:use_KEIAI_Plus')}
-        </ParsedText>
-        <Spacer height={30} />
-        <Button.Outline t18n="welcome:my_KEIAI_Plus" onPress={handleToLogin} />
-        <Spacer height={6} />
-        <Text center t18n="welcome:myKEIAI_member" />
       </Block>
-      <Trouble />
     </WrapperBackground>
   );
 };

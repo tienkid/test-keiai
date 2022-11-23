@@ -8,7 +8,7 @@ import {
   numberToCountryCode,
   TIME_REFRESH,
 } from '@common';
-import { Block, Trouble, WrapperBackground } from '@components';
+import { Block, Spacer, WrapperBackground } from '@components';
 import {
   handleHideModalLoading,
   handleShowModalLoading,
@@ -74,10 +74,10 @@ const LoginComponent = () => {
   // render
   return (
     <Block block colorTheme="white">
-      <WrapperBackground titleT18n="login:title">
+      <WrapperBackground canBack headerTitleT18n="login:title">
+        <Spacer height={20} />
         <FormLogin onSubmit={onSubmit} />
       </WrapperBackground>
-      <Trouble />
     </Block>
   );
 };

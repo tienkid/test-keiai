@@ -32,6 +32,7 @@ export const icons = {
   home_side: require('./source/ic_home_side.png'),
   block_user: require('./source/ic_block_user.png'),
   content: require('./source/ic_content.png'),
+  left_back: require('./source/ic_left_back.png'),
 };
 
 export type IconTypes = keyof typeof icons;

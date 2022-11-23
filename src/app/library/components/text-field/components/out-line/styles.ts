@@ -14,16 +14,17 @@ export const useTextOutlineStyle = () => {
       StyleSheet.create({
         container: {
           borderWidth: 1,
-          borderRadius: 30,
+          borderRadius: 8,
           borderColor: theme.colors.border,
           justifyContent: 'center',
+          alignItems: 'center',
         },
         input: {
-          color: theme.colors.text,
+          color: theme.colors.base5,
           borderBottomColor: 'transparent',
-          paddingVertical: sizeScale(17),
-          paddingHorizontal: sizeScale(18),
+          paddingHorizontal: sizeScale(10),
           flex: 1,
+          height: 40,
         },
         text: {
           alignSelf: 'flex-start',
@@ -31,7 +32,7 @@ export const useTextOutlineStyle = () => {
           left: 5,
         },
         wrapLabel: {
-          paddingLeft: sizeScale(16),
+          // paddingLeft: sizeScale(16),
         },
         content: {
           flexDirection: 'row',
@@ -41,7 +42,7 @@ export const useTextOutlineStyle = () => {
         wrapPlaceHolder: {
           position: 'absolute',
           alignSelf: 'center',
-          paddingHorizontal: sizeScale(18),
+          paddingHorizontal: sizeScale(10),
         },
         flex: {
           flex: 1,
@@ -50,16 +51,12 @@ export const useTextOutlineStyle = () => {
         required: {
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: sizeScale(4),
-          backgroundColor: theme.colors.statusError,
-          paddingHorizontal: sizeScale(8),
-          paddingVertical: sizeScale(4),
         },
         labelContainer: {
           flexDirection: 'row',
           alignItems: 'center',
         },
       }),
-    [theme.colors.border, theme.colors.statusError, theme.colors.text],
+    [theme.colors.base5, theme.colors.border],
   );
 };
