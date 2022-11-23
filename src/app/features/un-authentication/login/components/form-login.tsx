@@ -1,21 +1,23 @@
 import React from 'react';
+import { Linking } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
-import {} from '@react-native-firebase/analytics';
+import { useTranslation } from 'react-i18next';
 
-import { logActionEvent } from '@common';
-import { Block, Button, FormInput, Spacer, Text } from '@components';
+import { LINK_INQUIRY, logActionEvent } from '@common';
+import { Block, Button, FormInput, ParsedText, Spacer } from '@components';
+import { renderItemWithPattern } from '@components/parsed-text/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormLoginType } from '@model/authentication';
-import { navigate } from '@navigation/navigation-service';
-import { APP_SCREEN } from '@navigation/screen-types';
 import { loginValidation } from '@validate/login';
 
+import { useLoginStyle } from '../style';
 import { FormLoginProps } from '../type';
 
 export const FormLogin = ({ onSubmit }: FormLoginProps) => {
   // state
-
+  const [t] = useTranslation();
+  const styles = useLoginStyle();
   const formMethod = useForm<FormLoginType>({
     mode: 'all',
     resolver: yupResolver(loginValidation),
@@ -32,48 +34,54 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
   };
 
   const handleGoToRegister = () => {
-    navigate(APP_SCREEN.INFORMATION_PROFILE);
+    Linking.openURL(LINK_INQUIRY);
   };
   // render
   return (
     <FormProvider {...formMethod}>
-      <Block paddingHorizontal={20}>
+      <Block paddingHorizontal={15}>
         <FormInput<FormLoginType>
           name={'phoneNumber'}
           labelT18n={'login:phoneNumber'}
           placeholderT18n={'login:phoneNumberPlaceholder'}
+          inputStyle={{ height: 50 }}
         />
-        <Spacer height={20} />
+        <Spacer height={35} />
         <FormInput<FormLoginType>
           name={'password'}
           placeholderT18n={'login:passwordPlaceholder'}
           labelT18n={'login:password'}
+          inputStyle={{ height: 50 }}
           secureTextEntry
         />
-        <Spacer height={40} />
-        <Button.Primary
-          t18n="login:title"
-          onPress={onSubmitKey}
-          disabled={!formMethod.formState.isValid}
-        />
-        <Spacer height={33} />
-        <Block width={'100%'} height={1} colorTheme="base2" />
-        <Spacer height={24} />
-        <Text
-          center
-          t18n="login:register_member"
-          preset="linkLarge"
-          colorTheme="text"
-        />
-        <Spacer height={6} />
-        <Text
-          center
-          t18n="login:register"
-          preset="linkSmall"
-          colorTheme="text"
-        />
-        <Spacer height={15} />
-        <Button.Primary t18n="login:new_member" onPress={handleGoToRegister} />
+        <Spacer height={60} />
+        <Block alignSelf={'center'}>
+          <Button.Primary
+            t18n="login:title"
+            onPress={onSubmitKey}
+            disabled={!formMethod.formState.isValid}
+          />
+        </Block>
+        <Spacer height={60} />
+        <Block alignSelf={'center'}>
+          <ParsedText
+            preset="textNormal12"
+            parse={[
+              {
+                pattern: /\[([^:]+):1\]/i,
+                renderText: renderItemWithPattern,
+                style: styles.text,
+              },
+              {
+                pattern: /\[([^:]+):2\]/i,
+                onPress: () => handleGoToRegister(),
+                renderText: renderItemWithPattern,
+                style: styles.linkText,
+              },
+            ]}>
+            {t('login:troubling')}
+          </ParsedText>
+        </Block>
       </Block>
     </FormProvider>
   );

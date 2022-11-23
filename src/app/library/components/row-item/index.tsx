@@ -13,15 +13,15 @@ export const RowItem = ({ title, value }: RowItemProps) => {
 
   return (
     <Block>
-      <Text t18n={title} preset={'linkXXSmall'} colorTheme={'base1'} />
-      <Spacer height={8} />
+      <Text t18n={title} preset={'linkXXSmall'} colorTheme={'base5'} />
+      <Spacer height={5} />
       <Text
         text={value}
         preset={'textMedium'}
-        colorTheme={'base7'}
-        fontWeight="700"
+        colorTheme={'base5'}
+        fontWeight="400"
       />
-      <Spacer height={16} />
+      <Spacer height={15} />
     </Block>
   );
 };

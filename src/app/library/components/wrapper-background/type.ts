@@ -23,6 +23,11 @@ export interface WrapperBackgroundTypes {
 
   titlePreset?: TextPresetNames;
 
+  canBack?: boolean;
+
+  isHiddenLogo?: boolean;
+
+  headerTitleT18n?: I18nKeys;
   /**
    * Children of text
    * @default undefined

@@ -41,11 +41,8 @@ export const TwoHalfInput = ({
             placeholderT18n={placeholder_1_T18n}
             isShowMsgError={false}
             rightChildren={rightChildren_1}
-            containerStyle={{ borderRadius: 8 }}
-            inputStyle={{ paddingVertical: sizeScale(12) }}
             requiredLabelT18n={requiredLabelT18n}
             disabled={disabled}
-            wrapLabelStyle={{ paddingLeft: 0 }}
           />
         </Block>
         <Block marginLeft={6} marginRight={6} />
@@ -60,10 +57,7 @@ export const TwoHalfInput = ({
             placeholderT18n={placeholder_2_T18n}
             rightChildren={rightChildren_2}
             isShowMsgError={false}
-            containerStyle={{ borderRadius: 8 }}
-            inputStyle={{ paddingVertical: sizeScale(12) }}
             disabled={disabled}
-            wrapLabelStyle={{ paddingLeft: 0 }}
           />
         </Block>
       </Block>

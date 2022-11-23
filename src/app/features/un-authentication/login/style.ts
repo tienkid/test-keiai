@@ -12,12 +12,12 @@ export const useLoginStyle = () => {
     () =>
       StyleSheet.create({
         text: {
-          color: theme.colors.text,
+          color: theme.colors.base5,
         },
         linkText: {
           color: theme.colors.text_2,
         },
       }),
-    [theme.colors.text, theme.colors.text_2],
+    [theme.colors.base5, theme.colors.text_2],
   );
 };

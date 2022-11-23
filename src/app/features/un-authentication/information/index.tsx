@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import { dispatch } from '@common';
 // import { handleShowModalLoading } from '@components/modal-loading';
+import { WrapperBackground } from '@components';
 import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
@@ -9,7 +10,6 @@ import { appActions, registerActions } from '@redux-slice';
 import { mapsDataRequest } from '@validate/information';
 
 import { FormInformationProfile } from './components/form-profile';
-import { WrapperSteps } from './components/wrapper-steps';
 
 export const InformationProfile = () => {
   // state
@@ -29,8 +29,8 @@ export const InformationProfile = () => {
 
   // render
   return (
-    <WrapperSteps title={'information_profile:step_1_title'}>
+    <WrapperBackground headerTitleT18n={'login:register_member'} canBack>
       <FormInformationProfile onSubmit={handleSubmit} />
-    </WrapperSteps>
+    </WrapperBackground>
   );
 };

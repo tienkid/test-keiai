@@ -3,10 +3,11 @@ import { View } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 
+import { Spacer } from '@components/spacer';
+
 import { useTextOutlineStyle } from './styles';
 import { LabelOutlineProps } from './type';
 
-import { Spacer } from '../../../spacer';
 import { Text } from '../../../text';
 
 export const LabelOutline = ({
@@ -38,21 +39,21 @@ export const LabelOutline = ({
       ]}>
       <Text
         text={labelText}
-        preset={'linkMedium'}
-        colorTheme={'text_1'}
+        preset={'textNormal15'}
+        colorTheme={'base5'}
         numberOfLines={1}
         style={{ maxWidth: '80%' }}
       />
       {isRequired && (
         <>
-          <Spacer width={15} />
+          <Spacer width={5} />
           <View style={styles.required}>
             <Text
               text={requiredLabel}
               t18n={requiredLabelT18n}
               preset="linkXXSmall"
-              colorTheme="white"
-              fontWeight={'700'}
+              colorTheme="statusError"
+              fontWeight={'400'}
             />
           </View>
         </>

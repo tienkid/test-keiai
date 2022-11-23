@@ -53,7 +53,7 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.LOGIN]: undefined;
   [APP_SCREEN.REGISTER]: { type?: string };
   [APP_SCREEN.SPLASH]: undefined;
-  [APP_SCREEN.OTP_SCREEN]: undefined;
+  [APP_SCREEN.OTP_SCREEN]: { type?: string };
 };
 export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;

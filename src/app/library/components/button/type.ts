@@ -79,6 +79,12 @@ export interface ButtonProps extends TouchableOpacityProps {
 
   /**
    * Children for button
+   * @default 250px
+   */
+  width?: number | string | undefined;
+
+  /**
+   * Children for button
    * @default undefined
    */
   children?: React.ReactNode;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TextInput } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +14,6 @@ import {
   ParsedText,
   Spacer,
   Text,
-  Trouble,
 } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 // import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
@@ -50,10 +50,6 @@ export const FormInformationProfile = ({
     formMethod.handleSubmit(onSubmit)();
   };
 
-  const handleToLogin = () => {
-    navigate(APP_SCREEN.LOGIN);
-  };
-
   const handleSelectedCountry = (type: MODAL_SELECTED_COUNTRY_TYPE) => () => {
     navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, { type });
   };
@@ -68,47 +64,38 @@ export const FormInformationProfile = ({
   // render
   return (
     <FormProvider {...formMethod}>
-      <Block
-        marginTop={31}
-        paddingBottom={insets.bottom}
-        paddingHorizontal={20}>
+      <Block paddingBottom={insets.bottom} paddingHorizontal={15}>
+        <Text
+          preset="textXSmall"
+          colorTheme="primary"
+          t18n="common:indispensable_description"
+        />
+        <Spacer height={15} />
         <FormInput<FormInformationProfileType>
           name={'contact'}
           labelT18n={'information_profile:contact'}
           placeholderT18n={'information_profile:contact_placeholder'}
           requiredLabelT18n={'common:indispensable'}
-          containerStyle={{
-            borderRadius: 8,
-          }}
-          inputStyle={{ paddingVertical: sizeScale(12) }}
-          wrapLabelStyle={{ paddingLeft: 0 }}
         />
-        <Spacer height={16} />
+        <Spacer height={20} />
         <FormInput<FormInformationProfileType>
           name={'password'}
           placeholderT18n={'information_profile:password_placeholder'}
           labelT18n={'information_profile:password'}
           requiredLabelT18n={'common:indispensable'}
-          containerStyle={{
-            borderRadius: 8,
-          }}
-          inputStyle={{ paddingVertical: sizeScale(12) }}
-          wrapLabelStyle={{ paddingLeft: 0 }}
           secureTextEntry
+          textContentType="none"
         />
-        <Spacer height={16} />
+        <TextInput />
+        <Spacer height={10} />
         <FormInput<FormInformationProfileType>
           name={'confirm_password'}
           labelT18n={'information_profile:confirm_password'}
           requiredLabelT18n={'common:indispensable'}
-          containerStyle={{
-            borderRadius: 8,
-          }}
-          inputStyle={{ paddingVertical: sizeScale(12) }}
-          wrapLabelStyle={{ paddingLeft: 0 }}
           secureTextEntry
+          textContentType={'none'}
         />
-        <Spacer height={16} />
+        <Spacer height={20} />
         <TwoHalfInput
           name_1="first_name"
           name_2="last_name"
@@ -117,7 +104,7 @@ export const FormInformationProfile = ({
           placeholder_2_T18n="information_profile:your_name_placeholder_2"
           requiredLabelT18n="common:indispensable"
         />
-        <Spacer height={16} />
+        <Spacer height={20} />
         <TwoHalfInput
           name_1="furigana_first_name"
           name_2="furigana_last_name"
@@ -126,7 +113,7 @@ export const FormInformationProfile = ({
           placeholder_2_T18n="information_profile:furigana_placeholder_2"
           requiredLabelT18n="common:indispensable"
         />
-        <Spacer height={16} />
+        <Spacer height={20} />
         <InputHaft
           labelT18n="information_profile:zip_code"
           placeholderT18n="information_profile:zip_code_placeholder"
@@ -139,7 +126,7 @@ export const FormInformationProfile = ({
           requiredLabelT18n="common:indispensable"
           wrapLabelStyle={{ paddingLeft: 0 }}
         />
-        <Spacer height={16} />
+        <Spacer height={10} />
         <TwoHalfInput
           name_1="country"
           name_2="city"
@@ -174,51 +161,34 @@ export const FormInformationProfile = ({
           name={'name_address'}
           placeholderT18n={'information_profile:name_address'}
           requiredLabelT18n={'common:indispensable'}
-          containerStyle={{
-            borderRadius: 8,
-          }}
-          inputStyle={{ paddingVertical: sizeScale(12) }}
         />
         <FormInput<FormInformationProfileType>
           name={'building_name'}
           placeholderT18n={'information_profile:building_name'}
           requiredLabelT18n={'common:indispensable'}
-          containerStyle={{
-            borderRadius: 8,
-          }}
-          inputStyle={{ paddingVertical: sizeScale(12) }}
         />
-        <Spacer height={16} />
+        <Spacer height={20} />
         <FormInput<FormInformationProfileType>
           name={'phoneNumber'}
           labelT18n={'information_profile:phone_number'}
           placeholderT18n={'information_profile:phone_home_placeholder'}
-          containerStyle={{
-            borderRadius: 8,
-          }}
           keyboardType="numeric"
-          inputStyle={{ paddingVertical: sizeScale(12) }}
-          wrapLabelStyle={{ paddingLeft: 0 }}
           maxLength={PHONE_NUMBER_LENGTH}
           requiredLabelT18n={'common:indispensable'}
         />
-        <Spacer height={16} />
+        <Spacer height={20} />
         <FormInput<FormInformationProfileType>
           name={'email'}
           labelT18n={'information_profile:email'}
           placeholderT18n={'information_profile:email_placeholder'}
-          containerStyle={{
-            borderRadius: 8,
-          }}
-          inputStyle={{ paddingVertical: sizeScale(12) }}
-          wrapLabelStyle={{ paddingLeft: 0 }}
           requiredLabelT18n={'common:indispensable'}
         />
-        <Spacer height={36} />
-        <Block direction={'row'} paddingLeft={8} alignItems="center">
+        <Spacer height={35} />
+        <Block direction={'row'} alignItems="center">
           <CheckBox value={isCheck} onToggle={handleCheck} />
           <ParsedText
-            preset="textXXSmall"
+            preset="linkXXXSmall"
+            colorTheme="base1"
             parse={[
               {
                 pattern: /\[([^:]+):1\]/i,
@@ -236,22 +206,24 @@ export const FormInformationProfile = ({
             {t('information_profile:term_policy')}
           </ParsedText>
         </Block>
-        <Spacer height={28} />
-        <Button.Primary
-          t18n="information_profile:btn_step"
-          onPress={onSubmitKey}
-          disabled={!(formMethod.formState.isValid && isCheck)}
-        />
-        <Spacer height={25} />
-        <Button.Default onPress={handleToLogin}>
+        <Spacer height={35} />
+        <Block middle>
+          <Button.Primary
+            width={270}
+            t18n="information_profile:btn_step"
+            onPress={onSubmitKey}
+            disabled={!(formMethod.formState.isValid && isCheck)}
+          />
+        </Block>
+        <Spacer height={60} />
+        {/* <Button.Default onPress={handleToLogin}>
           <Text
             t18n="information_profile:back_home"
             center
             colorTheme="border"
           />
-        </Button.Default>
+        </Button.Default> */}
       </Block>
-      <Trouble />
     </FormProvider>
   );
 };

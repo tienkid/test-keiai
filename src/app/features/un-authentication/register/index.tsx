@@ -4,7 +4,6 @@ import isEqual from 'react-fast-compare';
 
 import { dispatch, numberToCountryCode } from '@common';
 import { Block, WrapperBackground } from '@components';
-import { CopyRight } from '@components/copy-right';
 import { useSelector } from '@hooks';
 import { FormGetCodeType } from '@model/authentication';
 import { navigate } from '@navigation/navigation-service';
@@ -48,15 +47,16 @@ const RegisterComponent = () => {
     }
   };
   const onSubmitSucceeded = () => {
-    navigate(APP_SCREEN.OTP_SCREEN);
+    navigate(APP_SCREEN.OTP_SCREEN, { type });
   };
   // render
   return (
     <Block block>
-      <WrapperBackground titleT18n="register:title">
+      <WrapperBackground
+        titleT18n="register:header_text"
+        headerTitleT18n="login:register_member">
         <FormRegister onSubmit={handleSubmit} />
       </WrapperBackground>
-      <CopyRight />
     </Block>
   );
 };
