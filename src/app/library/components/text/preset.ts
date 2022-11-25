@@ -98,6 +98,12 @@ export const textPresets = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: '700',
   },
+  textBold30: {
+    fontFamily: FontDefault.primary,
+    fontSize: sizeScale(30),
+    color: '#FFFFFF',
+    fontWeight: '700',
+  },
   default: {},
 });
 

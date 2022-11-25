@@ -13,6 +13,10 @@ export const images = {
   item_recommend: require('./source/itemRecomment.png'),
   ic_logo: require('./source/logo.png'),
   logo_point: require('./source/logo_point.png'),
+  coin: require('./source/coin.png'),
+  point_1: require('./source/point_1.png'),
+  point_2: require('./source/point_2.png'),
+  point_3: require('./source/point_3.png'),
 };
 
 export type ImageTypes = keyof typeof images;

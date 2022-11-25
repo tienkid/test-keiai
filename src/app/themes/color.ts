@@ -10,6 +10,7 @@ export const ColorDefault = {
   notification: 'rgb(255, 59, 48)',
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
+  base0: '#B4B4B4',
   base1: '#666666',
   base2: '#707070',
   base3: '#F2F2F2',
@@ -27,6 +28,8 @@ export const ColorDefault = {
   baseCheckBox: '#828282',
   secondary: '#F03333',
   divider: '#F5F5F5',
+  point_transfer: '#5B9D56',
+  red_black: '#B21717',
 };
 export const ColorDark = {
   primary: '#F03333',
@@ -40,6 +43,7 @@ export const ColorDark = {
   notification: 'rgb(255, 59, 48)',
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
+  base0: '#B4B4B4',
   base1: '#666666',
   base2: '#707070',
   base3: '#F2F2F2',
@@ -57,4 +61,6 @@ export const ColorDark = {
   baseCheckBox: '#828282',
   secondary: '#F03333',
   divider: '#F5F5F5',
+  point_transfer: '#5B9D56',
+  red_black: '#B21717',
 };

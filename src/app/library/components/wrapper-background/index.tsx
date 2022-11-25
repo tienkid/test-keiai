@@ -24,6 +24,7 @@ export const WrapperBackground = ({
   titleT18n,
   paddingTop,
   canBack,
+  scroll = true,
   isHiddenLogo,
   headerTitleT18n,
   titlePreset = 'textNormal15',
@@ -72,7 +73,7 @@ export const WrapperBackground = ({
         <Spacer height={60} />
       )}
       <Screen
-        scroll
+        scroll={scroll}
         style={{
           backgroundColor: theme.colors.white,
         }}

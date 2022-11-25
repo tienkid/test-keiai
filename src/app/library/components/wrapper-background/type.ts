@@ -27,6 +27,8 @@ export interface WrapperBackgroundTypes {
 
   isHiddenLogo?: boolean;
 
+  scroll?: boolean;
+
   headerTitleT18n?: I18nKeys;
   /**
    * Children of text

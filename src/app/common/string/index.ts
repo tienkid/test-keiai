@@ -178,3 +178,7 @@ export const genarateTags = (tags?: Array<string>) => {
   });
   return tagsString;
 };
+
+export const numberWithCommas = (x: number | string) => {
+  return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
