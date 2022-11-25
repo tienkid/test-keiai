@@ -1,80 +1,57 @@
 import React from 'react';
 
-import Animated, { Easing, timing } from 'react-native-reanimated';
+import LinearGradient from 'react-native-linear-gradient';
 
-import { Block, Button, Icon, Spacer, Text } from '@components';
-import { useSelector } from '@hooks';
+import { Block, Spacer, Text } from '@components';
+import { useTheme } from '@theme';
+
+import { styles } from '../style';
 
 export const PointCard = () => {
   // state
-  const point = useSelector(x => x.app.point);
-
-  const spinValue = new Animated.Value(0);
-
-  const spin = spinValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '720deg'],
-  }) as unknown as Animated.Node<string>;
-
-  // func
-  const handleUpdatePoint = () => {
-    const timingValue = timing(spinValue, {
-      toValue: 1,
-      duration: 3000,
-      easing: Easing.linear as never,
-    });
-
-    timingValue.start(() => {
-      timingValue.stop();
-      setTimeout(() => {
-        spinValue.setValue(0);
-      }, 100);
-    });
-  };
+  // const point = useSelector(x => x.app.point);
+  const { colors } = useTheme();
 
   // render
   return (
-    <Block colorTheme="primary" width={'100%'} height={220} borderRadius={14}>
-      <Block paddingHorizontal={20} paddingTop={16}>
-        <Text
-          t18n="point:ki_club_member"
-          preset="linkMedium"
-          colorTheme={'white'}
-        />
-        <Spacer height={5} />
-        <Block width={'100%'} height={1} colorTheme={'white'} />
-      </Block>
-      <Spacer height={35} />
-      <Block alignSelf={'flex-end'}>
-        <Text
-          t18n="point:point_balance"
-          preset="linkMedium"
-          colorTheme={'white'}
-        />
-      </Block>
-      <Block alignSelf={'flex-end'}>
-        <Text
-          t18n="point:point"
-          t18nOptions={{
-            point,
-          }}
-          preset={'textBold40'}
-        />
-      </Block>
-      <Block block justifyContent={'flex-end'}>
-        <Block
-          direction={'row'}
-          justifyContent="space-between"
-          paddingHorizontal={20}
-          paddingBottom={18}>
-          <Text text="Đặng Thái Giám" colorTheme="white" preset="textBold16" />
-          <Button.Default onPress={handleUpdatePoint}>
-            <Animated.View style={[{ transform: [{ rotate: spin }] }]}>
-              <Icon icon="auto_renew" size={25} />
-            </Animated.View>
-          </Button.Default>
-        </Block>
-      </Block>
+    <Block
+      // colorTheme="primary"
+      borderBottomLeftRadius={14}
+      borderBottomRightRadius={14}
+      marginBottom={6}>
+      <LinearGradient
+        style={styles.pointCard}
+        useAngle
+        angle={15}
+        locations={[0.1, 0.5, 0.9, 1]}
+        angleCenter={{ x: 0.5, y: 0.5 }}
+        start={{ x: 0.0, y: 0.0 }}
+        end={{ x: 1, y: 0 }}
+        colors={[colors.red_black, '#F0333390', colors.red_black]}>
+        <LinearGradient
+          style={styles.pointCard}
+          useAngle
+          angle={-15}
+          locations={[0.1, 0.5, 0.9, 1]}
+          angleCenter={{ x: 0.5, y: 0.5 }}
+          start={{ x: 0.0, y: 0.0 }}
+          end={{ x: 1, y: 0 }}
+          colors={[colors.red_black, '#F0333390', colors.red_black]}>
+          <Spacer height={25} />
+          <Block alignSelf={'center'}>
+            <Text
+              t18n="point:point_balance"
+              preset="linkSmall"
+              colorTheme={'white'}
+            />
+          </Block>
+          <Block alignSelf={'center'} direction="row" alignItems={'flex-end'}>
+            <Text text={'5000'} preset={'textBold40'} />
+            <Text preset={'textBold40'} t18n={'point:point'} />
+          </Block>
+          <Spacer height={40} />
+        </LinearGradient>
+      </LinearGradient>
     </Block>
   );
 };

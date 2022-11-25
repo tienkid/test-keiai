@@ -32,7 +32,7 @@ export const WelcomeScreen = () => {
   };
   // render
   return (
-    <WrapperBackground>
+    <WrapperBackground scroll={false}>
       <Block middle>
         <Block
           width={250}
