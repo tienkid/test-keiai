@@ -43,6 +43,7 @@ export enum POINT_STACK {
 
 export enum SETTING_STACK {
   SETTING = 'SETTING',
+  SERVICE_DETAIL = 'SERVICE_DETAIL',
 }
 
 export type UnAuthorizeParamsList = {
@@ -59,6 +60,7 @@ export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
   [CONTENT_STACK.CONTENT]: undefined;
   [CONTENT_STACK.CONTENT_DETAIL]: { item: Item };
+  [SETTING_STACK.SERVICE_DETAIL]: { item: Item };
   [BOTTOM_TAB.TAB_HOME]: undefined;
   [BOTTOM_TAB.TAB_POINT]: undefined;
   [HOME_STACK.NOTIFY]: undefined;

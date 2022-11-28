@@ -53,6 +53,7 @@ export const ButtonOutline = (props: ButtonProps) => {
           style={[stylesText[preset], textStyleOverride]}
           color={textColor}
           colorTheme={textColorTheme}
+          preset="textNormal15"
         />
       )}
     </TouchableOpacity>

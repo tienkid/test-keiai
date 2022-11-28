@@ -15,10 +15,12 @@ export const stylesView = StyleSheet.create({
 
   outline: {
     borderRadius: sizeScale(30),
-    paddingVertical: sizeScale(18),
+    // paddingVertical: sizeScale(15),
+    height: 40,
     backgroundColor: ColorDefault.primary,
     alignItems: 'center',
     borderWidth: 1,
+    justifyContent: 'center',
     borderColor: ColorDefault.primary,
   },
   default: {},
