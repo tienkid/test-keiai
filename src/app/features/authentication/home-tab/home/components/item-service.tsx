@@ -1,33 +1,37 @@
 import React from 'react';
-import { useWindowDimensions } from 'react-native';
 
 import { Block, Button, LocalImage, Spacer, Text } from '@components';
+import { DataService } from '@features/authentication/setting-tab/type';
+// import { navigate } from '@navigation/navigation-service';
+// import { SETTING_STACK } from '@navigation/screen-types';
 
 export type ItemServiceProps = {
-  item: { id: number; text: string; sign: string };
+  item: DataService;
   index: number;
 };
-export const ItemService = ({ item, index }: ItemServiceProps) => {
+export const ItemService = ({ item }: ItemServiceProps) => {
   //state
-  const { width } = useWindowDimensions();
+  const handleGoToDetail = () => {
+    // navigate(SETTING_STACK.SERVICE_DETAIL, {});
+  };
   // render
   return (
-    <Button.Default style={{ width: (width - 38) / 2 }}>
+    <Button.Default style={{ width: '100%' }} onPress={handleGoToDetail}>
       <Block direction={'row'}>
-        {index % 2 !== 0 && <Spacer width={4} />}
-        <Block block>
-          <Block block height={110} borderRadius={8} overflow="hidden">
-            <LocalImage source={'item_recommend'} />
-          </Block>
-          <Block block paddingLeft={10} height={40}>
-            <Text preset="textNormal12" colorTheme="base5" numberOfLines={2}>
-              {item.text}
-            </Text>
-          </Block>
+        <Block height={66} width={100} borderRadius={8} overflow="hidden">
+          <LocalImage source={'item_recommend'} />
         </Block>
-        {index % 2 === 0 && <Spacer width={4} />}
+        <Block block paddingLeft={15}>
+          <Text preset="textNormal14" colorTheme="base5" numberOfLines={2}>
+            {item.text}
+          </Text>
+          <Spacer height={8} />
+          <Text preset="textNormal11" colorTheme="base4" numberOfLines={2}>
+            {item.sign}
+          </Text>
+        </Block>
       </Block>
-      <Spacer height={8} />
+      <Spacer height={20} />
     </Button.Default>
   );
 };

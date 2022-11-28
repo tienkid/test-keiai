@@ -81,6 +81,16 @@
     "loading": "Loading",
     "select": "Select"
   },
+  "service": {
+    "housing_facilities": "住宅設備 に関するサービス",
+    "construction": "工事 に関するサービス",
+    "moving": "引越し に関するサービス",
+    "design_services": "家具・インテリア に関するサービス",
+    "home_appliances": "家電に関するサービス",
+    "storage_and_cleaning": "収納・清掃に関するサービス",
+    "car_service": "車に関するサービス",
+    "energy_service": "エネルギーに関するサービス"
+  },
   "bottom_tab": {
     "home": "ホーム",
     "content": "コンテンツ",
@@ -127,7 +137,7 @@
     "error_send_otp": "認証コードを再送しました。"
   },
   "profile": {
-    "inquiries": "問い合わせ窓口"
+    "inquiries": "お問い合わせ"
   },
   "point": {
     "ki_club_member": "ケイアイクラブ会員",

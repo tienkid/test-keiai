@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import AnimatedNumbers from 'react-native-animated-numbers';
 import LinearGradient from 'react-native-linear-gradient';
 
+import { sizeScale } from '@common';
 import { Block, Spacer, Text } from '@components';
+import { useFocusEffect } from '@react-navigation/native';
 import { useTheme } from '@theme';
 
 import { styles } from '../style';
@@ -11,7 +14,20 @@ export const PointCard = () => {
   // state
   // const point = useSelector(x => x.app.point);
   const { colors } = useTheme();
+  const [point, setPoint] = useState(0);
 
+  useFocusEffect(
+    React.useCallback(() => {
+      const timeOut = setTimeout(() => {
+        setPoint(56789);
+      }, 500);
+
+      return () => {
+        setPoint(0);
+        clearTimeout(timeOut);
+      };
+    }, []),
+  );
   // render
   return (
     <Block
@@ -27,7 +43,12 @@ export const PointCard = () => {
         angleCenter={{ x: 0.5, y: 0.5 }}
         start={{ x: 0.0, y: 0.0 }}
         end={{ x: 1, y: 0 }}
-        colors={[colors.red_black, '#F0333390', colors.red_black]}>
+        colors={[
+          colors.red_black,
+          '#F0333390',
+          colors.red_black,
+          colors.red_black,
+        ]}>
         <LinearGradient
           style={styles.pointCard}
           useAngle
@@ -36,7 +57,12 @@ export const PointCard = () => {
           angleCenter={{ x: 0.5, y: 0.5 }}
           start={{ x: 0.0, y: 0.0 }}
           end={{ x: 1, y: 0 }}
-          colors={[colors.red_black, '#F0333390', colors.red_black]}>
+          colors={[
+            colors.red_black,
+            '#F0333390',
+            colors.red_black,
+            colors.red_black,
+          ]}>
           <Spacer height={25} />
           <Block alignSelf={'center'}>
             <Text
@@ -46,7 +72,15 @@ export const PointCard = () => {
             />
           </Block>
           <Block alignSelf={'center'} direction="row" alignItems={'flex-end'}>
-            <Text text={'5000'} preset={'textBold40'} />
+            <AnimatedNumbers
+              includeComma
+              animateToNumber={point}
+              fontStyle={{
+                fontSize: sizeScale(40),
+                fontWeight: 'bold',
+                color: '#FFFFFF',
+              }}
+            />
             <Text preset={'textBold40'} t18n={'point:point'} />
           </Block>
           <Spacer height={40} />

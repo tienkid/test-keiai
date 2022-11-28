@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Block, Button, LocalImage } from '@components';
+import { Block, Button, LocalImage, Spacer, Text } from '@components';
 
 import { KeiaiItemPropsType } from '../type';
 
@@ -12,20 +12,12 @@ export const KeiaiItem = ({ item }: KeiaiItemPropsType) => {
 
   // render
   return (
-    <Button.Default onPress={handlePressItem}>
-      <Block
-        height={100}
-        width={162}
-        shadow
-        colorTheme="white"
-        borderRadius={8}
-        marginRight={7.5}
-        marginLeft={7.5}
-        marginBottom={15}>
-        <Block paddingVertical={18} paddingHorizontal={19}>
-          <LocalImage source={item.image} />
-        </Block>
+    <Button.Default onPress={handlePressItem} style={{ marginBottom: 25 }}>
+      <Block height={112} width={169}>
+        <LocalImage source={item.image} resizeMode="cover" />
       </Block>
+      <Spacer height={5} />
+      <Text text={item.title} preset="textNormal12" colorTheme="base5" />
     </Button.Default>
   );
 };
