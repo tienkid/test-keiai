@@ -29,5 +29,14 @@ const confirm = createAction(
     },
   }),
 );
-
-export const registerActions = { validate, register, confirm };
+const checkContract = createAction(
+  Action.CHECK_CONTRACT,
+  (body: string, onSucceeded?: () => void, onError?: () => void) => ({
+    payload: {
+      body,
+      onSucceeded,
+      onError,
+    },
+  }),
+);
+export const registerActions = { validate, register, confirm, checkContract };

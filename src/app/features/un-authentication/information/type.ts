@@ -22,6 +22,8 @@ export interface TwoHalfInputProps {
   labelT18n: TextProps['t18n'];
   name_1: any;
   name_2: any;
+  maxLength_1?: number;
+  maxLength_2?: number;
   placeholder_1_T18n: TextProps['t18n'];
   placeholder_2_T18n: TextProps['t18n'];
   requiredLabelT18n?: TextProps['t18n'];

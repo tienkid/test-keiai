@@ -12,6 +12,8 @@ export const TwoHalfInput = ({
   labelT18n,
   name_1,
   name_2,
+  maxLength_1,
+  maxLength_2,
   rightChildren_1,
   rightChildren_2,
   requiredLabelT18n,
@@ -39,7 +41,8 @@ export const TwoHalfInput = ({
             name={name_1}
             labelT18n={labelT18n}
             placeholderT18n={placeholder_1_T18n}
-            isShowMsgError={false}
+            maxLength={maxLength_1}
+            // isShowMsgError={false}
             rightChildren={rightChildren_1}
             requiredLabelT18n={requiredLabelT18n}
             disabled={disabled}
@@ -53,10 +56,11 @@ export const TwoHalfInput = ({
           marginTop={3}>
           <FormInput<FormInformationProfileType>
             name={name_2}
+            maxLength={maxLength_2}
             label=" "
             placeholderT18n={placeholder_2_T18n}
             rightChildren={rightChildren_2}
-            isShowMsgError={false}
+            // isShowMsgError={false}
             disabled={disabled}
           />
         </Block>

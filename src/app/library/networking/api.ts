@@ -17,6 +17,8 @@ const ApiEndPoint = {
   //banners
   GET_BANNER: 'banners',
 
+  CHECK_CONTRACT: 'property-status/',
+
   REFRESH_TOKEN: '',
 } as const;
 
