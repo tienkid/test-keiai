@@ -30,6 +30,7 @@ export const ColorDefault = {
   divider: '#F5F5F5',
   point_transfer: '#5B9D56',
   red_black: '#B21717',
+  line: '#E5E5E5',
 };
 export const ColorDark = {
   primary: '#F03333',
@@ -63,4 +64,5 @@ export const ColorDark = {
   divider: '#F5F5F5',
   point_transfer: '#5B9D56',
   red_black: '#B21717',
+  line: '#E5E5E5',
 };
