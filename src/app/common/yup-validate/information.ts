@@ -1,9 +1,16 @@
 import {
+  MIN_PHONE_NUMBER_LENGTH,
   PASSWORD_MIN_LENGTH,
-  PHONE_NUMBER_LENGTH,
   ZIP_CODE_LENGTH,
 } from '@config/field-length';
-import { rxEmail, rxPhoneNumber } from '@config/regex';
+import {
+  rxContract,
+  rxEmail,
+  rxFullWidth,
+  rxFullWidthKatakana,
+  rxHaftWidth,
+  rxPhoneNumber,
+} from '@config/regex';
 import { FormInformationProfileType } from '@model/information';
 import { ValidateRequest } from '@model/register';
 import * as yup from 'yup';
@@ -23,15 +30,21 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
         }),
       )
       .min(
-        PHONE_NUMBER_LENGTH,
+        MIN_PHONE_NUMBER_LENGTH,
         stringifyObjectValidateYup({
-          keyT: 'msg:MSG_005',
+          keyT: 'msg:MSG_004',
+          optionsTx: {
+            field: 'field:phone_number',
+          },
         }),
       )
       .matches(
         rxPhoneNumber,
         stringifyObjectValidateYup({
           keyT: 'msg:MSG_005',
+          optionsTx: {
+            field: 'field:phone_number',
+          },
         }),
       ),
     password: yup
@@ -47,7 +60,13 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
       .min(
         PASSWORD_MIN_LENGTH,
         stringifyObjectValidateYup({
-          keyT: 'msg:MSG_005',
+          keyT: 'msg:MSG_009',
+        }),
+      )
+      .matches(
+        rxHaftWidth,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_010',
         }),
       ),
     confirm_password: yup
@@ -66,44 +85,62 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
           keyT: 'msg:MSG_006',
         }),
       ),
-    contact: yup.string().required(
-      stringifyObjectValidateYup({
-        keyT: 'msg:MSG_004',
-        optionsTx: {
-          field: 'field:contact',
-        },
-      }),
-    ),
-    first_name: yup.string().required(
-      stringifyObjectValidateYup({
-        keyT: 'msg:MSG_004',
-        optionsTx: {
-          field: 'field:your_name',
-        },
-      }),
-    ),
-    last_name: yup.string().required(
-      stringifyObjectValidateYup({
-        keyT: 'msg:MSG_004',
-        optionsTx: {
-          field: 'field:your_name',
-        },
-      }),
-    ),
+    contact: yup
+      .string()
+      .required(
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_004',
+          optionsTx: {
+            field: 'field:contact',
+          },
+        }),
+      )
+      .matches(
+        rxContract,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_008',
+        }),
+      ),
+    first_name: yup
+      .string()
+      .required(
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_004',
+          optionsTx: {
+            field: 'field:your_name',
+          },
+        }),
+      )
+      .matches(
+        rxFullWidth,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_011',
+        }),
+      ),
+    last_name: yup
+      .string()
+      .required(
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_004',
+          optionsTx: {
+            field: 'field:your_name',
+          },
+        }),
+      )
+      .matches(
+        rxFullWidth,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_011',
+        }),
+      ),
     country: yup.string().required(
       stringifyObjectValidateYup({
-        keyT: 'msg:MSG_004',
-        optionsTx: {
-          field: 'field:address',
-        },
+        keyT: 'msg:MSG_007',
       }),
     ),
     city: yup.string().required(
       stringifyObjectValidateYup({
-        keyT: 'msg:MSG_004',
-        optionsTx: {
-          field: 'field:address',
-        },
+        keyT: 'msg:MSG_007',
       }),
     ),
     building_name: yup.string().required(
@@ -122,22 +159,38 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
         },
       }),
     ),
-    furigana_first_name: yup.string().required(
-      stringifyObjectValidateYup({
-        keyT: 'msg:MSG_004',
-        optionsTx: {
-          field: 'field:furigana',
-        },
-      }),
-    ),
-    furigana_last_name: yup.string().required(
-      stringifyObjectValidateYup({
-        keyT: 'msg:MSG_004',
-        optionsTx: {
-          field: 'field:furigana',
-        },
-      }),
-    ),
+    furigana_first_name: yup
+      .string()
+      .required(
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_004',
+          optionsTx: {
+            field: 'field:furigana',
+          },
+        }),
+      )
+      .matches(
+        rxFullWidthKatakana,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_011',
+        }),
+      ),
+    furigana_last_name: yup
+      .string()
+      .required(
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_004',
+          optionsTx: {
+            field: 'field:furigana',
+          },
+        }),
+      )
+      .matches(
+        rxFullWidthKatakana,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_011',
+        }),
+      ),
     zip_code: yup
       .string()
       .required(
@@ -152,6 +205,9 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
         ZIP_CODE_LENGTH,
         stringifyObjectValidateYup({
           keyT: 'msg:MSG_005',
+          optionsTx: {
+            field: 'field:zip_code',
+          },
         }),
       ),
     email: yup
@@ -168,6 +224,9 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
         rxEmail,
         stringifyObjectValidateYup({
           keyT: 'msg:MSG_005',
+          optionsTx: {
+            field: 'field:email',
+          },
         }),
       ),
   });

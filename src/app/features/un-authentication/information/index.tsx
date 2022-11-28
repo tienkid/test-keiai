@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import { dispatch } from '@common';
 // import { handleShowModalLoading } from '@components/modal-loading';
-import { WrapperBackground } from '@components';
+import { handleShowModalError, WrapperBackground } from '@components';
 import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
@@ -15,12 +15,26 @@ export const InformationProfile = () => {
   // state
 
   // func
-  const handleSubmit = useCallback((data?: FormInformationProfileType) => {
+  const handleSubmit = (data?: FormInformationProfileType) => {
+    dispatch(
+      registerActions.checkContract(
+        data?.contact ?? '',
+        () => checkContractSucceeded(data),
+        checkContractError,
+      ),
+    );
+  };
+  const checkContractSucceeded = (data?: FormInformationProfileType) => {
     const dataMaps = mapsDataRequest(data);
     dispatch(registerActions.validate(dataMaps, submitSucceeded));
     dispatch(appActions.setRegisterData(data));
-  }, []);
-
+  };
+  const checkContractError = () => {
+    handleShowModalError({
+      content: 'msg:MSG_012',
+      title: 'dialog:error',
+    });
+  };
   const submitSucceeded = () => {
     navigate(APP_SCREEN.INFORMATION_PROFILE_STEP2);
   };

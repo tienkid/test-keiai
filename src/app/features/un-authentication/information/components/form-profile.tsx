@@ -17,7 +17,11 @@ import {
 } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 // import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
-import { PHONE_NUMBER_LENGTH } from '@config/field-length';
+import {
+  EMAIL_LENGTH,
+  MAX_PHONE_NUMBER_LENGTH,
+  NAME_LENGTH,
+} from '@config/field-length';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
@@ -92,6 +96,7 @@ export const FormInformationProfile = ({
           name={'confirm_password'}
           labelT18n={'information_profile:confirm_password'}
           requiredLabelT18n={'common:indispensable'}
+          placeholderT18n={'information_profile:confirm_password_placeholder'}
           secureTextEntry
           textContentType={'none'}
         />
@@ -99,6 +104,8 @@ export const FormInformationProfile = ({
         <TwoHalfInput
           name_1="first_name"
           name_2="last_name"
+          maxLength_1={NAME_LENGTH}
+          maxLength_2={NAME_LENGTH}
           labelT18n="information_profile:your_name"
           placeholder_1_T18n="information_profile:your_name_placeholder_1"
           placeholder_2_T18n="information_profile:your_name_placeholder_2"
@@ -108,6 +115,8 @@ export const FormInformationProfile = ({
         <TwoHalfInput
           name_1="furigana_first_name"
           name_2="furigana_last_name"
+          maxLength_1={NAME_LENGTH}
+          maxLength_2={NAME_LENGTH}
           labelT18n="information_profile:furigana"
           placeholder_1_T18n="information_profile:furigana_placeholder_1"
           placeholder_2_T18n="information_profile:furigana_placeholder_2"
@@ -173,12 +182,13 @@ export const FormInformationProfile = ({
           labelT18n={'information_profile:phone_number'}
           placeholderT18n={'information_profile:phone_home_placeholder'}
           keyboardType="numeric"
-          maxLength={PHONE_NUMBER_LENGTH}
+          maxLength={MAX_PHONE_NUMBER_LENGTH}
           requiredLabelT18n={'common:indispensable'}
         />
         <Spacer height={20} />
         <FormInput<FormInformationProfileType>
           name={'email'}
+          maxLength={EMAIL_LENGTH}
           labelT18n={'information_profile:email'}
           placeholderT18n={'information_profile:email_placeholder'}
           requiredLabelT18n={'common:indispensable'}
