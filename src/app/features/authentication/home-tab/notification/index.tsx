@@ -2,7 +2,8 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { Block, Header } from '@components';
+import { Block } from '@components';
+import { HeaderBack } from '@components/header-back';
 
 import { BodyNotify } from './components/body-notify';
 
@@ -10,7 +11,7 @@ const NotificationComponent = () => {
   // render
   return (
     <Block block colorTheme="background">
-      <Header />
+      <HeaderBack headerText="notify:header" />
       <BodyNotify />
     </Block>
   );

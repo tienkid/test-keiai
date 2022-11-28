@@ -6,6 +6,8 @@ import { Block, Button, LocalImage } from '@components';
 import { FocusedStatusBarStyle } from '@components/focused-status-bar';
 import { Icon } from '@components/icon';
 import { Spacer } from '@components/spacer';
+import { navigate } from '@navigation/navigation-service';
+import { HOME_STACK } from '@navigation/screen-types';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 export const Header = () => {
@@ -17,6 +19,9 @@ export const Header = () => {
     navigation.dispatch(DrawerActions.openDrawer());
   };
 
+  const handleGoToNotify = () => {
+    navigate(HOME_STACK.NOTIFY);
+  };
   // render
   return (
     <Block
@@ -51,7 +56,7 @@ export const Header = () => {
           alignItems="center"
           position={'absolute'}
           right={0}>
-          <Button.Default onPress={handleOpenDrawer}>
+          <Button.Default onPress={handleGoToNotify}>
             <Icon icon="notify" size={40} />
           </Button.Default>
           <Spacer width={8} />

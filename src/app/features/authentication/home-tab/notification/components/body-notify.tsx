@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { Block, Divider, ListView, Text } from '@components';
+import { Block, Divider, ListView } from '@components';
 
 import { ItemNotify } from './item-notify';
 
@@ -13,15 +13,49 @@ export const BodyNotify = () => {
       id: 1,
       text: 'KEIAIプラスリリース',
       date: '2022/12/12',
-      content:
-        'いつもKEIAIプラスをご利用いただきまして、誠にありがとうございます。この度、KEIAIプラスの公式アプリを正式リリースいたしましたのでご案内いたします。これから住宅購入者の方々に向けたお得な情報や暮らしに関するコンテンツを配信してまいります。新機能の追加なども予定しており、皆様の暮らしをより豊・楽・快にしてまいります。今後ともKEIAIプラスをよろしくおねがいいたします。',
+      content: '変更手続きなどお困りの際は「お客様サポート」をご利用ください',
     },
     {
       id: 2,
       text: 'KEIAIプラスリリース',
       date: '2022/12/12',
-      content:
-        'いつもKEIAIプラスをご利用いただきまして、誠にありがとうございます。この度、KEIAIプラスの公式アプリを正式リリースいたしましたのでご案内いたします。これから住宅購入者の方々に向けたお得な情報や暮らしに関するコンテンツを配信してまいります。新機能の追加なども予定しており、皆様の暮らしをより豊・楽・快にしてまいります。今後ともKEIAIプラスをよろしくおねがいいたします。',
+      content: 'アプリメンテナンスのお知らせ',
+    },
+    {
+      id: 3,
+      text: 'KEIAIプラスリリース',
+      date: '2022/12/12',
+      content: '変更手続きなどお困りの際は「お客様サポート」をご利用ください',
+    },
+    {
+      id: 4,
+      text: 'KEIAIプラスリリース',
+      date: '2022/12/12',
+      content: 'アプリメンテナンスのお知らせ',
+    },
+    {
+      id: 5,
+      text: 'KEIAIプラスリリース',
+      date: '2022/12/12',
+      content: '変更手続きなどお困りの際は「お客様サポート」をご利用ください',
+    },
+    {
+      id: 6,
+      text: 'KEIAIプラスリリース',
+      date: '2022/12/12',
+      content: 'アプリメンテナンスのお知らせ',
+    },
+    {
+      id: 7,
+      text: 'KEIAIプラスリリース',
+      date: '2022/12/12',
+      content: '変更手続きなどお困りの際は「お客様サポート」をご利用ください',
+    },
+    {
+      id: 8,
+      text: 'KEIAIプラスリリース',
+      date: '2022/12/12',
+      content: 'アプリメンテナンスのお知らせ',
     },
   ];
   const renderItem = useCallback(({ item }: RenderItemNotifyType) => {
@@ -33,27 +67,11 @@ export const BodyNotify = () => {
     [],
   );
 
-  const renderSpacer = () => <Divider />;
+  const renderSpacer = () => <Divider colorTheme="line" />;
 
   return (
-    <Block flex={1} colorTheme={'background'} paddingTop={10}>
-      <Block
-        colorTheme="white"
-        width={'25%'}
-        alignItems={'center'}
-        borderTopRightRadius={5}
-        paddingVertical={10}
-        shadow>
-        <Text t18n="notify:header" preset="textBold14" colorTheme="base5" />
-      </Block>
-      <Block colorTheme="white" paddingVertical={20} shadow flex={1}>
-        <Block
-          width={'25%'}
-          height={10}
-          color={'white'}
-          position={'absolute'}
-          top={-5}
-        />
+    <Block flex={1} colorTheme={'background'} paddingTop={2}>
+      <Block colorTheme="white" paddingVertical={10} shadow flex={1}>
         <Block paddingHorizontal={20} flex={1}>
           <ListView
             data={dataNotify ?? []}
