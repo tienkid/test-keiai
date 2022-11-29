@@ -16,18 +16,12 @@ export const ListBanner = () => {
   //{ item }: ListRenderItemInfo<string>
   const renderItem = () => {
     return (
-      <Block
-        height={200}
-        paddingHorizontal={16}
-        paddingVertical={8}
-        middle
-        shadow
-        justifyContent="center">
+      <Block height={200} paddingHorizontal={15} middle justifyContent="center">
         <LocalImage
           resizeMode="stretch"
           source="banner"
           style={{
-            width: width - 32,
+            width: width - 30,
             borderRadius: 8,
           }}
         />
@@ -38,7 +32,7 @@ export const ListBanner = () => {
   // render
   return (
     <Block>
-      <Spacer height={8} />
+      <Spacer height={12} />
       <SwiperFlatList
         // scrollEnabled={false}
         autoplay

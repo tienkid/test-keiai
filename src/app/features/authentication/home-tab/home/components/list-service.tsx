@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { Block, Spacer, Text } from '@components';
+import { Block, Icon, Spacer, Text } from '@components';
 import { DataService } from '@features/authentication/setting-tab/type';
 import { I18nKeys } from '@utils/i18n/locales';
 
@@ -30,11 +30,25 @@ export const ListService = ({ title, data }: ListServiceProps) => {
           colorTheme="base5"
           t18n={title ?? 'home:text_services'}
         />
-        {/*   */}
+        <Block direction={'row'} alignItems="center">
+          <Text
+            preset="linkXXSmall"
+            colorTheme="text_2"
+            t18n="home:text_see_more"
+          />
+          <Icon icon="go" colorTheme="text_2" size={15} />
+        </Block>
       </Block>
+      <Spacer height={20} />
+      <Text
+        preset="textNormal12"
+        colorTheme="base5"
+        lineHeight={15}
+        t18n={title ?? 'home:text_services_content'}
+      />
       <Spacer height={25} />
       <Block direction="row" flexWrap="wrap">
-        {data ? data.map(renderItemService) : null}
+        {data ? data.slice(0, 4).map(renderItemService) : null}
       </Block>
     </Block>
   );

@@ -120,6 +120,19 @@
   "notify": {
     "header": "お知らせ"
   },
+  "delete_user": {
+    "header": "KEIAIプラスの利用を停止",
+    "title": "KEIAIプラスの利用を停止する場合は、",
+    "title2": "以下の情報を入力し「次へ」を押してください",
+    "confirm_title": "利用を停止したアカウントは復元できません。",
+    "confirm_title2": "現在獲得しているポイントも失効してしまいます。",
+    "point": "現在のポイント：",
+    "description": "上記をご確認の上、利用を停止してよろしければ",
+    "description2": "「利用を停止する」ボタンを押してください。",
+    "button_title": "利用を停止する",
+    "continue": "KEIAIプラスの利用を継続する",
+    "ok": "Ok"
+  },
   "content": {
     "tab_header": "記事"
   },
@@ -176,7 +189,7 @@
     "step_2": "2.確認",
     "step_3": "3.完了",
     "contact": "契約物件番号",
-    "contact_placeholder": "KIS-000000000-000",
+    "contact_placeholder": "KIS-00000000000000-000",
     "password": "パスワード",
     "password_placeholder": "半角英数字8文字以上",
     "confirm_password_placeholder": "再度パスワードを入力してください",

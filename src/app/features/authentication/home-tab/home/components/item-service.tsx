@@ -9,29 +9,36 @@ export type ItemServiceProps = {
   item: DataService;
   index: number;
 };
-export const ItemService = ({ item }: ItemServiceProps) => {
+export const ItemService = ({ item, index }: ItemServiceProps) => {
   //state
   const handleGoToDetail = () => {
     // navigate(SETTING_STACK.SERVICE_DETAIL, {});
   };
   // render
   return (
-    <Button.Default style={{ width: '100%' }} onPress={handleGoToDetail}>
-      <Block direction={'row'}>
-        <Block height={66} width={100} borderRadius={8} overflow="hidden">
+    <Block
+      justifyContent={'space-between'}
+      width="50%"
+      alignItems={index % 2 === 1 ? 'flex-end' : 'flex-start'}>
+      <Button.Default style={{ width: '97%' }} onPress={handleGoToDetail}>
+        <Block height={112} width={'100%'} borderRadius={8} overflow="hidden">
           <LocalImage source={'item_recommend'} />
         </Block>
-        <Block block paddingLeft={15}>
-          <Text preset="textNormal14" colorTheme="base5" numberOfLines={2}>
-            {item.text}
-          </Text>
-          <Spacer height={8} />
-          <Text preset="textNormal11" colorTheme="base4" numberOfLines={2}>
-            {item.sign}
-          </Text>
+        <Block block marginLeft={15} paddingTop={5}>
+          <Text
+            preset="textNormal12"
+            colorTheme="base5"
+            numberOfLines={2}
+            text={item.text}
+            lineHeight={15}
+          />
+          {/* <Spacer height={8} />
+            <Text preset="textNormal11" colorTheme="base4" numberOfLines={2}>
+              {item.sign}
+            </Text> */}
         </Block>
-      </Block>
-      <Spacer height={20} />
-    </Button.Default>
+      </Button.Default>
+      <Spacer height={25} />
+    </Block>
   );
 };

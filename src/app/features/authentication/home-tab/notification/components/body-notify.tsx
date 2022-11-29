@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { Block, Divider, ListView } from '@components';
 
@@ -8,7 +8,57 @@ import { ItemNotifyType, RenderItemNotifyType } from '../type';
 
 export const BodyNotify = () => {
   // render
-  const dataNotify: Array<ItemNotifyType> = [
+  // const dataFakeNotify: Array<ItemNotifyType> = [
+  //   {
+  //     id: 1,
+  //     text: 'KEIAIプラスリリース',
+  //     date: '2022/12/12',
+  //     content: '変更手続きなどお困りの際は「お客様サポート」をご利用ください',
+  //   },
+  //   {
+  //     id: 2,
+  //     text: 'KEIAIプラスリリース',
+  //     date: '2022/12/12',
+  //     content: 'アプリメンテナンスのお知らせ',
+  //   },
+  //   {
+  //     id: 3,
+  //     text: 'KEIAIプラスリリース',
+  //     date: '2022/12/12',
+  //     content: '変更手続きなどお困りの際は「お客様サポート」をご利用ください',
+  //   },
+  //   {
+  //     id: 4,
+  //     text: 'KEIAIプラスリリース',
+  //     date: '2022/12/12',
+  //     content: 'アプリメンテナンスのお知らせ',
+  //   },
+  //   {
+  //     id: 5,
+  //     text: 'KEIAIプラスリリース',
+  //     date: '2022/12/12',
+  //     content: '変更手続きなどお困りの際は「お客様サポート」をご利用ください',
+  //   },
+  //   {
+  //     id: 6,
+  //     text: 'KEIAIプラスリリース',
+  //     date: '2022/12/12',
+  //     content: 'アプリメンテナンスのお知らせ',
+  //   },
+  //   {
+  //     id: 7,
+  //     text: 'KEIAIプラスリリース',
+  //     date: '2022/12/12',
+  //     content: '変更手続きなどお困りの際は「お客様サポート」をご利用ください',
+  //   },
+  //   {
+  //     id: 8,
+  //     text: 'KEIAIプラスリリース',
+  //     date: '2022/12/12',
+  //     content: 'アプリメンテナンスのお知らせ',
+  //   },
+  // ];
+  const [dataNotify] = useState<ItemNotifyType[]>([
     {
       id: 1,
       text: 'KEIAIプラスリリース',
@@ -57,13 +107,18 @@ export const BodyNotify = () => {
       date: '2022/12/12',
       content: 'アプリメンテナンスのお知らせ',
     },
-  ];
+  ]);
+
+  const onLoadMore = useCallback(() => {
+    console.log(dataNotify.push(...dataNotify));
+  }, [dataNotify]);
   const renderItem = useCallback(({ item }: RenderItemNotifyType) => {
     return <ItemNotify item={item} />;
   }, []);
 
   const keyExtractor = useCallback(
-    (item: ItemNotifyType) => item.id.toString(),
+    (item: ItemNotifyType, index: number) =>
+      item.id.toString() + index.toString(),
     [],
   );
 
@@ -81,6 +136,7 @@ export const BodyNotify = () => {
             ItemSeparatorComponent={renderSpacer}
             showsVerticalScrollIndicator={false}
             keyExtractor={keyExtractor}
+            onEndReached={onLoadMore}
           />
           {/* <WebView
             source={{

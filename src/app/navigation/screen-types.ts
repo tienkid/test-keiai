@@ -30,6 +30,9 @@ export enum HOME_STACK {
   HOME = 'HOME',
   NOTIFY = 'NOTIFY',
   NOTIFY_DETAIL = 'NOTIFY_DETAIl',
+  DELETE_USER = 'DELETE_USER',
+  CONFIRM_DELETE = 'CONFIRM_DELETE',
+  DELETE_SUCCESS = 'DELETE_SUCCESS',
 }
 
 export enum CONTENT_STACK {
@@ -66,6 +69,9 @@ export type AuthorizeParamsList = {
   [HOME_STACK.NOTIFY]: undefined;
   [POINT_STACK.POINT]: undefined;
   [HOME_STACK.NOTIFY_DETAIL]: { item: ItemNotifyType };
+  [HOME_STACK.DELETE_USER]: undefined;
+  [HOME_STACK.CONFIRM_DELETE]: undefined;
+  [HOME_STACK.DELETE_SUCCESS]: undefined;
 };
 export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;

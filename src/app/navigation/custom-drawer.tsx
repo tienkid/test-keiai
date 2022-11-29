@@ -29,7 +29,7 @@ const CustomDrawer = () => {
         navigate(HOME_STACK.NOTIFY);
         break;
       case 8:
-        console.log('waiting...');
+        navigate(HOME_STACK.DELETE_USER);
         break;
       case 9:
         dispatch(appActions.logout());

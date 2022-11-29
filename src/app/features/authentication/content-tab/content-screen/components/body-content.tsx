@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import { dispatch } from '@common';
-import { Block, ListView, Text } from '@components';
+import { Block, Divider, ListView, Spacer } from '@components';
 import { useSelector } from '@hooks';
 import { ContentResponse, Item } from '@model/content';
 import { appActions, contentAction } from '@redux-slice';
@@ -46,31 +46,16 @@ export const BodyContent = () => {
       );
     }
   }, [contents.meta?.totalPages, onGetContentSucceeded, page]);
-
+  const renderSpacer = () => (
+    <Block paddingHorizontal={15}>
+      <Divider colorTheme="line" />
+      <Spacer height={15} />
+    </Block>
+  );
   // render
   return (
-    <Block flex={1} colorTheme={'background'} paddingTop={10}>
-      <Block
-        colorTheme="white"
-        width={'25%'}
-        alignItems={'center'}
-        borderTopRightRadius={5}
-        paddingVertical={10}
-        shadow>
-        <Text
-          t18n="content:tab_header"
-          preset="textBold14"
-          colorTheme="base5"
-        />
-      </Block>
-      <Block colorTheme="white" paddingTop={20} shadow>
-        <Block
-          width={'25%'}
-          height={10}
-          color={'white'}
-          position={'absolute'}
-          top={-5}
-        />
+    <Block flex={1} colorTheme={'background'} paddingTop={2}>
+      <Block colorTheme="white" paddingTop={12}>
         <ListView
           data={contents?.items ?? []}
           canRefresh={false}
@@ -79,6 +64,7 @@ export const BodyContent = () => {
           renderItem={renderItemContent}
           showsVerticalScrollIndicator={false}
           keyExtractor={keyExtractor}
+          ItemSeparatorComponent={renderSpacer}
         />
         {/* <StackView>{contents?.items.map(renderItemContent)}</StackView> */}
       </Block>
