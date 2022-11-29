@@ -17,13 +17,13 @@ export const ButtonPoint = () => {
 
   // render
   return (
-    <Block middle height={80} paddingVertical={15} paddingHorizontal={70}>
+    <Block middle height={36} marginTop={20} marginBottom={20}>
       <Button.Default
         buttonColorTheme="white"
         onPress={handleGoToPointScreen}
         style={{
           flex: 1,
-          width: '100%',
+          width: 235,
           borderRadius: 80,
           flexDirection: 'row',
           alignItems: 'center',
@@ -32,7 +32,7 @@ export const ButtonPoint = () => {
           borderWidth: 1,
           borderColor: ColorDefault.border,
         }}>
-        <Text preset="textNormal" t18n="home:text_point" colorTheme="base5" />
+        <Text preset="textNormal12" t18n="home:text_point" colorTheme="base5" />
         <Block direction={'row'} alignItems={'center'}>
           <Block
             height={20}

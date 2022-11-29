@@ -1,55 +1,41 @@
 import React from 'react';
 
-import { formatDate, genarateTags } from '@common';
-import {
-  Block,
-  Button,
-  Divider,
-  Image,
-  LocalImage,
-  Spacer,
-  Text,
-} from '@components';
+import { generateTags } from '@common';
+import { Block, Button, Image, LocalImage, Spacer, Text } from '@components';
 import { Item } from '@model/content';
 import { navigate } from '@navigation/navigation-service';
 import { CONTENT_STACK } from '@navigation/screen-types';
-
-// import { ItemContentProps } from '../type';
 
 export const ItemContentView = ({ item }: { item: Item }) => {
   // state
   const handleToDetail = () => {
     navigate(CONTENT_STACK.CONTENT_DETAIL, { item });
   };
+  console.log(item, 'item');
+
   // render
   return (
-    <Block middle paddingTop={20}>
+    <Block middle>
       <Button.Default onPress={handleToDetail} style={{ alignItems: 'center' }}>
-        <Block width={310}>
-          <Text text={item?.title} preset="textBold14" colorTheme="base5" />
-          <Spacer height={5} />
-          <Text text={genarateTags(item?.tags)} colorTheme="base6" />
-          <Block alignItems={'flex-end'} paddingTop={10}>
-            <Text
-              text={formatDate({ date: item?.updatedAt })}
-              colorTheme="base6"
-              textAlign={'left'}
-            />
-          </Block>
-        </Block>
-        <Spacer height={20} />
-        <Block width={300} height={200}>
+        <Block width={345} height={228} borderRadius={5}>
           {item?.thumb ? (
             <Image source={item.thumb} resizeMode="contain" />
           ) : (
-            <LocalImage source={'banner'} resizeMode="contain" />
+            <LocalImage source={'image_thumbnail'} resizeMode="cover" />
           )}
         </Block>
       </Button.Default>
+      <Spacer height={8} />
       <Block width={'100%'} paddingHorizontal={20}>
-        <Divider />
+        <Text text={item?.title} preset="textBold14" colorTheme="base5" />
+        <Spacer height={4} />
+        <Text
+          text={generateTags(item?.tags)}
+          colorTheme="base6"
+          preset="textNormal11"
+        />
+        <Spacer height={16} />
       </Block>
-      <Spacer height={30} />
     </Block>
   );
 };

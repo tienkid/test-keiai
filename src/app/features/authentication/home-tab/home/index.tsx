@@ -77,7 +77,7 @@ const HomeComponent = () => {
         refreshControl={<RefreshControl refreshing={false} />}
         style={{ flex: 1 }}>
         <ListBanner />
-        <Spacer height={8} />
+        <Spacer height={10} />
         <ButtonPoint />
         <Divider height={6} colorTheme="divider" />
         {/* service */}

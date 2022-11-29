@@ -168,7 +168,7 @@ export const numberToCountryCode = (phone: string) => {
   return '+81' + joined;
 };
 
-export const genarateTags = (tags?: Array<string>) => {
+export const generateTags = (tags?: Array<string>) => {
   let tagsString = '';
   if (!tags) {
     return tagsString;
