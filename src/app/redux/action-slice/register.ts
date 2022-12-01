@@ -1,3 +1,7 @@
+import {
+  CityType,
+  ProvinceType,
+} from '@features/un-authentication/information/type';
 import { ConfirmRequest, Register, ValidateRequest } from '@model/register';
 import * as Action from '@redux-action-type/register';
 import { createAction } from '@reduxjs/toolkit';
@@ -29,6 +33,24 @@ const confirm = createAction(
     },
   }),
 );
+const getProvince = createAction(
+  Action.GET_PROVINCE,
+  (onSucceeded: (data: ProvinceType[]) => void) => ({
+    payload: {
+      onSucceeded,
+    },
+  }),
+);
+
+const getCity = createAction(
+  Action.GET_CITY,
+  (body?: string, onSucceeded?: (data: CityType[]) => void) => ({
+    payload: {
+      body,
+      onSucceeded,
+    },
+  }),
+);
 const checkContract = createAction(
   Action.CHECK_CONTRACT,
   (body: string, onSucceeded?: () => void, onError?: () => void) => ({
@@ -39,4 +61,11 @@ const checkContract = createAction(
     },
   }),
 );
-export const registerActions = { validate, register, confirm, checkContract };
+export const registerActions = {
+  validate,
+  register,
+  confirm,
+  checkContract,
+  getProvince,
+  getCity,
+};

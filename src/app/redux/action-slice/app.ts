@@ -4,6 +4,10 @@ import {
   STORAGE_KEY_TOKEN,
 } from '@common';
 import { SLICE_NAME } from '@config/type';
+import {
+  CityType,
+  ProvinceType,
+} from '@features/un-authentication/information/type';
 import { AppState } from '@model/app';
 import { ContentResponse } from '@model/content';
 import { FormInformationProfileType } from '@model/information';
@@ -25,6 +29,9 @@ const initialAppState: AppState = {
   showDialog: false,
   theme: 'default',
   point: 0,
+  dataProvince: [] as ProvinceType[],
+  dataCity: [] as CityType[],
+  provinceChoice: {} as ProvinceType | CityType,
   contents: { items: [] },
 };
 const appSlice = createSlice({
@@ -49,6 +56,18 @@ const appSlice = createSlice({
       { payload }: PayloadAction<FormInformationProfileType | undefined>,
     ) => {
       state.registerData = payload;
+    },
+    setProvince: (
+      state,
+      { payload }: PayloadAction<ProvinceType | CityType>,
+    ) => {
+      state.provinceChoice = payload;
+    },
+    setProvinceData: (state, { payload }: PayloadAction<ProvinceType[]>) => {
+      state.dataProvince = payload;
+    },
+    setCityData: (state, { payload }: PayloadAction<CityType[]>) => {
+      state.dataCity = payload;
     },
     setAppProfile: (state, { payload }: PayloadAction<unknown>) => {
       state.profile = payload;

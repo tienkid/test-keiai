@@ -24,14 +24,15 @@ export const PointContent = () => {
         fontWeight={'bold'}
       />
       <Divider height={0.5} colorTheme="primary" />
-      <Spacer height={30} />
+      <Spacer height={20} />
       <Block block width={'100%'} height={128}>
         <LocalImage source="logo_point" resizeMode="contain" />
       </Block>
-      <Spacer height={16} />
+      <Spacer height={15} />
       <Text
         t18n="home:KI_point_content"
         preset="textNormal"
+        lineHeight={15}
         colorTheme="base5"
         textAlign={'center'}
       />
@@ -54,7 +55,7 @@ export const PointContent = () => {
       </Block>
       <Spacer height={8} />
       <Text t18n="home:KI_point_note" preset="linkXSmall" colorTheme="base5" />
-      <Spacer height={25} />
+      <Spacer height={35} />
       <ButtonPointContent />
     </Block>
   );

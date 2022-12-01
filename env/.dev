@@ -13,3 +13,5 @@ DEFAULT_FALLBACK_LNG_I18n=ja
 REGION=ap-northeast-1
 USER_POOL_ID=ap-northeast-1_yzb30wzeM
 USER_POOL_WEB_CLIENT_ID=6115ttf4ein5rf3hqcbe50g5u0
+API_PROVINCE=https://open-data.iemarco.jp/api/v1/prefectures
+API_City=https://open-data.iemarco.jp/api/v1/cities?

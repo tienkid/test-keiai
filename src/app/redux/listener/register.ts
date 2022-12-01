@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { handleErrorResponse, onCheckType } from '@common';
+import { execFunc, handleErrorResponse, onCheckType } from '@common';
+import { ENVConfig } from '@config/env';
+import {
+  CityType,
+  ProvinceType,
+} from '@features/un-authentication/information/type';
 import { takeLatestListeners } from '@listener';
 import { ApiConstants, NetWorkService } from '@networking';
 
@@ -49,12 +54,45 @@ takeLatestListeners(true)({
     console.log(response, 'response');
   },
 });
+takeLatestListeners()({
+  actionCreator: registerActions.getProvince,
+  effect: async (action, _listenerApi) => {
+    const { onSucceeded } = action.payload;
+    const response = await NetWorkService.Get<ProvinceType[]>({
+      url: `${ENVConfig.API_PROVINCE}`,
+    });
+
+    if (!response) {
+      return;
+    }
+    if (handleErrorResponse(response)) {
+      execFunc(onSucceeded, response.data);
+    }
+  },
+});
+
+takeLatestListeners()({
+  actionCreator: registerActions.getCity,
+  effect: async (action, listenerApi) => {
+    const { body, onSucceeded } = action.payload;
+    const response = await NetWorkService.Get<CityType[]>({
+      url: `${ENVConfig.API_City}${body}`,
+    });
+
+    if (!response) {
+      return;
+    }
+    if (handleErrorResponse(response)) {
+      listenerApi.dispatch(appActions.setCityData(response.data));
+      // execFunc(onSucceeded, response.data);
+    }
+  },
+});
 
 takeLatestListeners(true)({
   actionCreator: registerActions.confirm,
   effect: async (action, listenerApi) => {
     const { body, onSucceeded } = action.payload;
-
     const response = await NetWorkService.Post<any>({
       url: ApiConstants.CONFIRM,
       body,

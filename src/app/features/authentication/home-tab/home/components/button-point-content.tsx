@@ -30,6 +30,7 @@ export const ButtonPointContent = () => {
           <Text
             preset="linkXXXSmall"
             t18n="home:KI_point_button"
+            lineHeight={13}
             colorTheme="base5"
             textAlign={'center'}
           />

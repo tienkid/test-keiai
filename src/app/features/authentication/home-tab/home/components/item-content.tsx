@@ -22,13 +22,15 @@ export const ItemContent = ({ item }: { item: Item }) => {
           )}
         </Block>
         <Spacer width={15} />
-        <Block block justifyContent={'space-between'}>
+        <Block block>
           <Text
-            preset="textNormal"
+            preset="textNormal14"
             colorTheme="base5"
+            lineHeight={15}
             text={item.title}
             numberOfLines={2}
           />
+          <Spacer height={8} />
           <Text
             preset="linkXSmall"
             colorTheme="base4"
@@ -37,7 +39,7 @@ export const ItemContent = ({ item }: { item: Item }) => {
           />
         </Block>
       </Block>
-      <Spacer height={16} />
+      <Spacer height={20} />
     </Button.Default>
   );
 };

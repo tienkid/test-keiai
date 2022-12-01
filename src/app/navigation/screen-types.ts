@@ -1,7 +1,9 @@
 import { ItemNotifyType } from '@features/authentication/home-tab/notification/type';
+import {
+  CityType,
+  ProvinceType,
+} from '@features/un-authentication/information/type';
 import { Item } from '@model/content';
-
-import { MODAL_SELECTED_COUNTRY_TYPE } from '../common/constant';
 
 export enum APP_SCREEN {
   UN_AUTHORIZE = 'UN_AUTHORIZE',
@@ -53,7 +55,11 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.WELCOME]: undefined;
   [APP_SCREEN.INFORMATION_PROFILE]: undefined;
   [APP_SCREEN.INFORMATION_PROFILE_STEP2]: undefined;
-  [APP_SCREEN.MODAL_SELECTED_COUNTY]: { type: MODAL_SELECTED_COUNTRY_TYPE };
+  [APP_SCREEN.MODAL_SELECTED_COUNTY]: {
+    type: string;
+    data: ProvinceType[] | CityType[];
+    screenPrevious: string;
+  };
   [APP_SCREEN.LOGIN]: undefined;
   [APP_SCREEN.REGISTER]: { type?: string };
   [APP_SCREEN.SPLASH]: undefined;
