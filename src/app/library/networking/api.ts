@@ -13,6 +13,7 @@ const ApiEndPoint = {
 
   //me
   GET_POINT: 'me/points',
+  GET_HISTORY_POINT: 'members/',
 
   //banners
   GET_BANNER: 'banners',

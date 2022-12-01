@@ -1,17 +1,17 @@
 export const historyPointFake = [
   {
-    content: '新規登録ボーナス',
-    date: '2022/9/12',
-    point: 5000,
+    memo: '新規登録ボーナス',
+    issuedAt: '2022/9/12',
+    adjustment: 5000,
   },
   {
-    content: 'KEIAI でんき',
-    date: '2022/9/10',
-    point: 10000,
+    memo: 'KEIAI でんき',
+    issuedAt: '2022/9/10',
+    adjustment: 10000,
   },
   {
-    content: 'オプション工事',
-    date: '2022/8/12',
-    point: -5000,
+    memo: 'オプション工事',
+    issuedAt: '2022/8/12',
+    adjustment: -5000,
   },
 ];

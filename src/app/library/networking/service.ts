@@ -87,6 +87,7 @@ function Request<T = Record<string, unknown>>(
   isCheckOut = true,
 ) {
   const { token }: AppState = getState('app');
+
   const defaultConfig: AxiosRequestConfig = {
     baseURL: ENVConfig.API_URL,
     timeout: TIME_OUT,

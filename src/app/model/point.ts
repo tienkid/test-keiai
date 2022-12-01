@@ -8,3 +8,11 @@ type Params = {
   count?: number;
   order?: string;
 };
+
+export interface HistoryPoint {
+  adjustment: number;
+  newBalance: number;
+  memo: string;
+  type: 'usage' | 'issue';
+  issuedAt: string;
+}
