@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { TextInput } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { MODAL_SELECTED_COUNTRY_TYPE, sizeScale } from '@common';
+import { dispatch, MODAL_SELECTED_COUNTRY_TYPE, sizeScale } from '@common';
 import {
   Block,
   Button,
@@ -23,23 +23,28 @@ import {
   NAME_LENGTH,
 } from '@config/field-length';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useSelector } from '@hooks';
 import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
+import { useRoute } from '@react-navigation/native';
+import { appActions, registerActions } from '@redux-slice';
 import { useTheme } from '@theme';
 import { informationValidation } from '@validate/information';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import { FormCountry } from './form-country';
 import { InputHaft } from './input-half';
 import { TwoHalfInput } from './two-half-input';
 
 import { styles } from '../style';
-import { FormInformationProfileProps } from '../type';
+import { FormInformationProfileProps, ProvinceType } from '../type';
 
 export const FormInformationProfile = ({
   onSubmit,
 }: FormInformationProfileProps) => {
   // state
+  const route = useRoute();
   const [t] = useTranslation();
   const insets = useSafeAreaInsets();
   const theme = useTheme();
@@ -47,24 +52,56 @@ export const FormInformationProfile = ({
     mode: 'all',
     resolver: yupResolver(informationValidation),
   });
-  const [isCheck, setIsCheck] = useState(false);
+  const provinceChoice = useSelector(x => x.app.provinceChoice);
+  const dataProvince = useSelector(x => x.app.dataProvince);
+  const dataCity = useSelector(x => x.app.dataCity);
 
+  const [isCheck, setIsCheck] = useState(false);
   // function
   const onSubmitKey = () => {
     formMethod.handleSubmit(onSubmit)();
   };
 
   const handleSelectedCountry = (type: MODAL_SELECTED_COUNTRY_TYPE) => () => {
-    navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, { type });
+    if (type === MODAL_SELECTED_COUNTRY_TYPE.COUNTRY) {
+      navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, {
+        type: 'country',
+        data: dataProvince,
+        screenPrevious: route.name,
+      });
+    } else {
+      navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, {
+        type: 'city',
+        data: dataCity,
+        screenPrevious: route.name,
+      });
+    }
   };
 
   const handleCheck = () => {
     setIsCheck(is => !is);
   };
+  const handleGetProvinceSuccess = (data: ProvinceType[]) => {
+    dispatch(appActions.setProvinceData(data));
+  };
 
-  console.log({ isCheck, tt: formMethod.formState.isValid });
+  const getProvince = useCallback(() => {
+    dispatch(registerActions.getProvince(handleGetProvinceSuccess));
+  }, []);
+  const getCity = useCallback(() => {
+    if (provinceChoice.pref_id) {
+      dispatch(
+        registerActions.getCity(`pref_code=${provinceChoice.pref_code}`),
+      );
+    }
+  }, [provinceChoice]);
+  useEffect(() => {
+    getCity();
+  }, [getCity]);
   //effect
-
+  useEffect(() => {
+    getProvince();
+  }, [getProvince]);
   // render
   return (
     <FormProvider {...formMethod}>
@@ -136,13 +173,14 @@ export const FormInformationProfile = ({
           wrapLabelStyle={{ paddingLeft: 0 }}
         />
         <Spacer height={10} />
-        <TwoHalfInput
+        <FormCountry
           name_1="country"
           name_2="city"
           labelT18n="information_profile:address"
           placeholder_1_T18n="information_profile:country"
           placeholder_2_T18n="information_profile:city"
           requiredLabelT18n="common:indispensable"
+          labelT18n_2="information_profile:empty"
           rightChildren_1={
             <Button.Default
               onPress={handleSelectedCountry(

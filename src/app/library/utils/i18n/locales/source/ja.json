@@ -220,7 +220,8 @@
     "registration": "登録完了",
     "check_content": "内容をご確認し、[ページ下部にあるボタン:1]を押してください。",
     "your_name_1": "お名前(フリガナ) ",
-    "address_home": "ご住所"
+    "address_home": "ご住所",
+    "empty": " "
   },
   "main": {
     "chatTab": {

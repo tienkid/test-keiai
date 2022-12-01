@@ -43,7 +43,7 @@ export const ListContent = () => {
 
   // render
   return (
-    <Block paddingVertical={20} paddingHorizontal={15} block>
+    <Block paddingTop={20} paddingHorizontal={15} block>
       <Block
         direction={'row'}
         justifyContent="space-between"
@@ -55,7 +55,7 @@ export const ListContent = () => {
             colorTheme="text_2"
             t18n="home:text_see_more"
           />
-          <Icon icon="go" colorTheme="text_2" size={16} />
+          <Icon icon="go" colorTheme="text_2" size={15} />
         </Block>
       </Block>
       <Spacer height={15} />
