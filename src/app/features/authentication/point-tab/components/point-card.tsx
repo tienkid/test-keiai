@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import { sizeScale } from '@common';
 import { Block, Spacer, Text } from '@components';
+import { useSelector } from '@hooks';
 import { useFocusEffect } from '@react-navigation/native';
 import { useTheme } from '@theme';
 
@@ -12,9 +13,9 @@ import { styles } from '../style';
 
 export const PointCard = () => {
   // state
-  // const point = useSelector(x => x.app.point);
+  const pointCard = useSelector(x => x.app.point);
   const { colors } = useTheme();
-  const [point, setPoint] = useState(0);
+  const [point, setPoint] = useState(pointCard);
 
   useFocusEffect(
     React.useCallback(() => {
