@@ -24,7 +24,7 @@ export const ItemService = ({ item, index }: ItemServiceProps) => {
         <Block height={112} width={'100%'} borderRadius={8} overflow="hidden">
           <LocalImage source={'item_recommend'} />
         </Block>
-        <Block block marginLeft={15} paddingTop={5}>
+        <Block block paddingTop={5}>
           <Text
             preset="textNormal12"
             colorTheme="base5"

@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  CityType,
+  ProvinceType,
+} from '@features/un-authentication/information/type';
 import { ThemeType } from '@theme';
 
 import { ContentResponse } from './content';
@@ -24,6 +28,12 @@ export interface AppState {
   sessionID: string | undefined;
 
   contents: ContentResponse;
+
+  provinceChoice: ProvinceType | CityType;
+
+  dataProvince: ProvinceType[];
+
+  dataCity: CityType[];
 }
 
 export interface Meta {

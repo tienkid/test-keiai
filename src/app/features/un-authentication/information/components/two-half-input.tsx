@@ -1,9 +1,12 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useWindowDimensions } from 'react-native';
 
-import { sizeScale } from '@common';
+import { useForm } from 'react-hook-form';
+
+import { MODAL_SELECTED_COUNTRY_TYPE, sizeScale } from '@common';
 import { Block, FormInput } from '@components';
 import { FormInformationProfileType } from '@model/information';
+import { useRoute } from '@react-navigation/native';
 
 import { TwoHalfInputProps } from '../type';
 
@@ -22,13 +25,39 @@ export const TwoHalfInput = ({
 }: TwoHalfInputProps) => {
   // state
   const { width } = useWindowDimensions();
-
+  const route = useRoute();
   const actualWidth = useMemo(() => sizeScale(190), []);
   const actualPercentWidth = useMemo(
     () => (actualWidth / width) * 100,
     [actualWidth, width],
   );
+  const formMethod = useForm();
+  useEffect(() => {
+    if ((route?.params as Record<string, unknown>)?.item) {
+      if (
+        (route?.params as Record<string, unknown>)?.type ===
+        MODAL_SELECTED_COUNTRY_TYPE.COUNTRY
+      ) {
+        formMethod.setValue(
+          name_1,
+          (route?.params as Record<string, unknown>)?.type,
+        );
+      }
+      // if ((route?.params as Record<string, unknown>)?.fieldName === name) {
+      //   field.onChange(
+      //     ((route?.params as Record<string, unknown>)?.country as Country).id,
+      //   );
+      //   dispatch(
+      //     appActions.onSetResidenceID(
+      //       ((route?.params as Record<string, unknown>)?.country as Country).id,
+      //     ),
+      //   );
+      //   field.onBlur();
+      // }
+    }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [route.params]);
   // render
   return (
     <Block>
