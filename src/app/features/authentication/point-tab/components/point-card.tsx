@@ -20,7 +20,7 @@ export const PointCard = () => {
   useFocusEffect(
     React.useCallback(() => {
       const timeOut = setTimeout(() => {
-        setPoint(56789);
+        setPoint(pointCard);
       }, 500);
 
       return () => {
