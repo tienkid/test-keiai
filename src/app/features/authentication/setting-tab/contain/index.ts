@@ -1,6 +1,6 @@
 import { ImageTypes } from '@assets/image';
 
-enum KeiaiType {
+export enum KeiaiType {
   'IESAPO' = 'IESAPO',
   'DENKI' = 'DENKI',
   'INTERNET' = 'INTERNET',
