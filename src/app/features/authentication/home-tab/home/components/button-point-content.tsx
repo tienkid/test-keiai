@@ -1,12 +1,15 @@
 import React from 'react';
 
 import { Block, Button, Icon, Text } from '@components';
+import { navigate } from '@navigation/navigation-service';
+import { BOTTOM_TAB } from '@navigation/screen-types';
 import { ColorDefault } from '@theme/color';
 
 export const ButtonPointContent = () => {
   //func
   const handleGoToPointScreen = () => {
     //to do somthing
+    navigate(BOTTOM_TAB.TAB_POINT);
   };
 
   // render

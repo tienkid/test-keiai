@@ -67,9 +67,12 @@ const ModalErrorComponent = forwardRef((_, ref) => {
             preset="linkSmall"
           />
           <Spacer height={16} />
-          <Block width={'50%'}>
-            <Button.Primary t18n="common:OK" onPress={closeModal} />
+          <Block middle>
+            <Block width={'50%'}>
+              <Button.Primary t18n="common:OK" onPress={closeModal} />
+            </Block>
           </Block>
+
           <Spacer height={16} />
         </Block>
       </Block>

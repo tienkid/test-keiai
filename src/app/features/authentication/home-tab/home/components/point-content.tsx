@@ -38,6 +38,10 @@ export const PointContent = () => {
       />
       <Spacer height={16} />
       <Block direction={'row'} middle>
+        <Block height={100} width={316}>
+          <LocalImage source="home_point" />
+        </Block>
+        {/* <Spacer width={8} />
         <LocalImage
           source="item_recommend"
           style={{ height: 100, width: 100, borderRadius: 8 }}
@@ -46,12 +50,7 @@ export const PointContent = () => {
         <LocalImage
           source="item_recommend"
           style={{ height: 100, width: 100, borderRadius: 8 }}
-        />
-        <Spacer width={8} />
-        <LocalImage
-          source="item_recommend"
-          style={{ height: 100, width: 100, borderRadius: 8 }}
-        />
+        /> */}
       </Block>
       <Spacer height={8} />
       <Text t18n="home:KI_point_note" preset="linkXSmall" colorTheme="base5" />

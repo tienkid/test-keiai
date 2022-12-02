@@ -42,6 +42,7 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
       <Block paddingHorizontal={15}>
         <FormInput<FormLoginType>
           name={'phoneNumber'}
+          keyboardType="numeric"
           labelT18n={'login:phoneNumber'}
           placeholderT18n={'login:phoneNumberPlaceholder'}
           inputStyle={{ height: 50 }}

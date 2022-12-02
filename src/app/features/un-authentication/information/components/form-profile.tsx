@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { TextInput } from 'react-native';
+import { Linking, TextInput } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -241,12 +241,14 @@ export const FormInformationProfile = ({
               {
                 pattern: /\[([^:]+):1\]/i,
                 renderText: renderItemWithPattern,
-                onPress: () => null,
+                onPress: () =>
+                  Linking.openURL('https://ki-group.co.jp/policy/privacy/'),
                 style: styles.linkText,
               },
               {
                 pattern: /\[([^:]+):2\]/i,
-                onPress: () => null,
+                onPress: () =>
+                  Linking.openURL('https://ki-group.co.jp/member/agreement'),
                 renderText: renderItemWithPattern,
                 style: styles.linkText,
               },

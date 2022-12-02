@@ -2,12 +2,16 @@ import React from 'react';
 
 import { FormProvider, useForm } from 'react-hook-form';
 
+import { dispatch } from '@common';
 import { Block, Button, Divider, FormInput, Spacer, Text } from '@components';
 import { rxNotNumber } from '@config/regex';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useSelector } from '@hooks';
+import { FormGetCodeType } from '@model/authentication';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { useRoute } from '@react-navigation/native';
+import { loginActions } from '@redux-slice';
 import { registerOTPValidation } from '@validate/register';
 
 import {
@@ -20,7 +24,7 @@ export const FormOTP = ({ onSubmit }: FormRegisterOTPProps) => {
   // state
   const route = useRoute<OTPScreenProps['route']>();
   const { type } = route.params;
-
+  const profile = useSelector(x => x.app.profile);
   const formMethod = useForm<FormRegisterOTPType>({
     mode: 'all',
     resolver: yupResolver(registerOTPValidation),
@@ -36,6 +40,11 @@ export const FormOTP = ({ onSubmit }: FormRegisterOTPProps) => {
 
   const handleResendOTP = () => {
     console.log('resend');
+    const data: FormGetCodeType = {
+      mode: 'background_refresh',
+      phone: profile?.phone_number,
+    };
+    dispatch(loginActions.getCodeLogin(data));
   };
 
   const handleToEdit = () => {
