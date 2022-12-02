@@ -5,7 +5,7 @@ import isEqual from 'react-fast-compare';
 
 import { dispatch } from '@common';
 import { Block, Divider, Header, Spacer, StackView } from '@components';
-import { dataFake } from '@features/authentication/setting-tab';
+// import { dataFake } from '@features/authentication/setting-tab';
 import { useSelector, useUnMount } from '@hooks';
 import { BannerResponse } from '@model/banner';
 import { ContentResponse } from '@model/content';
@@ -19,8 +19,8 @@ import {
 
 import { ButtonPoint } from './components/button-point';
 import { ListBanner } from './components/list-banner';
-import { ListContent } from './components/list-content';
-import { ListService } from './components/list-service';
+// import { ListContent } from './components/list-content';
+// import { ListService } from './components/list-service';
 import { PointContent } from './components/point-content';
 
 const HomeComponent = () => {
@@ -79,12 +79,12 @@ const HomeComponent = () => {
         <ListBanner />
         <Spacer height={10} />
         <ButtonPoint />
-        <Divider height={6} colorTheme="divider" />
+        {/* <Divider height={6} colorTheme="divider" /> */}
         {/* service */}
-        <ListService data={dataFake} />
-        <Divider height={6} colorTheme="divider" />
+        {/* <ListService data={dataFake} /> */}
+        {/* <Divider height={6} colorTheme="divider" /> */}
         {/* content */}
-        <ListContent />
+        {/* <ListContent /> */}
         <Divider height={6} colorTheme="divider" />
         {/* point */}
         <PointContent />

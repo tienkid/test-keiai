@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Linking } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
@@ -8,7 +9,7 @@ import { useTheme } from '@theme';
 import { KeiaiList } from './components/keiaiList';
 import { DataService } from './type';
 
-import { ListService } from '../home-tab/home/components/list-service';
+// import { ListService } from '../home-tab/home/components/list-service';
 export const dataFake: DataService[] = [
   {
     id: 1,
@@ -39,11 +40,15 @@ export const dataFake: DataService[] = [
 const SettingComponent = () => {
   // render
   const { colors } = useTheme();
+
+  const handleSubmit = () => {
+    Linking.openURL('https://owners.ki-group.jp/app/inquiry/');
+  };
   return (
     <Block block colorTheme="base3">
       <Header />
       <Spacer height={2} />
-      <StackView style={{ flex: 1, backgroundColor: colors.base3 }}>
+      <StackView style={{ flex: 1, backgroundColor: colors.white }}>
         <Block colorTheme="white">
           <Spacer height={20} />
           <Block>
@@ -51,11 +56,11 @@ const SettingComponent = () => {
           </Block>
           <Spacer height={15} />
           <Block paddingHorizontal={20} middle>
-            <Button.Primary t18n="profile:inquiries" />
+            <Button.Primary t18n="profile:inquiries" onPress={handleSubmit} />
           </Block>
           <Spacer height={15} />
         </Block>
-        <Block marginTop={5} colorTheme="white">
+        {/* <Block marginTop={5} colorTheme="white">
           <ListService
             data={dataFake.slice(0, 4)}
             title="service:housing_facilities"
@@ -99,7 +104,7 @@ const SettingComponent = () => {
             data={dataFake.slice(0, 1)}
             title="service:energy_service"
           />
-        </Block>
+        </Block> */}
         <Block colorTheme="white">
           <Spacer height={50} />
         </Block>
