@@ -119,18 +119,14 @@ takeLatestListeners(true)({
       url: ApiConstants.CHECK_CONTRACT + body,
     });
     if (!response) {
-      console.log(11111);
-
       return;
     }
     if (handleErrorResponse(response)) {
-      console.log(22222);
       // TODO
       if (onCheckType(onSucceeded, 'function')) {
         onSucceeded();
       }
     } else {
-      console.log(333333);
       if (onCheckType(onError, 'function')) {
         onError();
       }

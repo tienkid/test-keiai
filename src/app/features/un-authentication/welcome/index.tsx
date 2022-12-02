@@ -1,19 +1,19 @@
 import React from 'react';
 
 import { useTranslation } from 'react-i18next';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
   Block,
   Button,
+  LocalImage,
   ParsedText,
   Spacer,
   Text,
-  WrapperBackground,
 } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
-import { useTheme } from '@theme';
 
 import { useWelcomeStyle } from './style';
 
@@ -21,7 +21,8 @@ export const WelcomeScreen = () => {
   // state
   const [t] = useTranslation();
   const styles = useWelcomeStyle();
-  const theme = useTheme();
+  const insets = useSafeAreaInsets();
+
   // func
 
   const handleToLogin = () => {
@@ -32,30 +33,24 @@ export const WelcomeScreen = () => {
   };
   // render
   return (
-    <WrapperBackground scroll={false}>
-      <Block middle>
-        <Block
-          width={250}
-          height={250}
-          borderColor={theme.colors.border}
-          borderWidth={1}
-          borderRadius={125}
-          middle
-          justifyContent={'center'}>
-          <Text
-            center
-            lineHeight={50}
-            t18n="welcome:description"
-            preset="textNormal15"
-            colorTheme="base5"
-          />
+    <Block block colorTheme="white" paddingTop={insets.top}>
+      <Block middle paddingHorizontal={15}>
+        <Spacer height={50} />
+        <Block width={'100%'} height={390}>
+          <LocalImage source="welcome" resizeMode="contain" />
         </Block>
-        <Spacer height={38} />
+        <Spacer height={60} />
+        <Text
+          preset="textNormal12"
+          t18n="welcome:description"
+          colorTheme="base5"
+        />
+        <Spacer height={5} />
         <Button.Primary t18n="welcome:new_member" onPress={handleToRegister} />
-        <Spacer height={30} />
+        <Spacer height={25} />
         <Block alignSelf={'center'}>
           <ParsedText
-            preset="linkXXSmall"
+            preset="textNormal15"
             parse={[
               {
                 pattern: /\[([^:]+):1\]/i,
@@ -73,6 +68,6 @@ export const WelcomeScreen = () => {
           </ParsedText>
         </Block>
       </Block>
-    </WrapperBackground>
+    </Block>
   );
 };
