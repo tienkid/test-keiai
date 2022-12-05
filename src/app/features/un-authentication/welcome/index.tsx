@@ -36,7 +36,7 @@ export const WelcomeScreen = () => {
     <Block block colorTheme="white" paddingTop={insets.top}>
       <Block middle paddingHorizontal={15}>
         <Spacer height={50} />
-        <Block width={'100%'} height={390}>
+        <Block width={'100%'} height={385}>
           <LocalImage source="welcome" resizeMode="contain" />
         </Block>
         <Spacer height={60} />

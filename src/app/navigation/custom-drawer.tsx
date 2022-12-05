@@ -46,7 +46,7 @@ const CustomDrawer = () => {
     return (
       <Button.Default onPress={() => handleRouteDrawer(item)}>
         <Block direction={'row'} middle>
-          <Icon icon={item.icon} />
+          <Icon icon={item.icon} size={24} />
           <Spacer width={5} />
           <Text
             preset="linkSmall"

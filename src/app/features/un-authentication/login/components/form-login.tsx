@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Linking } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { LINK_INQUIRY, logActionEvent } from '@common';
-import { Block, Button, FormInput, ParsedText, Spacer } from '@components';
+import {
+  Block,
+  Button,
+  FormInput,
+  Icon,
+  ParsedText,
+  Spacer,
+  Text,
+} from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormLoginType } from '@model/authentication';
@@ -14,10 +22,11 @@ import { loginValidation } from '@validate/login';
 import { useLoginStyle } from '../style';
 import { FormLoginProps } from '../type';
 
-export const FormLogin = ({ onSubmit }: FormLoginProps) => {
+export const FormLogin = ({ onSubmit, errorLogin }: FormLoginProps) => {
   // state
   const [t] = useTranslation();
   const styles = useLoginStyle();
+  const [passwordShown, setPasswordShown] = useState<boolean>(false);
   const formMethod = useForm<FormLoginType>({
     mode: 'all',
     resolver: yupResolver(loginValidation),
@@ -32,7 +41,9 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
     formMethod.handleSubmit(onSubmit)();
     logActionEvent('login', { data: formMethod.getValues() });
   };
-
+  const onTogglePassword = () => {
+    setPasswordShown(e => !e);
+  };
   const handleGoToRegister = () => {
     Linking.openURL(LINK_INQUIRY);
   };
@@ -53,8 +64,20 @@ export const FormLogin = ({ onSubmit }: FormLoginProps) => {
           placeholderT18n={'login:passwordPlaceholder'}
           labelT18n={'login:password'}
           inputStyle={{ height: 50 }}
-          secureTextEntry
+          secureTextEntry={!passwordShown}
+          rightChildren={
+            <Button.Default onPress={onTogglePassword}>
+              <Block direction="row">
+                <Icon icon={passwordShown ? 'eye' : 'eye_close'} />
+                <Spacer width={10} />
+              </Block>
+            </Button.Default>
+          }
         />
+        <Spacer height={10} />
+        <Block middle>
+          <Text t18n={errorLogin} preset="textNormal12" colorTheme="primary" />
+        </Block>
         <Spacer height={60} />
         <Block alignSelf={'center'}>
           <Button.Primary

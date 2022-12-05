@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 
 import isEqual from 'react-fast-compare';
 
@@ -18,6 +18,7 @@ import { FormLoginType } from '@model/authentication';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { appActions } from '@redux-slice';
+import { I18nKeys } from '@utils/i18n/locales';
 import { loadString, saveString } from '@utils/storage';
 import { Auth } from 'aws-amplify';
 import moment from 'moment';
@@ -27,6 +28,7 @@ import { FormLogin } from './components/form-login';
 const LoginComponent = () => {
   const refreshToken = useSelector(x => x.app.refreshToken);
   const checkRefresh = loadString(NON_REFRESH);
+  const [errorLogin, setErrorLogin] = useState<I18nKeys | undefined>();
   console.log(checkRefresh, 'checkRefresh');
 
   const today = moment(new Date()).format('YYYY-MM-DD');
@@ -72,6 +74,7 @@ const LoginComponent = () => {
       }
     } catch (error) {
       console.log(error);
+      setErrorLogin('login:error_login');
     }
     handleHideModalLoading();
   };
@@ -81,7 +84,7 @@ const LoginComponent = () => {
     <Block block colorTheme="white">
       <WrapperBackground canBack headerTitleT18n="login:title">
         <Spacer height={20} />
-        <FormLogin onSubmit={onSubmit} />
+        <FormLogin onSubmit={onSubmit} errorLogin={errorLogin} />
       </WrapperBackground>
     </Block>
   );
