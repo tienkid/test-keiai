@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linking } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -8,8 +9,6 @@ import { rxNotNumber } from '@config/regex';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSelector } from '@hooks';
 import { FormGetCodeType } from '@model/authentication';
-import { navigate } from '@navigation/navigation-service';
-import { APP_SCREEN } from '@navigation/screen-types';
 import { useRoute } from '@react-navigation/native';
 import { loginActions } from '@redux-slice';
 import { registerOTPValidation } from '@validate/register';
@@ -48,11 +47,12 @@ export const FormOTP = ({ onSubmit }: FormRegisterOTPProps) => {
   };
 
   const handleToEdit = () => {
-    if (type) {
-      navigate(APP_SCREEN.INFORMATION_PROFILE);
-    } else {
-      navigate(APP_SCREEN.LOGIN);
-    }
+    // if (type) {
+    //   navigate(APP_SCREEN.INFORMATION_PROFILE);
+    // } else {
+    //   navigate(APP_SCREEN.LOGIN);
+    // }
+    Linking.openURL('https://ki-group.co.jp/owners/app/inquiry/');
   };
   // render
   return (

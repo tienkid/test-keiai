@@ -59,7 +59,7 @@
   "welcome": {
     "registered_members": "会員登録済みの方",
     "sms_authenticate": "SMS認証をしてアプリ利用を開始",
-    "login": "[会員登録済みの方は:1][ログイン:2]",
+    "login": "[:1][会員登録済みの方はログイン:2]",
     "not_has_account": "まだ会員登録をされていない方",
     "use_KEIAI_Plus": "[KEIAIプラスのご利用には\n:1][myKEIAI会員:3][以下のボタンから会員登録を行ってください。:2]",
     "my_KEIAI_Plus": "myKEIAI新規会員登録",
@@ -80,7 +80,8 @@
     "loading_title": "ログイン中です",
     "troubling": "[ログインやアカウント登録でお困りの方は:1][こちら:2]",
     "new_member": "新規会員登録",
-    "login": "ログインする"
+    "login": "ログインする",
+    "error_login": "パスワードもしくは電話番号が間違っています。"
   },
   "dialog": {
     "error": "Error",
@@ -153,7 +154,7 @@
     "warning_register": "以下の番号にSMSで認証コードを送信します",
     "footer_text": "認証コードが届かない場合",
     "footer_des": "以下のいずれかの方法をお試しください",
-    "change_phone": "電話番号を修正・変更する",
+    "change_phone": "ログインやアカウント登録でお困りの方",
     "complete_register": "会員登録を完了する",
     "error_send_otp": "認証コードを再送しました。"
   },

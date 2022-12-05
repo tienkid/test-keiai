@@ -1,10 +1,9 @@
 import React from 'react';
+import { Linking } from 'react-native';
 
 import { Block, Button, Spacer, Text } from '@components';
 import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
 import { useSelector } from '@hooks';
-import { navigate } from '@navigation/navigation-service';
-import { APP_SCREEN } from '@navigation/screen-types';
 
 import { FormRegisterProps } from '../type';
 
@@ -23,7 +22,8 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
     onSubmit();
   };
   const onPressChangePhone = () => {
-    navigate(APP_SCREEN.LOGIN);
+    // navigate(APP_SCREEN.LOGIN);
+    Linking.openURL('https://ki-group.co.jp/owners/app/inquiry/');
   };
   // render
   return (

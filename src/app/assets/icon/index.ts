@@ -33,6 +33,8 @@ export const icons = {
   block_user: require('./source/ic_block_user.png'),
   content: require('./source/ic_content.png'),
   left_back: require('./source/ic_left_back.png'),
+  eye: require('./source/eye.png'),
+  eye_close: require('./source/eye_closed.png'),
 };
 
 export type IconTypes = keyof typeof icons;

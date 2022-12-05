@@ -168,9 +168,7 @@ export const FormInformationProfile = ({
             borderRadius: 8,
           }}
           keyboardType="numeric"
-          inputStyle={{ paddingVertical: sizeScale(12) }}
           requiredLabelT18n="common:indispensable"
-          wrapLabelStyle={{ paddingLeft: 0 }}
         />
         <Spacer height={10} />
         <FormCountry
