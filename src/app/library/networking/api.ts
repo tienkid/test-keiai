@@ -1,5 +1,9 @@
 const API_VERSION = 'v1/';
 
+export const ApiOnlyEndPoint = {
+  SERVICES: 'services',
+};
+
 const ApiEndPoint = {
   LOGIN: 'auth/login',
   GET_CONTENT: 'post/pagination',

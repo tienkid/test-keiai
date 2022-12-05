@@ -1,13 +1,15 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { Linking } from 'react-native';
 
 import isEqual from 'react-fast-compare';
 
+import { dispatch } from '@common';
 import { Block, Button, Header, Spacer, StackView } from '@components';
+import { servicesActions } from '@redux-slice';
 import { useTheme } from '@theme';
 
 import { KeiaiList } from './components/keiaiList';
-import { DataService } from './type';
+import { DataService, MenuService } from './type';
 
 // import { ListService } from '../home-tab/home/components/list-service';
 export const dataFake: DataService[] = [
@@ -39,8 +41,19 @@ export const dataFake: DataService[] = [
 ];
 const SettingComponent = () => {
   // render
+  const [dataMenu, setDataMenu] = useState<MenuService[]>([]);
+
   const { colors } = useTheme();
 
+  const onSuccess = (data: MenuService[]) => {
+    setDataMenu(data);
+  };
+  const getAllServices = useCallback(() => {
+    dispatch(servicesActions.getAllServices(onSuccess));
+  }, []);
+  useEffect(() => {
+    getAllServices();
+  }, [getAllServices]);
   const handleSubmit = () => {
     Linking.openURL('https://owners.ki-group.jp/app/inquiry/');
   };
@@ -52,7 +65,7 @@ const SettingComponent = () => {
         <Block colorTheme="white">
           <Spacer height={20} />
           <Block>
-            <KeiaiList />
+            <KeiaiList dataMenu={dataMenu} />
           </Block>
           <Spacer height={15} />
           <Block paddingHorizontal={20} middle>
