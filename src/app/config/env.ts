@@ -3,6 +3,7 @@ import Config from 'react-native-config';
 export const ENVConfig = {
   APP_ENV: Config.APP_ENV,
   API_URL: Config.API_URL,
+  API_URL_PRO: Config.API_URL_PRO,
   APP_DISPLAY_NAME: Config.APP_DISPLAY_NAME,
   APP_PLACEHOLDER_NAME: Config.APP_PLACEHOLDER_NAME,
   VERSION_CODE: Config.VERSION_CODE,
