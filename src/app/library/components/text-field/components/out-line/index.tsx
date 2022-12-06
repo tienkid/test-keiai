@@ -54,6 +54,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
     isShowMsgError = true,
     requiredLabel,
     requiredLabelT18n,
+    colorLabel,
     inputStyle: inputStyleOverwrite = {},
     wrapLabelStyle: wrapLabelStyleOverwrite = {},
     containerStyle: containerStyleOverwrite = {},
@@ -140,6 +141,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
         disabled={disabled}
         label={label}
         labelT18n={labelT18n}
+        colorLabel={colorLabel}
         requiredLabel={requiredLabel}
         requiredLabelT18n={requiredLabelT18n}
         wrapLabelStyle={wrapLabelStyleOverwrite}

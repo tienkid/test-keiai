@@ -70,17 +70,11 @@ const HomeComponent = () => {
       <StackView
         refreshControl={<RefreshControl refreshing={false} />}
         style={{ flex: 1 }}>
+        <Spacer height={8} />
         <ListBanner />
-        <Spacer height={10} />
+        <Spacer height={8} />
         <ButtonPoint />
-        {/* <Divider height={6} colorTheme="divider" /> */}
-        {/* service */}
-        {/* <ListService data={dataFake} /> */}
-        {/* <Divider height={6} colorTheme="divider" /> */}
-        {/* content */}
-        {/* <ListContent /> */}
         <Divider height={6} colorTheme="divider" />
-        {/* point */}
         <PointContent />
       </StackView>
     </Block>

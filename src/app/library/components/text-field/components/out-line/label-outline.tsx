@@ -16,6 +16,7 @@ export const LabelOutline = ({
   requiredLabel,
   requiredLabelT18n,
   wrapLabelStyle = {},
+  colorLabel = 'base5',
 }: LabelOutlineProps) => {
   // state
   const [t] = useTranslation();
@@ -40,7 +41,7 @@ export const LabelOutline = ({
       <Text
         text={labelText}
         preset={'textNormal15'}
-        colorTheme={'base5'}
+        colorTheme={colorLabel}
         numberOfLines={1}
         style={{ maxWidth: '80%' }}
       />

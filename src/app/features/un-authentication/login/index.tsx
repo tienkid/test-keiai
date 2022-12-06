@@ -34,6 +34,7 @@ const LoginComponent = () => {
   const today = moment(new Date()).format('YYYY-MM-DD');
   // function
   const onSubmit = async (data: FormLoginType) => {
+    setErrorLogin(undefined);
     handleShowModalLoading();
     const phoneNumber = numberToCountryCode(data.phoneNumber);
     try {
@@ -49,7 +50,12 @@ const LoginComponent = () => {
             refreshToken: refreshToken ?? '',
           }),
         );
-        dispatch(appActions.setAppProfile(res.attributes));
+        dispatch(
+          appActions.setAppProfile({
+            ...res.attributes,
+            username: res.username,
+          }),
+        );
       } else {
         const expired = moment(checkRefresh).format('YYYY-MM-DD');
         const diff = moment.duration(moment(expired).diff(moment(today)));
@@ -73,7 +79,6 @@ const LoginComponent = () => {
         }
       }
     } catch (error) {
-      console.log(error);
       setErrorLogin('login:error_login');
     }
     handleHideModalLoading();

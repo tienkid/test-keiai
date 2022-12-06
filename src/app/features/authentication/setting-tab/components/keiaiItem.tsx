@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linking } from 'react-native';
+import { Linking, useWindowDimensions } from 'react-native';
 
 import { Block, Button, LocalImage, Spacer, Text } from '@components';
 
@@ -7,6 +7,8 @@ import { KeiaiType } from '../contain';
 import { KeiaiItemPropsType } from '../type';
 
 export const KeiaiItem = ({ item }: KeiaiItemPropsType) => {
+  //state
+  const { width } = useWindowDimensions();
   // func
   const handlePressItem = () => {
     console.log(item.type);
@@ -29,12 +31,19 @@ export const KeiaiItem = ({ item }: KeiaiItemPropsType) => {
 
   // render
   return (
-    <Button.Default onPress={handlePressItem} style={{ marginBottom: 25 }}>
-      <Block height={112} width={169}>
-        <LocalImage source={item.image} resizeMode="cover" />
+    <Button.Default onPress={handlePressItem}>
+      <Block direction={'row'}>
+        <Block>
+          <Block height={(width - 18) * 0.33} width={width / 2 - 27}>
+            <LocalImage source={item.image} resizeMode="contain" />
+          </Block>
+          <Block direction={'row'}>
+            <Spacer width={9} />
+            <Text text={item.title} preset="textNormal12" colorTheme="base5" />
+          </Block>
+          <Spacer height={25} />
+        </Block>
       </Block>
-      <Spacer height={5} />
-      <Text text={item.title} preset="textNormal12" colorTheme="base5" />
     </Button.Default>
   );
 };

@@ -22,7 +22,7 @@ export const ListBanner = () => {
         justifyContent="center"
         direction={'row'}
         shadow>
-        <Spacer width={index === 0 ? 15 : 0} />
+        <Spacer width={index === 0 ? 15 : 15} />
         <LocalImage
           resizeMode="stretch"
           source={item}
@@ -38,20 +38,16 @@ export const ListBanner = () => {
     );
   };
 
-  const renderSeparatorComponent = () => {
-    return <Spacer width={5} />;
-  };
-
   // render
   return (
     <Block>
       <SwiperFlatList
-        style={{ paddingVertical: 12 }}
         autoplay
         autoplayDelay={3}
         autoplayLoop
         index={0}
-        ItemSeparatorComponent={renderSeparatorComponent}
+        // getItemLayout={}
+        // ItemSeparatorComponent={renderSeparatorComponent}
         showPagination
         data={colors}
         renderItem={renderItem}

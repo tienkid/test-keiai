@@ -38,16 +38,13 @@ export const FormSelectCity = ({
 
   // render
   return (
-    <Block
-      block
-      maxWidth={`${actualPercentWidth}%`}
-      alignSelf={'flex-start'}
-      paddingTop={3}>
+    <Block block maxWidth={`${actualPercentWidth}%`} alignSelf={'flex-start'}>
       <FormInput<FormInformationProfileType>
         name={name}
         labelT18n={labelT18n}
         placeholderT18n={placeholder_T18n}
         maxLength={maxLength}
+        colorLabel={'white'}
         // isShowMsgError={false}
         rightChildren={rightChildren}
         requiredLabelT18n={requiredLabelT18n}

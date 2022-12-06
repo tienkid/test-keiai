@@ -9,6 +9,7 @@ export type LabelOutlineProps = Pick<
   | 'labelT18n'
   | 'label'
   | 'wrapLabelStyle'
+  | 'colorLabel'
 >;
 export type ErrorOutlineProps = {
   error?: string;
