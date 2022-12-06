@@ -12,11 +12,9 @@ takeLatestListeners()({
     const response = await NetWorkService.Get<{ data: { points: number } }>({
       url: ApiConstants.GET_POINT,
     });
-
     if (!response) {
       return;
     }
-
     if (handleErrorResponse(response)) {
       _listenerApi.dispatch(appActions.setPoint(response.data?.data.points));
     }

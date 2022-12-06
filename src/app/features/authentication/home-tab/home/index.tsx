@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { RefreshControl } from 'react-native';
 
 import isEqual from 'react-fast-compare';
@@ -6,7 +6,7 @@ import isEqual from 'react-fast-compare';
 import { dispatch } from '@common';
 import { Block, Divider, Header, Spacer, StackView } from '@components';
 // import { dataFake } from '@features/authentication/setting-tab';
-import { useSelector, useUnMount } from '@hooks';
+import { useSelector } from '@hooks';
 import { BannerResponse } from '@model/banner';
 import { ContentResponse } from '@model/content';
 import { useFocusEffect } from '@react-navigation/native';
@@ -19,8 +19,6 @@ import {
 
 import { ButtonPoint } from './components/button-point';
 import { ListBanner } from './components/list-banner';
-// import { ListContent } from './components/list-content';
-// import { ListService } from './components/list-service';
 import { PointContent } from './components/point-content';
 
 const HomeComponent = () => {
@@ -40,8 +38,6 @@ const HomeComponent = () => {
   };
 
   const onGetContentSucceeded = (data: ContentResponse) => {
-    // console.log(data, 'dataaaaaa');
-
     dispatch(appActions.setContents(data));
   };
   const getBanner = () => {
@@ -55,19 +51,17 @@ const HomeComponent = () => {
   };
 
   //effect
-
   //13t0lka3fjh6qsqbd709ig7e74
-
   useFocusEffect(
     React.useCallback(() => {
       getContent();
     }, []),
   );
 
-  useUnMount(() => {
+  useEffect(() => {
     dispatch(pointAction.getPoint());
     getBanner();
-  });
+  }, []);
 
   // render
   return (

@@ -1,8 +1,9 @@
 import React from 'react';
-import { useWindowDimensions } from 'react-native';
+import { ListRenderItemInfo, useWindowDimensions } from 'react-native';
 
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
+import { ImageTypes } from '@assets/image';
 import { Block, LocalImage, Spacer } from '@components';
 
 import { CustomPagination } from './CustomPagination';
@@ -10,35 +11,47 @@ import { CustomPagination } from './CustomPagination';
 export const ListBanner = () => {
   // state
   const { width } = useWindowDimensions();
-  const colors = ['tomato', 'thistle', 'skyblue', 'teal'];
+  const colors: Array<ImageTypes> = ['banner', 'banner2', 'banner3'];
 
   //func
-  //{ item }: ListRenderItemInfo<string>
-  const renderItem = () => {
+  const renderItem = ({ item, index }: ListRenderItemInfo<ImageTypes>) => {
     return (
-      <Block height={200} paddingHorizontal={15} middle justifyContent="center">
+      <Block
+        height={((width - 30) * 180) / 343}
+        middle
+        justifyContent="center"
+        direction={'row'}
+        shadow>
+        <Spacer width={index === 0 ? 15 : 0} />
         <LocalImage
           resizeMode="stretch"
-          source="banner"
+          source={item}
           style={{
+            height: ((width - 30) * 180) / 343,
             width: width - 30,
             borderRadius: 8,
+            overflow: 'hidden',
           }}
         />
+        <Spacer width={index === colors.length - 1 ? 15 : 0} />
       </Block>
     );
+  };
+
+  const renderSeparatorComponent = () => {
+    return <Spacer width={5} />;
   };
 
   // render
   return (
     <Block>
-      <Spacer height={12} />
       <SwiperFlatList
-        // scrollEnabled={false}
+        style={{ paddingVertical: 12 }}
         autoplay
         autoplayDelay={3}
         autoplayLoop
         index={0}
+        ItemSeparatorComponent={renderSeparatorComponent}
         showPagination
         data={colors}
         renderItem={renderItem}
