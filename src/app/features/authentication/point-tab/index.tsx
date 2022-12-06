@@ -69,10 +69,10 @@ const PointComponent = () => {
     );
   };
   const getHistoryPointSucceed = (data: Array<HistoryPoint>) => {
-    setHistoryPoint(data);
+    setHistoryPoint(data ?? []);
   };
-  //effect
 
+  //effect
   useEffect(() => {
     getHistoryPoints();
   }, []);
@@ -93,7 +93,7 @@ const PointComponent = () => {
             t18n="point:point_history"
           />
           <Spacer height={18} />
-          {historyPoint.map(renderHistoryPoint)}
+          {historyPoint?.map(renderHistoryPoint)}
           <Spacer height={39} />
           <Block direction={'row'} middle justifyContent={'center'}>
             <Text

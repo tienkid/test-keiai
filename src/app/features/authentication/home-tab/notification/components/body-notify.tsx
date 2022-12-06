@@ -126,8 +126,8 @@ export const BodyNotify = () => {
 
   return (
     <Block flex={1} colorTheme={'background'} paddingTop={2}>
-      <Block colorTheme="white" paddingVertical={10} shadow flex={1}>
-        <Block paddingHorizontal={20} flex={1}>
+      <Block colorTheme="white" shadow flex={1}>
+        <Block paddingHorizontal={15} flex={1}>
           <ListView
             data={dataNotify ?? []}
             canRefresh={false}

@@ -59,7 +59,7 @@
   "welcome": {
     "registered_members": "会員登録済みの方",
     "sms_authenticate": "SMS認証をしてアプリ利用を開始",
-    "login": "[:1][会員登録済みの方はログイン:2]",
+    "login": "会員登録済みの方はログイン",
     "not_has_account": "まだ会員登録をされていない方",
     "use_KEIAI_Plus": "[KEIAIプラスのご利用には\n:1][myKEIAI会員:3][以下のボタンから会員登録を行ってください。:2]",
     "my_KEIAI_Plus": "myKEIAI新規会員登録",
@@ -156,7 +156,7 @@
     "footer_des": "以下のいずれかの方法をお試しください",
     "change_phone": "ログインやアカウント登録でお困りの方",
     "complete_register": "会員登録を完了する",
-    "error_send_otp": "認証コードを再送しました。"
+    "error_send_otp": "認証コードを送信しました。"
   },
   "profile": {
     "inquiries": "お問い合わせ"

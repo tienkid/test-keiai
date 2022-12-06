@@ -81,12 +81,12 @@ export const TwoHalfInput = ({
         <Block
           block
           alignSelf={'flex-start'}
-          maxWidth={`${actualPercentWidth}%`}
-          marginTop={3}>
+          maxWidth={`${actualPercentWidth}%`}>
           <FormInput<FormInformationProfileType>
             name={name_2}
             maxLength={maxLength_2}
-            label=" "
+            labelT18n={labelT18n}
+            colorLabel="white"
             placeholderT18n={placeholder_2_T18n}
             rightChildren={rightChildren_2}
             // isShowMsgError={false}

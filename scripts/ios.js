@@ -9,7 +9,7 @@ const { loadEnvFile } = require('./common');
     return;
   }
   const envJson = await loadEnvFile();
-  const simulator = 'iPhone 11';
+  const simulator = 'iPhone SE (2nd generation)';
   try {
     // if simulator is not booted, it will throw an error
     execSync(`xcrun simctl list devices | grep "${simulator}" | grep "Booted"`);

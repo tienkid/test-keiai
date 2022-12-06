@@ -14,22 +14,18 @@ export interface DataKeiaiType {
   title: string;
 }
 
-export const DATA_KEIAI: Array<Array<DataKeiaiType>> = [
-  [
-    { id: 1, image: 'iesapo', type: KeiaiType.IESAPO, title: 'KEIAI 家サポ' },
-    {
-      id: 2,
-      image: 'banner_3',
-      type: KeiaiType.DENKI,
-      title: 'KEIAI インターネット',
-    },
-  ],
-  [
-    {
-      id: 3,
-      image: 'internet',
-      type: KeiaiType.INTERNET,
-      title: 'KEIAI 安心サポート',
-    },
-  ],
+export const DATA_KEIAI: Array<DataKeiaiType> = [
+  { id: 1, image: 'iesapo', type: KeiaiType.IESAPO, title: 'KEIAI 家サポ' },
+  {
+    id: 2,
+    image: 'internet',
+    type: KeiaiType.INTERNET,
+    title: 'KEIAI インターネット',
+  },
+  {
+    id: 3,
+    image: 'banner_3',
+    type: KeiaiType.DENKI,
+    title: 'KEIAI 安心サポート',
+  },
 ];

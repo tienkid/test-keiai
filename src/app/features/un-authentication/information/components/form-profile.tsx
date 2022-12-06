@@ -178,7 +178,7 @@ export const FormInformationProfile = ({
           placeholder_1_T18n="information_profile:country"
           placeholder_2_T18n="information_profile:city"
           requiredLabelT18n="common:indispensable"
-          labelT18n_2="information_profile:empty"
+          labelT18n_2="information_profile:address"
           rightChildren_1={
             <Button.Default
               onPress={handleSelectedCountry(

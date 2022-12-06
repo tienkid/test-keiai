@@ -4,6 +4,7 @@ import { StyleProp, TextInputProps, TextStyle, ViewStyle } from 'react-native';
 
 import { UseFormTrigger } from 'react-hook-form';
 
+import { Colors } from '@theme';
 import { I18nKeys } from '@utils/i18n/locales';
 
 import { TextProps } from '../text/type';
@@ -40,6 +41,12 @@ export interface InputBaseProps extends TextInputProps {
    * @default undefined
    */
   label?: string;
+
+  /**
+   * Label title of input
+   * @default undefined
+   */
+  colorLabel?: keyof Colors;
 
   /**
    * Required label title of input

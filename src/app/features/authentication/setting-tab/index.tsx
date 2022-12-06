@@ -9,6 +9,7 @@ import { servicesActions } from '@redux-slice';
 import { useTheme } from '@theme';
 
 import { KeiaiList } from './components/keiaiList';
+import { DATA_KEIAI } from './contain';
 import { DataService, MenuService } from './type';
 
 // import { ListService } from '../home-tab/home/components/list-service';
@@ -41,7 +42,7 @@ export const dataFake: DataService[] = [
 ];
 const SettingComponent = () => {
   // render
-  const [dataMenu, setDataMenu] = useState<MenuService[]>([]);
+  const [, setDataMenu] = useState<MenuService[]>([]);
 
   const { colors } = useTheme();
 
@@ -63,10 +64,8 @@ const SettingComponent = () => {
       <Spacer height={2} />
       <StackView style={{ flex: 1, backgroundColor: colors.white }}>
         <Block colorTheme="white">
-          <Spacer height={20} />
-          <Block>
-            <KeiaiList dataMenu={dataMenu} />
-          </Block>
+          <Spacer height={11} />
+          <KeiaiList dataMenu={DATA_KEIAI} />
           <Spacer height={15} />
           <Block paddingHorizontal={20} middle>
             <Button.Primary t18n="profile:inquiries" onPress={handleSubmit} />
