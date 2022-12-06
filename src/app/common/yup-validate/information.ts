@@ -143,14 +143,7 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
         keyT: 'msg:MSG_007',
       }),
     ),
-    building_name: yup.string().required(
-      stringifyObjectValidateYup({
-        keyT: 'msg:MSG_004',
-        optionsTx: {
-          field: 'field:address',
-        },
-      }),
-    ),
+    building_name: yup.string(),
     name_address: yup.string().required(
       stringifyObjectValidateYup({
         keyT: 'msg:MSG_004',

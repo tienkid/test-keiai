@@ -8,14 +8,18 @@ import { Block, WrapperBackground } from '@components';
 // import { APP_SCREEN } from '@navigation/screen-types';
 import { useSelector } from '@hooks';
 import { FormSetCodeType } from '@model/authentication';
+import { useRoute } from '@react-navigation/native';
 import { appActions, loginActions, registerActions } from '@redux-slice';
 import { mapsDataRequest } from '@validate/information';
 import { Auth } from 'aws-amplify';
 
 import { FormOTP } from './components/form-otp';
-import { FormRegisterOTPType } from './type';
+import { FormRegisterOTPType, OTPScreenProps } from './type';
 
 const OTPComponent = () => {
+  const route = useRoute<OTPScreenProps['route']>();
+  const { type } = route.params;
+
   const dataProfile = useSelector(x => x.app.registerData);
   const sessionID = useSelector(x => x.app.sessionID);
   // const checkRefresh = loadString(NON_REFRESH);
@@ -69,7 +73,7 @@ const OTPComponent = () => {
       <WrapperBackground
         titleT18n="register:header_text"
         headerTitleT18n="login:register_member">
-        <FormOTP onSubmit={handleSubmit} />
+        <FormOTP onSubmit={handleSubmit} type={type} />
       </WrapperBackground>
     </Block>
   );

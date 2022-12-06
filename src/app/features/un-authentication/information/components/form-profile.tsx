@@ -11,6 +11,7 @@ import {
   Button,
   CheckBox,
   FormInput,
+  Icon as IconCustom,
   ParsedText,
   Spacer,
   Text,
@@ -55,9 +56,18 @@ export const FormInformationProfile = ({
   const provinceChoice = useSelector(x => x.app.provinceChoice);
   const dataProvince = useSelector(x => x.app.dataProvince);
   const dataCity = useSelector(x => x.app.dataCity);
+  const [passwordShown, setPasswordShown] = useState<boolean>(false);
+  const [passwordConfirmShown, setPasswordConfirmShown] =
+    useState<boolean>(false);
 
   const [isCheck, setIsCheck] = useState(false);
   // function
+  const onTogglePassword = () => {
+    setPasswordShown(e => !e);
+  };
+  const onTogglePasswordConfirm = () => {
+    setPasswordConfirmShown(e => !e);
+  };
   const onSubmitKey = () => {
     formMethod.handleSubmit(onSubmit)();
   };
@@ -98,10 +108,12 @@ export const FormInformationProfile = ({
   useEffect(() => {
     getCity();
   }, [getCity]);
+
   //effect
   useEffect(() => {
     getProvince();
   }, [getProvince]);
+
   // render
   return (
     <FormProvider {...formMethod}>
@@ -124,8 +136,17 @@ export const FormInformationProfile = ({
           placeholderT18n={'information_profile:password_placeholder'}
           labelT18n={'information_profile:password'}
           requiredLabelT18n={'common:indispensable'}
-          secureTextEntry
+          secureTextEntry={!passwordShown}
           textContentType="none"
+          keyboardType="ascii-capable"
+          rightChildren={
+            <Button.Default onPress={onTogglePassword}>
+              <Block direction="row">
+                <IconCustom icon={passwordShown ? 'eye' : 'eye_close'} />
+                <Spacer width={10} />
+              </Block>
+            </Button.Default>
+          }
         />
         <TextInput />
         <Spacer height={10} />
@@ -134,8 +155,17 @@ export const FormInformationProfile = ({
           labelT18n={'information_profile:confirm_password'}
           requiredLabelT18n={'common:indispensable'}
           placeholderT18n={'information_profile:confirm_password_placeholder'}
-          secureTextEntry
+          secureTextEntry={!passwordConfirmShown}
           textContentType={'none'}
+          keyboardType="ascii-capable"
+          rightChildren={
+            <Button.Default onPress={onTogglePasswordConfirm}>
+              <Block direction="row">
+                <IconCustom icon={passwordConfirmShown ? 'eye' : 'eye_close'} />
+                <Spacer width={10} />
+              </Block>
+            </Button.Default>
+          }
         />
         <Spacer height={20} />
         <TwoHalfInput
