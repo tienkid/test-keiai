@@ -69,10 +69,10 @@ const CustomDrawer = () => {
       <Block
         block
         paddingTop={top}
-        paddingBottom={bottom * 2 + 60}
+        paddingBottom={bottom * 2 + 30}
         color={colors.white}
         alignItems={'flex-start'}>
-        <Block paddingLeft={50}>
+        <Block paddingLeft={50} flex={1}>
           <Spacer height={70} />
           <FlatList
             data={dataMenu}

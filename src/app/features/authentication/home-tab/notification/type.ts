@@ -3,6 +3,7 @@ export type ItemNotifyType = {
   text: string;
   date: string;
   content: string;
+  check?: boolean;
 };
 
 export type RenderItemNotifyType = {
@@ -12,4 +13,5 @@ export type RenderItemNotifyType = {
 
 export type ItemNotifyProps = {
   item: ItemNotifyType;
+  handleToDetail: (data: ItemNotifyType) => void;
 };

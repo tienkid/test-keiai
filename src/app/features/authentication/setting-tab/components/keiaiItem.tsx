@@ -34,7 +34,7 @@ export const KeiaiItem = ({ item }: KeiaiItemPropsType) => {
     <Button.Default onPress={handlePressItem}>
       <Block direction={'row'}>
         <Block>
-          <Block height={112} width={width / 2 - 30}>
+          <Block height={112} width={width / 2 - 27} padding={20} color="blue">
             <LocalImage source={item.image} resizeMode="contain" />
           </Block>
           <Block direction={'row'}>

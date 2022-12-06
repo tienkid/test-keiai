@@ -66,6 +66,7 @@ export const FormLogin = ({ onSubmit, errorLogin }: FormLoginProps) => {
           inputStyle={{ height: 50 }}
           secureTextEntry={!passwordShown}
           keyboardType="ascii-capable"
+          textContentType={'oneTimeCode'}
           rightChildren={
             <Button.Default onPress={onTogglePassword}>
               <Block direction="row">

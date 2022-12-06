@@ -7,7 +7,7 @@ import { ColorDefault } from '@theme/color';
 
 const styles = StyleSheet.create({
   paginationContainer: {
-    bottom: -24,
+    bottom: -18,
     height: 6,
     alignItems: 'center',
   },

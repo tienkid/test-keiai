@@ -72,7 +72,7 @@ const HomeComponent = () => {
         style={{ flex: 1 }}>
         <Spacer height={8} />
         <ListBanner />
-        <Spacer height={8} />
+        <Spacer height={18} />
         <ButtonPoint />
         <Divider height={6} colorTheme="divider" />
         <PointContent />

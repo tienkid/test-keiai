@@ -21,8 +21,9 @@ export const ListBanner = () => {
         middle
         justifyContent="center"
         direction={'row'}
+        marginLeft={5}
         shadow>
-        <Spacer width={index === 0 ? 15 : 15} />
+        {/* <Spacer width={index === 0 ? 15 : 0} /> */}
         <LocalImage
           resizeMode="stretch"
           source={item}
@@ -40,7 +41,7 @@ export const ListBanner = () => {
 
   // render
   return (
-    <Block>
+    <Block paddingLeft={15}>
       <SwiperFlatList
         autoplay
         autoplayDelay={3}
