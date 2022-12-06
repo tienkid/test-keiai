@@ -10,7 +10,7 @@ export type FormInformationProfileType = {
   furigana_first_name: string;
   furigana_last_name: string;
   zip_code: string;
-  building_name: string;
+  building_name?: string;
   name_address: string;
   email: string;
 };

@@ -9,20 +9,14 @@ import { rxNotNumber } from '@config/regex';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSelector } from '@hooks';
 import { FormGetCodeType } from '@model/authentication';
-import { useRoute } from '@react-navigation/native';
 import { loginActions } from '@redux-slice';
 import { registerOTPValidation } from '@validate/register';
 
-import {
-  FormRegisterOTPProps,
-  FormRegisterOTPType,
-  OTPScreenProps,
-} from '../type';
+import { FormRegisterOTPProps, FormRegisterOTPType } from '../type';
 
-export const FormOTP = ({ onSubmit }: FormRegisterOTPProps) => {
+export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
   // state
-  const route = useRoute<OTPScreenProps['route']>();
-  const { type } = route.params;
+
   const profile = useSelector(x => x.app.profile);
   const formMethod = useForm<FormRegisterOTPType>({
     mode: 'all',
@@ -45,7 +39,6 @@ export const FormOTP = ({ onSubmit }: FormRegisterOTPProps) => {
     };
     dispatch(loginActions.getCodeLogin(data));
   };
-
   const handleToEdit = () => {
     // if (type) {
     //   navigate(APP_SCREEN.INFORMATION_PROFILE);

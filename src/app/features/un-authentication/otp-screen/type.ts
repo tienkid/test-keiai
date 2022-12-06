@@ -3,6 +3,7 @@ import { StackScreenProps } from '@react-navigation/stack/src/types';
 
 export interface FormRegisterOTPProps {
   onSubmit: (data: FormRegisterOTPType) => void;
+  type?: string;
 }
 
 export type FormRegisterOTPType = {

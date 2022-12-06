@@ -164,7 +164,6 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
               />
             </View>
           )}
-
           <View style={[styles.flex]}>
             <TextInput
               defaultValue={localDefaultValue}
