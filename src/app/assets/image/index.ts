@@ -22,6 +22,8 @@ export const images = {
   image_thumbnail: require('./source/imageThum.png'),
   home_point: require('./source/home_point.png'),
   welcome: require('./source/welcome.png'),
+  banner2: require('./source/banner_2.png'),
+  banner3: require('./source/banner_3.png'),
 };
 
 export type ImageTypes = keyof typeof images;

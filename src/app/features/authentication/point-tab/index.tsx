@@ -21,10 +21,8 @@ import { PointCard } from './components/point-card';
 const PointComponent = () => {
   // state
   const user = useSelector(x => x.app.profile);
-  const token = useSelector(x => x.app.token);
-  console.log(2222, token);
-
   const [historyPoint, setHistoryPoint] = useState<Array<HistoryPoint>>([]);
+
   //function
   const renderHistoryPoint = useCallback(
     (item: HistoryPoint, index: number) => {
@@ -71,7 +69,6 @@ const PointComponent = () => {
     );
   };
   const getHistoryPointSucceed = (data: Array<HistoryPoint>) => {
-    console.log(444, data);
     setHistoryPoint(data);
   };
   //effect
