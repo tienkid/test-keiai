@@ -34,6 +34,12 @@ export interface AppState {
   dataProvince: ProvinceType[];
 
   dataCity: CityType[];
+
+  dataWrapCity: CityType[];
+
+  dataCityChoice: CityType;
+
+  zipCode: string;
 }
 
 export interface Meta {

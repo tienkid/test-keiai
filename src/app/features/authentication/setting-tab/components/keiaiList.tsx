@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { Linking } from 'react-native';
 
 import { Block, Button, LocalImage, Spacer, Text } from '@components';
 
@@ -11,7 +12,9 @@ interface MenuListProps {
 export const KeiaiList = ({ dataMenu }: MenuListProps) => {
   // func
   const handlePressItem = (item: DataKeiaiType) => {
-    console.log(item, 'item');
+    if (item.link) {
+      Linking.openURL(item.link);
+    }
 
     // if (item.refer_link) {
     //   Linking.openURL(item.refer_link);

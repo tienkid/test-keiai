@@ -5,19 +5,19 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { logActionEvent } from '@common';
 import { Block, Button, FormInput, Spacer } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormLoginType } from '@model/authentication';
-import { loginValidation } from '@validate/login';
+import { DataValid } from '@model/delete-user';
+import { deleteValidation } from '@validate/delete-user';
 
 import { FormLoginProps } from '../type';
 
 export const FormDelete = ({ onSubmit }: FormLoginProps) => {
   // state
 
-  const formMethod = useForm<FormLoginType>({
+  const formMethod = useForm<DataValid>({
     mode: 'all',
-    resolver: yupResolver(loginValidation),
+    resolver: yupResolver(deleteValidation),
     defaultValues: {
-      phoneNumber: __DEV__ ? '0397802881' : '',
+      phone: __DEV__ ? '0397802881' : '',
       password: __DEV__ ? 'Hanoi123' : '',
     },
   });
@@ -32,14 +32,14 @@ export const FormDelete = ({ onSubmit }: FormLoginProps) => {
   return (
     <FormProvider {...formMethod}>
       <Block paddingHorizontal={15}>
-        <FormInput<FormLoginType>
-          name={'phoneNumber'}
+        <FormInput<DataValid>
+          name={'phone'}
           labelT18n={'login:phoneNumber'}
           placeholderT18n={'login:phoneNumberPlaceholder'}
           inputStyle={{ height: 50 }}
         />
         <Spacer height={35} />
-        <FormInput<FormLoginType>
+        <FormInput<DataValid>
           name={'password'}
           placeholderT18n={'login:passwordPlaceholder'}
           labelT18n={'login:password'}

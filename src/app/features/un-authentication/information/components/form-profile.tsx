@@ -39,7 +39,7 @@ import { InputHaft } from './input-half';
 import { TwoHalfInput } from './two-half-input';
 
 import { styles } from '../style';
-import { FormInformationProfileProps, ProvinceType } from '../type';
+import { CityType, FormInformationProfileProps, ProvinceType } from '../type';
 
 export const FormInformationProfile = ({
   onSubmit,
@@ -94,14 +94,28 @@ export const FormInformationProfile = ({
   const handleGetProvinceSuccess = (data: ProvinceType[]) => {
     dispatch(appActions.setProvinceData(data));
   };
-
+  const zip_code = formMethod.watch('zip_code');
+  useEffect(() => {
+    dispatch(appActions.setZipCode(zip_code));
+  }, [zip_code]);
+  // const handleSetZipCode = () => {
+  //   dispatch(appActions.setZipCode(formMethod.getValues('zip_code')));
+  //   console.log(formMethod.getValues('zip_code'), 'formMethod.getValues()');
+  // };
   const getProvince = useCallback(() => {
     dispatch(registerActions.getProvince(handleGetProvinceSuccess));
   }, []);
+
+  const handleGetCitySuccess = (data: CityType[]) => {
+    dispatch(appActions.setCityData(data));
+  };
   const getCity = useCallback(() => {
     if (provinceChoice.pref_id) {
       dispatch(
-        registerActions.getCity(`pref_code=${provinceChoice.pref_code}`),
+        registerActions.getCity(
+          `pref_code=${provinceChoice.pref_code}`,
+          handleGetCitySuccess,
+        ),
       );
     }
   }, [provinceChoice]);
@@ -192,6 +206,7 @@ export const FormInformationProfile = ({
         <Spacer height={20} />
         <InputHaft
           labelT18n="information_profile:zip_code"
+          // onEndEditing={handleSetZipCode}
           placeholderT18n="information_profile:zip_code_placeholder"
           name={'zip_code'}
           containerStyle={{

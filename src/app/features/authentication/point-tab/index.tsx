@@ -159,12 +159,15 @@ const PointComponent = () => {
             textAlign={'center'}
           />
           <Spacer height={70} />
-          <Text
-            preset="linkLarge"
-            t18n="point:title_3"
-            colorTheme="base5"
-            textAlign={'center'}
-          />
+          <Block middle>
+            <Text
+              preset="linkLarge"
+              t18n="point:title_3"
+              colorTheme="base5"
+              textAlign={'center'}
+            />
+          </Block>
+
           <Spacer height={20} />
           <Block height={150}>
             <LocalImage source="point_3" resizeMode="contain" />
@@ -183,7 +186,7 @@ const PointComponent = () => {
           />
           <Spacer height={35} />
           <Text
-            preset="textNormal11"
+            preset="textNormal12"
             t18n="point:description_3"
             colorTheme="base5"
           />

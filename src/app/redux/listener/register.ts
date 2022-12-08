@@ -30,7 +30,6 @@ takeLatestListeners(true)({
         onSucceeded();
       }
     }
-    console.log(response, 'response');
   },
 });
 
@@ -51,7 +50,6 @@ takeLatestListeners(true)({
         onSucceeded();
       }
     }
-    console.log(response, 'response');
   },
 });
 takeLatestListeners()({
@@ -83,8 +81,8 @@ takeLatestListeners()({
       return;
     }
     if (handleErrorResponse(response)) {
-      listenerApi.dispatch(appActions.setCityData(response.data));
-      // execFunc(onSucceeded, response.data);
+      // listenerApi.dispatch(appActions.setCityData(response.data));
+      execFunc(onSucceeded, response.data);
     }
   },
 });
@@ -130,6 +128,25 @@ takeLatestListeners(true)({
       if (onCheckType(onError, 'function')) {
         onError();
       }
+    }
+  },
+});
+
+takeLatestListeners()({
+  actionCreator: registerActions.getCityWrap,
+  effect: async (action, listenerApi) => {
+    const { body, onSucceeded } = action.payload;
+    const response = await NetWorkService.Get<CityType[]>({
+      url: `${ENVConfig.API_City}${body}`,
+    });
+
+    if (!response) {
+      return;
+    }
+    if (handleErrorResponse(response)) {
+      listenerApi.dispatch(appActions.setDataWrapCity(response.data));
+
+      // execFunc(onSucceeded, response.data);
     }
   },
 });

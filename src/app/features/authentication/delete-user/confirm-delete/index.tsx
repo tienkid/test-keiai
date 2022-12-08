@@ -2,16 +2,21 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
+import { dispatch } from '@common';
 import { Block, Button, Spacer, Text, WrapperBackground } from '@components';
 import { navigate } from '@navigation/navigation-service';
-import { HOME_STACK } from '@navigation/screen-types';
+import { BOTTOM_TAB } from '@navigation/screen-types';
+import { deleteUserActions } from '@redux-slice';
 
 const ConfirmDeleteUserComponent = () => {
   // function
   const onSubmit = async () => {
-    navigate(HOME_STACK.DELETE_SUCCESS);
+    dispatch(deleteUserActions.deleteUser());
   };
 
+  const handleGoToHome = () => {
+    navigate(BOTTOM_TAB.TAB_HOME);
+  };
   // render
   return (
     <Block block colorTheme="white">
@@ -54,11 +59,13 @@ const ConfirmDeleteUserComponent = () => {
           <Button.Primary t18n="delete_user:button_title" onPress={onSubmit} />
         </Block>
         <Block alignItems={'center'}>
-          <Text
-            preset="textNormal12"
-            t18n="delete_user:continue"
-            colorTheme="text_2"
-          />
+          <Button.Default onPress={handleGoToHome}>
+            <Text
+              preset="textNormal12"
+              t18n="delete_user:continue"
+              colorTheme="text_2"
+            />
+          </Button.Default>
         </Block>
       </WrapperBackground>
     </Block>

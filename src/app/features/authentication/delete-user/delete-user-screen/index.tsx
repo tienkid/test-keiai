@@ -2,20 +2,26 @@ import React, { memo } from 'react';
 
 import isEqual from 'react-fast-compare';
 
+import { dispatch, numberToCountryCode } from '@common';
 import { Block, Spacer, Text, WrapperBackground } from '@components';
-import { FormLoginType } from '@model/authentication';
-import { navigate } from '@navigation/navigation-service';
-import { HOME_STACK } from '@navigation/screen-types';
+import { DataValid } from '@model/delete-user';
+import { deleteUserActions } from '@redux-slice';
 
 import { FormDelete } from './components/form-delete';
 
 const DeleteUserComponent = () => {
   // function
-  const onSubmit = async (data: FormLoginType) => {
+  const onSubmit = async (data: DataValid) => {
     console.log(data, 'data');
-    navigate(HOME_STACK.CONFIRM_DELETE);
+    const phoneNumber = numberToCountryCode(data.phone);
+    dispatch(
+      deleteUserActions.validDeleteUser({
+        password: data.password,
+        phone: phoneNumber,
+      }),
+    );
+    //
   };
-
   // render
   return (
     <Block block colorTheme="white">

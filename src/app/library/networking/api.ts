@@ -9,6 +9,8 @@ const ApiEndPoint = {
   GET_CONTENT: 'post/pagination',
   GET_CODE_LOGIN: 'auth/getcode',
   SET_CODE_LOGIN: 'auth/complete-login',
+  DELETE_USER_SUCCESS: 'me/disable',
+  VALID_DELETE_USER_SUCCESS: 'me/valid-disable',
 
   //users
   VALIDATE: 'users/validate-mobile-register',

@@ -1,4 +1,4 @@
-import { handleErrorResponse, NON_REFRESH } from '@common';
+import { execFunc, handleErrorResponse, NON_REFRESH } from '@common';
 import { takeLatestListeners } from '@listener';
 import { DataOTP, LoginResponse } from '@model/login';
 import { navigate } from '@navigation/navigation-service';
@@ -29,7 +29,7 @@ takeLatestListeners(true)({
 takeLatestListeners(true)({
   actionCreator: loginActions.getCodeLogin,
   effect: async (action, listenerApi) => {
-    const { body } = action.payload;
+    const { body, onSucceeded } = action.payload;
     const response = await NetWorkService.Post<any>({
       url: ApiConstants.GET_CODE_LOGIN,
       body,
@@ -40,6 +40,7 @@ takeLatestListeners(true)({
 
     if (handleErrorResponse(response)) {
       // TODO
+      execFunc(onSucceeded);
       console.log(response?.data.session, 'response');
       listenerApi.dispatch(appActions.saveSession(response?.data.session));
       navigate(APP_SCREEN.OTP_SCREEN, { type: 'reLogin' });

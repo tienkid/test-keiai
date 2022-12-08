@@ -39,6 +39,7 @@ const LoginComponent = () => {
     const phoneNumber = numberToCountryCode(data.phoneNumber);
     try {
       const res = await Auth.signIn(phoneNumber, data.password);
+
       if (!checkRefresh) {
         const timeExpiredRefreshToken = moment(today)
           .add(TIME_REFRESH, 'd')
@@ -61,7 +62,7 @@ const LoginComponent = () => {
         const diff = moment.duration(moment(expired).diff(moment(today)));
         const days = diff.days();
         console.log(days, 'days');
-        if (days < 0) {
+        if (days <= 0) {
           navigate(APP_SCREEN.REGISTER, { type: 'reLogin' });
         } else {
           dispatch(
