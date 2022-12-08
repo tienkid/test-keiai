@@ -37,12 +37,12 @@ export const dataMenu: Array<ItemDrawer> = [
     icon: 'mail',
     url: 'https://owners.ki-group.jp/app/inquiry/?user_id=c728db58-d005-449f-8486-5aff7ca61ff3',
   },
-  {
-    id: 6,
-    content: '登録情報の確認・更新',
-    icon: 'register',
-    url: 'https://my.ki-group.jp/login/',
-  },
+  // {
+  //   id: 6,
+  //   content: '登録情報の確認・更新',
+  //   icon: 'register',
+  //   url: 'https://my.ki-group.jp/login/',
+  // },
   {
     id: 7,
     content: '通知設定',

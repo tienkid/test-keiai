@@ -1,0 +1,4 @@
+import { SLICE_NAME } from '@config/type';
+
+export const DELETE_USER = SLICE_NAME.DELETE_USER + 'DELETE_USER';
+export const VALID_DELETE_USER = SLICE_NAME.DELETE_USER + 'VALID_DELETE_USER';

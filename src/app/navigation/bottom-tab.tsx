@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { Block, Icon, Text } from '@components';
+import { Icon } from '@components';
 import { ContentDetail } from '@features/authentication/content-tab/content-detail';
 import { ContentTab } from '@features/authentication/content-tab/content-screen';
 import { HomeTab } from '@features/authentication/home-tab/home';
@@ -100,7 +100,6 @@ export const BottomTabScreen = () => {
         tabBarInactiveTintColor: '#CCCCCC',
         tabBarStyle: {
           backgroundColor: colors.white,
-          paddingTop: 5,
         },
       }}>
       <BottomTab.Screen
@@ -123,7 +122,7 @@ export const BottomTabScreen = () => {
         name={BOTTOM_TAB.TAB_CONTENT}
         component={ContentStackScreen}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         options={{
           title: '',
           tabBarIcon: props => (
@@ -170,7 +169,7 @@ export const BottomTabScreen = () => {
         }}
         name={BOTTOM_TAB.TAB_MY_HOME}
         component={ContentStackScreen}
-      />
+      /> */}
       <BottomTab.Screen
         options={{
           title: t('bottom_tab:setting'),

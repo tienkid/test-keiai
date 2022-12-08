@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Linking } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
@@ -25,19 +25,21 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
       code: __DEV__ ? '888888' : '',
     },
   });
-
+  const [checkResend, setCheckResend] = useState(false);
   // function
   const onSubmitKey = () => {
     formMethod.handleSubmit(onSubmit)();
   };
 
+  const handleSuccess = () => {
+    setCheckResend(true);
+  };
   const handleResendOTP = () => {
-    console.log('resend');
     const data: FormGetCodeType = {
       mode: 'background_refresh',
       phone: profile?.phone_number,
     };
-    dispatch(loginActions.getCodeLogin(data));
+    dispatch(loginActions.getCodeLogin(data, handleSuccess));
   };
   const handleToEdit = () => {
     // if (type) {
@@ -70,6 +72,15 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
           <Block paddingTop={10} alignItems="center">
             <Text
               t18n="register:error_send_otp"
+              preset="textNormal12"
+              colorTheme="error"
+            />
+          </Block>
+        )}
+        {checkResend && (
+          <Block paddingTop={10} alignItems="center">
+            <Text
+              t18n="register:resent_otp"
               preset="textNormal12"
               colorTheme="error"
             />

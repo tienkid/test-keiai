@@ -145,6 +145,9 @@ async function PostFormData<T>(params: ParamsNetwork) {
 async function Put<T>(params: ParamsNetwork) {
   return Request<T>(handleParameter(params, 'PUT'));
 }
+async function PATCH<T>(params: ParamsNetwork) {
+  return Request<T>(handleParameter(params, 'PATCH'));
+}
 
 // delete
 async function Delete<T>(params: ParamsNetwork) {
@@ -161,4 +164,5 @@ export const NetWorkService = {
   Delete,
   PostFormData,
   Request,
+  PATCH,
 };

@@ -6,16 +6,19 @@ import { ItemNotifyProps } from '../type';
 
 // import { ItemContentProps } from '../type';
 
-export const ItemNotify = ({ item }: ItemNotifyProps) => {
+export const ItemNotify = ({ item, handleToDetail }: ItemNotifyProps) => {
   // state
-  const handleToDetail = () => {
-    // navigate(HOME_STACK.NOTIFY_DETAIL, { item });
-  };
+  console.log(item, 'item');
+
   // render
   return (
-    <Block paddingTop={10}>
+    <Block
+      paddingTop={10}
+      paddingHorizontal={15}
+      paddingBottom={10}
+      color={item.check ? '#FFF6F7' : '#FFF'}>
       <Button.Default
-        onPress={handleToDetail}
+        onPress={() => handleToDetail(item)}
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -28,11 +31,15 @@ export const ItemNotify = ({ item }: ItemNotifyProps) => {
           <Text
             preset="textNormal12"
             text={item.content}
+            lineHeight={13}
             colorTheme="base5"
             numberOfLines={2}
           />
-          <Spacer height={5} />
-          <Block alignItems={'flex-end'}>
+          <Block
+            alignItems={'flex-end'}
+            position={'absolute'}
+            right={0}
+            bottom={0}>
             <Text
               preset="textNormal11"
               text={item.date}

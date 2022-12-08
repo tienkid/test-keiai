@@ -4,9 +4,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Block, Button, Text } from '@components';
 import { FocusedStatusBarStyle } from '@components/focused-status-bar';
-import { Icon } from '@components/icon';
+// import { Icon } from '@components/icon';
 import { goBack } from '@navigation/navigation-service';
+import { ColorDefault } from '@theme/color';
 import { I18nKeys } from '@utils/i18n/locales';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 export type HeaderProps = {
   headerText?: I18nKeys;
 };
@@ -34,7 +36,7 @@ export const HeaderBack = ({ headerText }: HeaderProps) => {
         <Button.Default
           style={{ position: 'absolute', left: 0 }}
           onPress={goBack}>
-          <Icon icon="left_back" size={30} />
+          <Icon name="arrow-back-ios" size={20} color={ColorDefault.base5} />
         </Button.Default>
         <Text
           preset="textNormal12"

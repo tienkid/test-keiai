@@ -14,9 +14,10 @@ const login = createAction(Action.LOGIN, (body: FormLoginType) => ({
 
 const getCodeLogin = createAction(
   Action.GET_CODE_LOGIN,
-  (body: FormGetCodeType) => ({
+  (body: FormGetCodeType, onSucceeded?: () => void) => ({
     payload: {
       body,
+      onSucceeded,
     },
   }),
 );

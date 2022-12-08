@@ -1,5 +1,5 @@
-import { FormLoginType } from '@model/authentication';
+import { DataValid } from '@model/delete-user';
 
 export interface FormLoginProps {
-  onSubmit: (data: FormLoginType) => void;
+  onSubmit: (data: DataValid) => void;
 }

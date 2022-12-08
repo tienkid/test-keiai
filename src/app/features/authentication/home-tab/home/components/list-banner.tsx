@@ -4,6 +4,7 @@ import { ListRenderItemInfo, useWindowDimensions } from 'react-native';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
 import { ImageTypes } from '@assets/image';
+import { sizeScale } from '@common';
 import { Block, LocalImage, Spacer } from '@components';
 
 import { CustomPagination } from './CustomPagination';
@@ -21,14 +22,15 @@ export const ListBanner = () => {
         middle
         justifyContent="center"
         direction={'row'}
+        marginLeft={5}
         shadow>
-        <Spacer width={index === 0 ? 15 : 15} />
+        {/* <Spacer width={index === 0 ? 15 : 0} /> */}
         <LocalImage
           resizeMode="stretch"
           source={item}
           style={{
             height: ((width - 30) * 180) / 343,
-            width: width - 30,
+            width: width - sizeScale(30),
             borderRadius: 8,
             overflow: 'hidden',
           }}
@@ -40,11 +42,12 @@ export const ListBanner = () => {
 
   // render
   return (
-    <Block>
+    <Block paddingLeft={10}>
       <SwiperFlatList
         autoplay
         autoplayDelay={3}
         autoplayLoop
+        autoplayLoopKeepAnimation
         index={0}
         // getItemLayout={}
         // ItemSeparatorComponent={renderSeparatorComponent}

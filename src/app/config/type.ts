@@ -25,6 +25,7 @@ export enum SLICE_NAME {
   REGISTER = 'REGISTER_',
   POINT = 'POINT_',
   BANNER = 'BANNER_',
+  DELETE_USER = 'DELETE_USER_',
 }
 
 export type ValidateMessageObject = {

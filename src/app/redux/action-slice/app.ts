@@ -25,12 +25,15 @@ const initialAppState: AppState = {
   /**
    * default true to load app
    */
+  zipCode: '',
+  dataCityChoice: {} as CityType,
   loadingApp: false,
   showDialog: false,
   theme: 'default',
   point: 0,
   dataProvince: [] as ProvinceType[],
   dataCity: [] as CityType[],
+  dataWrapCity: [] as CityType[],
   provinceChoice: {} as ProvinceType | CityType,
   contents: { items: [] },
 };
@@ -63,11 +66,20 @@ const appSlice = createSlice({
     ) => {
       state.provinceChoice = payload;
     },
+    setDataChoice: (state, { payload }: PayloadAction<CityType>) => {
+      state.dataCityChoice = payload;
+    },
     setProvinceData: (state, { payload }: PayloadAction<ProvinceType[]>) => {
       state.dataProvince = payload;
     },
+    setZipCode: (state, { payload }: PayloadAction<string>) => {
+      state.zipCode = payload;
+    },
     setCityData: (state, { payload }: PayloadAction<CityType[]>) => {
       state.dataCity = payload;
+    },
+    setDataWrapCity: (state, { payload }: PayloadAction<CityType[]>) => {
+      state.dataWrapCity = payload;
     },
     setAppProfile: (state, { payload }: PayloadAction<unknown>) => {
       state.profile = payload;

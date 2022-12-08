@@ -14,32 +14,46 @@ export const ButtonPointContent = () => {
 
   // render
   return (
-    <Block middle height={80} paddingVertical={15} paddingHorizontal={70}>
+    <Block
+      middle
+      width={240}
+      height={50}
+      // paddingVertical={15}
+      // paddingHorizontal={70}
+      shadow>
       <Button.Default
         buttonColorTheme="white"
         onPress={handleGoToPointScreen}
         style={{
           flex: 1,
+          height: 36,
           width: '100%',
           borderRadius: 80,
           flexDirection: 'row',
           alignItems: 'center',
-          paddingHorizontal: 15,
           justifyContent: 'space-between',
           borderWidth: 1,
+          paddingHorizontal: 20,
           borderColor: ColorDefault.border,
         }}>
-        <Block paddingHorizontal={32} alignItems="center">
+        <Block alignItems="center" justifyContent="center" flex={1}>
           <Text
-            preset="linkXXXSmall"
+            preset="textNormal12"
             t18n="home:KI_point_button"
-            lineHeight={13}
+            // lineHeight={12}
             colorTheme="base5"
             textAlign={'center'}
           />
+          <Text
+            preset="textNormal12"
+            t18n="home:KI_point_button_2"
+            colorTheme="base5"
+            // lineHeight={12}
+            textAlign={'center'}
+          />
         </Block>
-        <Block direction={'row'} alignItems={'center'}>
-          <Icon icon="go" size={16} colorTheme="text_2" />
+        <Block justifyContent={'center'} position="absolute" right={15}>
+          <Icon icon="go" size={15} colorTheme="text_2" />
         </Block>
       </Button.Default>
     </Block>

@@ -27,7 +27,7 @@ export const Header = () => {
     <Block
       direction={'row'}
       middle
-      height={90}
+      height={82}
       paddingTop={insets.top}
       colorTheme={'white'}
       paddingHorizontal={15}

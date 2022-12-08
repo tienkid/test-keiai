@@ -51,6 +51,7 @@ const getCity = createAction(
     },
   }),
 );
+
 const checkContract = createAction(
   Action.CHECK_CONTRACT,
   (body: string, onSucceeded?: () => void, onError?: () => void) => ({
@@ -61,6 +62,16 @@ const checkContract = createAction(
     },
   }),
 );
+
+const getCityWrap = createAction(
+  Action.GET_CITY_WRAP,
+  (body?: string, onSucceeded?: (data: CityType[]) => void) => ({
+    payload: {
+      body,
+      onSucceeded,
+    },
+  }),
+);
 export const registerActions = {
   validate,
   register,
@@ -68,4 +79,5 @@ export const registerActions = {
   checkContract,
   getProvince,
   getCity,
+  getCityWrap,
 };

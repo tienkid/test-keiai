@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import { useController } from 'react-hook-form';
 
 import { Block, FormInput } from '@components';
+import { useSelector } from '@hooks';
 import { FormInformationProfileType } from '@model/information';
 import { useRoute } from '@react-navigation/native';
 
@@ -25,6 +26,24 @@ export const FormSelectCountry = ({
     name,
   });
   const route = useRoute();
+  const dataProvince = useSelector(x => x.app.dataProvince);
+  const dataCityChoice = useSelector(x => x.app.dataCityChoice);
+  const selected = useCallback(() => {
+    const choice = dataProvince.find(x => {
+      if (x.pref_id === dataCityChoice.pref_id) {
+        return x;
+      }
+    });
+    if (choice) {
+      field.onChange(choice.area_name);
+    } else {
+      field.onChange(undefined);
+    }
+  }, [dataCityChoice.pref_id, dataProvince]);
+
+  useEffect(() => {
+    selected();
+  }, [selected]);
   useEffect(() => {
     if ((route?.params as Record<string, unknown>)?.item) {
       field.onChange((route?.params as Record<string, any>)?.item?.pref_name);
@@ -44,7 +63,7 @@ export const FormSelectCountry = ({
           labelT18n={labelT18n}
           placeholderT18n={placeholder_T18n}
           maxLength={maxLength}
-          // isShowMsgError={false}
+          isShowMsgError={false}
           rightChildren={rightChildren}
           requiredLabelT18n={requiredLabelT18n}
           disabled={true}

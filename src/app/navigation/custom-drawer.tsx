@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { FlatList, Linking } from 'react-native';
+import { FlatList, Linking, Platform } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -27,6 +27,15 @@ const CustomDrawer = () => {
         break;
       case 3:
         navigate(HOME_STACK.NOTIFY);
+        break;
+      case 7:
+        if (Platform.OS === 'ios') {
+          Linking.openURL(
+            'App-Prefs:NOTIFICATIONS_ID&path=com.keiai.mobile.production',
+          );
+        } else {
+          Linking.openSettings();
+        }
         break;
       case 8:
         navigate(HOME_STACK.DELETE_USER);
@@ -69,10 +78,10 @@ const CustomDrawer = () => {
       <Block
         block
         paddingTop={top}
-        paddingBottom={bottom * 2 + 60}
+        paddingBottom={bottom * 2 + 30}
         color={colors.white}
         alignItems={'flex-start'}>
-        <Block paddingLeft={50}>
+        <Block paddingLeft={50} flex={1}>
           <Spacer height={70} />
           <FlatList
             data={dataMenu}

@@ -17,7 +17,7 @@ export const ButtonPoint = () => {
 
   // render
   return (
-    <Block middle height={36} marginTop={20} marginBottom={20}>
+    <Block middle height={36} marginBottom={20}>
       <Button.Default
         buttonColorTheme="white"
         onPress={handleGoToPointScreen}
@@ -41,7 +41,7 @@ export const ButtonPoint = () => {
             colorTheme="primary"
             middle
             justifyContent="center">
-            <Text preset="textBold14" colorTheme="white" text="K" />
+            <Text preset="textNormal12" colorTheme="white" text="K" />
           </Block>
           <Spacer width={8} />
           <Text preset="textNormal" colorTheme="base5">

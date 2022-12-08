@@ -12,20 +12,29 @@ export interface DataKeiaiType {
   image: ImageTypes;
   type: KeiaiType;
   title: string;
+  link: string;
 }
 
 export const DATA_KEIAI: Array<DataKeiaiType> = [
-  { id: 1, image: 'iesapo', type: KeiaiType.IESAPO, title: 'KEIAI 家サポ' },
+  {
+    id: 1,
+    image: 'iesapo',
+    type: KeiaiType.IESAPO,
+    title: 'KEIAI 家サポ',
+    link: 'https://www.iesapo.ki-group.jp/',
+  },
   {
     id: 2,
     image: 'internet',
     type: KeiaiType.INTERNET,
     title: 'KEIAI インターネット',
+    link: 'https://owners.ki-group.jp/app/assets/pdf/keiai-internet2.pdf',
   },
   {
     id: 3,
     image: 'banner_3',
     type: KeiaiType.DENKI,
     title: 'KEIAI 安心サポート',
+    link: 'https://ki-group.co.jp/owners/anshin_support/',
   },
 ];
