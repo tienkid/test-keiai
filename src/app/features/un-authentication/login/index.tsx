@@ -88,7 +88,7 @@ const LoginComponent = () => {
   // render
   return (
     <Block block colorTheme="white">
-      <WrapperBackground canBack headerTitleT18n="login:title">
+      <WrapperBackground canBack headerTitleT18n="login:login_title">
         <Spacer height={20} />
         <FormLogin onSubmit={onSubmit} errorLogin={errorLogin} />
       </WrapperBackground>

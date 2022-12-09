@@ -15,11 +15,10 @@ const ContentDetailComponent = () => {
   //state
   const route = useRoute<ContentDetailProps['route']>();
   const { item } = route.params;
-  console.log(item.tags, 'item');
 
   // render
   return (
-    <Block block colorTheme="background">
+    <Block block colorTheme="white">
       <HeaderBack headerTextNonTranslate={item.title} />
       <Spacer height={10} />
       <ItemContentDetail item={item} />

@@ -72,6 +72,7 @@
   },
   "login": {
     "title": "次へ",
+    "login_title": "ログイン",
     "password": "パスワード",
     "passwordPlaceholder": "パスワードを入力",
     "phoneNumber": "携帯電話番号（ハイフン抜き）",
