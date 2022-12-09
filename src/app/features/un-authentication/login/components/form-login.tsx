@@ -83,7 +83,7 @@ export const FormLogin = ({ onSubmit, errorLogin }: FormLoginProps) => {
         <Spacer height={60} />
         <Block alignSelf={'center'}>
           <Button.Primary
-            t18n="login:title"
+            t18n="login:login_title"
             onPress={onSubmitKey}
             disabled={!formMethod.formState.isValid}
           />
