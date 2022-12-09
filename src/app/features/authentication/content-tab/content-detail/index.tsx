@@ -4,19 +4,25 @@ import isEqual from 'react-fast-compare';
 import { WebView } from 'react-native-webview';
 
 import { CONTENT_DEFAULT, logActionEvent } from '@common';
-import { Block, Header } from '@components';
+import { Block, Spacer } from '@components';
+import { HeaderBack } from '@components/header-back';
 import { useRoute } from '@react-navigation/native';
 
+import { ItemContentDetail } from './components/item-content-detail';
 import { ContentDetailProps } from './type';
 
 const ContentDetailComponent = () => {
   //state
   const route = useRoute<ContentDetailProps['route']>();
   const { item } = route.params;
+  console.log(item.tags, 'item');
+
   // render
   return (
     <Block block colorTheme="background">
-      <Header />
+      <HeaderBack headerTextNonTranslate={item.title} />
+      <Spacer height={10} />
+      <ItemContentDetail item={item} />
       <WebView
         source={{
           html: item ? item.content : CONTENT_DEFAULT,

@@ -4,7 +4,7 @@ API_URL=https://stg-plus.keiai.pro/
 API_URL_PRO=https://stg-api.keiai.pro/
 APP_DISPLAY_NAME=keiai_mobile-Dev
 APP_PLACEHOLDER_NAME=keiai_mobile
-VERSION_CODE=30
+VERSION_CODE=33
 VERSION_NAME=0.0.1
 BUNDLE_IDENTIFIER=com.keiai.mobile.production
 ASSETCATALOG_COMPILER_APPICON_NAME=AppIcon
@@ -16,3 +16,4 @@ USER_POOL_ID=ap-northeast-1_yzb30wzeM
 USER_POOL_WEB_CLIENT_ID=6115ttf4ein5rf3hqcbe50g5u0
 API_PROVINCE=https://open-data.iemarco.jp/api/v1/prefectures
 API_City=https://open-data.iemarco.jp/api/v1/cities?
+API_Postal_code=https://dev-open-data.iemarco.jp/api/v1/address/?postal_code=

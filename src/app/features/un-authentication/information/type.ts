@@ -80,4 +80,24 @@ export interface CityType {
   area_code: number;
   area_name: string;
 }
+export interface PostalCodeChoice {
+  pref_code: number;
+  pref_name: string;
+  pref_id: number;
+  city: City[];
+}
+
+export interface City {
+  city_code: number;
+  city_name: string;
+  city_id: number;
+  town: Town[];
+}
+
+export interface Town {
+  town_code: number;
+  town_name: string;
+  town_id: number;
+  streets: any[];
+}
 export type StepType = '1' | '2';

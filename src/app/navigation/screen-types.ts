@@ -7,6 +7,7 @@ import { Item } from '@model/content';
 
 export enum APP_SCREEN {
   UN_AUTHORIZE = 'UN_AUTHORIZE',
+  ANIMATE = 'ANIMATE',
   SPLASH = 'SPLASH',
   LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
@@ -18,6 +19,10 @@ export enum APP_SCREEN {
   HOME = 'HOME',
   OTP_SCREEN = 'OTP_SCREEN',
   MODAL_SELECTED_COUNTY = 'MODAL_SELECTED_COUNTY',
+}
+
+export enum ANIMATE {
+  CAROUSEL_3D = 'CAROUSEL_3D',
 }
 
 export enum BOTTOM_TAB {
@@ -79,9 +84,13 @@ export type AuthorizeParamsList = {
   [HOME_STACK.CONFIRM_DELETE]: undefined;
   [HOME_STACK.DELETE_SUCCESS]: undefined;
 };
+export type AnimateParamsList = {
+  [ANIMATE.CAROUSEL_3D]: undefined;
+};
 export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;
   [APP_SCREEN.AUTHORIZE]: undefined;
   [HOME_STACK.NOTIFY]: undefined;
+  [APP_SCREEN.ANIMATE]: undefined;
 } & UnAuthorizeParamsList &
   AuthorizeParamsList;

@@ -1,15 +1,13 @@
 import React, { useCallback, useEffect } from 'react';
 
-import { useController, useFormContext } from 'react-hook-form';
+import { useController } from 'react-hook-form';
 
-import { dispatch } from '@common';
 import { Block, FormInput } from '@components';
 import { useSelector } from '@hooks';
 import { FormInformationProfileType } from '@model/information';
 import { useRoute } from '@react-navigation/native';
-import { appActions } from '@redux-slice';
 
-import { CityType, CountryInputProps } from '../type';
+import { CountryInputProps } from '../type';
 
 export const FormSelectCity = ({
   name,
@@ -24,31 +22,26 @@ export const FormSelectCity = ({
   const { field } = useController({
     name,
   });
-  const { resetField } = useFormContext();
+  // const { resetField } = useFormContext();
   const route = useRoute();
-  const dataCity = useSelector(x => x.app.dataWrapCity);
+  // const dataCity = useSelector(x => x.app.dataWrapCity);
   const zipCode = useSelector(x => x.app.zipCode);
   const selected = useCallback(() => {
-    const choice = dataCity.find(x => {
-      if (x.city_code.toString() === zipCode) {
-        return x;
-      }
-    });
-    if (choice) {
-      field.onChange(choice.city_name);
-      dispatch(appActions.setDataChoice(choice));
+    if (zipCode.city) {
+      field.onChange(zipCode.city[0].city_name);
     } else {
-      resetField(name);
-      dispatch(appActions.setDataChoice({} as CityType));
+      field.onChange(undefined);
     }
-  }, [dataCity, zipCode]);
+  }, [zipCode.city]);
 
   useEffect(() => {
     selected();
   }, [selected]);
   useEffect(() => {
     if ((route?.params as Record<string, unknown>)?.item) {
-      field.onChange((route?.params as Record<string, any>)?.item?.city_name);
+      if ((route?.params as Record<string, unknown>)?.type === name) {
+        field.onChange((route?.params as Record<string, any>)?.item?.city_name);
+      }
     }
     // field.onBlur();
     // eslint-disable-next-line react-hooks/exhaustive-deps

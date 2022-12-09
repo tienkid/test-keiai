@@ -84,6 +84,7 @@ buck-out/
 # CocoaPods
 
 /ios/Pods/
+/src/app/course-animation/
 /vendor/bundle/
 ios/prebuild.log
 ios/tmp.xcconfig

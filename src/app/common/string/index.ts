@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { processColor } from 'react-native';
 
-import { ValidateMessageObject } from '@config/type';
+import { TagType, ValidateMessageObject } from '@config/type';
 
 import { KANA_FULL_HALF_MAP } from '../constant';
 
@@ -168,13 +168,17 @@ export const numberToCountryCode = (phone: string) => {
   return '+81' + joined;
 };
 
-export const generateTags = (tags?: Array<string>) => {
+export const formatZipCode = (code: string) => {
+  return code.slice(0, 3) + '-' + code.slice(3, 7);
+};
+
+export const generateTags = (tags?: Array<TagType>) => {
   let tagsString = '';
   if (!tags) {
     return tagsString;
   }
   tags.map(e => {
-    return (tagsString += `#${e} `);
+    return (tagsString += `#${e.name} `);
   });
   return tagsString;
 };

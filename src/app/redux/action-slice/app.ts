@@ -6,6 +6,7 @@ import {
 import { SLICE_NAME } from '@config/type';
 import {
   CityType,
+  PostalCodeChoice,
   ProvinceType,
 } from '@features/un-authentication/information/type';
 import { AppState } from '@model/app';
@@ -25,7 +26,7 @@ const initialAppState: AppState = {
   /**
    * default true to load app
    */
-  zipCode: '',
+  zipCode: {} as PostalCodeChoice,
   dataCityChoice: {} as CityType,
   loadingApp: false,
   showDialog: false,
@@ -72,7 +73,7 @@ const appSlice = createSlice({
     setProvinceData: (state, { payload }: PayloadAction<ProvinceType[]>) => {
       state.dataProvince = payload;
     },
-    setZipCode: (state, { payload }: PayloadAction<string>) => {
+    setZipCode: (state, { payload }: PayloadAction<PostalCodeChoice>) => {
       state.zipCode = payload;
     },
     setCityData: (state, { payload }: PayloadAction<CityType[]>) => {

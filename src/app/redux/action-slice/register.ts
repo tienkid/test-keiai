@@ -42,6 +42,12 @@ const getProvince = createAction(
   }),
 );
 
+const getPostalCode = createAction(Action.GET_POSTAL_CODE, (body?: string) => ({
+  payload: {
+    body,
+  },
+}));
+
 const getCity = createAction(
   Action.GET_CITY,
   (body?: string, onSucceeded?: (data: CityType[]) => void) => ({
@@ -79,5 +85,6 @@ export const registerActions = {
   checkContract,
   getProvince,
   getCity,
+  getPostalCode,
   getCityWrap,
 };

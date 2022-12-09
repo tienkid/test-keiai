@@ -24,6 +24,9 @@ export const ModalSelectedCountry = ({
   );
   const onPressItem = useCallback(
     (item: ProvinceType | CityType) => {
+      if (type === 'country') {
+        dispatch(appActions.setProvince(item));
+      }
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       navigation.navigate({
@@ -31,9 +34,6 @@ export const ModalSelectedCountry = ({
         params: { item, type },
         merge: true,
       });
-      if (type === 'country') {
-        dispatch(appActions.setProvince(item));
-      }
     },
     [navigation, route.params.screenPrevious, type],
   );

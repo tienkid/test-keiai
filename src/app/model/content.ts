@@ -1,3 +1,5 @@
+import { TagType } from '@config/type';
+
 import { Meta } from './app';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -36,6 +38,6 @@ export interface Item {
   thumb?: any;
   createdAt: string;
   updatedAt: string;
-  tags: string[];
+  tags: TagType[];
   files: any[];
 }
