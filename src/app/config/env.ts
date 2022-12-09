@@ -15,4 +15,5 @@ export const ENVConfig = {
   USER_POOL_WEB_CLIENT_ID: Config.USER_POOL_WEB_CLIENT_ID,
   API_PROVINCE: Config.API_PROVINCE,
   API_City: Config.API_City,
+  API_Postal_code: Config.API_Postal_code,
 };

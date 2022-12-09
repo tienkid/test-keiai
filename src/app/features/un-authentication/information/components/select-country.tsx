@@ -26,27 +26,23 @@ export const FormSelectCountry = ({
     name,
   });
   const route = useRoute();
-  const dataProvince = useSelector(x => x.app.dataProvince);
-  const dataCityChoice = useSelector(x => x.app.dataCityChoice);
+  // const dataProvince = useSelector(x => x.app.dataProvince);
+  const zipCode = useSelector(x => x.app.zipCode);
   const selected = useCallback(() => {
-    const choice = dataProvince.find(x => {
-      if (x.pref_id === dataCityChoice.pref_id) {
-        return x;
-      }
-    });
-    if (choice) {
-      field.onChange(choice.area_name);
+    if (zipCode.city) {
+      field.onChange(zipCode.pref_name);
     } else {
       field.onChange(undefined);
     }
-  }, [dataCityChoice.pref_id, dataProvince]);
-
+  }, [zipCode.city, zipCode.pref_name]);
   useEffect(() => {
     selected();
   }, [selected]);
   useEffect(() => {
     if ((route?.params as Record<string, unknown>)?.item) {
-      field.onChange((route?.params as Record<string, any>)?.item?.pref_name);
+      if ((route?.params as Record<string, unknown>)?.type === name) {
+        field.onChange((route?.params as Record<string, any>)?.item?.pref_name);
+      }
     }
     // field.onBlur();
     // eslint-disable-next-line react-hooks/exhaustive-deps

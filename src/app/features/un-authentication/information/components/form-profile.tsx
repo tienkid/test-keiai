@@ -5,7 +5,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { dispatch, MODAL_SELECTED_COUNTRY_TYPE, sizeScale } from '@common';
+import {
+  dispatch,
+  formatZipCode,
+  MODAL_SELECTED_COUNTRY_TYPE,
+  sizeScale,
+} from '@common';
 import {
   Block,
   Button,
@@ -21,6 +26,7 @@ import { renderItemWithPattern } from '@components/parsed-text/utils';
 import {
   EMAIL_LENGTH,
   MAX_PHONE_NUMBER_LENGTH,
+  MAX_ZIP_CODE,
   NAME_LENGTH,
 } from '@config/field-length';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -39,7 +45,12 @@ import { InputHaft } from './input-half';
 import { TwoHalfInput } from './two-half-input';
 
 import { styles } from '../style';
-import { CityType, FormInformationProfileProps, ProvinceType } from '../type';
+import {
+  CityType,
+  FormInformationProfileProps,
+  PostalCodeChoice,
+  ProvinceType,
+} from '../type';
 
 export const FormInformationProfile = ({
   onSubmit,
@@ -53,6 +64,7 @@ export const FormInformationProfile = ({
     mode: 'all',
     resolver: yupResolver(informationValidation),
   });
+  const zipCode = useSelector(x => x.app.zipCode);
   const provinceChoice = useSelector(x => x.app.provinceChoice);
   const dataProvince = useSelector(x => x.app.dataProvince);
   const dataCity = useSelector(x => x.app.dataCity);
@@ -96,7 +108,14 @@ export const FormInformationProfile = ({
   };
   const zip_code = formMethod.watch('zip_code');
   useEffect(() => {
-    dispatch(appActions.setZipCode(zip_code));
+    if (zip_code && zip_code.length === 7) {
+      const code = formatZipCode(zip_code);
+      dispatch(registerActions.getPostalCode(code));
+    } else {
+      if (zipCode.city) {
+        dispatch(appActions.setZipCode({} as PostalCodeChoice));
+      }
+    }
   }, [zip_code]);
   // const handleSetZipCode = () => {
   //   dispatch(appActions.setZipCode(formMethod.getValues('zip_code')));
@@ -212,6 +231,7 @@ export const FormInformationProfile = ({
           containerStyle={{
             borderRadius: 8,
           }}
+          maxLength={MAX_ZIP_CODE}
           keyboardType="numeric"
           requiredLabelT18n="common:indispensable"
         />

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   CityType,
+  PostalCodeChoice,
   ProvinceType,
 } from '@features/un-authentication/information/type';
 import { ThemeType } from '@theme';
@@ -39,7 +40,7 @@ export interface AppState {
 
   dataCityChoice: CityType;
 
-  zipCode: string;
+  zipCode: PostalCodeChoice;
 }
 
 export interface Meta {

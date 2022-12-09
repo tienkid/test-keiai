@@ -33,3 +33,13 @@ export type ValidateMessageObject = {
   optionsTx?: Record<string, string | number>;
   options?: Record<string, string | number>;
 };
+export interface TagType {
+  alphaName: string;
+  createdAt: Date;
+  description: string;
+  id: string;
+  majorItem: string;
+  middleItem: string;
+  name: string;
+  updatedAt: Date;
+}
