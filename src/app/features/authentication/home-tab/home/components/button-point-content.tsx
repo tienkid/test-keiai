@@ -20,7 +20,7 @@ export const ButtonPointContent = () => {
       height={50}
       // paddingVertical={15}
       // paddingHorizontal={70}
-      shadow>
+    >
       <Button.Default
         buttonColorTheme="white"
         onPress={handleGoToPointScreen}
@@ -35,6 +35,14 @@ export const ButtonPointContent = () => {
           borderWidth: 1,
           paddingHorizontal: 20,
           borderColor: ColorDefault.border,
+          shadowColor: '#00000090',
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5,
         }}>
         <Block alignItems="center" justifyContent="center" flex={1}>
           <Text

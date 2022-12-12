@@ -23,6 +23,7 @@ const initialAppState: AppState = {
   refreshToken: undefined,
   registerData: undefined,
   sessionID: undefined,
+  // phone: undefined,
   /**
    * default true to load app
    */
@@ -89,6 +90,9 @@ const appSlice = createSlice({
     setPoint: (state, { payload }: PayloadAction<number>) => {
       state.point = payload;
     },
+    // setPhoneReLogin: (state, { payload }: PayloadAction<string>) => {
+    //   state.phone = payload;
+    // },
     setContents: (state, { payload }: PayloadAction<ContentResponse>) => {
       state.contents = payload;
     },

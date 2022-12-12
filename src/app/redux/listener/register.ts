@@ -165,7 +165,6 @@ takeLatestListeners()({
     }
     if (handleErrorResponse(response)) {
       if (response.data?.city) {
-        console.log(response, 'ressssssss');
         listenerApi.dispatch(appActions.setZipCode(response.data));
       }
     }

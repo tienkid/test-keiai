@@ -11,7 +11,6 @@ export const KeiaiItem = ({ item }: KeiaiItemPropsType) => {
   const { width } = useWindowDimensions();
   // func
   const handlePressItem = () => {
-    console.log(item.type);
     switch (item.type) {
       case KeiaiType.IESAPO:
         Linking.openURL('https://www.iesapo.ki-group.jp/');
