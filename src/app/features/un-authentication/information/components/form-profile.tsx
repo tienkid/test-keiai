@@ -117,6 +117,11 @@ export const FormInformationProfile = ({
       }
     }
   }, [zip_code]);
+  useEffect(() => {
+    if (zipCode.city) {
+      formMethod.setValue('name_address', zipCode.city[0].town[0].town_name);
+    }
+  }, [zipCode]);
   // const handleSetZipCode = () => {
   //   dispatch(appActions.setZipCode(formMethod.getValues('zip_code')));
   //   console.log(formMethod.getValues('zip_code'), 'formMethod.getValues()');

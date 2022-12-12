@@ -22,7 +22,6 @@ export const ListBanner = () => {
         middle
         justifyContent="center"
         direction={'row'}
-        marginLeft={5}
         shadow>
         {/* <Spacer width={index === 0 ? 15 : 0} /> */}
         <LocalImage
@@ -30,9 +29,10 @@ export const ListBanner = () => {
           source={item}
           style={{
             height: ((width - 30) * 180) / 343,
-            width: width - sizeScale(30),
+            width: width - sizeScale(25),
             borderRadius: 8,
             overflow: 'hidden',
+            marginRight: index === colors.length - 1 ? 0 : 5,
           }}
         />
         <Spacer width={index === colors.length - 1 ? 15 : 0} />
@@ -42,7 +42,7 @@ export const ListBanner = () => {
 
   // render
   return (
-    <Block paddingLeft={10}>
+    <Block paddingLeft={15}>
       <SwiperFlatList
         autoplay
         autoplayDelay={3}

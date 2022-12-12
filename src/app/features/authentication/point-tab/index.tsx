@@ -30,7 +30,7 @@ const PointComponent = () => {
         <Block
           key={index.toString()}
           middle
-          shadow
+          // shadow
           borderRadius={8}
           borderWidth={0.5}
           borderColorTheme={'border'}

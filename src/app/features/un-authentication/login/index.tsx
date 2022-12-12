@@ -39,7 +39,12 @@ const LoginComponent = () => {
     const phoneNumber = numberToCountryCode(data.phoneNumber);
     try {
       const res = await Auth.signIn(phoneNumber, data.password);
-
+      dispatch(
+        appActions.setAppProfile({
+          ...res.attributes,
+          username: res.username,
+        }),
+      );
       if (!checkRefresh) {
         const timeExpiredRefreshToken = moment(today)
           .add(TIME_REFRESH, 'd')
@@ -51,19 +56,23 @@ const LoginComponent = () => {
             refreshToken: refreshToken ?? '',
           }),
         );
-        dispatch(
-          appActions.setAppProfile({
-            ...res.attributes,
-            username: res.username,
-          }),
-        );
+        // dispatch(
+        //   appActions.setAppProfile({
+        //     ...res.attributes,
+        //     username: res.username,
+        //   }),
+        // );
       } else {
         const expired = moment(checkRefresh).format('YYYY-MM-DD');
         const diff = moment.duration(moment(expired).diff(moment(today)));
         const days = diff.days();
         console.log(days, 'days');
-        if (days > 0) {
-          navigate(APP_SCREEN.REGISTER, { type: 'reLogin' });
+        if (days <= 0) {
+          // dispatch(appActions.setPhoneReLogin(phoneNumber));
+          navigate(APP_SCREEN.REGISTER, {
+            type: 'reLogin',
+            phone: phoneNumber,
+          });
         } else {
           dispatch(
             appActions.setToken({
@@ -71,12 +80,12 @@ const LoginComponent = () => {
               refreshToken: refreshToken ?? '',
             }),
           );
-          dispatch(
-            appActions.setAppProfile({
-              ...res.attributes,
-              username: res.username,
-            }),
-          );
+          // dispatch(
+          //   appActions.setAppProfile({
+          //     ...res.attributes,
+          //     username: res.username,
+          //   }),
+          // );
         }
       }
     } catch (error) {

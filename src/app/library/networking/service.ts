@@ -145,6 +145,8 @@ async function PostFormData<T>(params: ParamsNetwork) {
 async function Put<T>(params: ParamsNetwork) {
   return Request<T>(handleParameter(params, 'PUT'));
 }
+
+//PATCH
 async function PATCH<T>(params: ParamsNetwork) {
   return Request<T>(handleParameter(params, 'PATCH'));
 }

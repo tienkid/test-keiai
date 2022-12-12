@@ -710,9 +710,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.keiai.mobile.production;
+				PRODUCT_BUNDLE_IDENTIFIER = prod.keiai.app;
 				PRODUCT_NAME = keiai_mobile;
-				PROVISIONING_PROFILE_SPECIFIER = keiai_plus_mobile_appstore;
+				PROVISIONING_PROFILE_SPECIFIER = KeiaiProduc;
 				SWIFT_OBJC_BRIDGING_HEADER = "keiai_mobile-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

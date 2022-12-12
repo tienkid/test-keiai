@@ -20,6 +20,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { DrawerNavigator } from './drawer';
 
+// import { Carousel3D } from '../course-animation/carousel-3d';
+// import { HomeAnimate } from '../course-animation/home';
+
 const RootStack = createStackNavigator<RootStackParamList>();
 
 export const RootNavigation = () => {
@@ -51,8 +54,12 @@ export const RootNavigation = () => {
             gestureEnabled: false,
           }}>
           {/* <RootStack.Screen
-            name={APP_SCREEN.AUTHORIZE}
-            component={DrawerNavigator}
+            name={APP_SCREEN.HOME_ANIMATE}
+            component={HomeAnimate}
+          /> */}
+          {/* <RootStack.Screen
+            name={APP_SCREEN.CAROUSEL_3D}
+            component={Carousel3D}
           /> */}
           <RootStack.Screen
             name={APP_SCREEN.WELCOME}

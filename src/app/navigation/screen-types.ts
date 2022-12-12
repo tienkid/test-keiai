@@ -19,10 +19,8 @@ export enum APP_SCREEN {
   HOME = 'HOME',
   OTP_SCREEN = 'OTP_SCREEN',
   MODAL_SELECTED_COUNTY = 'MODAL_SELECTED_COUNTY',
-}
-
-export enum ANIMATE {
   CAROUSEL_3D = 'CAROUSEL_3D',
+  HOME_ANIMATE = 'HOME_ANIMATE',
 }
 
 export enum BOTTOM_TAB {
@@ -66,9 +64,11 @@ export type UnAuthorizeParamsList = {
     screenPrevious: string;
   };
   [APP_SCREEN.LOGIN]: undefined;
-  [APP_SCREEN.REGISTER]: { type?: string };
+  [APP_SCREEN.REGISTER]: { type?: string; phone?: string };
   [APP_SCREEN.SPLASH]: undefined;
   [APP_SCREEN.OTP_SCREEN]: { type?: string };
+  [APP_SCREEN.CAROUSEL_3D]: undefined;
+  [APP_SCREEN.HOME_ANIMATE]: undefined;
 };
 export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
@@ -84,9 +84,7 @@ export type AuthorizeParamsList = {
   [HOME_STACK.CONFIRM_DELETE]: undefined;
   [HOME_STACK.DELETE_SUCCESS]: undefined;
 };
-export type AnimateParamsList = {
-  [ANIMATE.CAROUSEL_3D]: undefined;
-};
+
 export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;
   [APP_SCREEN.AUTHORIZE]: undefined;

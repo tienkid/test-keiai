@@ -26,7 +26,6 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
       <Block
         justifyContent={'space-between'}
         width="50%"
-        shadow
         key={index}
         alignItems={index % 2 === 1 ? 'flex-end' : 'flex-start'}>
         <Button.Default
@@ -36,7 +35,8 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
             height={112}
             width={'100%'}
             borderRadius={8}
-            overflow="hidden"
+            // overflow="hidden"
+            shadow
             color={index === 2 ? '#F03333' : '#FFFFFF'}
             padding={index === 0 || index === 1 ? 10 : 0}>
             <LocalImage source={item.image} resizeMode="contain" />

@@ -17,6 +17,7 @@
     "postinstall": "node ./scripts/setup.js",
     "android:prod": "node ./scripts/android.js env/.prod prodDebug",
     "build:staging": "fastlane ios staging_build --env dev && fastlane android staging_build --env dev",
+    "build:prod": "fastlane ios staging_build --env prod && fastlane android staging_build --env prod",
     "android:dev:release": "node ./scripts/android.js env/.dev devRelease"
   },
   "lint-staged": {
@@ -74,6 +75,7 @@
     "@babel/runtime": "^7.12.5",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
+    "@faker-js/faker": "^7.6.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^29.0.1",
     "@types/react-native": "^0.69.3",
