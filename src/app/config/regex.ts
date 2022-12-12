@@ -11,3 +11,4 @@ export const rxFullWidth = /^[ぁ-んァ-ン一-龥]/;
 export const rxFullWidthKatakana = /^([ァ-ン]|ー)+$/;
 export const rxNumberHaftWidth = /^[0-9]+$/;
 export const rxContract = /^([a-zA-Z0-9]{3})[-]([0-9]{9,14})[-]([0-9]{3})/;
+export const rxFullWidthEmail = /^[０-９ぁ-んァ-ン一-龥]/;
