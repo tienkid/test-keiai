@@ -7,6 +7,7 @@ import {
   rxContract,
   rxEmail,
   rxFullWidth,
+  rxFullWidthEmail,
   rxFullWidthKatakana,
   rxHaftWidth,
   rxPhoneNumber,
@@ -212,6 +213,16 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
             field: 'field:email',
           },
         }),
+      )
+      .test(
+        'fullsize',
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_013',
+          optionsTx: {
+            field: 'field:email',
+          },
+        }),
+        val => !rxFullWidthEmail.test(val ?? ''),
       )
       .matches(
         rxEmail,
