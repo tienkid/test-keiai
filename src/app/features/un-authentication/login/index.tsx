@@ -39,7 +39,7 @@ const LoginComponent = () => {
     const phoneNumber = numberToCountryCode(data.phoneNumber);
     try {
       const res = await Auth.signIn(phoneNumber, data.password);
-      console.log(1111, res.attributes);
+      console.log(1111, res);
 
       dispatch(
         appActions.setAppProfile({

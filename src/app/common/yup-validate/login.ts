@@ -6,12 +6,12 @@ import { stringifyObjectValidateYup } from '../string';
 export const loginValidation: yup.SchemaOf<FormLoginType> = yup.object().shape({
   phoneNumber: yup.string().required(
     stringifyObjectValidateYup({
-      keyT: 'msg:MSG_001',
+      keyT: 'msg:MSG_014',
     }),
   ),
   password: yup.string().required(
     stringifyObjectValidateYup({
-      keyT: 'msg:MSG_002',
+      keyT: 'msg:MSG_015',
     }),
   ),
 });
