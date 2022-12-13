@@ -186,7 +186,7 @@ export const FormInformationProfile = ({
             </Button.Default>
           }
         />
-        <TextInput />
+        <TextInput style={{ height: 1 }} />
         <Spacer height={10} />
         <FormInput<FormInformationProfileType>
           name={'confirm_password'}

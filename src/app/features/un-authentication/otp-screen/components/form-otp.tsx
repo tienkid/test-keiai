@@ -63,7 +63,6 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
         <FormInput<FormRegisterOTPType>
           name={'code'}
           labelT18n={'register:enter_otp'}
-          placeholderT18n={'login:phoneNumberPlaceholder'}
           rxRemove={rxNotNumber}
           isShowMsgError={false}
           inputStyle={{ height: 50 }}
