@@ -33,7 +33,7 @@ export const handleResponseAxios = <T = Record<string, unknown>>(
       status: res.data.result === 'failure' ? false : true,
       data: res?.data ?? undefined,
       msg: res.data.error,
-      msgCode: res.data.code,
+      msgCode: res.data.code ?? res.data.error,
     };
   }
   return responseDefault as ResponseBase<T>;

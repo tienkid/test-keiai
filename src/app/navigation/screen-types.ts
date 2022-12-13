@@ -77,6 +77,7 @@ export type AuthorizeParamsList = {
   [SETTING_STACK.SERVICE_DETAIL]: { item: Item };
   [BOTTOM_TAB.TAB_HOME]: undefined;
   [BOTTOM_TAB.TAB_POINT]: undefined;
+  [BOTTOM_TAB.TAB_SETTING]: undefined;
   [HOME_STACK.NOTIFY]: undefined;
   [POINT_STACK.POINT]: undefined;
   [HOME_STACK.NOTIFY_DETAIL]: { item: ItemNotifyType };
