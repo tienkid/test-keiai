@@ -53,7 +53,8 @@ const ModalErrorComponent = forwardRef((_, ref) => {
         <Block
           alignItems={'center'}
           colorTheme="white"
-          height={211}
+          minHeight={211}
+          paddingHorizontal={15}
           width={'90%'}
           borderRadius={8}>
           <Spacer height={30} />
@@ -65,6 +66,7 @@ const ModalErrorComponent = forwardRef((_, ref) => {
           <Text
             t18n={content ? content : 'login:loading_title'}
             preset="linkSmall"
+            textAlign={'center'}
           />
           <Spacer height={16} />
           <Block middle>
@@ -72,7 +74,6 @@ const ModalErrorComponent = forwardRef((_, ref) => {
               <Button.Primary t18n="common:OK" onPress={closeModal} />
             </Block>
           </Block>
-
           <Spacer height={16} />
         </Block>
       </Block>

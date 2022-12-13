@@ -14,7 +14,7 @@ import { AxiosError, AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 const responseDefault: ResponseBase<Record<string, unknown>> = {
   code: -500,
   status: false,
-  msg: translate('error:errorData'),
+  msg: translate('error:serverError'),
 };
 
 export const onPushLogout = async () => {
@@ -41,8 +41,6 @@ export const handleResponseAxios = <T = Record<string, unknown>>(
 export const handleErrorAxios = <T = Record<string, unknown>>(
   error: AxiosError,
 ): ResponseBase<T> => {
-  console.log(2222, error.response);
-
   if (error.code === STATUS_TIME_OUT) {
     // timeout
     return handleErrorApi(CODE_TIME_OUT) as unknown as ResponseBase<T>;

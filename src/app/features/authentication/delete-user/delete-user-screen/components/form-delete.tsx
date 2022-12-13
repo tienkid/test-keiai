@@ -36,7 +36,7 @@ export const FormDelete = ({ onSubmit }: FormLoginProps) => {
           name={'phone'}
           labelT18n={'login:phoneNumber'}
           keyboardType="numeric"
-          placeholderT18n={'login:phoneNumber_delete_user_placeholder'}
+          placeholderT18n={'login:phoneNumberPlaceholder'}
           inputStyle={{ height: 50 }}
         />
         <Spacer height={35} />
