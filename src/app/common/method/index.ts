@@ -88,6 +88,8 @@ const handleErrorContent = (msgCode: string): I18nKeys => {
       return 'msg:phone_in_used';
     case 'user_disabled':
       return 'msg:user_disable';
+    case 'incorrect_code' || 'code_expired':
+      return 'msg:incorrect_code';
     default:
       return 'error:errorOnHandle';
   }
