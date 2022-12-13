@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Linking, TextInput } from 'react-native';
+import { Linking } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -186,7 +186,6 @@ export const FormInformationProfile = ({
             </Button.Default>
           }
         />
-        <TextInput />
         <Spacer height={10} />
         <FormInput<FormInformationProfileType>
           name={'confirm_password'}
