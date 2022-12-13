@@ -17,8 +17,8 @@ export const FormDelete = ({ onSubmit }: FormLoginProps) => {
     mode: 'all',
     resolver: yupResolver(deleteValidation),
     defaultValues: {
-      phone: __DEV__ ? '0397802881' : '',
-      password: __DEV__ ? 'Hanoi123' : '',
+      phone: __DEV__ ? '08087169761' : '',
+      password: __DEV__ ? 'password123' : '',
     },
   });
 
@@ -35,7 +35,8 @@ export const FormDelete = ({ onSubmit }: FormLoginProps) => {
         <FormInput<DataValid>
           name={'phone'}
           labelT18n={'login:phoneNumber'}
-          placeholderT18n={'login:phoneNumberPlaceholder'}
+          keyboardType="numeric"
+          placeholderT18n={'login:phoneNumber_delete_user_placeholder'}
           inputStyle={{ height: 50 }}
         />
         <Spacer height={35} />
