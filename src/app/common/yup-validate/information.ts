@@ -76,7 +76,7 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
         stringifyObjectValidateYup({
           keyT: 'msg:MSG_004',
           optionsTx: {
-            field: 'field:confirm_password',
+            field: 'field:password',
           },
         }),
       )

@@ -54,7 +54,7 @@ export const ModalSelectedCountry = ({
         />
       </Block>
       <Spacer height={5} />
-      <Block colorTheme="white">
+      <Block colorTheme="white" paddingBottom={insets.bottom + 10}>
         <ListView
           data={data ?? []}
           canRefresh={false}

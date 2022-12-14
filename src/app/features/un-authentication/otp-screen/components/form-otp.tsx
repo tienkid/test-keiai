@@ -22,7 +22,7 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
     mode: 'all',
     resolver: yupResolver(registerOTPValidation),
     defaultValues: {
-      code: __DEV__ ? '888888' : '',
+      code: __DEV__ ? '' : '',
     },
   });
   const [checkResend, setCheckResend] = useState(false);
@@ -67,7 +67,7 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
           isShowMsgError={false}
           inputStyle={{ height: 50 }}
         />
-        {!formMethod.formState.isValid && (
+        {/* {!formMethod.formState.isValid && (
           <Block paddingTop={10} alignItems="center">
             <Text
               t18n="register:error_send_otp"
@@ -75,7 +75,7 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
               colorTheme="error"
             />
           </Block>
-        )}
+        )} */}
         {checkResend && (
           <Block paddingTop={10} alignItems="center">
             <Text
