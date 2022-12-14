@@ -55,7 +55,7 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
             </Text> */}
           </Block>
         </Button.Default>
-        <Spacer height={15} />
+        <Spacer height={index === 2 ? 0 : 25} />
       </Block>
       // <KeiaiItem item={item} key={index.toString()} />
     ),

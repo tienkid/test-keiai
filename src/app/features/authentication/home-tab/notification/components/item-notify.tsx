@@ -31,7 +31,6 @@ export const ItemNotify = ({ item, handleToDetail }: ItemNotifyProps) => {
           <Text
             preset="textNormal12"
             text={item.content}
-            lineHeight={13}
             colorTheme="base5"
             numberOfLines={2}
           />

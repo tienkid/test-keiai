@@ -25,7 +25,7 @@ export const HeaderBack = ({
     <Block
       direction={'row'}
       middle
-      height={70}
+      height={44 + insets.top}
       paddingTop={insets.top}
       colorTheme={'white'}
       paddingHorizontal={15}
