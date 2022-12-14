@@ -19,7 +19,6 @@ takeLatestListeners()({
     const token = loadString(STORAGE_KEY_TOKEN);
     const refreshToken = loadString(STORAGE_KEY_REFRESH_TOKEN);
     const userInfo = loadString(STORAGE_KEY_PROFILE);
-
     if (typeof token === 'string') {
       listenerApi.dispatch(
         appActions.setToken({ token, refreshToken: refreshToken as string }),
