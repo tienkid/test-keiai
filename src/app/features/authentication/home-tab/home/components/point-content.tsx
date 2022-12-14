@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { sizeScale } from '@common';
 import { Block, Divider, LocalImage, Spacer, Text } from '@components';
 
 import { ButtonPointContent } from './button-point-content';
@@ -23,6 +24,7 @@ export const PointContent = () => {
         colorTheme="base5"
         fontWeight={'bold'}
       />
+      <Spacer height={5} />
       <Divider height={0.5} colorTheme="primary" />
       <Spacer height={20} />
       <Block block width={'100%'} height={128}>
@@ -32,7 +34,6 @@ export const PointContent = () => {
       <Text
         t18n="home:KI_point_content"
         preset="textNormal"
-        lineHeight={15}
         colorTheme="base5"
         textAlign={'center'}
       />
@@ -53,7 +54,23 @@ export const PointContent = () => {
         /> */}
       </Block>
       <Spacer height={8} />
-      <Text t18n="home:KI_point_note" preset="linkXSmall" colorTheme="base5" />
+      <Block
+        direction={'row'}
+        alignItems="flex-end"
+        justifyContent={'flex-end'}>
+        <Text
+          t18n="common:indispensable"
+          fontSize={sizeScale(14)}
+          colorTheme="base5"
+          lineHeight={15}
+        />
+        <Text
+          t18n="home:KI_point_note"
+          preset="linkXSmall"
+          colorTheme="base5"
+          lineHeight={15}
+        />
+      </Block>
       <Spacer height={35} />
       <ButtonPointContent />
     </Block>

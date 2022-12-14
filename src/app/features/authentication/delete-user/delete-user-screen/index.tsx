@@ -5,20 +5,28 @@ import isEqual from 'react-fast-compare';
 import { dispatch, numberToCountryCode } from '@common';
 import { Block, Spacer, Text, WrapperBackground } from '@components';
 import { DataValid } from '@model/delete-user';
+import { navigate } from '@navigation/navigation-service';
+import { HOME_STACK } from '@navigation/screen-types';
 import { deleteUserActions } from '@redux-slice';
 
 import { FormDelete } from './components/form-delete';
 
 const DeleteUserComponent = () => {
   // function
+  const onSucceeded = () => {
+    navigate(HOME_STACK.CONFIRM_DELETE);
+  };
   const onSubmit = async (data: DataValid) => {
     console.log(data, 'data');
     const phoneNumber = numberToCountryCode(data.phone);
     dispatch(
-      deleteUserActions.validDeleteUser({
-        password: data.password,
-        phone: phoneNumber,
-      }),
+      deleteUserActions.validDeleteUser(
+        {
+          password: data.password,
+          phone: phoneNumber,
+        },
+        onSucceeded,
+      ),
     );
     //
   };

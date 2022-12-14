@@ -115,6 +115,7 @@ const appSlice = createSlice({
       state.token = undefined;
       // state.profile = {};
       remove(STORAGE_KEY_TOKEN);
+      state.profile = {};
     },
     saveSession: (state, { payload }) => {
       console.log(payload);

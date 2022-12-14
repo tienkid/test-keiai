@@ -1,4 +1,4 @@
-import { handleErrorResponse } from '@common';
+import { execFunc, handleErrorResponse } from '@common';
 import { takeLatestListeners } from '@listener';
 import { LoginResponse } from '@model/login';
 import { navigate } from '@navigation/navigation-service';
@@ -26,7 +26,7 @@ takeLatestListeners(true)({
 takeLatestListeners(true)({
   actionCreator: deleteUserActions.validDeleteUser,
   effect: async (action, _listenerApi) => {
-    const { body } = action.payload;
+    const { body, onSucceeded } = action.payload;
     const response = await NetWorkService.Post<any>({
       url: ApiConstants.VALID_DELETE_USER_SUCCESS,
       body,
@@ -34,8 +34,11 @@ takeLatestListeners(true)({
     if (!response) {
       return;
     }
+    console.log(response, 'response');
+
     if (handleErrorResponse(response)) {
-      navigate(HOME_STACK.CONFIRM_DELETE);
+      execFunc(onSucceeded);
+      // navigate(HOME_STACK.CONFIRM_DELETE);
     }
   },
 });
