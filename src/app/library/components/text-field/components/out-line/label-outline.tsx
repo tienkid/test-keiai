@@ -40,7 +40,7 @@ export const LabelOutline = ({
       ]}>
       <Text
         text={labelText}
-        preset={'textNormal15'}
+        preset={'textNormal14'}
         colorTheme={colorLabel}
         numberOfLines={1}
         style={{ maxWidth: '80%' }}

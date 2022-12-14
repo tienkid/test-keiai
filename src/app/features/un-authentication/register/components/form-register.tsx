@@ -2,7 +2,6 @@ import React from 'react';
 import { Linking } from 'react-native';
 
 import { Block, Button, Spacer, Text } from '@components';
-import { LabelOutline } from '@components/text-field/components/out-line/label-outline';
 import { useSelector } from '@hooks';
 
 import { FormRegisterProps } from '../type';
@@ -36,7 +35,12 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         />
       </Block>
       <Block paddingTop={50} middle>
-        <LabelOutline labelT18n="information_profile:phone_number" />
+        {/* <LabelOutline labelT18n="information_profile:phone_number" /> */}
+        <Text
+          t18n="information_profile:phone_number"
+          preset="textNormal12"
+          colorTheme="base5"
+        />
         <Block marginTop={11}>
           <Text
             text={register?.phoneNumber ?? profile?.phone_number}

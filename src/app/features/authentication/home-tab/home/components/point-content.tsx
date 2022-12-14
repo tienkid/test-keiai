@@ -60,15 +60,16 @@ export const PointContent = () => {
         justifyContent={'flex-end'}>
         <Text
           t18n="common:indispensable"
-          fontSize={sizeScale(14)}
+          fontSize={sizeScale(16)}
           colorTheme="base5"
-          lineHeight={15}
+          lineHeight={18}
+          textAlign="center"
         />
         <Text
           t18n="home:KI_point_note"
           preset="linkXSmall"
           colorTheme="base5"
-          lineHeight={15}
+          lineHeight={18}
         />
       </Block>
       <Spacer height={35} />

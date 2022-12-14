@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { Block, Button, ParsedText, RowItem, Spacer } from '@components';
 import { renderItemWithPattern } from '@components/parsed-text/utils';
 
+import { ListPreviewProps } from '../../information/type';
 import { styles } from '../style';
-import { ListPreviewProps } from '../type';
 
 export const ListPreview = ({
   informationPreview,
