@@ -91,6 +91,11 @@ export const textPresets = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: '400',
   },
+  textNormal17: {
+    fontFamily: FontDefault.primary,
+    fontSize: sizeScale(17),
+    fontWeight: '400',
+  },
   textBold16: {
     fontFamily: FontDefault.primary,
     fontSize: sizeScale(16),

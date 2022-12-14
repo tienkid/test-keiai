@@ -51,12 +51,24 @@ const PointComponent = () => {
               })}
             />
           </Block>
-          <Text
-            preset="linkTitle"
-            colorTheme={item.type === 'issue' ? 'primary' : 'point_transfer'}
-            t18n="point:point"
-            t18nOptions={{ point: numberWithCommas(item.adjustment) }}
-          />
+          <Block direction={'row'} alignItems="flex-end">
+            <Text
+              preset="linkTitle"
+              colorTheme={item.type === 'issue' ? 'primary' : 'point_transfer'}
+              text={numberWithCommas(item.adjustment)}
+            />
+            <Spacer width={5} />
+            <Block>
+              <Text
+                preset="textNormal17"
+                colorTheme={
+                  item.type === 'issue' ? 'primary' : 'point_transfer'
+                }
+                text={'P'}
+              />
+              <Spacer height={2} />
+            </Block>
+          </Block>
         </Block>
       );
     },
@@ -100,6 +112,7 @@ const PointComponent = () => {
               preset="linkLarge"
               t18n="home:what_KI_point"
               colorTheme="base5"
+              fontWeight={'bold'}
             />
             <Spacer width={8} />
             <LocalImage
@@ -110,7 +123,6 @@ const PointComponent = () => {
           </Block>
           <Spacer height={5} />
           <Divider height={1} colorTheme="primary" />
-
           <Spacer height={30} />
           <Block block width={'100%'} height={128}>
             <LocalImage source="logo_point" resizeMode="contain" />

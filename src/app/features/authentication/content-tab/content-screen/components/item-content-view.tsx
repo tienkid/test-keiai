@@ -17,7 +17,7 @@ export const ItemContentView = ({ item }: { item: Item }) => {
   return (
     <Block middle>
       <Button.Default onPress={handleToDetail} style={{ alignItems: 'center' }}>
-        <Block width={345} height={228} borderRadius={5}>
+        <Block width={345} height={228} borderRadius={5} overflow="hidden">
           {item?.thumb ? (
             <Image source={item.thumb} resizeMode="contain" />
           ) : (
