@@ -1,10 +1,9 @@
-import { execFunc, handleErrorResponse, NON_REFRESH } from '@common';
+import { execFunc, handleErrorResponse } from '@common';
 import { takeLatestListeners } from '@listener';
 import { DataOTP, LoginResponse } from '@model/login';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { ApiConstants, NetWorkService } from '@networking';
-import { remove } from '@utils/storage';
 
 // eslint-disable-next-line import/order
 import { appActions } from '../action-slice/app';
@@ -50,8 +49,8 @@ takeLatestListeners(true)({
 
 takeLatestListeners(true)({
   actionCreator: loginActions.OTPCodeLogin,
-  effect: async (action, listenerApi) => {
-    const { body } = action.payload;
+  effect: async (action, _listenerApi) => {
+    const { body, onSucceeded } = action.payload;
     const response = await NetWorkService.Post<DataOTP>({
       url: ApiConstants.SET_CODE_LOGIN,
       body,
@@ -63,13 +62,7 @@ takeLatestListeners(true)({
     if (handleErrorResponse(response)) {
       // TODO
       // navigate(APP_SCREEN.OTP_SCREEN);
-      remove(NON_REFRESH);
-      listenerApi.dispatch(
-        appActions.setToken({
-          token: response.data.token,
-          refreshToken: response.data.refresh_token,
-        }),
-      );
+      execFunc(onSucceeded);
     }
   },
 });

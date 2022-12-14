@@ -20,6 +20,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { DrawerNavigator } from './drawer';
 
+// import { CarouselParallax } from '../course-animation/parallax-carousel';
+
 // import { Carousel3D } from '../course-animation/carousel-3d';
 // import { HomeAnimate } from '../course-animation/home';
 
@@ -28,6 +30,7 @@ const RootStack = createStackNavigator<RootStackParamList>();
 export const RootNavigation = () => {
   // state
   const token = useSelector(x => x.app.token);
+  const profile = useSelector(x => x.app.profile);
 
   // effect
   useEffect(() => {
@@ -47,7 +50,7 @@ export const RootNavigation = () => {
   // render
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
-      {token === undefined ? (
+      {!profile?.phone_number ? (
         <RootStack.Group
           screenOptions={{
             animationTypeForReplace: 'pop',
@@ -60,6 +63,10 @@ export const RootNavigation = () => {
           {/* <RootStack.Screen
             name={APP_SCREEN.CAROUSEL_3D}
             component={Carousel3D}
+          /> */}
+          {/* <RootStack.Screen
+            name={APP_SCREEN.CAROUSEL_PARALLAX}
+            component={CarouselParallax}
           /> */}
           <RootStack.Screen
             name={APP_SCREEN.WELCOME}
@@ -79,8 +86,7 @@ export const RootNavigation = () => {
             name={APP_SCREEN.INFORMATION_PROFILE_STEP2}
             component={InformationProfileStep2}
           />
-          <RootStack.Group
-            screenOptions={{ presentation: 'modal', gestureEnabled: true }}>
+          <RootStack.Group screenOptions={{ presentation: 'modal' }}>
             <RootStack.Screen
               name={APP_SCREEN.MODAL_SELECTED_COUNTY}
               component={ModalSelectedCountry}

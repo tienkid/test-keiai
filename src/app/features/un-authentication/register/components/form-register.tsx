@@ -9,7 +9,7 @@ import { FormRegisterProps } from '../type';
 export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
   // state
   const register = useSelector(x => x.app.registerData);
-  const profile = useSelector(x => x.app.profile);
+  const profile = useSelector(x => x.app.profileWrap);
   // const formMethod = useForm<FormRegisterType>({
   //   mode: 'all',
   //   resolver: yupResolver(registerValidation),

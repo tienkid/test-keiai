@@ -18,6 +18,7 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
   // state
 
   const profile = useSelector(x => x.app.profile);
+  const dataProfile = useSelector(x => x.app.registerData);
   const formMethod = useForm<FormRegisterOTPType>({
     mode: 'all',
     resolver: yupResolver(registerOTPValidation),
@@ -34,19 +35,28 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
   const handleSuccess = () => {
     setCheckResend(true);
   };
+
   const handleResendOTP = () => {
-    const data: FormGetCodeType = {
-      mode: 'background_refresh',
-      phone: profile?.phone_number,
-    };
-    dispatch(loginActions.getCodeLogin(data, handleSuccess));
+    if (!dataProfile) {
+      const data: FormGetCodeType = {
+        mode: 'background_refresh',
+        phone: profile?.phone_number,
+      };
+      dispatch(loginActions.getCodeLogin(data, handleSuccess));
+    } else {
+      // dispatch(
+      //   registerActions.register(
+      //     {
+      //       email: dataProfile.email,
+      //       phone_number: numberToCountryCode(dataProfile.phoneNumber ?? ''),
+      //     },
+      //     handleSuccess,
+      //   ),
+      // );
+      handleSuccess();
+    }
   };
   const handleToEdit = () => {
-    // if (type) {
-    //   navigate(APP_SCREEN.INFORMATION_PROFILE);
-    // } else {
-    //   navigate(APP_SCREEN.LOGIN);
-    // }
     Linking.openURL('https://ki-group.co.jp/owners/app/inquiry/');
   };
   // render

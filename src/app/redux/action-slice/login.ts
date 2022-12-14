@@ -24,9 +24,10 @@ const getCodeLogin = createAction(
 
 const OTPCodeLogin = createAction(
   Action.OTP_CODE_LOGIN,
-  (body: FormSetCodeType) => ({
+  (body: FormSetCodeType, onSucceeded?: () => void) => ({
     payload: {
       body,
+      onSucceeded,
     },
   }),
 );

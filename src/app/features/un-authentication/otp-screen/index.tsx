@@ -2,7 +2,7 @@ import React, { memo, useCallback } from 'react';
 
 import isEqual from 'react-fast-compare';
 
-import { dispatch, numberToCountryCode } from '@common';
+import { dispatch, NON_REFRESH, numberToCountryCode } from '@common';
 import { Block, WrapperBackground } from '@components';
 // import { navigate } from '@navigation/navigation-service';
 // import { APP_SCREEN } from '@navigation/screen-types';
@@ -10,6 +10,7 @@ import { useSelector } from '@hooks';
 import { FormSetCodeType } from '@model/authentication';
 import { useRoute } from '@react-navigation/native';
 import { appActions, loginActions, registerActions } from '@redux-slice';
+import { remove } from '@utils/storage';
 import { mapsDataRequest } from '@validate/information';
 import { Auth } from 'aws-amplify';
 
@@ -21,10 +22,9 @@ const OTPComponent = () => {
   const { type } = route.params;
 
   const dataProfile = useSelector(x => x.app.registerData);
+  const profileWrap = useSelector(x => x.app.profileWrap);
   const sessionID = useSelector(x => x.app.sessionID);
   // const checkRefresh = loadString(NON_REFRESH);
-
-  const profile = useSelector(x => x.app.profile);
 
   //function
   const onSubmitSucceeded = useCallback(async () => {
@@ -40,20 +40,25 @@ const OTPComponent = () => {
             refreshToken: '',
           }),
         );
+        dispatch(appActions.setRegisterData(undefined));
         dispatch(appActions.setAppProfile(res.attributes));
       }
     } catch (error) {}
   }, [dataProfile?.password, dataProfile?.phoneNumber]);
 
+  const onSucceeded = useCallback(() => {
+    remove(NON_REFRESH);
+    dispatch(appActions.setAppProfile(profileWrap));
+  }, [profileWrap]);
   const handleSubmit = useCallback(
     (data: FormRegisterOTPType) => {
       if (!dataProfile) {
         const dataPush: FormSetCodeType = {
           code: data.code,
-          phone: profile.phone_number,
+          phone: profileWrap.phone_number,
           session: sessionID,
         };
-        dispatch(loginActions.OTPCodeLogin(dataPush));
+        dispatch(loginActions.OTPCodeLogin(dataPush, onSucceeded));
       } else {
         const dataMaps = mapsDataRequest(dataProfile);
         dispatch(
@@ -64,7 +69,13 @@ const OTPComponent = () => {
         );
       }
     },
-    [dataProfile, onSubmitSucceeded, profile.phone_number, sessionID],
+    [
+      dataProfile,
+      profileWrap.phone_number,
+      sessionID,
+      onSucceeded,
+      onSubmitSucceeded,
+    ],
   );
 
   // render
