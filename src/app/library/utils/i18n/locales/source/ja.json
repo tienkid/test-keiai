@@ -27,7 +27,7 @@
     "505": "HTTP Version Not Supported",
     "haveError": "An error occurred. Please try again later",
     "errorOnRequest": "An error occurred while sending the request",
-    "errorOnHandle": "An error occurred while processing data",
+    "errorOnHandle": "エラー発生しました。アプリの利用を再開する場合はお問い合わせ下さい。",
     "serverError": "Server Error",
     "errorNetwork": "Connection errors! Please check the connection again.",
     "errorGetPermission": "Error during application permission check"

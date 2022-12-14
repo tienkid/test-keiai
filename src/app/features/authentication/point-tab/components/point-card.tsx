@@ -102,18 +102,35 @@ export const PointCard = () => {
               colorTheme={'white'}
             />
           </Block>
-          <Block alignSelf={'center'} direction="row" alignItems={'flex-end'}>
-            <AnimatedNumbers
-              includeComma
-              animateToNumber={point}
-              fontStyle={{
-                fontSize: sizeScale(40),
-                fontWeight: 'bold',
-                color: '#FFFFFF',
-              }}
+          <Block alignSelf={'center'} direction="row">
+            <Block direction="row" alignItems={'flex-end'}>
+              <AnimatedNumbers
+                includeComma
+                animateToNumber={point}
+                fontStyle={{
+                  fontSize: sizeScale(40),
+                  fontWeight: 'bold',
+                  color: '#FFFFFF',
+                  textAlign: 'right',
+                  padding: 0,
+                }}
+              />
+              <Block position={'absolute'} right={-30} bottom={4}>
+                <Text
+                  preset={'textBold30'}
+                  t18n={'point:point'}
+                  textAlign="center"
+                />
+              </Block>
+            </Block>
+            <Text
+              color={'transparent'}
+              preset={'textBold30'}
+              t18n={'point:point'}
+              textAlign="center"
             />
-            <Text preset={'textBold40'} t18n={'point:point'} />
           </Block>
+
           <Spacer height={40} />
           {/* <Block position={'absolute'} bottom={10} right={10}>
             <Button.Default onPress={handleUpdatePoint}>
