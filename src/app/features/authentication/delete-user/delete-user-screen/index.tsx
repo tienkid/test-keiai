@@ -46,7 +46,7 @@ const DeleteUserComponent = () => {
             colorTheme="base5"
           />
         </Block>
-        <Spacer height={35} />
+        <Spacer height={50} />
         <FormDelete onSubmit={onSubmit} />
       </WrapperBackground>
     </Block>

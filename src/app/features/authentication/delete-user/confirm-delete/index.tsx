@@ -33,16 +33,22 @@ const ConfirmDeleteUserComponent = () => {
             colorTheme="primary"
           />
         </Block>
-        <Spacer height={20} />
+        <Spacer height={25} />
         <Block justifyContent={'center'} direction="row" alignItems={'center'}>
           <Text
             t18n="delete_user:point"
             preset="textBold16"
             colorTheme="base5"
+            fontWeight={'600'}
           />
-          <Text preset="textBold16" colorTheme="base5" text="0P" />
+          <Text
+            preset="textBold16"
+            colorTheme="base5"
+            text="0P"
+            fontWeight={'600'}
+          />
         </Block>
-        <Spacer height={50} />
+        <Spacer height={60} />
         <Block alignItems={'center'}>
           <Text
             preset="textNormal12"
@@ -58,6 +64,7 @@ const ConfirmDeleteUserComponent = () => {
         <Block alignSelf={'center'} paddingVertical={25}>
           <Button.Primary t18n="delete_user:button_title" onPress={onSubmit} />
         </Block>
+        <Spacer height={5} />
         <Block alignItems={'center'}>
           <Button.Default onPress={handleGoToHome}>
             <Text

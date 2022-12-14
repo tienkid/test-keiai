@@ -202,7 +202,7 @@ const PointComponent = () => {
           />
           <Spacer height={35} />
           <Text
-            preset="textNormal12"
+            preset="textNormal11"
             t18n="point:description_3"
             colorTheme="base5"
           />

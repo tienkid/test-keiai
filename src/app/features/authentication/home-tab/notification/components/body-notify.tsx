@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
-import { Block, Divider, ListView } from '@components';
+import { Block, Divider, ListView, Spacer } from '@components';
 
 import { ItemNotify } from './item-notify';
 
@@ -146,6 +146,7 @@ export const BodyNotify = () => {
     <Block flex={1} colorTheme={'background'} paddingTop={2}>
       <Block colorTheme="white" shadow flex={1}>
         <Block flex={1}>
+          <Spacer height={10} />
           <ListView
             data={dataNotify ?? []}
             canRefresh={false}

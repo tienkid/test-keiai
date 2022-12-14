@@ -3,7 +3,6 @@ import React, { useMemo } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@components/button';
-import { Divider } from '@components/divider';
 import { Icon } from '@components/icon';
 import { Screen } from '@components/screen';
 import { Spacer } from '@components/spacer';
@@ -43,7 +42,12 @@ export const WrapperBackground = ({
       colorTheme="white"
       paddingTop={paddingTop !== undefined ? paddingTop : insets.top}>
       {haveHeader ? (
-        <Block height={44}>
+        <Block
+          height={44}
+          colorTheme="white"
+          justifyContent={'center'}
+          alignItems="center"
+          shadow>
           <Block paddingHorizontal={7} direction={'row'} block middle>
             <Block flex={1}>
               {canBack ? (
@@ -66,20 +70,12 @@ export const WrapperBackground = ({
               <Spacer width={28} />
             </Block>
           </Block>
-          <Spacer height={8} />
-          <Divider />
+          {/* <Spacer height={8} /> */}
         </Block>
       ) : (
         <Spacer height={60} />
       )}
-      <Screen
-        scroll={scroll}
-        style={{
-          backgroundColor: theme.colors.white,
-        }}
-        hiddenStatusBar
-        unsafe={true}
-        bottomInsetColor={theme.colors.white}>
+      <Screen scroll={scroll} hiddenStatusBar unsafe>
         <FocusedStatusBarStyle barStyle={barStyle || 'dark-content'} />
         {!isHiddenLogo && (
           <Block>
