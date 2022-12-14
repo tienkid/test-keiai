@@ -10,7 +10,7 @@ import { MyAppTheme, ThemeType } from '@theme';
 import { loadString } from '@utils/storage';
 
 import { appActions } from '../action-slice/app';
-import { registerActions } from '../action-slice/register';
+// import { registerActions } from '../action-slice/register';
 
 takeLatestListeners()({
   actionCreator: appActions.startLoadApp,
@@ -35,7 +35,7 @@ takeLatestListeners()({
     ) {
       listenerApi.dispatch(appActions.setAppTheme(appTheme as ThemeType));
     }
-    listenerApi.dispatch(registerActions.getCityWrap());
+    // listenerApi.dispatch(registerActions.getCityWrap());
     listenerApi.dispatch(appActions.endLoadApp());
   },
 });

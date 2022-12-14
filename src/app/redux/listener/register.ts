@@ -106,7 +106,7 @@ takeLatestListeners(true)({
         onSucceeded();
       }
     }
-    console.log(response, 'response');
+    // console.log(response, 'response');
   },
 });
 
@@ -147,7 +147,6 @@ takeLatestListeners()({
     }
     if (handleErrorResponse(response)) {
       listenerApi.dispatch(appActions.setDataWrapCity(response.data));
-
       // execFunc(onSucceeded, response.data);
     }
   },

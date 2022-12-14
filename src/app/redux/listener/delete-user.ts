@@ -35,10 +35,25 @@ takeLatestListeners(true)({
       return;
     }
     console.log(response, 'response');
-
-    if (handleErrorResponse(response)) {
-      execFunc(onSucceeded);
-      // navigate(HOME_STACK.CONFIRM_DELETE);
+    if (response?.code === 500) {
+      const responseFake = {
+        code: 400,
+        data: {
+          code: 'not_found',
+          error: 'Phone Not Found',
+          result: 'failure',
+        },
+        msg: 'Phone Not Found',
+        msgCode: 'not_found',
+        status: false,
+      };
+      handleErrorResponse(responseFake);
+    } else {
+      console.log(response);
+      if (handleErrorResponse(response)) {
+        execFunc(onSucceeded);
+        // navigate(HOME_STACK.CONFIRM_DELETE);
+      }
     }
   },
 });

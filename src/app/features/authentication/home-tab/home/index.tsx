@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { RefreshControl } from 'react-native';
 
 import isEqual from 'react-fast-compare';
@@ -25,7 +25,7 @@ const HomeComponent = () => {
   //func
   const profile = useSelector(x => x.app.profile);
   console.log(profile, 'profile Home');
-  const getContent = () => {
+  const getContent = useCallback(() => {
     dispatch(
       contentAction.getContent(
         {
@@ -35,7 +35,7 @@ const HomeComponent = () => {
         onGetContentSucceeded,
       ),
     );
-  };
+  }, []);
 
   const onGetContentSucceeded = (data: ContentResponse) => {
     dispatch(appActions.setContents(data));
@@ -55,7 +55,7 @@ const HomeComponent = () => {
   useFocusEffect(
     React.useCallback(() => {
       getContent();
-    }, []),
+    }, [getContent]),
   );
 
   useEffect(() => {

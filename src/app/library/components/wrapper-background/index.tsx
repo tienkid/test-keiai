@@ -43,7 +43,7 @@ export const WrapperBackground = ({
       colorTheme="white"
       paddingTop={paddingTop !== undefined ? paddingTop : insets.top}>
       {haveHeader ? (
-        <Block height={44} justifyContent={'center'} alignItems="center">
+        <Block height={44}>
           <Block paddingHorizontal={7} direction={'row'} block middle>
             <Block flex={1}>
               {canBack ? (
@@ -66,7 +66,7 @@ export const WrapperBackground = ({
               <Spacer width={28} />
             </Block>
           </Block>
-          {/* <Spacer height={8} /> */}
+          <Spacer height={8} />
           <Divider />
         </Block>
       ) : (

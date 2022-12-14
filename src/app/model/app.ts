@@ -13,6 +13,8 @@ export interface AppState {
 
   profile: any;
 
+  profileWrap: any;
+
   token: string | undefined;
   refreshToken: string | undefined;
 

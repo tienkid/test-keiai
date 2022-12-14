@@ -19,6 +19,7 @@ import { remove, save, saveString } from '@utils/storage';
 const initialAppState: AppState = {
   internetState: true,
   profile: {} as AppState['profile'],
+  profileWrap: {} as AppState['profile'],
   token: undefined,
   refreshToken: undefined,
   registerData: undefined,
@@ -87,6 +88,9 @@ const appSlice = createSlice({
       state.profile = payload;
       save(STORAGE_KEY_PROFILE, payload);
     },
+    setAppProfileWrap: (state, { payload }: PayloadAction<unknown>) => {
+      state.profileWrap = payload;
+    },
     setPoint: (state, { payload }: PayloadAction<number>) => {
       state.point = payload;
     },
@@ -118,8 +122,7 @@ const appSlice = createSlice({
       state.profile = {};
     },
     saveSession: (state, { payload }) => {
-      console.log(payload);
-
+      // console.log(payload);
       state.sessionID = payload;
     },
   },

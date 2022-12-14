@@ -17,8 +17,9 @@ import { RegisterProps } from './type';
 const RegisterComponent = () => {
   //state
   const register = useSelector(x => x.app.registerData);
-  const profile = useSelector(x => x.app.profile);
+  const profile = useSelector(x => x.app.profileWrap);
   console.log(profile, 'profile');
+
   const route = useRoute<RegisterProps['route']>();
   const { type } = route.params;
 

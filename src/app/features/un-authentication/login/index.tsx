@@ -17,7 +17,7 @@ import { useSelector } from '@hooks';
 import { FormLoginType } from '@model/authentication';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
-import { appActions } from '@redux-slice';
+import { appActions, deleteUserActions } from '@redux-slice';
 import { I18nKeys } from '@utils/i18n/locales';
 import { loadString, saveString } from '@utils/storage';
 import { Auth } from 'aws-amplify';
@@ -39,55 +39,66 @@ const LoginComponent = () => {
     const phoneNumber = numberToCountryCode(data.phoneNumber);
     try {
       const res = await Auth.signIn(phoneNumber, data.password);
+
       dispatch(
-        appActions.setAppProfile({
-          ...res.attributes,
-          username: res.username,
+        appActions.setToken({
+          token: res.signInUserSession.accessToken.jwtToken,
+          refreshToken: refreshToken ?? '',
         }),
       );
-      if (!checkRefresh) {
-        const timeExpiredRefreshToken = moment(today)
-          .add(TIME_REFRESH, 'd')
-          .format('YYYY-MM-DD');
-        saveString(NON_REFRESH, timeExpiredRefreshToken);
-        dispatch(
-          appActions.setToken({
-            token: res.signInUserSession.accessToken.jwtToken,
-            refreshToken: refreshToken ?? '',
-          }),
-        );
-        // dispatch(
-        //   appActions.setAppProfile({
-        //     ...res.attributes,
-        //     username: res.username,
-        //   }),
-        // );
-      } else {
-        const expired = moment(checkRefresh).format('YYYY-MM-DD');
-        const diff = moment.duration(moment(expired).diff(moment(today)));
-        const days = diff.days();
-        console.log(days, 'days');
-        if (days <= 0) {
-          // dispatch(appActions.setPhoneReLogin(phoneNumber));
-          navigate(APP_SCREEN.REGISTER, {
-            type: 'reLogin',
+      dispatch(
+        deleteUserActions.validDeleteUser(
+          {
+            password: data.password,
             phone: phoneNumber,
-          });
-        } else {
-          dispatch(
-            appActions.setToken({
-              token: res.signInUserSession.accessToken.jwtToken,
-              refreshToken: refreshToken ?? '',
-            }),
-          );
-          // dispatch(
-          //   appActions.setAppProfile({
-          //     ...res.attributes,
-          //     username: res.username,
-          //   }),
-          // );
-        }
-      }
+          },
+          () => {
+            if (!checkRefresh) {
+              const timeExpiredRefreshToken = moment(today)
+                .add(TIME_REFRESH, 'd')
+                .format('YYYY-MM-DD');
+              saveString(NON_REFRESH, timeExpiredRefreshToken);
+              // dispatch(
+              //   appActions.setToken({
+              //     token: res.signInUserSession.accessToken.jwtToken,
+              //     refreshToken: refreshToken ?? '',
+              //   }),
+              // );
+              dispatch(
+                appActions.setAppProfile({
+                  ...res.attributes,
+                  username: res.username,
+                }),
+              );
+            } else {
+              const expired = moment(checkRefresh).format('YYYY-MM-DD');
+              const diff = moment.duration(moment(expired).diff(moment(today)));
+              const days = diff.days();
+              console.log(days, 'days');
+              if (days > 0) {
+                // dispatch(appActions.setPhoneReLogin(phoneNumber));
+                dispatch(
+                  appActions.setAppProfileWrap({
+                    ...res.attributes,
+                    username: res.username,
+                  }),
+                );
+                navigate(APP_SCREEN.REGISTER, {
+                  type: 'reLogin',
+                  phone: phoneNumber,
+                });
+              } else {
+                dispatch(
+                  appActions.setAppProfile({
+                    ...res.attributes,
+                    username: res.username,
+                  }),
+                );
+              }
+            }
+          },
+        ),
+      );
     } catch (error) {
       setErrorLogin('login:error_login');
     }
