@@ -7,7 +7,7 @@ import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 
-import { ListPreview } from '../information/components/list-preview';
+import { ListPreview } from './components/list-preview';
 
 export const InformationProfileStep2 = () => {
   // state

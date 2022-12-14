@@ -160,7 +160,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
                 t18n={placeholderT18n}
                 text={placeHolder}
                 color={placeholderColor}
-                preset={'textNormal'}
+                preset={'textNormal15'}
               />
             </View>
           )}

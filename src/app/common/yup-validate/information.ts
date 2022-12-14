@@ -203,6 +203,15 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
             field: 'field:zip_code',
           },
         }),
+      )
+      .matches(
+        rxPhoneNumber,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_013',
+          optionsTx: {
+            field: 'field:zip_code',
+          },
+        }),
       ),
     email: yup
       .string()

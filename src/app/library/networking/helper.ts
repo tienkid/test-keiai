@@ -28,12 +28,16 @@ export const handleResponseAxios = <T = Record<string, unknown>>(
   res: AxiosResponse<any>,
 ): ResponseBase<T> => {
   if (res.data) {
+    const isInvalidCode = res.data.message === 'Invalid Registration Code';
+    console.log(isInvalidCode, res.data);
     return {
       code: res.status,
       status: res.data.result === 'failure' ? false : true,
       data: res?.data ?? undefined,
       msg: res.data.error,
-      msgCode: res.data.code ?? res.data.error,
+      msgCode: isInvalidCode
+        ? 'incorrect_code'
+        : res.data.code ?? res.data.error,
     };
   }
   return responseDefault as ResponseBase<T>;

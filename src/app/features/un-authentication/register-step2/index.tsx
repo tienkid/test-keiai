@@ -5,7 +5,7 @@ import { FormInformationProfileType } from '@model/information';
 import { navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 
-import { ListPreview } from '../information/components/list-preview';
+import { ListPreview } from '../infomation-step2/components/list-preview';
 import { WrapperSteps } from '../information/components/wrapper-steps';
 
 export const InformationProfileStep2 = () => {
