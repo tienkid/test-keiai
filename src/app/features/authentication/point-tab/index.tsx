@@ -205,6 +205,7 @@ const PointComponent = () => {
             preset="textNormal11"
             t18n="point:description_3"
             colorTheme="base5"
+            lineHeight={17}
           />
           <Spacer height={70} />
         </Block>

@@ -29,7 +29,6 @@ export const handleResponseAxios = <T = Record<string, unknown>>(
 ): ResponseBase<T> => {
   if (res.data) {
     const isInvalidCode = res.data.message === 'Invalid Registration Code';
-    console.log(isInvalidCode, res.data);
     return {
       code: res.status,
       status: res.data.result === 'failure' ? false : true,
@@ -54,7 +53,7 @@ export const handleErrorAxios = <T = Record<string, unknown>>(
       return handleErrorApi(RESULT_CODE_PUSH_OUT) as unknown as ResponseBase<T>;
     } else {
       if (error.response.data) {
-        console.log('DATA', error.response.data);
+        // console.log('DATA', error.response.data);
         return handleResponseAxios(error.response);
       }
       return handleErrorApi(

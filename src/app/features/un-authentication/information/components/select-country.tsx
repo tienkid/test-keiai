@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 
 import { useController } from 'react-hook-form';
 
-import { Block, FormInput } from '@components';
+import { Block, Button, FormInput } from '@components';
 import { useSelector } from '@hooks';
 import { FormInformationProfileType } from '@model/information';
 import { useRoute } from '@react-navigation/native';
@@ -11,12 +11,12 @@ import { CountryInputProps } from '../type';
 
 export const FormSelectCountry = ({
   name,
-  actualPercentWidth,
   labelT18n,
   placeholder_T18n,
   maxLength,
   rightChildren,
   requiredLabelT18n,
+  handleShowCountry,
 }: CountryInputProps) => {
   // state
   const {
@@ -52,8 +52,8 @@ export const FormSelectCountry = ({
 
   // render
   return (
-    <>
-      <Block block maxWidth={`${actualPercentWidth}%`} alignSelf={'flex-start'}>
+    <Button.Default onPress={handleShowCountry}>
+      <Block block pointerEvents="none">
         <FormInput<FormInformationProfileType>
           name={name}
           labelT18n={labelT18n}
@@ -65,6 +65,6 @@ export const FormSelectCountry = ({
           disabled={true}
         />
       </Block>
-    </>
+    </Button.Default>
   );
 };

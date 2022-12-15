@@ -5,12 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import {
-  dispatch,
-  formatZipCode,
-  MODAL_SELECTED_COUNTRY_TYPE,
-  sizeScale,
-} from '@common';
+import { dispatch, formatZipCode, sizeScale } from '@common';
 import {
   Block,
   Button,
@@ -84,22 +79,36 @@ export const FormInformationProfile = ({
     formMethod.handleSubmit(onSubmit)();
   };
 
-  const handleSelectedCountry = (type: MODAL_SELECTED_COUNTRY_TYPE) => () => {
-    if (type === MODAL_SELECTED_COUNTRY_TYPE.COUNTRY) {
-      navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, {
-        type: 'country',
-        data: dataProvince,
-        screenPrevious: route.name,
-      });
-    } else {
-      navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, {
-        type: 'city',
-        data: dataCity,
-        screenPrevious: route.name,
-      });
-    }
-  };
+  // const handleSelectedCountry = (type: MODAL_SELECTED_COUNTRY_TYPE) => () => {
+  //   if (type === MODAL_SELECTED_COUNTRY_TYPE.COUNTRY) {
+  //     navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, {
+  //       type: 'country',
+  //       data: dataProvince,
+  //       screenPrevious: route.name,
+  //     });
+  //   } else {
+  //     navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, {
+  //       type: 'city',
+  //       data: dataCity,
+  //       screenPrevious: route.name,
+  //     });
+  //   }
+  // };
 
+  const handleShowCountry = () => {
+    navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, {
+      type: 'country',
+      data: dataProvince,
+      screenPrevious: route.name,
+    });
+  };
+  const handleShowCity = () => {
+    navigate(APP_SCREEN.MODAL_SELECTED_COUNTY, {
+      type: 'city',
+      data: dataCity,
+      screenPrevious: route.name,
+    });
+  };
   const handleCheck = () => {
     setIsCheck(is => !is);
   };
@@ -248,27 +257,21 @@ export const FormInformationProfile = ({
           placeholder_2_T18n="information_profile:city"
           requiredLabelT18n="common:indispensable"
           labelT18n_2="information_profile:address"
+          handleShowCity={handleShowCity}
+          handleShowCountry={handleShowCountry}
           rightChildren_1={
-            <Button.Default
-              onPress={handleSelectedCountry(
-                MODAL_SELECTED_COUNTRY_TYPE.COUNTRY,
-              )}>
-              <Icon
-                name="keyboard-arrow-down"
-                size={sizeScale(26)}
-                color={theme.colors.base2}
-              />
-            </Button.Default>
+            <Icon
+              name="keyboard-arrow-down"
+              size={sizeScale(26)}
+              color={theme.colors.base2}
+            />
           }
           rightChildren_2={
-            <Button.Default
-              onPress={handleSelectedCountry(MODAL_SELECTED_COUNTRY_TYPE.CITY)}>
-              <Icon
-                name="keyboard-arrow-down"
-                size={sizeScale(26)}
-                color={theme.colors.base2}
-              />
-            </Button.Default>
+            <Icon
+              name="keyboard-arrow-down"
+              size={sizeScale(26)}
+              color={theme.colors.base2}
+            />
           }
         />
         <FormInput<FormInformationProfileType>

@@ -38,6 +38,8 @@ export interface TwoHalfInputProps {
   rightChildren_2?: React.ReactNode;
   labelT18n_2?: TextProps['t18n'];
   initZip?: string;
+  handleShowCity?: () => void;
+  handleShowCountry?: () => void;
 }
 
 export interface CountryInputProps {
@@ -48,9 +50,10 @@ export interface CountryInputProps {
   requiredLabelT18n?: TextProps['t18n'];
   disabled?: boolean;
   rightChildren?: React.ReactNode;
-  actualPercentWidth: any;
   type: string;
   initZip?: string;
+  handleShowCity?: () => void;
+  handleShowCountry?: () => void;
 }
 
 export interface ListPreviewProps {
