@@ -11,7 +11,6 @@ export const ItemContentView = ({ item }: { item: Item }) => {
   const handleToDetail = () => {
     navigate(CONTENT_STACK.CONTENT_DETAIL, { item });
   };
-  console.log(item, 'item');
 
   // render
   return (

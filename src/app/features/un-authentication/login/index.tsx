@@ -39,8 +39,6 @@ const LoginComponent = () => {
     const phoneNumber = numberToCountryCode(data.phoneNumber);
     try {
       const res = await Auth.signIn(phoneNumber, data.password);
-      console.log(res.attributes, 'resssss');
-
       dispatch(
         appActions.setToken({
           token: res.signInUserSession.accessToken.jwtToken,
@@ -76,7 +74,7 @@ const LoginComponent = () => {
               const diff = moment.duration(moment(expired).diff(moment(today)));
               const days = diff.days();
               console.log(days, 'days');
-              if (days > 0) {
+              if (days <= 0) {
                 // dispatch(appActions.setPhoneReLogin(phoneNumber));
                 dispatch(
                   appActions.setAppProfileWrap({

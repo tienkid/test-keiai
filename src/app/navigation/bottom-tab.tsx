@@ -99,14 +99,23 @@ export const BottomTabScreen = () => {
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: '#CCCCCC',
         tabBarStyle: {
-          backgroundColor: colors.white,
+          shadowColor: '#000000',
+          shadowOffset: {
+            width: 0,
+            height: 1,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.5,
+          elevation: 5,
+          // paddingBottom: 5,
         },
+        tabBarLabelStyle: { paddingBottom: 5 },
       }}>
       <BottomTab.Screen
         options={{
           title: t('bottom_tab:home'),
           tabBarIcon: props => (
-            <Icon icon={'home'} color={props.color} size={30} />
+            <Icon icon={'home'} color={props.color} size={24} />
           ),
         }}
         name={BOTTOM_TAB.TAB_HOME}
@@ -116,7 +125,7 @@ export const BottomTabScreen = () => {
         options={{
           title: t('bottom_tab:content'),
           tabBarIcon: props => (
-            <Icon icon={'content'} color={props.color} size={30} />
+            <Icon icon={'content'} color={props.color} size={24} />
           ),
         }}
         name={BOTTOM_TAB.TAB_CONTENT}
@@ -148,7 +157,7 @@ export const BottomTabScreen = () => {
                 <Icon
                   icon={'home_search'}
                   color={props.color}
-                  size={30}
+                  size={24}
                   colorTheme="white"
                 />
                 <Text
@@ -174,7 +183,7 @@ export const BottomTabScreen = () => {
         options={{
           title: t('bottom_tab:setting'),
           tabBarIcon: props => (
-            <Icon icon={'service'} color={props.color} size={30} />
+            <Icon icon={'service'} color={props.color} size={24} />
           ),
         }}
         name={BOTTOM_TAB.TAB_SETTING}
@@ -184,7 +193,7 @@ export const BottomTabScreen = () => {
         options={{
           title: t('bottom_tab:point'),
           tabBarIcon: props => (
-            <Icon icon={'point'} color={props.color} size={30} />
+            <Icon icon={'point'} color={props.color} size={24} />
           ),
         }}
         name={BOTTOM_TAB.TAB_POINT}

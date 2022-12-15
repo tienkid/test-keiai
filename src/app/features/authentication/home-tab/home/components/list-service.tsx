@@ -43,7 +43,7 @@ export const ListService = ({ title, data }: ListServiceProps) => {
       <Text
         preset="textNormal12"
         colorTheme="base5"
-        lineHeight={15}
+        lineHeight={18}
         t18n={title ?? 'home:text_services_content'}
       />
       <Spacer height={25} />

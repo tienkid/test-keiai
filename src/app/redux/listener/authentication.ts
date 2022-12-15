@@ -8,7 +8,6 @@ takeLatestListeners(true)({
   actionCreator: authenticationActions.login,
   effect: async (action, listenerApi) => {
     const { body } = action.payload;
-    console.log({ body });
     await listenerApi.delay(1000);
     const response = await NetWorkService.Post({
       url: ApiConstants.LOGIN,

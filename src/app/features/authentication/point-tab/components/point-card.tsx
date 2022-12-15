@@ -102,6 +102,7 @@ export const PointCard = () => {
               colorTheme={'white'}
             />
           </Block>
+          <Spacer height={10} />
           <Block alignSelf={'center'} direction="row">
             <Block direction="row" alignItems={'flex-end'}>
               <AnimatedNumbers
@@ -112,7 +113,7 @@ export const PointCard = () => {
                   fontWeight: 'bold',
                   color: '#FFFFFF',
                   textAlign: 'right',
-                  padding: 0,
+                  lineHeight: 46,
                 }}
               />
               <Block position={'absolute'} right={-30} bottom={4}>

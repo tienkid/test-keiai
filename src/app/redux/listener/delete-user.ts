@@ -26,7 +26,7 @@ takeLatestListeners(true)({
 takeLatestListeners(true)({
   actionCreator: deleteUserActions.validDeleteUser,
   effect: async (action, _listenerApi) => {
-    const { body, onSucceeded } = action.payload;
+    const { body, onSucceeded, onError } = action.payload;
     const response = await NetWorkService.Post<any>({
       url: ApiConstants.VALID_DELETE_USER_SUCCESS,
       body,
@@ -36,18 +36,19 @@ takeLatestListeners(true)({
     }
     console.log(response, 'response');
     if (response?.code === 500) {
-      const responseFake = {
-        code: 400,
-        data: {
-          code: 'not_found',
-          error: 'Phone Not Found',
-          result: 'failure',
-        },
-        msg: 'Phone Not Found',
-        msgCode: 'not_found',
-        status: false,
-      };
-      handleErrorResponse(responseFake);
+      console.log(23232323);
+      // const responseFake = {
+      //   code: 400,
+      //   data: {
+      //     code: 'not_found',
+      //     error: 'Phone Not Found',
+      //     result: 'failure',
+      //   },
+      //   msg: 'Phone Not Found',
+      //   msgCode: 'not_found',
+      //   status: false,
+      // };
+      execFunc(onError);
     } else {
       console.log(response);
       if (handleErrorResponse(response)) {

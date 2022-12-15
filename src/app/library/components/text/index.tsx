@@ -70,7 +70,7 @@ export const Text = ({
           { textTransform },
           { fontStyle },
           { letterSpacing },
-          { lineHeight },
+          { lineHeight: lineHeight },
         ]),
       ],
     ],

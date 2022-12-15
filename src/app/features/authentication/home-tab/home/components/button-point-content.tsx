@@ -48,7 +48,7 @@ export const ButtonPointContent = () => {
           <Text
             preset="textNormal12"
             t18n="home:KI_point_button"
-            // lineHeight={12}
+            lineHeight={18}
             colorTheme="base5"
             textAlign={'center'}
           />
@@ -56,7 +56,7 @@ export const ButtonPointContent = () => {
             preset="textNormal12"
             t18n="home:KI_point_button_2"
             colorTheme="base5"
-            // lineHeight={12}
+            lineHeight={18}
             textAlign={'center'}
           />
         </Block>

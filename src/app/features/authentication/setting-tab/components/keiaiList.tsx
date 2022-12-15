@@ -34,9 +34,13 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
           <Block
             height={112}
             width={'100%'}
-            borderRadius={8}
-            // overflow="hidden"
+            borderRadius={5}
+            overflow={index === 2 ? 'hidden' : 'visible'}
             shadow
+            shadowConfig={{
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+            }}
             color={index === 2 ? '#F03333' : '#FFFFFF'}
             padding={index === 0 || index === 1 ? 10 : 0}>
             <LocalImage source={item.image} resizeMode="contain" />
@@ -47,7 +51,7 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
               colorTheme="base5"
               numberOfLines={2}
               text={item.title}
-              lineHeight={15}
+              lineHeight={18}
             />
             {/* <Spacer height={8} />
             <Text preset="textNormal11" colorTheme="base4" numberOfLines={2}>

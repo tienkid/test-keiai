@@ -99,7 +99,6 @@ function Request<T = Record<string, unknown>>(
   return new Promise<ResponseBase<T> | null>(rs => {
     AxiosInstance.request(StyleSheet.flatten([defaultConfig, config]))
       .then((res: AxiosResponse<T>) => {
-        // console.log(111111, res);
         const result = handleResponseAxios(res);
         rs(result as ResponseBase);
       })

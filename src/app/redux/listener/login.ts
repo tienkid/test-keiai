@@ -40,7 +40,6 @@ takeLatestListeners(true)({
     if (handleErrorResponse(response)) {
       // TODO
       execFunc(onSucceeded);
-      console.log(response?.data.session, 'response');
       listenerApi.dispatch(appActions.saveSession(response?.data.session));
       navigate(APP_SCREEN.OTP_SCREEN, { type: 'reLogin' });
     }

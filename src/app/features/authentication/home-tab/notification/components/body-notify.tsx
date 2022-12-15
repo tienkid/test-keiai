@@ -143,11 +143,12 @@ export const BodyNotify = () => {
   const renderSpacer = () => <Divider colorTheme="line" />;
 
   return (
-    <Block flex={1} colorTheme={'background'} paddingTop={2}>
-      <Block colorTheme="white" shadow flex={1}>
-        <Block flex={1}>
+    <Block paddingTop={2}>
+      <Block>
+        <Block>
           <Spacer height={10} />
           <ListView
+            scrollEnabled={false}
             data={dataNotify ?? []}
             canRefresh={false}
             canLoadMore={false}

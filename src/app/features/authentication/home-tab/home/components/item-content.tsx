@@ -26,7 +26,7 @@ export const ItemContent = ({ item }: { item: Item }) => {
           <Text
             preset="textNormal14"
             colorTheme="base5"
-            lineHeight={15}
+            lineHeight={18}
             text={item.title}
             numberOfLines={2}
           />
