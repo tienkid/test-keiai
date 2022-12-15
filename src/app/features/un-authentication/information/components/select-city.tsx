@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 
 import { useController } from 'react-hook-form';
 
-import { Block, FormInput } from '@components';
+import { Block, Button, FormInput } from '@components';
 import { useSelector } from '@hooks';
 import { FormInformationProfileType } from '@model/information';
 import { useRoute } from '@react-navigation/native';
@@ -11,12 +11,12 @@ import { CountryInputProps } from '../type';
 
 export const FormSelectCity = ({
   name,
-  actualPercentWidth,
   labelT18n,
   placeholder_T18n,
   maxLength,
   rightChildren,
   requiredLabelT18n,
+  handleShowCity,
 }: CountryInputProps) => {
   // state
   const { field } = useController({
@@ -51,20 +51,21 @@ export const FormSelectCity = ({
 
   // render
   return (
-    <Block block maxWidth={`${actualPercentWidth}%`} alignSelf={'flex-start'}>
-      <FormInput<FormInformationProfileType>
-        name={name}
-        labelT18n={labelT18n}
-        placeholder="sdsdfsd"
-        placeholderT18n={placeholder_T18n}
-        maxLength={maxLength}
-        colorLabel={'white'}
-        isShowMsgError={false}
-        rightChildren={rightChildren}
-        requiredLabelT18n={requiredLabelT18n}
-        disabled={true}
-        defaultValue={field.value}
-      />
-    </Block>
+    <Button.Default onPress={handleShowCity}>
+      <Block block pointerEvents="none">
+        <FormInput<FormInformationProfileType>
+          name={name}
+          labelT18n={labelT18n}
+          placeholderT18n={placeholder_T18n}
+          maxLength={maxLength}
+          colorLabel={'white'}
+          isShowMsgError={false}
+          rightChildren={rightChildren}
+          requiredLabelT18n={requiredLabelT18n}
+          disabled={true}
+          defaultValue={field.value}
+        />
+      </Block>
+    </Button.Default>
   );
 };
