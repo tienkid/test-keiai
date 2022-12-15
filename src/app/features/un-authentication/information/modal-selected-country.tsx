@@ -3,8 +3,10 @@ import React, { useCallback } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { dispatch } from '@common';
-import { Block, Divider, ListView, Spacer, Text } from '@components';
+import { Block, Button, Divider, ListView, Spacer, Text } from '@components';
+import { goBack } from '@navigation/navigation-service';
 import { appActions } from '@redux-slice';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { ItemProvince } from './components/item-province';
 import { CityType, ProvinceType, SelectCountryProps } from './type';
@@ -37,6 +39,9 @@ export const ModalSelectedCountry = ({
     },
     [navigation, route.params.screenPrevious, type],
   );
+  const handleGoBack = () => {
+    goBack();
+  };
   const renderItemContent = useCallback(
     ({ item }: { item: ProvinceType | CityType }) => {
       return <ItemProvince onPressItem={onPressItem} item={item} type={type} />;
@@ -46,12 +51,23 @@ export const ModalSelectedCountry = ({
   // render
   return (
     <Block colorTheme="background">
-      <Block middle paddingVertical={10} shadow colorTheme="white">
+      <Block
+        middle
+        paddingVertical={15}
+        shadow
+        colorTheme="white"
+        justifyContent={'center'}
+        direction={'row'}>
         <Text
           text={type === 'country' ? '都道府県' : '市区町村'}
           preset="textBold14"
           colorTheme="base5"
         />
+        <Button.Default
+          onPress={handleGoBack}
+          style={{ position: 'absolute', right: 10 }}>
+          <Icon name="close" size={25} color="#4C4C4C" />
+        </Button.Default>
       </Block>
       <Spacer height={5} />
 

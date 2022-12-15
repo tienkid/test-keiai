@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 
 import { ContentDetail } from '@features/authentication/content-tab/content-detail';
 import { ContentTab } from '@features/authentication/content-tab/content-screen';
@@ -9,6 +10,7 @@ import { NotificationScreen } from '@features/authentication/home-tab/notificati
 import { SettingTab } from '@features/authentication/setting-tab';
 import { ContentService } from '@features/authentication/setting-tab/service-detail';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+const { width } = Dimensions.get('screen');
 
 import { BottomTabScreen } from './bottom-tab';
 import CustomDrawer from './custom-drawer';
@@ -22,7 +24,9 @@ export const DrawerNavigator = () => {
       screenOptions={{
         drawerType: 'front',
         headerShown: false,
+        sceneContainerStyle: { backgroundColor: 'red' },
         drawerStyle: {
+          width: width,
           backgroundColor: 'transparent',
         },
         drawerPosition: 'right',
