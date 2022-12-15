@@ -20,6 +20,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { DrawerNavigator } from './drawer';
 
+// import { CarouselAdvance } from '../course-animation/Advanced-carousel';
 // import { CarouselParallax } from '../course-animation/parallax-carousel';
 
 // import { Carousel3D } from '../course-animation/carousel-3d';
@@ -67,6 +68,10 @@ export const RootNavigation = () => {
           {/* <RootStack.Screen
             name={APP_SCREEN.CAROUSEL_PARALLAX}
             component={CarouselParallax}
+          /> */}
+          {/* <RootStack.Screen
+            name={APP_SCREEN.CAROUSEL_ADVANCED}
+            component={CarouselAdvance}
           /> */}
           <RootStack.Screen
             name={APP_SCREEN.WELCOME}

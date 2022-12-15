@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
-import { FlatList, Linking, Platform } from 'react-native';
+import { FlatList, Linking, Platform, Pressable } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Block, Button, Icon, LocalImage, Spacer, Text } from '@components';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@theme';
+import IconVector from 'react-native-vector-icons/MaterialIcons';
 
 import { dataMenu } from './data';
 import { navigate } from './navigation-service';
@@ -65,21 +66,36 @@ const CustomDrawer = () => {
             text={item.content}
           />
         </Block>
-        <Spacer height={item.id === 0 || item.id === 6 ? 20 : 0} />
+        <Spacer height={item.id === 0 || item.id === 5 ? 40 : 20} />
+        {/* <Spacer height={item.id === 0 || item.id === 6 ? 20 : 0} /> */}
       </Button.Default>
     );
   };
-  const itemSeparator = () => {
-    return <Spacer height={20} />;
+
+  const onCloseDrawer = () => {
+    navigation.dispatch(DrawerActions.closeDrawer());
   };
+  // const itemSeparator = item => {
+  //   return <Spacer height={item.id === 0 || item.id === 5 ? 40 : 20} />;
+  // };
   // render
   return (
-    <Block block>
+    <Block block direction={'row'} style={{ backgroundColor: 'transparent' }}>
+      <Pressable
+        onPress={onCloseDrawer}
+        style={{ backgroundColor: '#00000090', width: 95, paddingTop: top }}>
+        <Block paddingLeft={15} paddingTop={15}>
+          <Button.Default onPress={onCloseDrawer}>
+            <IconVector name="close" size={30} color={colors.white} />
+          </Button.Default>
+        </Block>
+      </Pressable>
       <Block
         block
-        paddingTop={top}
-        paddingBottom={bottom * 2 + 30}
         color={colors.white}
+        paddingTop={top}
+        flex={1}
+        paddingBottom={bottom + 30}
         alignItems={'flex-start'}>
         <Block paddingLeft={50} flex={1}>
           <Spacer height={70} />
@@ -89,7 +105,6 @@ const CustomDrawer = () => {
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
-            ItemSeparatorComponent={itemSeparator}
           />
         </Block>
         <Block paddingTop={10} alignSelf={'center'}>
@@ -102,6 +117,7 @@ const CustomDrawer = () => {
             preset="linkXXXSmall"
             colorTheme="border"
             text={'バージョン 1.5.2'}
+            fontWeight={'300'}
           />
         </Block>
       </Block>

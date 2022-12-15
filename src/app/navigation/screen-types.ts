@@ -21,6 +21,7 @@ export enum APP_SCREEN {
   MODAL_SELECTED_COUNTY = 'MODAL_SELECTED_COUNTY',
   CAROUSEL_3D = 'CAROUSEL_3D',
   CAROUSEL_PARALLAX = 'CAROUSEL_PARALLAX',
+  CAROUSEL_ADVANCED = 'CAROUSEL_ADVANCED',
   HOME_ANIMATE = 'HOME_ANIMATE',
 }
 
@@ -70,6 +71,7 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.OTP_SCREEN]: { type?: string };
   [APP_SCREEN.CAROUSEL_3D]: undefined;
   [APP_SCREEN.CAROUSEL_PARALLAX]: undefined;
+  [APP_SCREEN.CAROUSEL_ADVANCED]: undefined;
   [APP_SCREEN.HOME_ANIMATE]: undefined;
 };
 export type AuthorizeParamsList = {
