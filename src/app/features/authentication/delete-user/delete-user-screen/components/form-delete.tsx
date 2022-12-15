@@ -3,14 +3,14 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { logActionEvent } from '@common';
-import { Block, Button, FormInput, Spacer } from '@components';
+import { Block, Button, FormInput, Spacer, Text } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DataValid } from '@model/delete-user';
 import { deleteValidation } from '@validate/delete-user';
 
 import { FormLoginProps } from '../type';
 
-export const FormDelete = ({ onSubmit }: FormLoginProps) => {
+export const FormDelete = ({ onSubmit, errorLogin }: FormLoginProps) => {
   // state
 
   const formMethod = useForm<DataValid>({
@@ -47,6 +47,16 @@ export const FormDelete = ({ onSubmit }: FormLoginProps) => {
           inputStyle={{ height: 50 }}
           secureTextEntry
         />
+        {errorLogin && (
+          <Block middle>
+            <Spacer height={10} />
+            <Text
+              t18n={errorLogin}
+              preset="textNormal12"
+              colorTheme="primary"
+            />
+          </Block>
+        )}
         <Spacer height={60} />
         <Block alignSelf={'center'}>
           <Button.Primary

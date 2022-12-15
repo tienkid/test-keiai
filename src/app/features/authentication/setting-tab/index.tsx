@@ -6,7 +6,6 @@ import isEqual from 'react-fast-compare';
 import { dispatch } from '@common';
 import { Block, Button, Header, Spacer, StackView } from '@components';
 import { servicesActions } from '@redux-slice';
-import { useTheme } from '@theme';
 
 import { KeiaiList } from './components/keiaiList';
 import { DATA_KEIAI } from './contain';
@@ -44,8 +43,6 @@ const SettingComponent = () => {
   // render
   const [, setDataMenu] = useState<MenuService[]>([]);
 
-  const { colors } = useTheme();
-
   const onSuccess = (data: MenuService[]) => {
     setDataMenu(data);
   };
@@ -59,11 +56,11 @@ const SettingComponent = () => {
     Linking.openURL('https://owners.ki-group.jp/app/inquiry/');
   };
   return (
-    <Block block colorTheme="base3">
+    <Block block colorTheme="white">
       <Header />
       <Spacer height={2} />
-      <StackView style={{ flex: 1, backgroundColor: colors.white }}>
-        <Block colorTheme="white">
+      <StackView>
+        <Block>
           <Spacer height={20} />
           <KeiaiList dataMenu={DATA_KEIAI} />
           <Spacer height={20} />

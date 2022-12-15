@@ -81,8 +81,7 @@ export const handleErrorResponse = (
 };
 
 const handleErrorContent = (msgCode: string): I18nKeys => {
-  console.log(2222, msgCode);
-
+  console.log(123123, msgCode);
   switch (msgCode) {
     case 'email_in_used':
       return 'msg:email_in_used';
@@ -91,7 +90,7 @@ const handleErrorContent = (msgCode: string): I18nKeys => {
     case 'user_disabled':
       return 'msg:user_disable';
     case 'not_found':
-      return 'msg:user_disable';
+      return 'login:error_login';
     case 'incorrect_code':
       return 'msg:incorrect_code';
     case 'code_expired':

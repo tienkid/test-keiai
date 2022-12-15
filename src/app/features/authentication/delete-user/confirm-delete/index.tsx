@@ -39,13 +39,13 @@ const ConfirmDeleteUserComponent = () => {
             t18n="delete_user:point"
             preset="textBold16"
             colorTheme="base5"
-            fontWeight={'600'}
+            fontWeight={'bold'}
           />
           <Text
             preset="textBold16"
             colorTheme="base5"
             text="0P"
-            fontWeight={'600'}
+            fontWeight={'bold'}
           />
         </Block>
         <Spacer height={60} />

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 
 import isEqual from 'react-fast-compare';
 
@@ -8,16 +8,23 @@ import { DataValid } from '@model/delete-user';
 import { navigate } from '@navigation/navigation-service';
 import { HOME_STACK } from '@navigation/screen-types';
 import { deleteUserActions } from '@redux-slice';
+import { I18nKeys } from '@utils/i18n/locales';
 
 import { FormDelete } from './components/form-delete';
 
 const DeleteUserComponent = () => {
+  //state
+  const [errorLogin, setErrorLogin] = useState<I18nKeys | undefined>();
+
   // function
   const onSucceeded = () => {
     navigate(HOME_STACK.CONFIRM_DELETE);
   };
+  const onError = () => {
+    setErrorLogin('login:error_login');
+  };
   const onSubmit = async (data: DataValid) => {
-    console.log(data, 'data');
+    setErrorLogin(undefined);
     const phoneNumber = numberToCountryCode(data.phone);
     dispatch(
       deleteUserActions.validDeleteUser(
@@ -26,6 +33,7 @@ const DeleteUserComponent = () => {
           phone: phoneNumber,
         },
         onSucceeded,
+        onError,
       ),
     );
     //
@@ -47,7 +55,7 @@ const DeleteUserComponent = () => {
           />
         </Block>
         <Spacer height={50} />
-        <FormDelete onSubmit={onSubmit} />
+        <FormDelete onSubmit={onSubmit} errorLogin={errorLogin} />
       </WrapperBackground>
     </Block>
   );

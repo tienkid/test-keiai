@@ -10,7 +10,7 @@ import { BodyNotify } from './components/body-notify';
 const NotificationComponent = () => {
   // render
   return (
-    <Block block colorTheme="background">
+    <Block block colorTheme="white">
       <HeaderBack headerText="notify:header" />
       <BodyNotify />
     </Block>

@@ -10,10 +10,15 @@ const deleteUser = createAction(Action.DELETE_USER, (body?: {}) => ({
 
 const validDeleteUser = createAction(
   Action.VALID_DELETE_USER,
-  (body: { phone: string; password: string }, onSucceeded?: () => void) => ({
+  (
+    body: { phone: string; password: string },
+    onSucceeded?: () => void,
+    onError?: () => void,
+  ) => ({
     payload: {
       body,
       onSucceeded,
+      onError,
     },
   }),
 );

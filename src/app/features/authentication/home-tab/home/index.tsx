@@ -7,7 +7,6 @@ import { dispatch } from '@common';
 import { Block, Divider, Header, Spacer, StackView } from '@components';
 // import { dataFake } from '@features/authentication/setting-tab';
 import { useSelector } from '@hooks';
-import { BannerResponse } from '@model/banner';
 import { ContentResponse } from '@model/content';
 import { useFocusEffect } from '@react-navigation/native';
 import {
@@ -41,13 +40,7 @@ const HomeComponent = () => {
     dispatch(appActions.setContents(data));
   };
   const getBanner = () => {
-    dispatch(
-      bannerAction.getBanner({ page: 1, limit: 10 }, onGetBannerSucceeded),
-    );
-  };
-
-  const onGetBannerSucceeded = (data: BannerResponse) => {
-    console.log(data);
+    dispatch(bannerAction.getBanner({ page: 1, limit: 10 }));
   };
 
   //effect
@@ -70,7 +63,7 @@ const HomeComponent = () => {
       <StackView
         refreshControl={<RefreshControl refreshing={false} />}
         style={{ flex: 1 }}>
-        <Spacer height={8} />
+        <Spacer height={12} />
         <ListBanner />
         <Spacer height={18} />
         <ButtonPoint />

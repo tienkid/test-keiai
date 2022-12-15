@@ -17,7 +17,7 @@ export const HeaderWithOutBack = ({ headerText }: HeaderProps) => {
     <Block
       direction={'row'}
       middle
-      height={90}
+      height={44 + insets.top}
       paddingTop={insets.top}
       colorTheme={'white'}
       paddingHorizontal={15}

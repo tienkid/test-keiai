@@ -54,9 +54,10 @@ export const BodyContent = () => {
   );
   // render
   return (
-    <Block flex={1} colorTheme={'background'} paddingTop={2}>
-      <Block colorTheme="white" paddingTop={12}>
+    <Block block>
+      <Block>
         <ListView
+          style={{ paddingTop: 15 }}
           data={contents?.items ?? []}
           canRefresh={false}
           canLoadMore={true}

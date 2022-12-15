@@ -24,7 +24,7 @@ const ContentComponent = () => {
 
   // render
   return (
-    <Block block colorTheme="background">
+    <Block block colorTheme="white">
       <Header />
       <BodyContent />
     </Block>

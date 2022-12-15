@@ -41,7 +41,12 @@ const OTPComponent = () => {
           }),
         );
         dispatch(appActions.setRegisterData(undefined));
-        dispatch(appActions.setAppProfile(res.attributes));
+        dispatch(
+          appActions.setAppProfile({
+            ...res.attributes,
+            username: res.username,
+          }),
+        );
       }
     } catch (error) {}
   }, [dataProfile?.password, dataProfile?.phoneNumber]);
