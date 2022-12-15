@@ -26,13 +26,13 @@ const DeleteUserSuccessComponent = () => {
           preset="textNormal15"
           t18n="delete_user:confirm_title"
           colorTheme="base5"
-          lineHeight={20}
+          lineHeight={24}
         />
         <Text
           preset="textNormal15"
           t18n="delete_user:confirm_title2"
           colorTheme="base5"
-          lineHeight={20}
+          lineHeight={24}
         />
       </Block>
       <Block alignSelf={'center'} paddingTop={60}>

@@ -32,7 +32,7 @@ export const ItemNotify = ({ item, handleToDetail }: ItemNotifyProps) => {
             preset="textNormal12"
             text={item.content}
             colorTheme="base5"
-            lineHeight={13}
+            lineHeight={18}
             numberOfLines={2}
           />
           <Block

@@ -35,7 +35,7 @@ export const PointContent = () => {
         t18n="home:KI_point_content"
         preset="textNormal"
         colorTheme="base5"
-        lineHeight={13}
+        lineHeight={20}
         textAlign={'center'}
       />
       <Spacer height={16} />

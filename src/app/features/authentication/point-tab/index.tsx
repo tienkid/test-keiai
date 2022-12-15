@@ -133,7 +133,7 @@ const PointComponent = () => {
             preset="textNormal15"
             t18n="point:description"
             colorTheme="base5"
-            lineHeight={14}
+            lineHeight={20}
           />
           <Spacer height={70} />
           <Text
@@ -153,7 +153,7 @@ const PointComponent = () => {
             preset="textNormal15"
             t18n="point:content_1"
             colorTheme="base5"
-            lineHeight={14}
+            lineHeight={20}
           />
           <Spacer height={70} />
           <Text
@@ -173,7 +173,7 @@ const PointComponent = () => {
             t18n="point:content_2"
             colorTheme="base5"
             textAlign={'center'}
-            lineHeight={14}
+            lineHeight={20}
           />
           <Spacer height={70} />
           <Block middle>
@@ -193,7 +193,7 @@ const PointComponent = () => {
           <Text
             preset="textNormal15"
             t18n="point:content_3"
-            lineHeight={14}
+            lineHeight={20}
             colorTheme="base5"
             textAlign={'center'}
           />
@@ -202,7 +202,7 @@ const PointComponent = () => {
             preset="textNormal15"
             t18n="point:sub_content_3"
             colorTheme="base5"
-            lineHeight={14}
+            lineHeight={20}
             textAlign={'center'}
           />
           <Spacer height={35} />
@@ -210,7 +210,7 @@ const PointComponent = () => {
             preset="textNormal11"
             t18n="point:description_3"
             colorTheme="base5"
-            lineHeight={15}
+            lineHeight={21}
           />
           <Spacer height={70} />
         </Block>
