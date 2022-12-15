@@ -23,18 +23,19 @@ const DeleteUserSuccessComponent = () => {
       <Spacer height={35} />
       <Block alignItems={'center'}>
         <Text
-          preset="textNormal12"
+          preset="textNormal15"
           t18n="delete_user:confirm_title"
           colorTheme="base5"
+          lineHeight={20}
         />
-        <Spacer height={10} />
         <Text
-          preset="textNormal12"
+          preset="textNormal15"
           t18n="delete_user:confirm_title2"
           colorTheme="base5"
+          lineHeight={20}
         />
       </Block>
-      <Block alignSelf={'center'} paddingTop={50}>
+      <Block alignSelf={'center'} paddingTop={60}>
         <Button.Primary t18n="delete_user:ok" onPress={onSubmit} />
       </Block>
     </Block>

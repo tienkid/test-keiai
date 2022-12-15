@@ -47,11 +47,13 @@ const DeleteUserComponent = () => {
             preset="textNormal12"
             t18n="delete_user:title"
             colorTheme="base5"
+            lineHeight={14}
           />
           <Text
             preset="textNormal12"
             t18n="delete_user:title2"
             colorTheme="base5"
+            lineHeight={14}
           />
         </Block>
         <Spacer height={50} />

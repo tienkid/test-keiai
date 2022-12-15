@@ -26,11 +26,13 @@ const ConfirmDeleteUserComponent = () => {
             preset="textNormal12"
             t18n="delete_user:confirm_title"
             colorTheme="primary"
+            lineHeight={14}
           />
           <Text
             preset="textNormal12"
             t18n="delete_user:confirm_title2"
             colorTheme="primary"
+            lineHeight={14}
           />
         </Block>
         <Spacer height={25} />
@@ -54,11 +56,13 @@ const ConfirmDeleteUserComponent = () => {
             preset="textNormal12"
             t18n="delete_user:description"
             colorTheme="primary"
+            lineHeight={14}
           />
           <Text
             preset="textNormal12"
             t18n="delete_user:description2"
             colorTheme="primary"
+            lineHeight={14}
           />
         </Block>
         <Block alignSelf={'center'} paddingVertical={25}>
