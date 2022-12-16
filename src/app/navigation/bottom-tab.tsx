@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 
@@ -98,17 +99,21 @@ export const BottomTabScreen = () => {
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: '#CCCCCC',
-        tabBarStyle: {
-          shadowColor: '#000000',
-          shadowOffset: {
-            width: 0,
-            height: 1,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.5,
-          elevation: 5,
-          // paddingBottom: 5,
-        },
+        tabBarStyle:
+          Platform.OS === 'android'
+            ? {
+                borderTopWidth: 2,
+                borderTopColor: '#e9e8e9',
+              }
+            : {
+                shadowOffset: {
+                  width: 0,
+                  height: 1,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                elevation: 5,
+              },
         tabBarLabelStyle: { paddingBottom: 5 },
       }}>
       <BottomTab.Screen
