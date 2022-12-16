@@ -6,6 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { Icon } from '@components';
 import { ContentDetail } from '@features/authentication/content-tab/content-detail';
 import { ContentTab } from '@features/authentication/content-tab/content-screen';
+import { ConfirmDeleteUser } from '@features/authentication/delete-user/confirm-delete';
+import { DeleteUser } from '@features/authentication/delete-user/delete-user-screen';
+import { DeleteUserSuccess } from '@features/authentication/delete-user/delete_success';
 import { HomeTab } from '@features/authentication/home-tab/home';
 import { NotificationScreen } from '@features/authentication/home-tab/notification';
 import { NotifyDetail } from '@features/authentication/home-tab/notification-detail';
@@ -38,6 +41,15 @@ export const HomeStackScreen = () => {
       <HomeStack.Screen
         name={HOME_STACK.NOTIFY_DETAIL}
         component={NotifyDetail}
+      />
+      <HomeStack.Screen name={HOME_STACK.DELETE_USER} component={DeleteUser} />
+      <HomeStack.Screen
+        name={HOME_STACK.DELETE_SUCCESS}
+        component={DeleteUserSuccess}
+      />
+      <HomeStack.Screen
+        name={HOME_STACK.CONFIRM_DELETE}
+        component={ConfirmDeleteUser}
       />
     </HomeStack.Navigator>
   );
