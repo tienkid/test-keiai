@@ -75,7 +75,7 @@ export const WrapperBackground = ({
       ) : (
         <Spacer height={60} />
       )}
-      <Screen scroll={scroll} hiddenStatusBar unsafe>
+      <Screen scroll={scroll} unsafe>
         <FocusedStatusBarStyle barStyle={barStyle || 'dark-content'} />
         {!isHiddenLogo && (
           <Block>
