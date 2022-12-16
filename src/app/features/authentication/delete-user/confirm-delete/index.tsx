@@ -24,13 +24,13 @@ const ConfirmDeleteUserComponent = () => {
         <Block alignItems={'center'}>
           <Text
             preset="textNormal12"
-            t18n="delete_user:confirm_title"
+            t18n="delete_user:confirm_delete_title"
             colorTheme="primary"
             lineHeight={18}
           />
           <Text
             preset="textNormal12"
-            t18n="delete_user:confirm_title2"
+            t18n="delete_user:confirm_delete_title2"
             colorTheme="primary"
             lineHeight={18}
           />

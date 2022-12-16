@@ -58,16 +58,16 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
           },
         }),
       )
-      .min(
-        PASSWORD_MIN_LENGTH,
-        stringifyObjectValidateYup({
-          keyT: 'msg:MSG_009',
-        }),
-      )
       .matches(
         rxHaftWidth,
         stringifyObjectValidateYup({
           keyT: 'msg:MSG_010',
+        }),
+      )
+      .min(
+        PASSWORD_MIN_LENGTH,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_009',
         }),
       ),
     confirm_password: yup
@@ -78,6 +78,18 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
           optionsTx: {
             field: 'field:password',
           },
+        }),
+      )
+      .matches(
+        rxHaftWidth,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_010',
+        }),
+      )
+      .min(
+        PASSWORD_MIN_LENGTH,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_009',
         }),
       )
       .oneOf(
@@ -195,19 +207,19 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
           },
         }),
       )
-      .min(
-        ZIP_CODE_LENGTH,
+      .matches(
+        rxPhoneNumber,
         stringifyObjectValidateYup({
-          keyT: 'msg:MSG_005',
+          keyT: 'msg:MSG_013',
           optionsTx: {
             field: 'field:zip_code',
           },
         }),
       )
-      .matches(
-        rxPhoneNumber,
+      .min(
+        ZIP_CODE_LENGTH,
         stringifyObjectValidateYup({
-          keyT: 'msg:MSG_013',
+          keyT: 'msg:MSG_005',
           optionsTx: {
             field: 'field:zip_code',
           },

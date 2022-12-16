@@ -35,8 +35,7 @@ takeLatestListeners(true)({
       return;
     }
     console.log(response, 'response');
-    if (response?.code === 500) {
-      console.log(23232323);
+    if (response?.code === 500 || response?.code === 400) {
       // const responseFake = {
       //   code: 400,
       //   data: {
@@ -50,7 +49,6 @@ takeLatestListeners(true)({
       // };
       execFunc(onError);
     } else {
-      console.log(response);
       if (handleErrorResponse(response)) {
         execFunc(onSucceeded);
         // navigate(HOME_STACK.CONFIRM_DELETE);

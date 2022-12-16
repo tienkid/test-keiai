@@ -11,7 +11,7 @@ takeLatestListeners()({
     const { params, onSucceeded } = action.payload;
     const response = await NetWorkService.Get<ContentResponse>({
       url: ApiConstants.GET_CONTENT,
-      params: { ...params, sort: 'DESC' },
+      params: { ...params },
     });
 
     if (!response) {

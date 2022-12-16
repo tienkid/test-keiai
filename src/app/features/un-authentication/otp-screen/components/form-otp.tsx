@@ -17,7 +17,7 @@ import { FormRegisterOTPProps, FormRegisterOTPType } from '../type';
 export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
   // state
 
-  const profile = useSelector(x => x.app.profile);
+  const profile = useSelector(x => x.app.profileWrap);
   const dataProfile = useSelector(x => x.app.registerData);
   const formMethod = useForm<FormRegisterOTPType>({
     mode: 'all',

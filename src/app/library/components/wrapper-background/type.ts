@@ -35,4 +35,6 @@ export interface WrapperBackgroundTypes {
    * @default undefined
    */
   children?: React.ReactNode;
+
+  onBack?: () => void;
 }

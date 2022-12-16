@@ -21,7 +21,7 @@ export const WelcomeScreen = () => {
   };
   // render
   return (
-    <Screen scroll backgroundColor={colors.white} unsafe>
+    <Screen backgroundColor={colors.white} unsafe>
       <Block block colorTheme="white" paddingTop={insets.top}>
         <Block middle paddingHorizontal={15}>
           <Spacer height={50} />

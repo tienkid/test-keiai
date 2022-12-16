@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { execFunc } from '@common';
 import { Button } from '@components/button';
 import { Icon } from '@components/icon';
 import { Screen } from '@components/screen';
@@ -27,6 +28,7 @@ export const WrapperBackground = ({
   isHiddenLogo,
   headerTitleT18n,
   titlePreset = 'textNormal15',
+  onBack,
 }: WrapperBackgroundTypes) => {
   // state
   const theme = useTheme();
@@ -35,6 +37,11 @@ export const WrapperBackground = ({
     return canBack || headerTitleT18n;
   }, [canBack, headerTitleT18n]);
 
+  //func
+  const handlePressBack = () => {
+    goBack();
+    execFunc(onBack);
+  };
   // render
   return (
     <Block
@@ -51,7 +58,7 @@ export const WrapperBackground = ({
           <Block paddingHorizontal={7} direction={'row'} block middle>
             <Block flex={1}>
               {canBack ? (
-                <Button.Default onPress={goBack}>
+                <Button.Default onPress={handlePressBack}>
                   <Icon icon="left_back" color={theme.colors.base1} size={28} />
                 </Button.Default>
               ) : (
