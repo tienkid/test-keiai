@@ -103,6 +103,7 @@ const PointComponent = () => {
             preset="textNormal14"
             colorTheme="base5"
             t18n="point:point_history"
+            fontWeight={'bold'}
           />
           <Spacer height={18} />
           {historyPoint?.map(renderHistoryPoint)}
@@ -133,7 +134,7 @@ const PointComponent = () => {
             preset="textNormal15"
             t18n="point:description"
             colorTheme="base5"
-            lineHeight={17}
+            lineHeight={19}
           />
           <Spacer height={70} />
           <Text
@@ -153,7 +154,7 @@ const PointComponent = () => {
             preset="textNormal15"
             t18n="point:content_1"
             colorTheme="base5"
-            lineHeight={17}
+            lineHeight={19}
           />
           <Spacer height={70} />
           <Text
@@ -173,7 +174,7 @@ const PointComponent = () => {
             t18n="point:content_2"
             colorTheme="base5"
             textAlign={'center'}
-            lineHeight={17}
+            lineHeight={19}
           />
           <Spacer height={70} />
           <Block middle>
@@ -193,7 +194,7 @@ const PointComponent = () => {
           <Text
             preset="textNormal15"
             t18n="point:content_3"
-            lineHeight={17}
+            lineHeight={19}
             colorTheme="base5"
             textAlign={'center'}
           />
@@ -202,7 +203,7 @@ const PointComponent = () => {
             preset="textNormal15"
             t18n="point:sub_content_3"
             colorTheme="base5"
-            lineHeight={17}
+            lineHeight={19}
             textAlign={'center'}
           />
           <Spacer height={35} />
@@ -210,7 +211,7 @@ const PointComponent = () => {
             preset="textNormal11"
             t18n="point:description_3"
             colorTheme="base5"
-            lineHeight={17}
+            lineHeight={18}
           />
           <Spacer height={70} />
         </Block>

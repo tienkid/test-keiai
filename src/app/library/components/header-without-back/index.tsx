@@ -35,7 +35,7 @@ export const HeaderWithOutBack = ({ headerText }: HeaderProps) => {
           <Icon icon="left_back" size={30} />
         </Button.Default> */}
         <Text
-          preset="textNormal12"
+          preset="textNormal14"
           t18n={headerText}
           colorTheme="base5"
           numberOfLines={2}

@@ -36,12 +36,18 @@ const DeleteUserComponent = () => {
         onError,
       ),
     );
-    //
   };
+  const removeError = () => {
+    setErrorLogin(undefined);
+  };
+
   // render
   return (
     <Block block colorTheme="white">
-      <WrapperBackground canBack headerTitleT18n="delete_user:header">
+      <WrapperBackground
+        canBack
+        headerTitleT18n="delete_user:header"
+        onBack={removeError}>
         <Block alignItems={'center'}>
           <Text
             preset="textNormal12"

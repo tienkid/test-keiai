@@ -91,9 +91,11 @@ const handleErrorContent = (msgCode: string): I18nKeys => {
       return 'msg:user_disable';
     case 'not_found':
       return 'login:error_login';
-    case 'incorrect_code':
+    case 'auth_0001':
       return 'msg:incorrect_code';
-    case 'code_expired':
+    case 'auth_0002':
+      return 'msg:incorrect_code';
+    case 'auth_0003':
       return 'msg:incorrect_code';
     default:
       return 'error:errorOnHandle';

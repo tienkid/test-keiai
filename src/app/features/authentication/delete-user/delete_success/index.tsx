@@ -28,6 +28,7 @@ const DeleteUserSuccessComponent = () => {
           colorTheme="base5"
           lineHeight={24}
         />
+        <Spacer height={5} />
         <Text
           preset="textNormal15"
           t18n="delete_user:confirm_title2"

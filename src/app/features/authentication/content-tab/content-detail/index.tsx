@@ -4,8 +4,7 @@ import isEqual from 'react-fast-compare';
 import { WebView } from 'react-native-webview';
 
 import { CONTENT_DEFAULT, logActionEvent } from '@common';
-import { Block, Spacer } from '@components';
-import { HeaderBack } from '@components/header-back';
+import { Block, HeaderBackLeft, Spacer } from '@components';
 import { useRoute } from '@react-navigation/native';
 
 import { ItemContentDetail } from './components/item-content-detail';
@@ -19,7 +18,7 @@ const ContentDetailComponent = () => {
   // render
   return (
     <Block block colorTheme="white">
-      <HeaderBack headerTextNonTranslate={item.title} />
+      <HeaderBackLeft headerTextNonTranslate={item.title} />
       <Spacer height={10} />
       <ItemContentDetail item={item} />
       <WebView

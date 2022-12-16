@@ -185,6 +185,11 @@ export const FormInformationProfile = ({
           requiredLabelT18n={'common:indispensable'}
           secureTextEntry={!passwordShown}
           textContentType="none"
+          nameTrigger={
+            formMethod.formState.dirtyFields.confirm_password
+              ? 'confirmPassword'
+              : undefined
+          }
           keyboardType="ascii-capable"
           rightChildren={
             <Button.Default onPress={onTogglePassword}>
@@ -198,6 +203,7 @@ export const FormInformationProfile = ({
         <Spacer height={10} />
         <FormInput<FormInformationProfileType>
           name={'confirm_password'}
+          nameTrigger={'password'}
           labelT18n={'information_profile:confirm_password'}
           requiredLabelT18n={'common:indispensable'}
           placeholderT18n={'information_profile:confirm_password_placeholder'}
