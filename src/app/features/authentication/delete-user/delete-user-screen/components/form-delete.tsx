@@ -17,8 +17,8 @@ export const FormDelete = ({ onSubmit, errorLogin }: FormLoginProps) => {
     mode: 'all',
     resolver: yupResolver(deleteValidation),
     defaultValues: {
-      phone: __DEV__ ? '08087169761' : '',
-      password: __DEV__ ? 'password123' : '',
+      phone: __DEV__ ? '0918077002' : '',
+      password: __DEV__ ? '12345678' : '',
     },
   });
 
