@@ -80,7 +80,7 @@ export const handleErrorResponse = (
   return true;
 };
 
-const handleErrorContent = (msgCode: string): I18nKeys => {
+export const handleErrorContent = (msgCode: string): I18nKeys => {
   console.log(123123, msgCode);
   switch (msgCode) {
     case 'email_in_used':

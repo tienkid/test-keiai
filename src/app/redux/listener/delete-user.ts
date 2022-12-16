@@ -47,7 +47,7 @@ takeLatestListeners(true)({
       //   msgCode: 'not_found',
       //   status: false,
       // };
-      execFunc(onError);
+      execFunc(onError, response);
     } else {
       if (handleErrorResponse(response)) {
         execFunc(onSucceeded);
