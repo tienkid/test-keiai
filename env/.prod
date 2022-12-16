@@ -12,8 +12,8 @@ DEBUG_PROVISIONING_PROFILE=com_keiai_mobile
 RELEASE_PROVISIONING_PROFILE=com_keiai_mobile_appstore
 DEFAULT_FALLBACK_LNG_I18n=ja
 REGION=ap-northeast-1
-USER_POOL_ID=ap-northeast-1_yzb30wzeM
-USER_POOL_WEB_CLIENT_ID=6115ttf4ein5rf3hqcbe50g5u0
+USER_POOL_ID=ap-northeast-1_etTAC4L7y
+USER_POOL_WEB_CLIENT_ID=nbu16m49dk9p5v95pis2v7i27
 API_PROVINCE=https://open-data.iemarco.jp/api/v1/prefectures
 API_City=https://open-data.iemarco.jp/api/v1/cities?pref_code=
 API_Postal_code=https://open-data.iemarco.jp/api/v1/address/?postal_code=
