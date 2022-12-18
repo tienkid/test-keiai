@@ -124,7 +124,11 @@ const LoginComponent = () => {
     <Block block colorTheme="white">
       <WrapperBackground canBack headerTitleT18n="login:login_title">
         <Spacer height={20} />
-        <FormLogin onSubmit={onSubmit} errorLogin={errorLogin} />
+        <FormLogin
+          onSubmit={onSubmit}
+          errorLogin={errorLogin}
+          setErrorLogin={setErrorLogin}
+        />
       </WrapperBackground>
     </Block>
   );

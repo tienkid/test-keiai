@@ -74,7 +74,8 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
           name={'code'}
           labelT18n={'register:enter_otp'}
           rxRemove={rxNotNumber}
-          isShowMsgError={false}
+          // isShowMsgError={false}
+          errorPreset="textNormal12"
           inputStyle={{ height: 50 }}
         />
         {/* {!formMethod.formState.isValid && (

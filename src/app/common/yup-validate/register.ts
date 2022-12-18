@@ -18,7 +18,10 @@ export const registerOTPValidation: yup.SchemaOf<FormRegisterOTPType> = yup
   .shape({
     code: yup.string().required(
       stringifyObjectValidateYup({
-        keyT: 'msg:MSG_003',
+        keyT: 'msg:MSG_004',
+        optionsTx: {
+          field: 'login:SMS_code',
+        },
       }),
     ),
   });
