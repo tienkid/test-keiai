@@ -93,7 +93,7 @@ const PointComponent = () => {
   return (
     <Block block colorTheme="white">
       <Header />
-      <StackView>
+      <StackView bounces={false}>
         <Block colorTheme="background">
           <PointCard />
         </Block>

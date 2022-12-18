@@ -50,6 +50,7 @@ export const WrapperBackground = ({
       paddingTop={paddingTop !== undefined ? paddingTop : insets.top}>
       {haveHeader ? (
         <Block
+          zIndex={999}
           height={44}
           colorTheme="white"
           justifyContent={'center'}

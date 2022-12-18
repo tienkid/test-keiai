@@ -55,6 +55,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
     requiredLabel,
     requiredLabelT18n,
     colorLabel,
+    errorPreset,
     inputStyle: inputStyleOverwrite = {},
     wrapLabelStyle: wrapLabelStyleOverwrite = {},
     containerStyle: containerStyleOverwrite = {},
@@ -182,7 +183,10 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
           {rightChildren}
         </View>
       </Animated.View>
-      <ErrorOutline error={isShowMsgError ? error : ''} />
+      <ErrorOutline
+        error={isShowMsgError ? error : ''}
+        errorPreset={errorPreset}
+      />
     </React.Fragment>
   );
 });

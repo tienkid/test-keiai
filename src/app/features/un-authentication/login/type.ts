@@ -4,4 +4,5 @@ import { I18nKeys } from '@utils/i18n/locales';
 export interface FormLoginProps {
   onSubmit: (data: FormLoginType) => void;
   errorLogin?: I18nKeys;
+  setErrorLogin?: (data?: I18nKeys | undefined) => void;
 }

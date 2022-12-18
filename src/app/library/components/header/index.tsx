@@ -25,6 +25,7 @@ export const Header = () => {
   // render
   return (
     <Block
+      zIndex={999}
       direction={'row'}
       middle
       height={44 + insets.top}

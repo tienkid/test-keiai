@@ -6,12 +6,16 @@ import { Block } from '../../../block';
 import { Spacer } from '../../../spacer';
 import { Text } from '../../../text';
 
-export const ErrorOutline = ({ error }: ErrorOutlineProps) => {
+export const ErrorOutline = ({ error, errorPreset }: ErrorOutlineProps) => {
   return error ? (
     <>
       <Spacer height={10} />
       <Block paddingLeft={16}>
-        <Text text={error} preset={'linkMedium'} colorTheme={'statusError'} />
+        <Text
+          text={error}
+          preset={errorPreset ?? 'linkMedium'}
+          colorTheme={'statusError'}
+        />
       </Block>
     </>
   ) : null;

@@ -88,7 +88,7 @@ const OTPComponent = () => {
     <Block block>
       <WrapperBackground
         titleT18n="register:header_text"
-        headerTitleT18n="login:register_member">
+        headerTitleT18n="login:SMS_code">
         <FormOTP onSubmit={handleSubmit} type={type} />
       </WrapperBackground>
     </Block>

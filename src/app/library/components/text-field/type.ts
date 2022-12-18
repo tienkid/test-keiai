@@ -4,6 +4,7 @@ import { StyleProp, TextInputProps, TextStyle, ViewStyle } from 'react-native';
 
 import { UseFormTrigger } from 'react-hook-form';
 
+import { TextPresetNames } from '@components/text/preset';
 import { Colors } from '@theme';
 import { I18nKeys } from '@utils/i18n/locales';
 
@@ -185,6 +186,12 @@ export interface InputBaseProps extends TextInputProps {
    * @default undefined
    */
   rxRemove?: RegExp;
+
+  /**
+   * Remove characters with regex on change text
+   * @default undefined
+   */
+  errorPreset?: TextPresetNames;
 }
 
 export interface TextFieldProps extends InputBaseProps {

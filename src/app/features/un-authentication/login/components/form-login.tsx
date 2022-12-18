@@ -4,7 +4,7 @@ import { Linking } from 'react-native';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { LINK_INQUIRY, logActionEvent } from '@common';
+import { execFunc, LINK_INQUIRY, logActionEvent } from '@common';
 import {
   Block,
   Button,
@@ -22,7 +22,11 @@ import { loginValidation } from '@validate/login';
 import { useLoginStyle } from '../style';
 import { FormLoginProps } from '../type';
 
-export const FormLogin = ({ onSubmit, errorLogin }: FormLoginProps) => {
+export const FormLogin = ({
+  onSubmit,
+  errorLogin,
+  setErrorLogin,
+}: FormLoginProps) => {
   // state
   const [t] = useTranslation();
   const styles = useLoginStyle();
@@ -47,6 +51,11 @@ export const FormLogin = ({ onSubmit, errorLogin }: FormLoginProps) => {
   const handleGoToRegister = () => {
     Linking.openURL(LINK_INQUIRY);
   };
+  const handleFocusPassword = () => {
+    if (errorLogin) {
+      execFunc(setErrorLogin, undefined);
+    }
+  };
 
   // render
   return (
@@ -65,6 +74,7 @@ export const FormLogin = ({ onSubmit, errorLogin }: FormLoginProps) => {
           placeholderT18n={'login:passwordPlaceholder'}
           labelT18n={'login:password'}
           inputStyle={{ height: 50 }}
+          onFocus={handleFocusPassword}
           secureTextEntry={!passwordShown}
           keyboardType="ascii-capable"
           textContentType={'oneTimeCode'}
