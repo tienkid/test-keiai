@@ -13,7 +13,7 @@ const validDeleteUser = createAction(
   (
     body: { phone: string; password: string },
     onSucceeded?: () => void,
-    onError?: () => void,
+    onError?: (data?: any) => void,
   ) => ({
     payload: {
       body,

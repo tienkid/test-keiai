@@ -4,11 +4,13 @@ import isEqual from 'react-fast-compare';
 
 import { dispatch } from '@common';
 import { Block, Button, Spacer, Text, WrapperBackground } from '@components';
+import { useSelector } from '@hooks';
 import { navigate } from '@navigation/navigation-service';
 import { BOTTOM_TAB } from '@navigation/screen-types';
 import { deleteUserActions } from '@redux-slice';
 
 const ConfirmDeleteUserComponent = () => {
+  const point = useSelector(x => x.app.point);
   // function
   const onSubmit = async () => {
     dispatch(deleteUserActions.deleteUser());
@@ -46,7 +48,7 @@ const ConfirmDeleteUserComponent = () => {
           <Text
             preset="textBold16"
             colorTheme="base5"
-            text="0P"
+            text={`${point}P`}
             fontWeight={'bold'}
           />
         </Block>

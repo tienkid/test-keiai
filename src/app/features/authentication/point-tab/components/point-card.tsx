@@ -2,30 +2,29 @@ import React, { useState } from 'react';
 
 import AnimatedNumbers from 'react-native-animated-numbers';
 import LinearGradient from 'react-native-linear-gradient';
+import Animated, {
+  EasingNode,
+  Easing as OldEasing,
+  timing,
+} from 'react-native-reanimated';
 
-import { sizeScale } from '@common';
-import { Block, Spacer, Text } from '@components';
+import { dispatch, sizeScale } from '@common';
+import { Block, Button, Spacer, Text } from '@components';
 import { useSelector } from '@hooks';
 import { useFocusEffect } from '@react-navigation/native';
+import { pointAction } from '@redux-slice';
 import { useTheme } from '@theme';
+import { ColorDefault } from '@theme/color';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
-// import { pointAction } from '@redux-slice';
-// import { ColorDefault } from '@theme/color';
-// import Animated, { Easing, timing } from 'react-native-reanimated';
-// import Icon from 'react-native-vector-icons/EvilIcons';
 import { styles } from '../style';
+const Easing = EasingNode || OldEasing;
 
 export const PointCard = () => {
   // state
   const pointCard = useSelector(x => x.app.point);
   const { colors } = useTheme();
   const [point, setPoint] = useState(pointCard);
-  // const spinValue = new Animated.Value(0);
-
-  // const spin = spinValue.interpolate({
-  //   inputRange: [0, 1],
-  //   outputRange: ['0deg', '720deg'],
-  // }) as unknown as Animated.Node<string>;
 
   useFocusEffect(
     React.useCallback(() => {
@@ -40,25 +39,38 @@ export const PointCard = () => {
     }, [pointCard]),
   );
 
-  // const onGetPointSucceeded = (data: number) => {
-  //   setPoint(data);
-  // };
-  // const handleUpdatePoint = () => {
-  //   setPoint(0);
-  //   dispatch(pointAction.getPoint(onGetPointSucceeded));
-  //   const timingValue = timing(spinValue, {
-  //     toValue: 1,
-  //     duration: 3000,
-  //     easing: Easing.linear as never,
-  //   });
+  const onGetPointSucceeded = (data: number) => {
+    setPoint(data);
+  };
 
-  //   timingValue.start(() => {
-  //     timingValue.stop();
-  //     setTimeout(() => {
-  //       spinValue.setValue(0);
-  //     }, 100);
-  //   });
-  // };
+  const spinValueFake = new Animated.Value(0);
+
+  const spinFake = spinValueFake.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '720deg'],
+  }) as unknown as Animated.Node<string>;
+
+  // func
+  const animationPoint = () => {
+    const timingValue = timing(spinValueFake, {
+      toValue: 1,
+      duration: 3000,
+      easing: Easing.linear as never,
+    });
+    timingValue.start(() => {
+      timingValue.stop();
+      setTimeout(() => {
+        spinValueFake.setValue(0);
+      }, 100);
+    });
+  };
+
+  const handleUpdatePointFake = () => {
+    setPoint(0);
+    dispatch(pointAction.getPoint(onGetPointSucceeded));
+    animationPoint();
+  };
+
   // render
   return (
     <Block
@@ -133,13 +145,20 @@ export const PointCard = () => {
           </Block>
 
           <Spacer height={40} />
-          {/* <Block position={'absolute'} bottom={10} right={10}>
-            <Button.Default onPress={handleUpdatePoint}>
-              <Animated.View style={[{ transform: [{ rotate: spin }] }]}>
+
+          <Block position={'absolute'} bottom={10} right={10}>
+            <Button.Default onPress={handleUpdatePointFake}>
+              <Animated.View
+                style={[
+                  {
+                    transform: [{ rotate: spinFake }],
+                    // backgroundColor: 'white',
+                  },
+                ]}>
                 <Icon name="redo" size={35} color={ColorDefault.white} />
               </Animated.View>
             </Button.Default>
-          </Block> */}
+          </Block>
         </LinearGradient>
       </LinearGradient>
     </Block>

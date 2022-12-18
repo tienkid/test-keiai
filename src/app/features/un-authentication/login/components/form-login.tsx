@@ -47,6 +47,7 @@ export const FormLogin = ({ onSubmit, errorLogin }: FormLoginProps) => {
   const handleGoToRegister = () => {
     Linking.openURL(LINK_INQUIRY);
   };
+
   // render
   return (
     <FormProvider {...formMethod}>

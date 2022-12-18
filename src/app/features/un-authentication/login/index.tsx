@@ -4,11 +4,17 @@ import isEqual from 'react-fast-compare';
 
 import {
   dispatch,
+  handleErrorContent,
   NON_REFRESH,
   numberToCountryCode,
   TIME_REFRESH,
 } from '@common';
-import { Block, Spacer, WrapperBackground } from '@components';
+import {
+  Block,
+  handleShowModalError,
+  Spacer,
+  WrapperBackground,
+} from '@components';
 import {
   handleHideModalLoading,
   handleShowModalLoading,
@@ -33,6 +39,14 @@ const LoginComponent = () => {
 
   const today = moment(new Date()).format('YYYY-MM-DD');
   // function
+  const onErrorValidDeleteUser = (data: any) => {
+    if (data.data.code === 'user_disabled') {
+      handleShowModalError({
+        content: handleErrorContent(data.data.code),
+        title: 'dialog:error',
+      });
+    }
+  };
   const onSubmit = async (data: FormLoginType) => {
     setErrorLogin(undefined);
     handleShowModalLoading();
@@ -96,6 +110,7 @@ const LoginComponent = () => {
               }
             }
           },
+          onErrorValidDeleteUser,
         ),
       );
     } catch (error) {
