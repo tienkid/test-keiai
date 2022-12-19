@@ -43,16 +43,16 @@ export const PointCard = () => {
     setPoint(data);
   };
 
-  const spinValueFake = new Animated.Value(0);
+  const spinValue = new Animated.Value(0);
 
-  const spinFake = spinValueFake.interpolate({
+  const spin = spinValue.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '720deg'],
   }) as unknown as Animated.Node<string>;
 
   // func
   const animationPoint = () => {
-    const timingValue = timing(spinValueFake, {
+    const timingValue = timing(spinValue, {
       toValue: 1,
       duration: 3000,
       easing: Easing.linear as never,
@@ -60,12 +60,12 @@ export const PointCard = () => {
     timingValue.start(() => {
       timingValue.stop();
       setTimeout(() => {
-        spinValueFake.setValue(0);
+        spinValue.setValue(0);
       }, 100);
     });
   };
 
-  const handleUpdatePointFake = () => {
+  const handleUpdatePoint = () => {
     setPoint(0);
     dispatch(pointAction.getPoint(onGetPointSucceeded));
     animationPoint();
@@ -147,11 +147,11 @@ export const PointCard = () => {
           <Spacer height={40} />
 
           <Block position={'absolute'} bottom={10} right={10}>
-            <Button.Default onPress={handleUpdatePointFake}>
+            <Button.Default onPress={handleUpdatePoint}>
               <Animated.View
                 style={[
                   {
-                    transform: [{ rotate: spinFake }],
+                    transform: [{ rotate: spin }],
                     // backgroundColor: 'white',
                   },
                 ]}>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { logActionEvent } from '@common';
+import { execFunc, logActionEvent } from '@common';
 import { Block, Button, FormInput, Spacer, Text } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DataValid } from '@model/delete-user';
@@ -10,7 +10,11 @@ import { deleteValidation } from '@validate/delete-user';
 
 import { FormLoginProps } from '../type';
 
-export const FormDelete = ({ onSubmit, errorLogin }: FormLoginProps) => {
+export const FormDelete = ({
+  onSubmit,
+  errorLogin,
+  setErrorLogin,
+}: FormLoginProps) => {
   // state
 
   const formMethod = useForm<DataValid>({
@@ -26,6 +30,11 @@ export const FormDelete = ({ onSubmit, errorLogin }: FormLoginProps) => {
   const onSubmitKey = () => {
     formMethod.handleSubmit(onSubmit)();
     logActionEvent('delete-user', { data: formMethod.getValues() });
+  };
+  const handleFocusPassword = () => {
+    if (errorLogin) {
+      execFunc(setErrorLogin, undefined);
+    }
   };
 
   // render
@@ -46,6 +55,7 @@ export const FormDelete = ({ onSubmit, errorLogin }: FormLoginProps) => {
           labelT18n={'login:password'}
           inputStyle={{ height: 50 }}
           secureTextEntry
+          onFocus={handleFocusPassword}
         />
         {errorLogin && (
           <Block middle>

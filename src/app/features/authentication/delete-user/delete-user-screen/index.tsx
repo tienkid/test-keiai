@@ -63,7 +63,11 @@ const DeleteUserComponent = () => {
           />
         </Block>
         <Spacer height={50} />
-        <FormDelete onSubmit={onSubmit} errorLogin={errorLogin} />
+        <FormDelete
+          onSubmit={onSubmit}
+          errorLogin={errorLogin}
+          setErrorLogin={setErrorLogin}
+        />
       </WrapperBackground>
     </Block>
   );
