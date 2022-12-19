@@ -3,13 +3,13 @@ import { Linking } from 'react-native';
 
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { dispatch } from '@common';
+import { dispatch, numberToCountryCode } from '@common';
 import { Block, Button, Divider, FormInput, Spacer, Text } from '@components';
 import { rxNotNumber } from '@config/regex';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSelector } from '@hooks';
 import { FormGetCodeType } from '@model/authentication';
-import { loginActions } from '@redux-slice';
+import { loginActions, registerActions } from '@redux-slice';
 import { registerOTPValidation } from '@validate/register';
 
 import { FormRegisterOTPProps, FormRegisterOTPType } from '../type';
@@ -44,13 +44,13 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
       };
       dispatch(loginActions.getCodeLogin(data, handleSuccess));
     } else {
-      // dispatch(
-      //   registerActions.reSendOTP(
-      //     { phone: numberToCountryCode(dataProfile.phoneNumber) },
-      //     handleSuccess,
-      //   ),
-      // );
-      handleSuccess();
+      dispatch(
+        registerActions.reSendOTP(
+          { phone: numberToCountryCode(dataProfile.phoneNumber) },
+          handleSuccess,
+        ),
+      );
+      // handleSuccess();
     }
   };
   const handleToEdit = () => {
