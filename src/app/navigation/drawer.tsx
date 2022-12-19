@@ -26,7 +26,6 @@ export const DrawerNavigator = () => {
       screenOptions={{
         drawerType: 'front',
         headerShown: false,
-        sceneContainerStyle: { backgroundColor: 'red' },
         drawerStyle: {
           width: width,
           backgroundColor: 'transparent',

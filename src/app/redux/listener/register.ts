@@ -54,6 +54,25 @@ takeLatestListeners(true)({
     }
   },
 });
+takeLatestListeners(true)({
+  actionCreator: registerActions.reSendOTP,
+  effect: async (action, listenerApi) => {
+    const { body, onSucceeded } = action.payload;
+    const response = await NetWorkService.Post<any>({
+      url: ApiConstants.RESEND_OTP,
+      body,
+    });
+    if (!response) {
+      return;
+    }
+    if (handleErrorResponse(response)) {
+      // TODO
+      if (onCheckType(onSucceeded, 'function')) {
+        onSucceeded();
+      }
+    }
+  },
+});
 takeLatestListeners()({
   actionCreator: registerActions.getProvince,
   effect: async (action, _listenerApi) => {
