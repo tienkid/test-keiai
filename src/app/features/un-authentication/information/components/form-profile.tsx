@@ -135,6 +135,12 @@ export const FormInformationProfile = ({
   //   dispatch(appActions.setZipCode(formMethod.getValues('zip_code')));
   //   console.log(formMethod.getValues('zip_code'), 'formMethod.getValues()');
   // };
+
+  useEffect(() => {
+    return () => {
+      dispatch(appActions.setZipCode({} as PostalCodeChoice));
+    };
+  }, []);
   const getProvince = useCallback(() => {
     dispatch(registerActions.getProvince(handleGetProvinceSuccess));
   }, []);
