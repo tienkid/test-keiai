@@ -27,6 +27,7 @@ export const HeaderBackLeft = ({
     <Block
       direction={'row'}
       middle
+      zIndex={999}
       height={44 + insets.top}
       paddingTop={insets.top}
       colorTheme={'white'}

@@ -9,7 +9,7 @@ import { Block, Divider, Header, Spacer, StackView } from '@components';
 // import { dataFake } from '@features/authentication/setting-tab';
 import { useSelector } from '@hooks';
 import { ContentResponse } from '@model/content';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useScrollToTop } from '@react-navigation/native';
 import {
   appActions,
   bannerAction,
@@ -49,7 +49,7 @@ const HomeComponent = () => {
 
   //effect
   //13t0lka3fjh6qsqbd709ig7e74
-
+  useScrollToTop(refStackView);
   useFocusEffect(
     React.useCallback(() => {
       refStackView.current?.scrollTo({ x: 0, y: 0, animated: true });

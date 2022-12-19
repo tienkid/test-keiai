@@ -123,4 +123,6 @@ function clickYourButton(data) {
     }, 0) // *** here ***
 }
 </script>`;
+export const CONTENT_HEADER = `<div>
+</div>`;
 export const LINK_INQUIRY = 'https://ki-group.co.jp/owners/app/inquiry/';

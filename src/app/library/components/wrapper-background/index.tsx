@@ -36,6 +36,13 @@ export const WrapperBackground = ({
   const haveHeader = useMemo(() => {
     return canBack || headerTitleT18n;
   }, [canBack, headerTitleT18n]);
+  const paddingTopView = useMemo(() => {
+    if (haveHeader) {
+      return 0;
+    } else {
+      return paddingTop !== undefined ? paddingTop : insets.top;
+    }
+  }, [haveHeader, insets.top, paddingTop]);
 
   //func
   const handlePressBack = () => {
@@ -44,14 +51,12 @@ export const WrapperBackground = ({
   };
   // render
   return (
-    <Block
-      block
-      colorTheme="white"
-      paddingTop={paddingTop !== undefined ? paddingTop : insets.top}>
+    <Block block colorTheme="white" paddingTop={paddingTopView}>
       {haveHeader ? (
         <Block
+          paddingTop={paddingTop !== undefined ? paddingTop : insets.top}
           zIndex={999}
-          height={44}
+          height={44 + (paddingTop !== undefined ? paddingTop : insets.top)}
           colorTheme="white"
           justifyContent={'center'}
           alignItems="center"

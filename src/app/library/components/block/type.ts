@@ -31,6 +31,7 @@ export type ShadowConfig = {
   shadowOffset?: { width: number; height: number } | undefined;
   shadowOpacity?: number | undefined;
   shadowRadius?: number | undefined;
+  elevation?: number | undefined;
 };
 
 type StyleStringOrNumber = string | number;
