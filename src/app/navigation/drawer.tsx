@@ -31,6 +31,7 @@ export const DrawerNavigator = () => {
           width: width,
           backgroundColor: 'transparent',
         },
+        overlayColor: '#00000090',
         drawerPosition: 'right',
         drawerStatusBarAnimation: 'slide',
       }}
