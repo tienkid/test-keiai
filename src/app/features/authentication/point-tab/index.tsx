@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import isEqual from 'react-fast-compare';
+import Animated, { useAnimatedRef } from 'react-native-reanimated';
 
 import { dispatch, formatDate, numberWithCommas } from '@common';
 import {
@@ -14,6 +15,7 @@ import {
 } from '@components';
 import { useSelector } from '@hooks';
 import { HistoryPoint } from '@model/point';
+import { useFocusEffect, useScrollToTop } from '@react-navigation/native';
 import { pointAction } from '@redux-slice';
 
 import { PointCard } from './components/point-card';
@@ -22,6 +24,7 @@ const PointComponent = () => {
   // state
   const user = useSelector(x => x.app.profile);
   const [historyPoint, setHistoryPoint] = useState<Array<HistoryPoint>>([]);
+  const refStackView = useAnimatedRef<Animated.ScrollView>();
 
   //function
   const renderHistoryPoint = useCallback(
@@ -89,11 +92,19 @@ const PointComponent = () => {
     getHistoryPoints();
   }, []);
 
+  useScrollToTop(refStackView);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      refStackView.current?.scrollTo({ x: 0, y: 0, animated: true });
+    }, [refStackView]),
+  );
+
   // render
   return (
     <Block block colorTheme="white">
       <Header />
-      <StackView bounces={false}>
+      <StackView bounces={false} ref={refStackView}>
         <Block colorTheme="background">
           <PointCard />
         </Block>

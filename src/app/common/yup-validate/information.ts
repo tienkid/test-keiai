@@ -178,7 +178,7 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
       .matches(
         rxFullWidthKatakana,
         stringifyObjectValidateYup({
-          keyT: 'msg:MSG_011',
+          keyT: 'msg:MSG_016',
         }),
       ),
     furigana_last_name: yup
@@ -194,7 +194,7 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
       .matches(
         rxFullWidthKatakana,
         stringifyObjectValidateYup({
-          keyT: 'msg:MSG_011',
+          keyT: 'msg:MSG_016',
         }),
       ),
     zip_code: yup

@@ -2,6 +2,7 @@ import React, { memo, useCallback, useEffect } from 'react';
 import { RefreshControl } from 'react-native';
 
 import isEqual from 'react-fast-compare';
+import Animated, { useAnimatedRef } from 'react-native-reanimated';
 
 import { dispatch } from '@common';
 import { Block, Divider, Header, Spacer, StackView } from '@components';
@@ -21,6 +22,9 @@ import { ListBanner } from './components/list-banner';
 import { PointContent } from './components/point-content';
 
 const HomeComponent = () => {
+  //state
+  const refStackView = useAnimatedRef<Animated.ScrollView>();
+
   //func
   const profile = useSelector(x => x.app.profile);
   console.log(profile, 'profile Home');
@@ -45,12 +49,13 @@ const HomeComponent = () => {
 
   //effect
   //13t0lka3fjh6qsqbd709ig7e74
+
   useFocusEffect(
     React.useCallback(() => {
+      refStackView.current?.scrollTo({ x: 0, y: 0, animated: true });
       getContent();
-    }, [getContent]),
+    }, [getContent, refStackView]),
   );
-
   useEffect(() => {
     dispatch(pointAction.getPoint());
     getBanner();
@@ -61,6 +66,7 @@ const HomeComponent = () => {
     <Block block colorTheme="white">
       <Header />
       <StackView
+        ref={refStackView}
         refreshControl={<RefreshControl refreshing={false} />}
         style={{ flex: 1 }}>
         <Spacer height={12} />

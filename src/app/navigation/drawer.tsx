@@ -30,9 +30,9 @@ export const DrawerNavigator = () => {
           width: width,
           backgroundColor: 'transparent',
         },
-        overlayColor: '#00000090',
+        overlayColor: '#00000099',
         drawerPosition: 'right',
-        drawerStatusBarAnimation: 'slide',
+        drawerStatusBarAnimation: 'fade',
       }}
       drawerContent={() => <CustomDrawer />}>
       <Drawer.Screen name={APP_SCREEN.HOME} component={BottomTabScreen} />
