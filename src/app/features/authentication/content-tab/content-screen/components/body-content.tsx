@@ -4,6 +4,7 @@ import { dispatch } from '@common';
 import { Block, Divider, ListView, Spacer } from '@components';
 import { useSelector } from '@hooks';
 import { ContentResponse, Item } from '@model/content';
+import { useFocusEffect } from '@react-navigation/native';
 import { appActions, contentAction } from '@redux-slice';
 
 import { ItemContentView } from './item-content-view';
@@ -20,7 +21,8 @@ export const BodyContent = () => {
     },
     [],
   );
-  const keyExtractor = (item: Item) => item.id.toString();
+  const keyExtractor = (item: Item, index: number) =>
+    item.id.toString() + index.toString();
   const onGetContentSucceeded = useCallback(
     (data: ContentResponse) => {
       dispatch(
@@ -34,6 +36,9 @@ export const BodyContent = () => {
     [contents.items],
   );
   const handleLoadMore = useCallback(() => {
+    console.log(contents.meta?.totalPages, 'contents.meta?.totalPages');
+    console.log(page, 'page');
+
     if (contents.meta?.totalPages && page < contents.meta?.totalPages) {
       dispatch(
         contentAction.getContent(
@@ -52,6 +57,13 @@ export const BodyContent = () => {
       <Spacer height={15} />
     </Block>
   );
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setPage(1);
+    }, []),
+  );
+
   // render
   return (
     <Block block>

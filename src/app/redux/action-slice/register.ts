@@ -24,6 +24,15 @@ const register = createAction(
     },
   }),
 );
+const reSendOTP = createAction(
+  Action.RESEND_OTP,
+  (body: { phone: string }, onSucceeded: () => void) => ({
+    payload: {
+      body,
+      onSucceeded,
+    },
+  }),
+);
 const confirm = createAction(
   Action.CONFIRM,
   (body: ConfirmRequest, onSucceeded?: () => void) => ({
@@ -87,4 +96,5 @@ export const registerActions = {
   getCity,
   getPostalCode,
   getCityWrap,
+  reSendOTP,
 };

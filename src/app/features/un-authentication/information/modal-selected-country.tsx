@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { Platform } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -17,6 +18,7 @@ export const ModalSelectedCountry = ({
 }: SelectCountryProps) => {
   const insets = useSafeAreaInsets();
   const { data, type } = route.params;
+
   const keyExtractor = (item: ProvinceType | CityType, index: number) =>
     item.pref_id.toString() + index.toString();
   const renderSpacer = () => (
@@ -71,7 +73,9 @@ export const ModalSelectedCountry = ({
       </Block>
       <Spacer height={5} />
 
-      <Block colorTheme="white" paddingBottom={insets.bottom + 60}>
+      <Block
+        colorTheme="white"
+        paddingBottom={insets.bottom + Platform.OS === 'ios' ? 60 : 110}>
         <ListView
           data={data ?? []}
           canRefresh={false}

@@ -11,6 +11,7 @@ const ApiEndPoint = {
   SET_CODE_LOGIN: 'auth/complete-login',
   DELETE_USER_SUCCESS: 'me/disable',
   VALID_DELETE_USER_SUCCESS: 'me/valid-disable',
+  RESEND_OTP: 'users/register-sms',
 
   //users
   VALIDATE: 'users/validate-mobile-register',

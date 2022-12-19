@@ -6,7 +6,7 @@ import { dispatch } from '@common';
 import { Block, Button, Spacer, Text, WrapperBackground } from '@components';
 import { useSelector } from '@hooks';
 import { navigate } from '@navigation/navigation-service';
-import { BOTTOM_TAB } from '@navigation/screen-types';
+import { APP_SCREEN } from '@navigation/screen-types';
 import { deleteUserActions } from '@redux-slice';
 
 const ConfirmDeleteUserComponent = () => {
@@ -17,7 +17,7 @@ const ConfirmDeleteUserComponent = () => {
   };
 
   const handleGoToHome = () => {
-    navigate(BOTTOM_TAB.TAB_HOME);
+    navigate(APP_SCREEN.HOME);
   };
   // render
   return (

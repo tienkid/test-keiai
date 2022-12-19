@@ -83,7 +83,7 @@ const CustomDrawer = () => {
     <Block block direction={'row'} style={{ backgroundColor: 'transparent' }}>
       <Pressable
         onPress={onCloseDrawer}
-        style={{ backgroundColor: '#00000090', width: 95, paddingTop: top }}>
+        style={{ backgroundColor: '#00000099', width: 95, paddingTop: top }}>
         <Block paddingLeft={15} paddingTop={15}>
           <Button.Default onPress={onCloseDrawer}>
             <IconVector name="close" size={30} color={colors.white} />

@@ -1,7 +1,8 @@
 import React from 'react';
+import { Image } from 'react-native';
 
 import { generateTags } from '@common';
-import { Block, Button, Image, LocalImage, Spacer, Text } from '@components';
+import { Block, Button, LocalImage, Spacer, Text } from '@components';
 import { Item } from '@model/content';
 import { navigate } from '@navigation/navigation-service';
 import { CONTENT_STACK } from '@navigation/screen-types';
@@ -12,13 +13,19 @@ export const ItemContentView = ({ item }: { item: Item }) => {
     navigate(CONTENT_STACK.CONTENT_DETAIL, { item });
   };
 
+  console.log(item.thumb, 'thumb');
+
   // render
   return (
     <Block middle>
       <Button.Default onPress={handleToDetail} style={{ alignItems: 'center' }}>
         <Block width={345} height={228} borderRadius={5} overflow="hidden">
           {item?.thumb ? (
-            <Image source={item.thumb} resizeMode="contain" />
+            <Image
+              style={{ width: 345, height: 228 }}
+              source={{ uri: item.thumb }}
+              resizeMode="contain"
+            />
           ) : (
             <LocalImage source={'image_thumbnail'} resizeMode="cover" />
           )}

@@ -45,11 +45,8 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
       dispatch(loginActions.getCodeLogin(data, handleSuccess));
     } else {
       // dispatch(
-      //   registerActions.register(
-      //     {
-      //       email: dataProfile.email,
-      //       phone_number: numberToCountryCode(dataProfile.phoneNumber ?? ''),
-      //     },
+      //   registerActions.reSendOTP(
+      //     { phone: numberToCountryCode(dataProfile.phoneNumber) },
       //     handleSuccess,
       //   ),
       // );
