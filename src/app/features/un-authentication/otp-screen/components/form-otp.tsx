@@ -50,7 +50,7 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
           handleSuccess,
         ),
       );
-      handleSuccess();
+      // handleSuccess();
     }
   };
   const handleToEdit = () => {
