@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { Linking } from 'react-native';
 
+import { isIos } from '@common';
 import { Block, Button, LocalImage, Spacer, Text } from '@components';
 
 import { DataKeiaiType } from '../contain';
@@ -24,6 +25,7 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
   const renderItem = useCallback(
     (item: DataKeiaiType, index: number) => (
       <Block
+        zIndex={999}
         justifyContent={'space-between'}
         width="50%"
         shadow
@@ -37,6 +39,14 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
           style={{ width: '97%' }}
           onPress={() => handlePressItem(item)}>
           <Block
+            shadow={!isIos}
+            shadowConfig={{
+              shadowColor: '#000000',
+              shadowOpacity: 1,
+              shadowRadius: 5,
+              elevation: index === 2 ? 20 : 10,
+            }}
+            zIndex={1}
             height={112}
             width={'100%'}
             borderRadius={5}

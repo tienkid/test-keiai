@@ -56,7 +56,7 @@ const RegisterComponent = () => {
       <WrapperBackground
         titleT18n="register:header_text"
         headerTitleT18n="login:SMS_code">
-        <FormRegister onSubmit={handleSubmit} />
+        <FormRegister onSubmit={handleSubmit} type={type} />
       </WrapperBackground>
     </Block>
   );

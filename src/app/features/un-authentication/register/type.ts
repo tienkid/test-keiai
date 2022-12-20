@@ -7,6 +7,7 @@ export type RegisterProps = StackScreenProps<
 >;
 export interface FormRegisterProps {
   onSubmit: () => void;
+  type?: string;
 }
 
 export type FormRegisterType = {
