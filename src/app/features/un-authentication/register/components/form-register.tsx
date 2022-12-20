@@ -6,7 +6,7 @@ import { useSelector } from '@hooks';
 
 import { FormRegisterProps } from '../type';
 
-export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
+export const FormRegister = ({ onSubmit, type }: FormRegisterProps) => {
   // state
   const register = useSelector(x => x.app.registerData);
   const profile = useSelector(x => x.app.profileWrap);
@@ -43,7 +43,7 @@ export const FormRegister = ({ onSubmit }: FormRegisterProps) => {
         />
         <Block marginTop={11}>
           <Text
-            text={register?.phoneNumber ?? profile?.phone_number}
+            text={type ? profile?.phone_number : register?.phoneNumber}
             preset="linkMedium"
             colorTheme="base5"
             fontWeight={'400'}

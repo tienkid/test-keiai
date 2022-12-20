@@ -6,6 +6,7 @@ import { Block, Button, FormInput } from '@components';
 import { useSelector } from '@hooks';
 import { FormInformationProfileType } from '@model/information';
 import { useRoute } from '@react-navigation/native';
+import { useTheme } from '@theme';
 
 import { CountryInputProps } from '../type';
 
@@ -22,6 +23,8 @@ export const FormSelectCity = ({
   const { field } = useController({
     name,
   });
+  const { colors } = useTheme();
+
   // const { resetField } = useFormContext();
   const route = useRoute();
   // const dataCity = useSelector(x => x.app.dataWrapCity);
@@ -57,6 +60,7 @@ export const FormSelectCity = ({
           name={name}
           labelT18n={labelT18n}
           placeholderT18n={placeholder_T18n}
+          placeholderColor={colors.base5}
           maxLength={maxLength}
           colorLabel={'white'}
           isShowMsgError={false}

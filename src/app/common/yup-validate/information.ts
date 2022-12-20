@@ -11,6 +11,7 @@ import {
   rxFullWidthKatakana,
   rxHaftWidth,
   rxPhoneNumber,
+  rxPhoneNumberExist,
 } from '@config/regex';
 import { FormInformationProfileType } from '@model/information';
 import { ValidateRequest } from '@model/register';
@@ -28,6 +29,12 @@ export const informationValidation: yup.SchemaOf<FormInformationProfileType> =
           optionsTx: {
             field: 'field:phone_number',
           },
+        }),
+      )
+      .matches(
+        rxPhoneNumberExist,
+        stringifyObjectValidateYup({
+          keyT: 'msg:MSG_017',
         }),
       )
       .min(

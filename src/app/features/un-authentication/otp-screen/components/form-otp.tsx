@@ -56,6 +56,11 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
   const handleToEdit = () => {
     Linking.openURL('https://ki-group.co.jp/owners/app/inquiry/');
   };
+  const handleFocusOTP = () => {
+    if (checkResend) {
+      setCheckResend(false);
+    }
+  };
   // render
   return (
     <FormProvider {...formMethod}>
@@ -71,7 +76,8 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
           name={'code'}
           labelT18n={'register:enter_otp'}
           rxRemove={rxNotNumber}
-          // isShowMsgError={false}
+          onFocus={handleFocusOTP}
+          isShowMsgError={!checkResend}
           errorPreset="textNormal12"
           inputStyle={{ height: 50 }}
         />

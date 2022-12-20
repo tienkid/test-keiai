@@ -26,8 +26,7 @@ export const InformationProfile = () => {
   };
   const checkContractSucceeded = (data?: FormInformationProfileType) => {
     const dataMaps = mapsDataRequest(data);
-    dispatch(registerActions.validate(dataMaps, submitSucceeded));
-    dispatch(appActions.setRegisterData(data));
+    dispatch(registerActions.validate(dataMaps, () => submitSucceeded(data)));
   };
   const checkContractError = () => {
     handleShowModalError({
@@ -35,7 +34,8 @@ export const InformationProfile = () => {
       title: 'dialog:error',
     });
   };
-  const submitSucceeded = () => {
+  const submitSucceeded = (data?: FormInformationProfileType) => {
+    dispatch(appActions.setRegisterData(data));
     navigate(APP_SCREEN.INFORMATION_PROFILE_STEP2);
   };
 
