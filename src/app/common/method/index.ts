@@ -92,9 +92,9 @@ export const handleErrorContent = (msgCode: string): I18nKeys => {
     case 'not_found':
       return 'login:error_login';
     case 'auth_0001':
-      return 'msg:incorrect_code';
+      return 'msg:auth_0002';
     case 'auth_0002':
-      return 'msg:incorrect_code';
+      return 'msg:auth_0002';
     case 'auth_0003':
       return 'msg:incorrect_code';
     default:

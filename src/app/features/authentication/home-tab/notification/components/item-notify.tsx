@@ -19,6 +19,7 @@ export const ItemNotify = ({ item, handleToDetail }: ItemNotifyProps) => {
       color={item.check ? '#FFF6F7' : '#FFF'}>
       <Button.Default
         onPress={() => handleToDetail(item)}
+        disabled
         style={{
           flexDirection: 'row',
           alignItems: 'center',

@@ -6,6 +6,7 @@ import { Block, Button, FormInput } from '@components';
 import { useSelector } from '@hooks';
 import { FormInformationProfileType } from '@model/information';
 import { useRoute } from '@react-navigation/native';
+import { useTheme } from '@theme';
 
 import { CountryInputProps } from '../type';
 
@@ -49,7 +50,7 @@ export const FormSelectCountry = ({
   }, [route.params]);
 
   // effect
-
+  const { colors } = useTheme();
   // render
   return (
     <Button.Default onPress={handleShowCountry}>
@@ -58,6 +59,7 @@ export const FormSelectCountry = ({
           name={name}
           labelT18n={labelT18n}
           placeholderT18n={placeholder_T18n}
+          placeholderColor={colors.base5}
           maxLength={maxLength}
           isShowMsgError={false}
           rightChildren={rightChildren}
