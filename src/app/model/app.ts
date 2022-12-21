@@ -42,7 +42,7 @@ export interface AppState {
 
   dataCityChoice: CityType;
 
-  zipCode: PostalCodeChoice;
+  zipCode: PostalCodeChoice | undefined;
 }
 
 export interface Meta {

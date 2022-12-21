@@ -15,6 +15,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { pointAction } from '@redux-slice';
 import { useTheme } from '@theme';
 import { ColorDefault } from '@theme/color';
+import { FontDefault } from '@theme/typography';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 import { styles } from '../style';
@@ -116,9 +117,9 @@ export const PointCard = () => {
           </Block>
           <Spacer height={10} />
           <Block alignSelf={'center'} direction="row">
+            <Spacer width={5} />
             <Block direction="row" alignItems={'flex-end'}>
               <AnimatedNumbers
-                includeComma
                 animateToNumber={point}
                 fontStyle={{
                   fontSize: sizeScale(40),
@@ -126,6 +127,7 @@ export const PointCard = () => {
                   color: '#FFFFFF',
                   textAlign: 'right',
                   lineHeight: 46,
+                  fontFamily: FontDefault.primary,
                 }}
               />
               <Block position={'absolute'} right={-30} bottom={4}>
@@ -143,9 +145,7 @@ export const PointCard = () => {
               textAlign="center"
             />
           </Block>
-
           <Spacer height={40} />
-
           <Block position={'absolute'} bottom={10} right={10}>
             <Button.Default onPress={handleUpdatePoint}>
               <Animated.View

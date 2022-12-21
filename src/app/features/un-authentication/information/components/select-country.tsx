@@ -20,6 +20,7 @@ export const FormSelectCountry = ({
   handleShowCountry,
 }: CountryInputProps) => {
   // state
+  const { colors } = useTheme();
   const {
     field,
     // fieldState: { error },
@@ -30,15 +31,28 @@ export const FormSelectCountry = ({
   // const dataProvince = useSelector(x => x.app.dataProvince);
   const zipCode = useSelector(x => x.app.zipCode);
   const selected = useCallback(() => {
-    if (zipCode.city) {
-      field.onChange(zipCode.pref_name);
+    if (zipCode?.city) {
+      field.onChange(zipCode?.pref_name);
     } else {
       field.onChange(undefined);
     }
-  }, [zipCode.city, zipCode.pref_name]);
+  }, [zipCode?.city, zipCode?.pref_name]);
+
+  // effect
+  // useEffect(() => {
+  //   console.log(66666, zipCode);
+
+  //   if (zipCode === undefined) {
+  //     console.log(7777777);
+
+  //     field.onChange(undefined);
+  //   }
+  // }, [zipCode]);
+
   useEffect(() => {
     selected();
   }, [selected]);
+
   useEffect(() => {
     if ((route?.params as Record<string, unknown>)?.item) {
       if ((route?.params as Record<string, unknown>)?.type === name) {
@@ -49,8 +63,6 @@ export const FormSelectCountry = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [route.params]);
 
-  // effect
-  const { colors } = useTheme();
   // render
   return (
     <Button.Default onPress={handleShowCountry}>

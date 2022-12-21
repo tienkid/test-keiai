@@ -30,12 +30,12 @@ export const FormSelectCity = ({
   // const dataCity = useSelector(x => x.app.dataWrapCity);
   const zipCode = useSelector(x => x.app.zipCode);
   const selected = useCallback(() => {
-    if (zipCode.city) {
-      field.onChange(zipCode.city[0].city_name);
+    if (zipCode?.city) {
+      field.onChange(zipCode?.city[0].city_name);
     } else {
       field.onChange(undefined);
     }
-  }, [zipCode.city]);
+  }, [zipCode?.city]);
 
   useEffect(() => {
     selected();
@@ -51,6 +51,12 @@ export const FormSelectCity = ({
   }, [route.params]);
 
   // effect
+  // useEffect(() => {
+  //   console.log(55555, zipCode);
+  //   if (zipCode === ({} as PostalCodeChoice)) {
+  //     field.onChange(undefined);
+  //   }
+  // }, [zipCode]);
 
   // render
   return (
