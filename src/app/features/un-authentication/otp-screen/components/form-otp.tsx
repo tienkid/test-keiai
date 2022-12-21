@@ -80,6 +80,8 @@ export const FormOTP = ({ onSubmit, type }: FormRegisterOTPProps) => {
           isShowMsgError={!checkResend}
           errorPreset="textNormal12"
           inputStyle={{ height: 50 }}
+          autoComplete="sms-otp"
+          textContentType="oneTimeCode"
         />
         {/* {!formMethod.formState.isValid && (
           <Block paddingTop={10} alignItems="center">

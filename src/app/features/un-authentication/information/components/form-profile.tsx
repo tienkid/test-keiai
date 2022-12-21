@@ -66,8 +66,8 @@ export const FormInformationProfile = ({
   const [passwordShown, setPasswordShown] = useState<boolean>(false);
   const [passwordConfirmShown, setPasswordConfirmShown] =
     useState<boolean>(false);
-
   const [isCheck, setIsCheck] = useState(false);
+
   // function
   const onTogglePassword = () => {
     setPasswordShown(e => !e);
@@ -116,32 +116,12 @@ export const FormInformationProfile = ({
     dispatch(appActions.setProvinceData(data));
   };
   const zip_code = formMethod.watch('zip_code');
-  useEffect(() => {
-    if (zip_code && zip_code.length === 7) {
-      const code = formatZipCode(zip_code);
-      dispatch(registerActions.getPostalCode(code));
-    } else {
-      if (zipCode?.city) {
-        dispatch(appActions.setZipCode(undefined));
-      }
-    }
-  }, [zip_code]);
 
-  useEffect(() => {
-    if (zipCode?.city && zipCode.city[0].town[0].town_name) {
-      formMethod.setValue('name_address', zipCode.city[0].town[0].town_name);
-    }
-  }, [zipCode]);
   // const handleSetZipCode = () => {
   //   dispatch(appActions.setZipCode(formMethod.getValues('zip_code')));
   //   console.log(formMethod.getValues('zip_code'), 'formMethod.getValues()');
   // };
 
-  useEffect(() => {
-    return () => {
-      dispatch(appActions.setZipCode({} as PostalCodeChoice));
-    };
-  }, []);
   const getProvince = useCallback(() => {
     dispatch(registerActions.getProvince(handleGetProvinceSuccess));
   }, []);
@@ -167,6 +147,28 @@ export const FormInformationProfile = ({
   useEffect(() => {
     getProvince();
   }, [getProvince]);
+  useEffect(() => {
+    return () => {
+      dispatch(appActions.setZipCode({} as PostalCodeChoice));
+    };
+  }, []);
+  useEffect(() => {
+    if (zipCode?.city && zipCode.city[0].town[0].town_name) {
+      formMethod.setValue('name_address', zipCode.city[0].town[0].town_name);
+    }
+  }, [zipCode]);
+  useEffect(() => {
+    if (zip_code && zip_code.length === 7) {
+      const code = formatZipCode(zip_code);
+      dispatch(registerActions.getPostalCode(code));
+    } else {
+      if (zipCode?.city) {
+        formMethod.setValue('city', '');
+        formMethod.setValue('country', '');
+        dispatch(appActions.setZipCode(undefined));
+      }
+    }
+  }, [formMethod, zipCode, zip_code]);
 
   // render
   return (

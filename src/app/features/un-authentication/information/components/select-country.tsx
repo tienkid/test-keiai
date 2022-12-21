@@ -39,16 +39,6 @@ export const FormSelectCountry = ({
   }, [zipCode?.city, zipCode?.pref_name]);
 
   // effect
-  // useEffect(() => {
-  //   console.log(66666, zipCode);
-
-  //   if (zipCode === undefined) {
-  //     console.log(7777777);
-
-  //     field.onChange(undefined);
-  //   }
-  // }, [zipCode]);
-
   useEffect(() => {
     selected();
   }, [selected]);
