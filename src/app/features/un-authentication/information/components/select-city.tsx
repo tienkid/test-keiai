@@ -37,6 +37,7 @@ export const FormSelectCity = ({
     }
   }, [zipCode?.city]);
 
+  // effect
   useEffect(() => {
     selected();
   }, [selected]);
@@ -49,14 +50,6 @@ export const FormSelectCity = ({
     // field.onBlur();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [route.params]);
-
-  // effect
-  // useEffect(() => {
-  //   console.log(55555, zipCode);
-  //   if (zipCode === ({} as PostalCodeChoice)) {
-  //     field.onChange(undefined);
-  //   }
-  // }, [zipCode]);
 
   // render
   return (

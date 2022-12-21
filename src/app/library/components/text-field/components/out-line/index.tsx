@@ -134,9 +134,6 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     borderColor: borderColor.value,
   }));
-  if (labelT18n === 'information_profile:address') {
-    console.log('hoang', value, labelT18n);
-  }
 
   // render
   return (
@@ -158,16 +155,17 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
           containerAnimatedStyle,
         ]}>
         <View style={[styles.content]}>
-          {(placeholderT18n || placeholder) && value.length === 0 && (
-            <View style={[styles.wrapPlaceHolder]} pointerEvents={'none'}>
-              <Text
-                t18n={placeholderT18n}
-                text={placeHolder}
-                color={placeholderColor}
-                preset={'textNormal15'}
-              />
-            </View>
-          )}
+          {(placeholderT18n || placeholder) &&
+            (value.length === 0 || rest.value?.length === 0) && (
+              <View style={[styles.wrapPlaceHolder]} pointerEvents={'none'}>
+                <Text
+                  t18n={placeholderT18n}
+                  text={placeHolder}
+                  color={placeholderColor}
+                  preset={'textNormal15'}
+                />
+              </View>
+            )}
           <View style={[styles.flex]}>
             <TextInput
               defaultValue={localDefaultValue}
