@@ -134,6 +134,9 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     borderColor: borderColor.value,
   }));
+  if (labelT18n === 'information_profile:address') {
+    console.log('hoang', value, labelT18n);
+  }
 
   // render
   return (

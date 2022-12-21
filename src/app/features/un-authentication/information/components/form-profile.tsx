@@ -121,13 +121,14 @@ export const FormInformationProfile = ({
       const code = formatZipCode(zip_code);
       dispatch(registerActions.getPostalCode(code));
     } else {
-      if (zipCode.city) {
-        dispatch(appActions.setZipCode({} as PostalCodeChoice));
+      if (zipCode?.city) {
+        dispatch(appActions.setZipCode(undefined));
       }
     }
   }, [zip_code]);
+
   useEffect(() => {
-    if (zipCode.city) {
+    if (zipCode?.city && zipCode.city[0].town[0].town_name) {
       formMethod.setValue('name_address', zipCode.city[0].town[0].town_name);
     }
   }, [zipCode]);

@@ -28,7 +28,7 @@ const initialAppState: AppState = {
   /**
    * default true to load app
    */
-  zipCode: {} as PostalCodeChoice,
+  zipCode: undefined,
   dataCityChoice: {} as CityType,
   loadingApp: false,
   showDialog: false,
@@ -75,7 +75,10 @@ const appSlice = createSlice({
     setProvinceData: (state, { payload }: PayloadAction<ProvinceType[]>) => {
       state.dataProvince = payload;
     },
-    setZipCode: (state, { payload }: PayloadAction<PostalCodeChoice>) => {
+    setZipCode: (
+      state,
+      { payload }: PayloadAction<PostalCodeChoice | undefined>,
+    ) => {
       state.zipCode = payload;
     },
     setCityData: (state, { payload }: PayloadAction<CityType[]>) => {
