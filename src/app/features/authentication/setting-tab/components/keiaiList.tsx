@@ -22,6 +22,60 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
     // }
   };
 
+  // const renderItem = useCallback(
+  //   (item: DataKeiaiType, index: number) => (
+  //     <Block
+  //       zIndex={999}
+  //       justifyContent={'space-between'}
+  //       width="50%"
+  //       shadow
+  //       shadowConfig={{
+  //         shadowOpacity: index === 2 ? 1 : 0.4,
+  //         shadowRadius: index === 2 ? 5 : 3.4,
+  //       }}
+  //       key={index}
+  //       alignItems={index % 2 === 1 ? 'flex-end' : 'flex-start'}>
+  //       <Button.Default
+  //         style={{ width: '97%' }}
+  //         onPress={() => handlePressItem(item)}>
+  //         <Block
+  //           shadow={!isIos}
+  //           shadowConfig={{
+  //             shadowColor: '#000000',
+  //             shadowOpacity: 1,
+  //             shadowRadius: 5,
+  //             elevation: 10,
+  //           }}
+  //           zIndex={1}
+  //           height={112}
+  //           width={'100%'}
+  //           borderRadius={5}
+  //           overflow={index === 2 ? 'hidden' : 'visible'}
+  //           color={index === 2 ? '#F03333' : '#FFFFFF'}
+  //           padding={index === 0 || index === 1 ? 10 : 0}>
+  //           <LocalImage source={item.image} resizeMode="contain" />
+  //         </Block>
+  //         <Block block paddingTop={5}>
+  //           <Text
+  //             preset="textNormal12"
+  //             colorTheme="base5"
+  //             numberOfLines={2}
+  //             text={item.title}
+  //             lineHeight={18}
+  //           />
+  //           {/* <Spacer height={8} />
+  //           <Text preset="textNormal11" colorTheme="base4" numberOfLines={2}>
+  //             {item.sign}
+  //           </Text> */}
+  //         </Block>
+  //       </Button.Default>
+  //       <Spacer height={index === 2 ? 0 : 25} />
+  //     </Block>
+  //     // <KeiaiItem item={item} key={index.toString()} />
+  //   ),
+  //   [],
+  // );
+
   const renderItem = useCallback(
     (item: DataKeiaiType, index: number) => (
       <Block
@@ -30,8 +84,8 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
         width="50%"
         shadow
         shadowConfig={{
-          shadowOpacity: index === 2 ? 1 : 0.4,
-          shadowRadius: index === 2 ? 5 : 3.4,
+          shadowOpacity: 0.4,
+          shadowRadius: 3.4,
         }}
         key={index}
         alignItems={index % 2 === 1 ? 'flex-end' : 'flex-start'}>
@@ -50,9 +104,9 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
             height={112}
             width={'100%'}
             borderRadius={5}
-            overflow={index === 2 ? 'hidden' : 'visible'}
-            color={index === 2 ? '#F03333' : '#FFFFFF'}
-            padding={index === 0 || index === 1 ? 10 : 0}>
+            overflow={index !== 1 ? 'hidden' : 'visible'}
+            color={'#FFFFFF'}
+            padding={index === 1 ? 10 : 0}>
             <LocalImage source={item.image} resizeMode="contain" />
           </Block>
           <Block block paddingTop={5}>
@@ -75,7 +129,6 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
     ),
     [],
   );
-
   // render
   return (
     <Block

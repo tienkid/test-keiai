@@ -24,6 +24,8 @@ export const images = {
   welcome: require('./source/welcome.png'),
   banner2: require('./source/banner_2.png'),
   banner3: require('./source/banner_3.png'),
+  service_1: require('./source/service_1.png'),
+  service_3: require('./source/service_3.png'),
 };
 
 export type ImageTypes = keyof typeof images;

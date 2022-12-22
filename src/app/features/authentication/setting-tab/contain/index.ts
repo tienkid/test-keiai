@@ -18,7 +18,8 @@ export interface DataKeiaiType {
 export const DATA_KEIAI: Array<DataKeiaiType> = [
   {
     id: 1,
-    image: 'iesapo',
+    // image: 'iesapo',
+    image: 'service_1',
     type: KeiaiType.IESAPO,
     title: 'KEIAI 家サポ',
     link: 'https://www.iesapo.ki-group.jp/',
@@ -32,7 +33,8 @@ export const DATA_KEIAI: Array<DataKeiaiType> = [
   },
   {
     id: 3,
-    image: 'banner_3',
+    image: 'service_3',
+    // image: 'banner_3',
     type: KeiaiType.DENKI,
     title: 'KEIAI 安心サポート',
     link: 'https://ki-group.co.jp/owners/anshin_support/',

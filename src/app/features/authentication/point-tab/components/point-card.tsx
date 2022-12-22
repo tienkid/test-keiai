@@ -8,7 +8,7 @@ import Animated, {
   timing,
 } from 'react-native-reanimated';
 
-import { dispatch, generateNumber, generateNumberUp, sizeScale } from '@common';
+import { dispatch, generateNumber, sizeScale } from '@common';
 import { Block, Button, Spacer, Text } from '@components';
 import { useSelector } from '@hooks';
 import { useFocusEffect } from '@react-navigation/native';
@@ -29,28 +29,30 @@ export const PointCard = () => {
 
   useFocusEffect(
     React.useCallback(() => {
-      setPoint(generateNumber(`${pointCard}`, '1'));
-      setTimeout(() => {
-        setPoint(generateNumberUp(`${pointCard}`));
-      }, 10);
+      // setPoint(generateNumber(`${pointCard}`, '1'));
+      // setTimeout(() => {
+      //   setPoint(generateNumberUp(`${pointCard}`));
+      // }, 10);
+      setPoint(generateNumber(`${pointCard}`, '9'));
       const timeOut = setTimeout(() => {
         setPoint(pointCard ?? 0);
       }, 1000);
       return () => {
-        setPoint(generateNumber(pointCard.toString(), '1'));
+        setPoint(generateNumber(pointCard.toString(), '9'));
         clearTimeout(timeOut);
       };
     }, [pointCard]),
   );
 
   const onGetPointSucceeded = (data: number) => {
-    setPoint(generateNumber(`${data}`, '1'));
-    setTimeout(() => {
-      setPoint(generateNumberUp(`${data}`));
-    }, 10);
-    setTimeout(() => {
-      setPoint(data);
-    }, 1000);
+    // console.log(data);
+    setPoint(generateNumber(`${data}`, '9'));
+    // setTimeout(() => {
+    //   setPoint(generateNumberUp(`${data}`));
+    // }, 10);
+    // setTimeout(() => {
+    setPoint(data);
+    // }, 1000);
     // clearTimeout(timeOut);
   };
 

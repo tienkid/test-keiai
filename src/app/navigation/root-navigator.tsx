@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 
 import BootSplash from 'react-native-bootsplash';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { InformationProfileStep2 } from '@features/un-authentication/infomation-step2';
 import { InformationProfile } from '@features/un-authentication/information';
@@ -19,6 +20,8 @@ import { APP_SCREEN, RootStackParamList } from '@navigation/screen-types';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { DrawerNavigator } from './drawer';
+
+import { isIos } from '../common/method';
 
 // import { CarouselAdvance } from '../course-animation/Advanced-carousel';
 // import { CarouselParallax } from '../course-animation/parallax-carousel';
@@ -47,7 +50,7 @@ export const RootNavigation = () => {
       AppModule.clearCache();
     }
   }, [token]);
-
+  const insets = useSafeAreaInsets();
   // render
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
@@ -95,6 +98,8 @@ export const RootNavigation = () => {
             screenOptions={{
               presentation: 'modal',
               headerStyle: { backgroundColor: 'transparent' },
+              headerTransparent: true,
+              cardStyle: { marginTop: isIos ? 10 : insets.top + 10 },
             }}>
             <RootStack.Screen
               name={APP_SCREEN.MODAL_SELECTED_COUNTY}
