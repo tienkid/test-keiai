@@ -91,7 +91,11 @@ export const RootNavigation = () => {
             name={APP_SCREEN.INFORMATION_PROFILE_STEP2}
             component={InformationProfileStep2}
           />
-          <RootStack.Group screenOptions={{ presentation: 'modal' }}>
+          <RootStack.Group
+            screenOptions={{
+              presentation: 'modal',
+              headerStyle: { backgroundColor: 'transparent' },
+            }}>
             <RootStack.Screen
               name={APP_SCREEN.MODAL_SELECTED_COUNTY}
               component={ModalSelectedCountry}

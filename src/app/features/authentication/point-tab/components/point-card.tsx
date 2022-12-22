@@ -8,7 +8,7 @@ import Animated, {
   timing,
 } from 'react-native-reanimated';
 
-import { dispatch, sizeScale } from '@common';
+import { dispatch, generateNumber, sizeScale } from '@common';
 import { Block, Button, Spacer, Text } from '@components';
 import { useSelector } from '@hooks';
 import { useFocusEffect } from '@react-navigation/native';
@@ -29,19 +29,23 @@ export const PointCard = () => {
 
   useFocusEffect(
     React.useCallback(() => {
+      setPoint(generateNumber(`${pointCard}`));
       const timeOut = setTimeout(() => {
         setPoint(pointCard ?? 0);
       }, 500);
-
       return () => {
-        setPoint(0);
+        setPoint(generateNumber(`${pointCard}`));
         clearTimeout(timeOut);
       };
     }, [pointCard]),
   );
 
   const onGetPointSucceeded = (data: number) => {
-    setPoint(data);
+    setPoint(generateNumber(`${data}`));
+    setTimeout(() => {
+      setPoint(data);
+    }, 500);
+    // clearTimeout(timeOut);
   };
 
   const spinValue = new Animated.Value(0);
@@ -67,7 +71,6 @@ export const PointCard = () => {
   };
 
   const handleUpdatePoint = () => {
-    setPoint(0);
     dispatch(pointAction.getPoint(onGetPointSucceeded));
     animationPoint();
   };
@@ -121,6 +124,7 @@ export const PointCard = () => {
             <Block direction="row" alignItems={'flex-end'}>
               <AnimatedNumbers
                 animateToNumber={point}
+                animationDuration={2500}
                 fontStyle={{
                   fontSize: sizeScale(40),
                   fontWeight: 'bold',
@@ -130,7 +134,7 @@ export const PointCard = () => {
                   fontFamily: FontDefault.primary,
                 }}
               />
-              <Block position={'absolute'} right={-30} bottom={4}>
+              <Block position={'absolute'} right={-30} bottom={2}>
                 <Text
                   preset={'textBold30'}
                   t18n={'point:point'}

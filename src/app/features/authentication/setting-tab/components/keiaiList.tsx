@@ -30,8 +30,8 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
         width="50%"
         shadow
         shadowConfig={{
-          shadowOpacity: 0.4,
-          shadowRadius: 3.4,
+          shadowOpacity: index === 2 ? 1 : 0.4,
+          shadowRadius: index === 2 ? 5 : 3.4,
         }}
         key={index}
         alignItems={index % 2 === 1 ? 'flex-end' : 'flex-start'}>

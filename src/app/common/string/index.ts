@@ -186,3 +186,12 @@ export const generateTags = (tags?: Array<TagType>) => {
 export const numberWithCommas = (x: number | string) => {
   return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
+
+export const generateNumber = (x: string) => {
+  const { length } = x;
+  return parseInt(
+    Math.random()
+      .toString()
+      .slice(2, length + 2),
+  );
+};
