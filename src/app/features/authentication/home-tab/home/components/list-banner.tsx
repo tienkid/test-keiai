@@ -6,8 +6,6 @@ import SwiperFlatList from 'react-native-swiper-flatlist';
 import { ImageTypes } from '@assets/image';
 import { sizeScale } from '@common';
 import { Block, Button, LocalImage, Spacer } from '@components';
-import { navigate } from '@navigation/navigation-service';
-import { BOTTOM_TAB } from '@navigation/screen-types';
 
 import { CustomPagination } from './CustomPagination';
 
@@ -20,9 +18,9 @@ export const ListBanner = () => {
       case 0:
         Linking.openURL('https://www.iesapo.ki-group.jp/');
         break;
-      case 1:
-        navigate(BOTTOM_TAB.TAB_SETTING);
-        break;
+      // case 1:
+      //   navigate(BOTTOM_TAB.TAB_SETTING);
+      //   break;
       case 2:
         Linking.openURL('https://hiraya.ai/products/hanare/');
         break;

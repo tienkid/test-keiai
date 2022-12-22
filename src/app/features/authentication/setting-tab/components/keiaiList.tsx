@@ -44,7 +44,7 @@ export const KeiaiList = ({ dataMenu }: MenuListProps) => {
               shadowColor: '#000000',
               shadowOpacity: 1,
               shadowRadius: 5,
-              elevation: index === 2 ? 20 : 10,
+              elevation: 10,
             }}
             zIndex={1}
             height={112}

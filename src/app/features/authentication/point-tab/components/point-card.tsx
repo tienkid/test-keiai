@@ -8,7 +8,7 @@ import Animated, {
   timing,
 } from 'react-native-reanimated';
 
-import { dispatch, generateNumber, sizeScale } from '@common';
+import { dispatch, generateNumber, generateNumberUp, sizeScale } from '@common';
 import { Block, Button, Spacer, Text } from '@components';
 import { useSelector } from '@hooks';
 import { useFocusEffect } from '@react-navigation/native';
@@ -25,26 +25,32 @@ export const PointCard = () => {
   // state
   const pointCard = useSelector(x => x.app.point);
   const { colors } = useTheme();
-  const [point, setPoint] = useState(pointCard);
+  const [point, setPoint] = useState<string | number>(pointCard);
 
   useFocusEffect(
     React.useCallback(() => {
-      setPoint(generateNumber(`${pointCard}`));
+      setPoint(generateNumber(`${pointCard}`, '1'));
+      setTimeout(() => {
+        setPoint(generateNumberUp(`${pointCard}`));
+      }, 10);
       const timeOut = setTimeout(() => {
         setPoint(pointCard ?? 0);
-      }, 500);
+      }, 1000);
       return () => {
-        setPoint(generateNumber(`${pointCard}`));
+        setPoint(generateNumber(pointCard.toString(), '1'));
         clearTimeout(timeOut);
       };
     }, [pointCard]),
   );
 
   const onGetPointSucceeded = (data: number) => {
-    setPoint(generateNumber(`${data}`));
+    setPoint(generateNumber(`${data}`, '1'));
+    setTimeout(() => {
+      setPoint(generateNumberUp(`${data}`));
+    }, 10);
     setTimeout(() => {
       setPoint(data);
-    }, 500);
+    }, 1000);
     // clearTimeout(timeOut);
   };
 
@@ -123,8 +129,8 @@ export const PointCard = () => {
             <Spacer width={5} />
             <Block direction="row" alignItems={'flex-end'}>
               <AnimatedNumbers
-                animateToNumber={point}
-                animationDuration={2500}
+                animateToNumber={parseInt(point.toString(), 10)}
+                animationDuration={2000}
                 fontStyle={{
                   fontSize: sizeScale(40),
                   fontWeight: 'bold',
@@ -133,6 +139,7 @@ export const PointCard = () => {
                   lineHeight: 46,
                   fontFamily: FontDefault.primary,
                 }}
+                // easing={Easing.circle(1.2)}
               />
               <Block position={'absolute'} right={-30} bottom={2}>
                 <Text
