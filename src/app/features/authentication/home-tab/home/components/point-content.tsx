@@ -31,7 +31,15 @@ export const PointContent = () => {
       </Block>
       <Spacer height={15} />
       <Text
-        t18n="home:KI_point_content"
+        t18n="home:KI_point_content_1"
+        preset="textNormal"
+        colorTheme="base5"
+        lineHeight={19}
+        textAlign={'center'}
+      />
+      <Spacer height={0.5} />
+      <Text
+        t18n="home:KI_point_content_2"
         preset="textNormal"
         colorTheme="base5"
         lineHeight={19}

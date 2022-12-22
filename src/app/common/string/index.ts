@@ -187,11 +187,28 @@ export const numberWithCommas = (x: number | string) => {
   return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-export const generateNumber = (x: string) => {
+export const generateNumber = (x: string, y: string) => {
+  const { length } = x;
+  let _number = '';
+  for (let index = 0; index < length; index++) {
+    _number += y;
+  }
+  return _number;
+};
+export const generateNumberUp = (x: string) => {
+  const { length } = x;
+  let _number = '';
+  for (let index = 0; index < length; index++) {
+    _number += ((index + 5) % 10).toString();
+  }
+  return _number;
+};
+export const generateNumberRandom = (x: string) => {
   const { length } = x;
   return parseInt(
     Math.random()
       .toString()
       .slice(2, length + 2),
+    10,
   );
 };

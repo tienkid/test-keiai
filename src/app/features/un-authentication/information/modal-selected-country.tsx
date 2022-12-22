@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { dispatch } from '@common';
+import { dispatch, isIos } from '@common';
 import { Block, Button, Divider, ListView, Spacer, Text } from '@components';
 import { goBack } from '@navigation/navigation-service';
 import { appActions } from '@redux-slice';
@@ -52,7 +52,7 @@ export const ModalSelectedCountry = ({
   );
   // render
   return (
-    <Block colorTheme="background">
+    <Block color="transparent" marginTop={isIos ? 0 : insets.top}>
       <Block
         middle
         paddingVertical={15}
