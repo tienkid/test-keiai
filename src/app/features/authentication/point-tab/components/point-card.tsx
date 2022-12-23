@@ -36,7 +36,7 @@ export const PointCard = () => {
       setPoint(generateNumber(`${pointCard}`, '9'));
       const timeOut = setTimeout(() => {
         setPoint(pointCard ?? 0);
-      }, 1000);
+      }, 100);
       return () => {
         setPoint(generateNumber(pointCard.toString(), '9'));
         clearTimeout(timeOut);
@@ -132,7 +132,7 @@ export const PointCard = () => {
             <Block direction="row" alignItems={'flex-end'}>
               <AnimatedNumbers
                 animateToNumber={parseInt(point.toString(), 10)}
-                animationDuration={2000}
+                // animationDuration={1000}
                 fontStyle={{
                   fontSize: sizeScale(40),
                   fontWeight: 'bold',
@@ -141,7 +141,7 @@ export const PointCard = () => {
                   lineHeight: 46,
                   fontFamily: FontDefault.primary,
                 }}
-                // easing={Easing.circle(1.2)}
+                easing={EasingNode.linear}
               />
               <Block position={'absolute'} right={-30} bottom={2}>
                 <Text

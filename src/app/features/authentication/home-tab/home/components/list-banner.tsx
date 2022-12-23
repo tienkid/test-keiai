@@ -25,7 +25,7 @@ export const ListBanner = () => {
         Linking.openURL('https://hiraya.ai/products/hanare/');
         break;
       default:
-        Linking.openURL('https://www.iesapo.ki-group.jp/');
+        // Linking.openURL('https://www.iesapo.ki-group.jp/');
         break;
     }
   };
