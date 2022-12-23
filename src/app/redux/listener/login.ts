@@ -61,7 +61,13 @@ takeLatestListeners(true)({
     if (handleErrorResponse(response)) {
       // TODO
       // navigate(APP_SCREEN.OTP_SCREEN);
+
       execFunc(onSucceeded);
+    } else {
+      console.log(111, response);
+      _listenerApi.dispatch(
+        appActions.saveSession(response?.data?.new_session),
+      );
     }
   },
 });

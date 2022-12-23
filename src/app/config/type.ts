@@ -9,6 +9,7 @@ export type ResponseBase<T = any, TStatus = boolean> = {
       status: false;
       msgCode?: string;
       msg?: string | null;
+      data?: T;
     });
 export interface ParamsNetwork {
   url: string;

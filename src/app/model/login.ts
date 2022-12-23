@@ -15,6 +15,7 @@ export type DataOTP = {
   token: string;
   refresh_token: string;
   data: OTPLogin;
+  new_session?: string;
 };
 export interface User {
   id: string;
