@@ -27,10 +27,10 @@ export const DrawerNavigator = () => {
         drawerType: 'front',
         headerShown: false,
         drawerStyle: {
-          width: width,
+          width: width - 95,
           backgroundColor: 'transparent',
         },
-        overlayColor: '#00000099',
+        overlayColor: '"rgba(0, 0, 0, 0.85)"',
         drawerPosition: 'right',
         drawerStatusBarAnimation: 'fade',
       }}

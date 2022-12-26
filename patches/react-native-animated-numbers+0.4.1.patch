@@ -1,0 +1,48 @@
+diff --git a/node_modules/react-native-animated-numbers/index.js b/node_modules/react-native-animated-numbers/index.js
+index f624b91..6563003 100644
+--- a/node_modules/react-native-animated-numbers/index.js
++++ b/node_modules/react-native-animated-numbers/index.js
+@@ -1,8 +1,9 @@
++1
+ import React from 'react';
+ import { Text, View } from 'react-native';
+ import Animated, { EasingNode } from 'react-native-reanimated';
+ 
+-const NUMBERS = Array(10).fill().map((_, i) => i);
++const NUMBERS = Array(20).fill().map((_, i) => i%10).reverse();
+ 
+ const usePrevious = (value) => {
+ 	const ref = React.useRef();
+@@ -30,7 +31,6 @@ const AnimatedNumber = ({
+ 
+ 	const animateToNumbersArr = Array.from(animateToNumberString, Number);
+ 	const prevNumberersArr = Array.from(prevNumberString, Number);
+-
+ 	if (includeComma) {
+ 		const reducedArray = new Array(
+ 			Math.ceil(animateToNumberString.length / 3)
+@@ -67,11 +67,12 @@ const AnimatedNumber = ({
+ 			return new Animated.Value(0);
+ 		}
+ 
+-		const animationHeight = -1 * (numberHeight * prevNumberersArr[index]);
++		const animationHeight = -1*(numberHeight * (9-prevNumberersArr[index]));
+ 		return new Animated.Value(animationHeight);
+ 	});
+ 
+ 	const setButtonLayout = (e) => {
++		console.log(e.nativeEvent.layout.height);
+ 		setNumberHeight(e.nativeEvent.layout.height);
+ 	};
+ 
+@@ -80,9 +81,8 @@ const AnimatedNumber = ({
+ 			if (typeof animateToNumbersArr[index] !== 'number') {
+ 				return;
+ 			}
+-
+ 			Animated.timing(animation, {
+-				toValue: -1 * (numberHeight * animateToNumbersArr[index]),
++				toValue: -1*(numberHeight * (19-animateToNumbersArr[index])),
+ 				duration: animationDuration || 1400,
+ 				useNativeDriver: true,
+ 				easing: easing || EasingNode.elastic(1.2),
