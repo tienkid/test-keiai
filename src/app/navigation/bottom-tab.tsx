@@ -8,14 +8,12 @@ import { ContentDetail } from '@features/authentication/content-tab/content-deta
 import { ContentTab } from '@features/authentication/content-tab/content-screen';
 import { ConfirmDeleteUser } from '@features/authentication/delete-user/confirm-delete';
 import { DeleteUser } from '@features/authentication/delete-user/delete-user-screen';
-import { DeleteUserSuccess } from '@features/authentication/delete-user/delete_success';
 import { HomeTab } from '@features/authentication/home-tab/home';
 import { NotificationScreen } from '@features/authentication/home-tab/notification';
 import { NotifyDetail } from '@features/authentication/home-tab/notification-detail';
 import { PointTab } from '@features/authentication/point-tab';
 import { SettingTab } from '@features/authentication/setting-tab';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from '@theme';
 
@@ -44,10 +42,7 @@ export const HomeStackScreen = () => {
         component={NotifyDetail}
       />
       <HomeStack.Screen name={HOME_STACK.DELETE_USER} component={DeleteUser} />
-      <HomeStack.Screen
-        name={HOME_STACK.DELETE_SUCCESS}
-        component={DeleteUserSuccess}
-      />
+
       <HomeStack.Screen
         name={HOME_STACK.CONFIRM_DELETE}
         component={ConfirmDeleteUser}
@@ -131,25 +126,12 @@ export const BottomTabScreen = () => {
         tabBarLabelStyle: { paddingBottom: 5 },
       }}>
       <BottomTab.Screen
-        // options={{
-        //   title: t('bottom_tab:home'),
-        //   tabBarIcon: props => (
-        //     <Icon icon={'home'} color={props.color} size={24} />
-        //   ),
-        //   tabBarStyle: { display: 'none' },
-        // }}
-        options={({ route }) => ({
+        options={{
           title: t('bottom_tab:home'),
           tabBarIcon: props => (
             <Icon icon={'home'} color={props.color} size={24} />
           ),
-          tabBarStyle: (route => {
-            const routeName = getFocusedRouteNameFromRoute(route) ?? '';
-            if (routeName === HOME_STACK.DELETE_SUCCESS) {
-              return { display: 'none' };
-            }
-          })(route),
-        })}
+        }}
         name={BOTTOM_TAB.TAB_HOME}
         component={HomeStackScreen}
       />

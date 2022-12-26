@@ -3,6 +3,7 @@ import { Dimensions } from 'react-native';
 
 import { ContentDetail } from '@features/authentication/content-tab/content-detail';
 import { ContentTab } from '@features/authentication/content-tab/content-screen';
+import { DeleteUserSuccess } from '@features/authentication/delete-user/delete_success';
 import { NotificationScreen } from '@features/authentication/home-tab/notification';
 import { SettingTab } from '@features/authentication/setting-tab';
 import { ContentService } from '@features/authentication/setting-tab/service-detail';
@@ -47,6 +48,10 @@ export const DrawerNavigator = () => {
       <Drawer.Screen
         name={CONTENT_STACK.CONTENT_DETAIL}
         component={ContentDetail}
+      />
+      <Drawer.Screen
+        name={HOME_STACK.DELETE_SUCCESS}
+        component={DeleteUserSuccess}
       />
     </Drawer.Navigator>
   );
