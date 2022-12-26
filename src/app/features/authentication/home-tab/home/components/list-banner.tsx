@@ -1,18 +1,27 @@
-import React from 'react';
-import { Linking, ListRenderItemInfo, useWindowDimensions } from 'react-native';
+import React, { useState } from 'react';
+import {
+  Animated,
+  Linking,
+  ListRenderItemInfo,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 
-import SwiperFlatList from 'react-native-swiper-flatlist';
+import Carousel from 'react-native-snap-carousel';
 
 import { ImageTypes } from '@assets/image';
 import { sizeScale } from '@common';
-import { Block, Button, LocalImage, Spacer } from '@components';
-
-import { CustomPagination } from './CustomPagination';
+import { Block, Button, LocalImage } from '@components';
+import { ColorDefault } from '@theme/color';
 
 export const ListBanner = () => {
   // state
+
   const { width } = useWindowDimensions();
-  const colors: Array<ImageTypes> = ['banner', 'banner2', 'banner3'];
+  const colors: Array<ImageTypes> = ['banner', 'banner3'];
+  const carousel = React.useRef<any>(null);
+  const [Index, setIndex] = useState(0);
+
   const handlePressBanner = (index: number) => {
     switch (index) {
       case 0:
@@ -21,7 +30,7 @@ export const ListBanner = () => {
       // case 1:
       //   navigate(BOTTOM_TAB.TAB_SETTING);
       //   break;
-      case 2:
+      case 1:
         Linking.openURL('https://hiraya.ai/products/hanare/');
         break;
       default:
@@ -29,51 +38,81 @@ export const ListBanner = () => {
         break;
     }
   };
+
+  const Indicator = () => {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+        }}>
+        {colors.map((item, index) => {
+          return (
+            <Animated.View
+              key={index}
+              style={{
+                height: 6,
+                width: 6,
+                borderRadius: 5,
+                backgroundColor:
+                  index === Index ? ColorDefault.primary : ColorDefault.base4,
+                marginHorizontal: 5,
+              }}
+            />
+          );
+        })}
+      </View>
+    );
+  };
   //func
   const renderItem = ({ item, index }: ListRenderItemInfo<ImageTypes>) => {
     return (
-      <Button.Default onPress={() => handlePressBanner(index)}>
-        <Block
-          height={((width - 30) * 180) / 343}
-          middle
-          justifyContent="center"
-          direction={'row'}
-          shadow>
-          {/* <Spacer width={index === 0 ? 15 : 0} /> */}
-          <LocalImage
-            resizeMode="stretch"
-            source={item}
-            style={{
-              height: ((width - 30) * 180) / 343,
-              width: width - sizeScale(25),
-              borderRadius: 8,
-              overflow: 'hidden',
-              marginRight: index === colors.length - 1 ? 0 : 5,
-            }}
-          />
-          <Spacer width={index === colors.length - 1 ? 15 : 0} />
+      <Block borderRadius={8} overflow="hidden">
+        <Block shadow>
+          <Button.Default onPress={() => handlePressBanner(index)}>
+            <LocalImage
+              resizeMode="stretch"
+              source={item}
+              style={{
+                height: ((width - 30) * 180) / 343,
+                width: width - sizeScale(30),
+                borderRadius: 8,
+              }}
+            />
+          </Button.Default>
         </Block>
-      </Button.Default>
+      </Block>
     );
   };
 
   // render
   return (
-    <Block paddingLeft={15}>
-      <SwiperFlatList
+    <Block middle>
+      <Carousel
         autoplay
-        autoplayDelay={3}
-        autoplayLoop
-        autoplayLoopKeepAnimation
-        index={0}
-        // getItemLayout={}
-        // ItemSeparatorComponent={renderSeparatorComponent}
-        showPagination
+        ref={carousel}
+        // loop
+        // autoplayDelay={500}
+        // autoplayInterval={500}
+        layout={'default'}
+        autoplayInterval={2000}
         data={colors}
+        sliderWidth={width}
+        itemWidth={width - sizeScale(25)}
+        inactiveSlideScale={1}
+        inactiveSlideOpacity={1}
         renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-        PaginationComponent={CustomPagination}
+        onSnapToItem={slideIndex => {
+          setIndex(slideIndex);
+          if (slideIndex === 1) {
+            setTimeout(() => {
+              carousel?.current?.snapToItem(0);
+            }, 2000);
+          }
+        }}
       />
+      <Block flex={1} paddingTop={8}>
+        <Indicator />
+      </Block>
     </Block>
   );
 };

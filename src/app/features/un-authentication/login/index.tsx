@@ -88,7 +88,17 @@ const LoginComponent = () => {
               const diff = moment.duration(moment(expired).diff(moment(today)));
               const days = diff.days();
               console.log(days, 'days');
-              if (days > 0) {
+              // dispatch(
+              //   appActions.setAppProfileWrap({
+              //     ...res.attributes,
+              //     username: res.username,
+              //   }),
+              // );
+              // navigate(APP_SCREEN.REGISTER, {
+              //   type: 'reLogin',
+              //   phone: phoneNumber,
+              // });
+              if (days <= 0) {
                 // dispatch(appActions.setPhoneReLogin(phoneNumber));
                 dispatch(
                   appActions.setAppProfileWrap({

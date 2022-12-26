@@ -1,9 +1,10 @@
-import React, { useCallback } from 'react';
-import { FlatList, Linking, Platform, Pressable } from 'react-native';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { Animated, FlatList, Linking, Platform } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Block, Button, Icon, LocalImage, Spacer, Text } from '@components';
+import { useDrawerStatus } from '@react-navigation/drawer';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@theme';
 import IconVector from 'react-native-vector-icons/MaterialIcons';
@@ -20,6 +21,8 @@ const CustomDrawer = () => {
   const navigation = useNavigation();
   const { colors } = useTheme();
   const { bottom, top } = useSafeAreaInsets();
+  const isDrawerOpen = useDrawerStatus() === 'open';
+  const opacityAnimation = useRef(new Animated.Value(0)).current;
 
   const handleRouteDrawer = (item: ItemDrawer) => {
     switch (item.id) {
@@ -51,6 +54,23 @@ const CustomDrawer = () => {
     navigation.dispatch(DrawerActions.closeDrawer());
   };
 
+  useEffect(() => {
+    if (isDrawerOpen) {
+      Animated.timing(opacityAnimation, {
+        toValue: 1,
+        duration: 1200,
+        useNativeDriver: true,
+      }).start();
+    }
+    return () => {
+      Animated.timing(opacityAnimation, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    };
+  }, [isDrawerOpen]);
+
   const keyExtractor = useCallback(item => item.id, []);
   const renderItem = ({ item }: ListRenderDrawer) => {
     return (
@@ -81,7 +101,7 @@ const CustomDrawer = () => {
   // render
   return (
     <Block block direction={'row'} style={{ backgroundColor: 'transparent' }}>
-      <Pressable
+      {/* <Pressable
         onPress={onCloseDrawer}
         style={{ backgroundColor: '#00000090', width: 95, paddingTop: top }}>
         <Block paddingLeft={15} paddingTop={15}>
@@ -89,7 +109,7 @@ const CustomDrawer = () => {
             <IconVector name="close" size={30} color={colors.white} />
           </Button.Default>
         </Block>
-      </Pressable>
+      </Pressable> */}
       <Block
         block
         color={colors.white}
@@ -99,6 +119,21 @@ const CustomDrawer = () => {
         alignItems={'flex-start'}>
         <Block paddingLeft={50} flex={1}>
           <Spacer height={70} />
+          {isDrawerOpen ? (
+            <Animated.View
+              style={{
+                paddingLeft: 15,
+                paddingTop: 15,
+                position: 'absolute',
+                left: -90,
+                opacity: opacityAnimation,
+              }}>
+              <Button.Default onPress={onCloseDrawer}>
+                <IconVector name="close" size={30} color={colors.white} />
+              </Button.Default>
+            </Animated.View>
+          ) : null}
+
           <FlatList
             data={dataMenu}
             keyExtractor={keyExtractor}
