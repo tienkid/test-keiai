@@ -23,6 +23,7 @@ export enum APP_SCREEN {
   CAROUSEL_PARALLAX = 'CAROUSEL_PARALLAX',
   CAROUSEL_ADVANCED = 'CAROUSEL_ADVANCED',
   HOME_ANIMATE = 'HOME_ANIMATE',
+  ANIMATED_TABS = 'ANIMATED_TABS',
 }
 
 export enum BOTTOM_TAB {
@@ -73,12 +74,13 @@ export type UnAuthorizeParamsList = {
   [APP_SCREEN.CAROUSEL_PARALLAX]: undefined;
   [APP_SCREEN.CAROUSEL_ADVANCED]: undefined;
   [APP_SCREEN.HOME_ANIMATE]: undefined;
+  [APP_SCREEN.ANIMATED_TABS]: undefined;
 };
 export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
   [CONTENT_STACK.CONTENT]: undefined;
   [CONTENT_STACK.CONTENT_DETAIL]: { item: Item };
-  [SETTING_STACK.SERVICE_DETAIL]: { item: Item };
+  [SETTING_STACK.SERVICE_DETAIL]: { item?: Item };
   [BOTTOM_TAB.TAB_HOME]: undefined;
   [BOTTOM_TAB.TAB_POINT]: undefined;
   [BOTTOM_TAB.TAB_SETTING]: undefined;

@@ -103,7 +103,7 @@ export const ListBanner = () => {
         renderItem={renderItem}
         onSnapToItem={slideIndex => {
           setIndex(slideIndex);
-          if (slideIndex === 1) {
+          if (slideIndex === colors.length - 1) {
             setTimeout(() => {
               carousel?.current?.snapToItem(0);
             }, 2000);

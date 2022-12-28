@@ -98,7 +98,7 @@ const LoginComponent = () => {
               //   type: 'reLogin',
               //   phone: phoneNumber,
               // });
-              if (days <= 0) {
+              if (days < 0) {
                 // dispatch(appActions.setPhoneReLogin(phoneNumber));
                 dispatch(
                   appActions.setAppProfileWrap({

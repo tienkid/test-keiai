@@ -29,7 +29,7 @@ export const ItemService = ({ item, index }: ItemServiceProps) => {
             preset="textNormal12"
             colorTheme="base5"
             numberOfLines={2}
-            text={item.text}
+            text={item.content}
             lineHeight={18}
           />
           {/* <Spacer height={8} />

@@ -30,21 +30,49 @@ export const PointContent = () => {
         <LocalImage source="logo_point" resizeMode="contain" />
       </Block>
       <Spacer height={15} />
-      <Text
-        t18n="home:KI_point_content_1"
-        preset="textNormal"
-        colorTheme="base5"
-        lineHeight={19}
-        textAlign={'center'}
-      />
-      <Spacer height={0.5} />
-      <Text
+
+      {/* <Spacer height={0.5} /> */}
+      <Block middle>
+        <Text
+          t18n="home:KI_point_content_1"
+          preset="textNormal"
+          colorTheme="base5"
+          lineHeight={19}
+          textAlign={'center'}
+          // style={{ backgroundColor: 'red' }}
+        />
+        <Text
+          text="サービスの契約などで貯まり、貯めたポイントは"
+          preset="textNormal"
+          colorTheme="base5"
+          lineHeight={19}
+          textAlign={'center'}
+          // style={{ backgroundColor: 'blue' }}
+        />
+        <Text
+          text="KEIAIの各種サービスやリフォーム工事などで"
+          preset="textNormal"
+          colorTheme="base5"
+          lineHeight={19}
+          textAlign={'center'}
+          // style={{ backgroundColor: 'green' }}
+        />
+        <Text
+          text="お使いいただけます。"
+          preset="textNormal"
+          colorTheme="base5"
+          lineHeight={19}
+          textAlign={'center'}
+          // style={{ backgroundColor: 'orange' }}
+        />
+      </Block>
+      {/* <Text
         t18n="home:KI_point_content_2"
         preset="textNormal"
         colorTheme="base5"
         lineHeight={19}
         textAlign={'center'}
-      />
+      /> */}
       <Spacer height={16} />
       <Block direction={'row'} middle>
         <Block height={100} width={316}>

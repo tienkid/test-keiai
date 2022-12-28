@@ -1,3 +1,5 @@
+import { ImageTypes } from '@assets/image';
+
 import { DataKeiaiType } from './contain';
 
 export interface KeiaiItemPropsType {
@@ -6,8 +8,9 @@ export interface KeiaiItemPropsType {
 
 export interface DataService {
   id: number;
-  text: string;
-  sign: string;
+  content: string;
+  des: string;
+  image: ImageTypes;
 }
 
 export interface MenuService {

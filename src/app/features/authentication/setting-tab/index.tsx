@@ -4,46 +4,33 @@ import { Linking } from 'react-native';
 import isEqual from 'react-fast-compare';
 
 import { dispatch } from '@common';
-import { Block, Button, Header, Spacer, StackView } from '@components';
+import { Block, Button, Divider, Header, Spacer, StackView } from '@components';
 import { servicesActions } from '@redux-slice';
 
 import { KeiaiList } from './components/keiaiList';
+import { ListServiceNews } from './components/list-service';
 import { DATA_KEIAI } from './contain';
-import { DataService, MenuService } from './type';
+import {
+  dataService1,
+  dataService2,
+  dataService3,
+  dataService4,
+  dataService5,
+  dataService6,
+  dataService7,
+  dataService8,
+} from './data';
+import { MenuService } from './type';
 
 // import { ListService } from '../home-tab/home/components/list-service';
-export const dataFake: DataService[] = [
-  {
-    id: 1,
-    text: 'アンテナ、照明、カーテンレールなど まとめてお得パックをご紹介！！',
-    sign: 'KEIAI',
-  },
-  {
-    id: 2,
-    text: '8,800円から作れるオリジナル表札',
-    sign: '株式会社日本エクステリア',
-  },
-  {
-    id: 3,
-    text: 'unico｜特別ご優待券',
-    sign: 'unico',
-  },
-  {
-    id: 5,
-    text: 'アート引越センター特別優待特典',
-    sign: 'アート引越センター',
-  },
-  {
-    id: 4,
-    text: 'シャワーヘッド“ミラブルPlus”',
-    sign: '株式会社サイエンス',
-  },
-];
+
 const SettingComponent = () => {
   // render
-  const [, setDataMenu] = useState<MenuService[]>([]);
+  const [dataMenu, setDataMenu] = useState<MenuService[]>([]);
 
   const onSuccess = (data: MenuService[]) => {
+    console.log(dataMenu, 'data');
+
     setDataMenu(data);
   };
   const getAllServices = useCallback(() => {
@@ -69,51 +56,50 @@ const SettingComponent = () => {
           </Block>
           <Spacer height={15} />
         </Block>
-        {/* <Block marginTop={5} colorTheme="white">
-          <ListService
-            data={dataFake.slice(0, 4)}
+        <Divider height={6} colorTheme="divider" />
+        <Block colorTheme="white">
+          <ListServiceNews
+            data={dataService1}
             title="service:housing_facilities"
           />
         </Block>
-        <Block marginTop={5} colorTheme="white">
-          <ListService
-            data={dataFake.slice(0, 2)}
-            title="service:construction"
-          />
+        <Divider height={6} colorTheme="divider" />
+        <Block colorTheme="white">
+          <ListServiceNews data={dataService2} title="service:construction" />
         </Block>
-        <Block marginTop={5} colorTheme="white">
-          <ListService data={dataFake.slice(0, 3)} title="service:moving" />
+        <Divider height={6} colorTheme="divider" />
+        <Block colorTheme="white">
+          <ListServiceNews data={dataService3} title="service:moving" />
         </Block>
-        <Block marginTop={5} colorTheme="white">
-          <ListService
-            data={dataFake.slice(0, 3)}
+        <Divider height={6} colorTheme="divider" />
+        <Block colorTheme="white">
+          <ListServiceNews
+            data={dataService4}
             title="service:design_services"
           />
         </Block>
-        <Block marginTop={5} colorTheme="white">
-          <ListService
-            data={dataFake.slice(0, 2)}
+        <Divider height={6} colorTheme="divider" />
+        <Block colorTheme="white">
+          <ListServiceNews
+            data={dataService5}
             title="service:home_appliances"
           />
         </Block>
-        <Block marginTop={5} colorTheme="white">
-          <ListService
-            data={dataFake.slice(0, 2)}
+        <Divider height={6} colorTheme="divider" />
+        <Block colorTheme="white">
+          <ListServiceNews
+            data={dataService6}
             title="service:storage_and_cleaning"
           />
         </Block>
-        <Block marginTop={5} colorTheme="white">
-          <ListService
-            data={dataFake.slice(0, 2)}
-            title="service:car_service"
-          />
+        <Divider height={6} colorTheme="divider" />
+        <Block colorTheme="white">
+          <ListServiceNews data={dataService7} title="service:car_service" />
         </Block>
-        <Block marginTop={5} colorTheme="white">
-          <ListService
-            data={dataFake.slice(0, 1)}
-            title="service:energy_service"
-          />
-        </Block> */}
+        <Divider height={6} colorTheme="divider" />
+        <Block colorTheme="white">
+          <ListServiceNews data={dataService8} title="service:energy_service" />
+        </Block>
         <Block colorTheme="white">
           <Spacer height={50} />
         </Block>

@@ -140,13 +140,40 @@ const PointComponent = () => {
             <LocalImage source="logo_point" resizeMode="contain" />
           </Block>
           <Spacer height={15} />
-          <Text
+          <Block>
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="アプリ登録や各種サービスのご契約などで貯まり"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="貯めたポイントはKEIAIのオプション工事や"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="リフォーム工事などでお使いいただけます。"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+          </Block>
+          {/* <Text
             textAlign={'center'}
             preset="textNormal15"
             t18n="point:description"
+            // text="アプリ登録や各種サービスのご契約などで貯まり"
             colorTheme="base5"
             lineHeight={19}
-          />
+          /> */}
           <Spacer height={70} />
           <Text
             preset="linkLarge"
@@ -160,13 +187,31 @@ const PointComponent = () => {
             <LocalImage source="point_1" resizeMode="contain" />
           </Block>
           <Spacer height={20} />
-          <Text
+          <Block>
+            <Text
+              preset="textNormal15"
+              // t18n="point:content_2"
+              text="溜まったポイントは、1ポイント1円として"
+              colorTheme="base5"
+              textAlign={'center'}
+              lineHeight={19}
+            />
+            <Text
+              preset="textNormal15"
+              // t18n="point:content_2"
+              text="1円単位から、いつでもご利用可能です。"
+              colorTheme="base5"
+              textAlign={'center'}
+              lineHeight={19}
+            />
+          </Block>
+          {/* <Text
             textAlign={'center'}
             preset="textNormal15"
             t18n="point:content_1"
             colorTheme="base5"
             lineHeight={19}
-          />
+          /> */}
           <Spacer height={70} />
           <Text
             preset="linkLarge"
@@ -180,13 +225,33 @@ const PointComponent = () => {
             <LocalImage source="point_2" resizeMode="contain" />
           </Block>
           <Spacer height={20} />
-          <Text
-            preset="textNormal15"
-            t18n="point:content_2"
-            colorTheme="base5"
-            textAlign={'center'}
-            lineHeight={19}
-          />
+          <Block>
+            <Text
+              preset="textNormal15"
+              // t18n="point:content_2"
+              text="貯めたポイントは有効期限なしの"
+              colorTheme="base5"
+              textAlign={'center'}
+              lineHeight={19}
+            />
+            <Text
+              preset="textNormal15"
+              // t18n="point:content_2"
+              text="無期限ポイント！ポイントが消滅したり"
+              colorTheme="base5"
+              textAlign={'center'}
+              lineHeight={19}
+            />
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="リフォーム工事などでお使いいただけます。"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+          </Block>
+
           <Spacer height={70} />
           <Block middle>
             <Text
@@ -202,21 +267,73 @@ const PointComponent = () => {
             <LocalImage source="point_3" resizeMode="contain" />
           </Block>
           <Spacer height={20} />
-          <Text
+          <Block>
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="ポイントは、ご自宅の修理、交換、新設"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="オプション工事などでご利用いただけます。"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+          </Block>
+          {/* <Text
             preset="textNormal15"
             t18n="point:content_3"
             lineHeight={19}
             colorTheme="base5"
             textAlign={'center'}
-          />
+          /> */}
           <Spacer height={20} />
-          <Text
+          <Block>
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="失効期限はございませんので、"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="将来、リフォームなどで大きな金額がかかる時"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="に備えての「修繕積立金」としてポイントを貯"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+            <Text
+              textAlign={'center'}
+              preset="textNormal15"
+              // t18n="point:description"
+              text="めておくことも可能です。"
+              colorTheme="base5"
+              lineHeight={19}
+            />
+          </Block>
+          {/* <Text
             preset="textNormal15"
             t18n="point:sub_content_3"
             colorTheme="base5"
             lineHeight={19}
             textAlign={'center'}
-          />
+          /> */}
           <Spacer height={35} />
           <Text
             preset="textNormal11"
