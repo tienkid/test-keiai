@@ -84,7 +84,7 @@ export const handleErrorContent = (msgCode: string): I18nKeys => {
   switch (msgCode) {
     case 'email_in_used':
       return 'msg:email_in_used';
-    case 'phone_in_used':
+    case 'phone_number_in_use':
       return 'msg:phone_in_used';
     case 'user_disabled':
       return 'msg:user_disable';
